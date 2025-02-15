@@ -1,10 +1,5 @@
 <?php
 // aws/aws-crt-php
-$autoloader->register('AWS/CRT', DIR_STORAGE . 'vendor/aws/aws-crt-php/src/AWS/CRT/', true);
-$autoloader->register('AWS/CRT/Auth', DIR_STORAGE . 'vendor/aws/aws-crt-php/src/AWS/CRT/Auth/', true);
-$autoloader->register('AWS/CRT/HTTP', DIR_STORAGE . 'vendor/aws/aws-crt-php/src/AWS/CRT/HTTP/', true);
-$autoloader->register('AWS/CRT/IO', DIR_STORAGE . 'vendor/aws/aws-crt-php/src/AWS/CRT/IO/', true);
-$autoloader->register('AWS/CRT/Internal', DIR_STORAGE . 'vendor/aws/aws-crt-php/src/AWS/CRT/Internal/', true);
 
 // aws/aws-sdk-php
 $autoloader->register('Aws', DIR_STORAGE . 'vendor/aws/aws-sdk-php/src/', true);
