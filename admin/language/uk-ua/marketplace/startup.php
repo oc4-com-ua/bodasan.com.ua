@@ -1,19 +1,19 @@
 <?php
-// Heading
-$_['heading_title']     = 'Startup';
+// Заголовок
+$_['heading_title']     = 'Запуск';
 
-// Text
-$_['text_success']      = 'Success: You have modified startup!';
-$_['text_list']         = 'Startup List';
-$_['text_info']         = 'Startup Information';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили параметри запуску!';
+$_['text_list']         = 'Список запуску';
+$_['text_info']         = 'Інформація про запуск';
 
-// Column
-$_['column_code']       = 'Startup Code';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_code']       = 'Код запуску';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_description'] = 'Description';
+// Поля введення
+$_['entry_description'] = 'Опис';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify startup!';
+// Помилки
+$_['error_permission']  = 'Попередження: У вас немає дозволу на зміну параметрів запуску!';

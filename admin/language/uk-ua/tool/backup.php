@@ -1,32 +1,32 @@
 <?php
-// Heading
-$_['heading_title']      = 'Backup &amp; Restore';
+// Заголовок
+$_['heading_title']      = 'Резервне копіювання та відновлення';
 
-// Text
-$_['text_success']       = 'Success: You have successfully modified your database!';
-$_['text_progress']      = 'Backup Progress';
-$_['text_backup']        = 'Backing up table %s records %s to %s records';
-$_['text_restore']       = 'Restoring %s of %s';
-$_['text_option']        = 'Backup Options';
-$_['text_history']       = 'Backup History';
-$_['text_import']        = 'For large backup files it is better to upload the SQL file via FTP to the <strong>~/storage/backup/</strong> directory.';
+// Текст
+$_['text_success']       = 'Успіх: Ви успішно змінили вашу базу даних!';
+$_['text_progress']      = 'Прогрес резервного копіювання';
+$_['text_backup']        = 'Резервне копіювання таблиці %s, записи з %s по %s';
+$_['text_restore']       = 'Відновлення %s з %s';
+$_['text_option']        = 'Опції резервного копіювання';
+$_['text_history']       = 'Історія резервного копіювання';
+$_['text_import']        = 'Для великих файлів резервного копіювання краще завантажити SQL файл через FTP до директорії <strong>~/storage/backup/</strong>.';
 
-// Column
-$_['column_filename']    = 'Filename';
-$_['column_size']        = 'Size';
-$_['column_date_added']  = 'Date Added';
-$_['column_action']      = 'Action';
+// Стовпці
+$_['column_filename']    = 'Назва файлу';
+$_['column_size']        = 'Розмір';
+$_['column_date_added']  = 'Дата додавання';
+$_['column_action']      = 'Дія';
 
-// Entry
-$_['entry_progress']     = 'Progress';
-$_['entry_export']       = 'Export';
+// Введення
+$_['entry_progress']     = 'Прогрес';
+$_['entry_export']       = 'Експорт';
 
-// Error
-$_['error_permission']   = 'Warning: You do not have permission to modify Backup &amp; Restore!';
-$_['error_export']       = 'Warning: You must select at least one table to export!';
-$_['error_table']        = 'Table %s is not in the allowed list!';
-$_['error_file']         = 'File could not be found!';
-$_['error_directory']    = 'Directory could not be found!';
-$_['error_not_found']    = 'Error: Could not find file %s !';
-$_['error_headers_sent'] = 'Error: Headers already sent out!';
-$_['error_upload_size']  = 'Upload file cannot be larger than %s!';
+// Помилки
+$_['error_permission']   = 'Попередження: Ви не маєте дозволу на зміну резервного копіювання та відновлення!';
+$_['error_export']       = 'Попередження: Ви повинні вибрати хоча б одну таблицю для експорту!';
+$_['error_table']        = 'Таблиця %s не входить до дозволеного списку!';
+$_['error_file']         = 'Файл не знайдений!';
+$_['error_directory']    = 'Директорія не знайдена!';
+$_['error_not_found']    = 'Помилка: Файл %s не знайдений!';
+$_['error_headers_sent'] = 'Помилка: Заголовки вже надіслані!';
+$_['error_upload_size']  = 'Файл для завантаження не може бути більшим за %s!';

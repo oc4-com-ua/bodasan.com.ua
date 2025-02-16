@@ -1,37 +1,37 @@
 <?php
-// Heading
-$_['heading_title']        = 'Mail';
+// Заголовок
+$_['heading_title']        = 'Пошта';
 
-// Text
-$_['text_mail']            = 'Send e-mail\'s to customers';
-$_['text_success']         = 'Your message has been successfully sent!';
-$_['text_sent']            = 'Your message has been successfully sent to %s to %s of %s recipients!';
-$_['text_default']         = 'Default';
-$_['text_newsletter']      = 'All Newsletter Subscribers';
-$_['text_customer_all']    = 'All Customers';
-$_['text_customer_group']  = 'Customer Group';
-$_['text_customer']        = 'Customers';
-$_['text_affiliate_all']   = 'All Affiliates';
-$_['text_affiliate']       = 'Affiliates';
-$_['text_product']         = 'Products';
+// Текст
+$_['text_mail']            = 'Надіслати електронний лист клієнтам';
+$_['text_success']         = 'Ваше повідомлення успішно надіслано!';
+$_['text_sent']            = 'Ваше повідомлення успішно надіслано з %s по %s із %s одержувачів!';
+$_['text_default']         = 'За замовчуванням';
+$_['text_newsletter']      = 'Всі підписники на розсилку';
+$_['text_customer_all']    = 'Всі клієнти';
+$_['text_customer_group']  = 'Група клієнтів';
+$_['text_customer']        = 'Клієнти';
+$_['text_affiliate_all']   = 'Всі партнери';
+$_['text_affiliate']       = 'Партнери';
+$_['text_product']         = 'Товари';
 
-// Entry
-$_['entry_store']          = 'From';
-$_['entry_to']             = 'To';
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_customer']       = 'Customer';
-$_['entry_affiliate']      = 'Affiliate';
-$_['entry_product']        = 'Products';
-$_['entry_subject']        = 'Subject';
-$_['entry_message']        = 'Message';
+// Поля введення
+$_['entry_store']          = 'Від кого';
+$_['entry_to']             = 'Кому';
+$_['entry_customer_group'] = 'Група клієнтів';
+$_['entry_customer']       = 'Клієнт';
+$_['entry_affiliate']      = 'Партнер';
+$_['entry_product']        = 'Товари';
+$_['entry_subject']        = 'Тема';
+$_['entry_message']        = 'Повідомлення';
 
-// Help
-$_['help_customer']        = '(Autocomplete)';
-$_['help_affiliate']       = '(Autocomplete)';
-$_['help_product']         = 'Send only to customers who have ordered products in the list. (Autocomplete)';
+// Підказки
+$_['help_customer']        = '(Автозаповнення)';
+$_['help_affiliate']       = '(Автозаповнення)';
+$_['help_product']         = 'Надсилати лише клієнтам, які замовляли товари зі списку. (Автозаповнення)';
 
-// Error
-$_['error_permission']     = 'Warning: You do not have permission to send E-Mails!';
-$_['error_subject']        = 'E-Mail Subject required!';
-$_['error_message']        = 'E-Mail Message required!';
-$_['error_email']          = 'No E-Mail recipients!';
+// Помилки
+$_['error_permission']     = 'Попередження: У вас немає дозволу на надсилання електронних листів!';
+$_['error_subject']        = 'Необхідно вказати тему листа!';
+$_['error_message']        = 'Необхідно вказати повідомлення!';
+$_['error_email']          = 'Немає отримувачів електронної пошти!';

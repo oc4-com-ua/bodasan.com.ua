@@ -1,9 +1,9 @@
 <?php
-// Text
-$_['text_subject']  = '%s - Password reset request';
-$_['text_greeting'] = 'A new password was requested for %s customer account.';
-$_['text_change']   = 'To reset your password click on the link below:';
-$_['text_ip']       = 'The IP used to make this request was:';
+// Текст
+$_['text_subject']  = '%s - Запит на скидання паролю';
+$_['text_greeting'] = 'Був запитаний новий пароль для облікового запису клієнта %s.';
+$_['text_change']   = 'Щоб скинути ваш пароль, натисніть на посилання нижче:';
+$_['text_ip']       = 'IP, який використовувався для цього запиту:';
 
-// Button
-$_['button_reset']  = 'Reset Password';
+// Кнопка
+$_['button_reset']  = 'Скинути пароль';

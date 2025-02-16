@@ -1,6 +1,6 @@
 <?php
-// Heading
-$_['heading_title']   = 'Permission Denied!';
+// Заголовок
+$_['heading_title']   = 'Доступ заборонено!';
 
-// Text
-$_['text_permission'] = 'You do not have permission to access this page, please refer to your system administrator.';
+// Текст
+$_['text_permission'] = 'У вас немає дозволу на доступ до цієї сторінки, зверніться до системного адміністратора.';

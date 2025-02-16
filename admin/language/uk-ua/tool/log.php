@@ -1,13 +1,13 @@
 <?php
-// Heading
-$_['heading_title']    = 'Error Log';
+// Заголовок
+$_['heading_title']    = 'Журнал помилок';
 
-// Text
-$_['text_success']     = 'Success: You have successfully cleared your error log!';
-$_['text_list']        = 'Errors List';
+// Текст
+$_['text_success']     = 'Успіх: Ви успішно очистили журнал помилок!';
+$_['text_list']        = 'Список помилок';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to clear error log!';
-$_['error_file']       = 'Warning: %s file could not be found!';
-$_['error_size']       = 'Warning: Error log file %s is %s!';
-$_['error_empty']      = 'Warning: Log file %s is empty!';
+// Помилки
+$_['error_permission'] = 'Попередження: Ви не маєте дозволу на очищення журналу помилок!';
+$_['error_file']       = 'Попередження: Файл %s не знайдений!';
+$_['error_size']       = 'Попередження: Розмір файлу журналу помилок %s складає %s!';
+$_['error_empty']      = 'Попередження: Файл журналу %s порожній!';

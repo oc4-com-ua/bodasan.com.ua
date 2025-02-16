@@ -1,22 +1,22 @@
 <?php
-// Heading
-$_['heading_title']  = 'Forgot Your Password?';
-$_['heading_reset']  = 'Reset your password';
+// Заголовок
+$_['heading_title']  = 'Забули пароль?';
+$_['heading_reset']  = 'Скидання пароля';
 
-// Text
-$_['text_email']     = 'Enter the e-mail address associated with your account. Click submit to have a password reset link e-mailed to you.';
-$_['text_success']   = 'An email with a confirmation link has been sent your admin email address.';
-$_['text_password']  = 'Enter the new password you wish to use.';
-$_['text_reset']     = 'Success: Your password has been successfully updated.';
+// Текст
+$_['text_email']     = 'Введіть адресу електронної пошти, пов’язану з вашим обліковим записом. Натисніть "Надіслати", щоб отримати посилання для скидання пароля.';
+$_['text_success']   = 'Лист із посиланням для підтвердження було надіслано на вашу електронну адресу адміністратора.';
+$_['text_password']  = 'Введіть новий пароль, який ви хочете використовувати.';
+$_['text_reset']     = 'Успіх: Ваш пароль успішно оновлено.';
 
-// Entry
-$_['entry_password'] = 'Password';
-$_['entry_confirm']  = 'Confirm';
-$_['entry_email']    = 'E-Mail Address';
+// Поля вводу
+$_['entry_password'] = 'Пароль';
+$_['entry_confirm']  = 'Підтвердити пароль';
+$_['entry_email']    = 'Електронна пошта';
 
-// Error
-$_['error_email']    = 'Warning: The E-Mail Address was not found in our records!';
-$_['error_code']     = 'Reset code does not match!';
-$_['error_disabled'] = 'Password reset has been disabled!';
-$_['error_password'] = 'Password must be between 6 and 20 characters!';
-$_['error_confirm']  = 'Password and password confirmation do not match!';
+// Помилки
+$_['error_email']    = 'Увага: Цю електронну адресу не знайдено в нашій базі!';
+$_['error_code']     = 'Код скидання не збігається!';
+$_['error_disabled'] = 'Скидання пароля вимкнено!';
+$_['error_password'] = 'Пароль повинен містити від 6 до 20 символів!';
+$_['error_confirm']  = 'Паролі не співпадають!';

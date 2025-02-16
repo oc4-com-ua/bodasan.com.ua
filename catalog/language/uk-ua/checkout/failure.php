@@ -1,20 +1,20 @@
 <?php
-// Heading
-$_['heading_title'] = 'Failed Payment!';
+// Заголовок
+$_['heading_title'] = 'Не вдалося провести платіж!';
 
-// Text
-$_['text_basket']   = 'Shopping Cart';
-$_['text_checkout'] = 'Checkout';
-$_['text_failure']  = 'Failed Payment';
-$_['text_message']  = '<p>There was a problem processing your payment and the order did not complete.</p>
+// Текст
+$_['text_basket']   = 'Кошик';
+$_['text_checkout'] = 'Оформлення замовлення';
+$_['text_failure']  = 'Не вдалося провести платіж';
+$_['text_message']  = '<p>Виникла проблема під час обробки вашого платежу, і замовлення не було завершено.</p>
 
-<p>Possible reasons are:</p>
+<p>Можливі причини:</p>
 <ul>
-  <li>Insufficient funds</li>
-  <li>Verification failed</li>
+  <li>Недостатньо коштів</li>
+  <li>Не вдалося перевірити платіж</li>
 </ul>
 
-<p>Please try to order again using a different payment method.</p>
+<p>Будь ласка, спробуйте оформити замовлення з використанням іншого способу оплати.</p>
 
-<p>If the problem persists please <a href="%s">contact us</a> with the details of the order you are trying to place.</p>
+<p>Якщо проблема повторюється, будь ласка, <a href="%s">зв\'яжіться з нами</a> з деталями вашого замовлення.</p>
 ';

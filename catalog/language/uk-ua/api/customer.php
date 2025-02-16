@@ -1,13 +1,13 @@
 <?php
-// Text
-$_['text_success']         = 'You have successfully modified customers';
+// Текст
+$_['text_success']         = 'Успіх: Ви успішно змінили дані клієнтів';
 
-// Error
-$_['error_customer']       = 'Warning: Customer could not be found!';
-$_['error_customer_group'] = 'Customer Group does not appear to be valid!';
-$_['error_firstname']      = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']       = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']          = 'E-Mail Address does not appear to be valid!';
-$_['error_telephone']      = 'Telephone must be between 3 and 32 characters!';
-$_['error_custom_field']   = '%s required!';
-$_['error_regex']          = '%s is not a valid input!';
+// Помилка
+$_['error_customer']       = 'Увага: Клієнт не знайдений!';
+$_['error_customer_group'] = 'Група клієнтів не є дійсною!';
+$_['error_firstname']      = 'Ім\'я має бути від 1 до 32 символів!';
+$_['error_lastname']       = 'Прізвище має бути від 1 до 32 символів!';
+$_['error_email']          = 'Електронна адреса не є дійсною!';
+$_['error_telephone']      = 'Номер телефону має бути від 3 до 32 символів!';
+$_['error_custom_field']   = '%s обов\'язкове!';
+$_['error_regex']          = '%s є недійсним ввідним значенням!';

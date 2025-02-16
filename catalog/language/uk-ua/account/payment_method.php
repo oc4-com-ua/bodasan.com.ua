@@ -1,7 +1,7 @@
 <?php
-// Heading
-$_['heading_title']   = 'Payment Methods';
+// Заголовок
+$_['heading_title']   = 'Методи оплати';
 
-// Text
-$_['text_account']    = 'Account';
-$_['text_no_results'] = 'You have no payment methods in your account.';
+// Текст
+$_['text_account']    = 'Обліковий запис';
+$_['text_no_results'] = 'У вашому обліковому записі немає методів оплати.';

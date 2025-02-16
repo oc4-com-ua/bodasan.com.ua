@@ -1,27 +1,27 @@
 <?php
-// Heading
-$_['heading_title']          = 'Attributes';
+// Заголовок
+$_['heading_title'] = 'Атрибути';
 
-// Text
-$_['text_success']           = 'Success: You have modified attributes!';
-$_['text_list']              = 'Attribute List';
-$_['text_add']               = 'Add Attribute';
-$_['text_edit']              = 'Edit Attribute';
+// Текст
+$_['text_success'] = 'Успіх: Ви змінили атрибути!';
+$_['text_list'] = 'Список атрибутів';
+$_['text_add'] = 'Додати атрибут';
+$_['text_edit'] = 'Редагувати атрибут';
 
-// Column
-$_['column_name']            = 'Attribute Name';
-$_['column_attribute_group'] = 'Attribute Group';
-$_['column_sort_order']      = 'Sort Order';
-$_['column_action']          = 'Action';
+// Стовпці
+$_['column_name'] = 'Назва атрибуту';
+$_['column_attribute_group'] = 'Група атрибутів';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action'] = 'Дія';
 
-// Entry
-$_['entry_name']             = 'Attribute Name';
-$_['entry_attribute_group']  = 'Attribute Group';
-$_['entry_sort_order']       = 'Sort Order';
+// Поля вводу
+$_['entry_name'] = 'Назва атрибуту';
+$_['entry_attribute_group'] = 'Група атрибутів';
+$_['entry_sort_order'] = 'Порядок сортування';
 
-// Error
-$_['error_warning']          = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']       = 'Warning: You do not have permission to modify attributes!';
-$_['error_attribute_group']  = 'Attribute Group required!';
-$_['error_name']             = 'Attribute Name must be between 1 and 64 characters!';
-$_['error_product']          = 'Warning: This attribute cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_warning'] = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну атрибутів!';
+$_['error_attribute_group'] = 'Група атрибутів обов’язкова!';
+$_['error_name'] = 'Назва атрибуту повинна містити від 1 до 64 символів!';
+$_['error_product'] = 'Увага: Цей атрибут не може бути видалений, оскільки він призначений до %s товарів!';

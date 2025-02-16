@@ -1,32 +1,32 @@
 <?php
-// Heading
-$_['heading_title']     = 'Tax Classes';
+// Заголовок
+$_['heading_title']     = 'Податкові класи';
 
-// Text
-$_['text_success']      = 'Success: You have modified tax classes!';
-$_['text_list']         = 'Tax Class List';
-$_['text_add']          = 'Add Tax Class';
-$_['text_edit']         = 'Edit Tax Class';
-$_['text_tax_class']    = 'Tax Class';
-$_['text_tax_rate']     = 'Tax Rates';
-$_['text_shipping']     = 'Shipping Address';
-$_['text_payment']      = 'Payment Address';
-$_['text_store']        = 'Store Address';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили податкові класи!';
+$_['text_list']         = 'Список податкових класів';
+$_['text_add']          = 'Додати податковий клас';
+$_['text_edit']         = 'Редагувати податковий клас';
+$_['text_tax_class']    = 'Податковий клас';
+$_['text_tax_rate']     = 'Податкові ставки';
+$_['text_shipping']     = 'Адреса доставки';
+$_['text_payment']      = 'Адреса оплати';
+$_['text_store']        = 'Адреса магазину';
 
-// Column
-$_['column_title']      = 'Tax Class Title';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_title']      = 'Назва податкового класу';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_title']       = 'Tax Class Title';
-$_['entry_description'] = 'Description';
-$_['entry_rate']        = 'Tax Rate';
-$_['entry_based']       = 'Based On';
-$_['entry_geo_zone']    = 'Geo Zone';
-$_['entry_priority']    = 'Priority';
+// Поля вводу
+$_['entry_title']       = 'Назва податкового класу';
+$_['entry_description'] = 'Опис';
+$_['entry_rate']        = 'Податкова ставка';
+$_['entry_based']       = 'Залежить від';
+$_['entry_geo_zone']    = 'Геозона';
+$_['entry_priority']    = 'Пріоритет';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify tax classes!';
-$_['error_title']       = 'Tax Class Title must be between 3 and 32 characters!';
-$_['error_description'] = 'Description must be between 3 and 255 characters!';
-$_['error_product']     = 'Warning: This tax class cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну податкових класів!';
+$_['error_title']       = 'Назва податкового класу повинна містити від 3 до 32 символів!';
+$_['error_description'] = 'Опис повинен містити від 3 до 255 символів!';
+$_['error_product']     = 'Увага: Цей податковий клас не можна видалити, оскільки він призначений для %s товарів!';

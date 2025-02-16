@@ -1,38 +1,38 @@
 <?php
-// Heading
-$_['heading_title']     = 'Languages';
+// Заголовок
+$_['heading_title']     = 'Мови';
 
-// Text
-$_['text_success']      = 'Success: You have modified languages!';
-$_['text_list']         = 'Language List';
-$_['text_add']          = 'Add Language';
-$_['text_edit']         = 'Edit Language';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили мови!';
+$_['text_list']         = 'Список мов';
+$_['text_add']          = 'Додати мову';
+$_['text_edit']         = 'Редагувати мову';
 
-// Column
-$_['column_name']       = 'Language Name';
-$_['column_code']       = 'Code';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_name']       = 'Назва мови';
+$_['column_code']       = 'Код';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_name']        = 'Language Name';
-$_['entry_code']        = 'Code';
-$_['entry_extension']   = 'Extension';
-$_['entry_locale']      = 'Locale';
-$_['entry_status']      = 'Status';
-$_['entry_sort_order']  = 'Sort Order';
+// Поля вводу
+$_['entry_name']        = 'Назва мови';
+$_['entry_code']        = 'Код';
+$_['entry_extension']   = 'Розширення';
+$_['entry_locale']      = 'Локаль';
+$_['entry_status']      = 'Статус';
+$_['entry_sort_order']  = 'Порядок сортування';
 
-// Help
-$_['help_locale']       = 'Example: en_US.UTF-8,en_US,en-gb,en_gb,english';
-$_['help_status']       = 'Hide/Show it in language dropdown';
+// Довідка
+$_['help_locale']       = 'Приклад: uk_UA.UTF-8,uk_UA,uk-ua,ukrainian';
+$_['help_status']       = 'Приховати/показати у випадаючому списку мов';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify languages!';
-$_['error_exists']      = 'Warning: You have already added this language!';
-$_['error_name']        = 'Language Name must be between 1 and 32 characters!';
-$_['error_code']        = 'Language Code must be between 2 and 5 characters!';
-$_['error_locale']      = 'Locale required!';
-$_['error_default']     = 'Warning: This language cannot be deleted as it is currently assigned as the default store language!';
-$_['error_admin']       = 'Warning: This Language cannot be deleted as it is currently assigned as the administration language!';
-$_['error_store']       = 'Warning: This language cannot be deleted as it is currently assigned to %s stores!';
-$_['error_order']       = 'Warning: This language cannot be deleted as it is currently assigned to %s orders!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну мов!';
+$_['error_exists']      = 'Увага: Ця мова вже була додана!';
+$_['error_name']        = 'Назва мови повинна містити від 1 до 32 символів!';
+$_['error_code']        = 'Код мови повинен містити від 2 до 5 символів!';
+$_['error_locale']      = 'Локаль обов’язкова!';
+$_['error_default']     = 'Увага: Цю мову не можна видалити, оскільки вона використовується як мова магазину за замовчуванням!';
+$_['error_admin']       = 'Увага: Цю мову не можна видалити, оскільки вона використовується як мова адміністративної панелі!';
+$_['error_store']       = 'Увага: Цю мову не можна видалити, оскільки вона використовується в %s магазинах!';
+$_['error_order']       = 'Увага: Цю мову не можна видалити, оскільки вона використовується в %s замовленнях!';

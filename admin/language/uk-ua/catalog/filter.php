@@ -1,26 +1,26 @@
 <?php
-// Heading
-$_['heading_title']       = 'Filters';
+// Заголовок
+$_['heading_title'] = "Фільтри";
 
-// Text
-$_['text_success']        = 'Success: You have modified filters!';
-$_['text_list']           = 'Filter List';
-$_['text_add']            = 'Add Filter';
-$_['text_edit']           = 'Edit Filter';
+// Текст
+$_['text_success'] = "Успіх: Ви змінили фільтри!";
+$_['text_list'] = "Список фільтрів";
+$_['text_add'] = "Додати фільтр";
+$_['text_edit'] = "Редагувати фільтр";
 
-// Column
-$_['column_name']         = 'Filter Name';
-$_['column_filter_group'] = 'Filter Group';
-$_['column_sort_order']   = 'Sort Order';
-$_['column_action']       = 'Action';
+// Стовпці
+$_['column_name'] = "Назва фільтра";
+$_['column_filter_group'] = "Група фільтрів";
+$_['column_sort_order'] = "Порядок сортування";
+$_['column_action'] = "Дія";
 
-// Entry
-$_['entry_name']          = 'Filter Name';
-$_['entry_filter_group']  = 'Filter Group';
-$_['entry_sort_order']    = 'Sort Order';
+// Поля вводу
+$_['entry_name'] = "Назва фільтра";
+$_['entry_filter_group'] = "Група фільтрів";
+$_['entry_sort_order'] = "Порядок сортування";
 
-// Error
-$_['error_warning']       = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']    = 'Warning: You do not have permission to modify filters!';
-$_['error_name']          = 'Filter Name must be between 1 and 64 characters!';
-$_['error_filter_group']  = 'Filter Group required!';
+// Помилки
+$_['error_warning'] = "Увага: Будь ласка, уважно перевірте форму на наявність помилок!";
+$_['error_permission'] = "Увага: У вас немає дозволу на зміну фільтрів!";
+$_['error_name'] = "Назва фільтра повинна містити від 1 до 64 символів!";
+$_['error_filter_group'] = "Група фільтрів обов'язкова!";

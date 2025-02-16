@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_subject'] = '%s - Your affiliate account has been denied!';
-$_['text_welcome'] = 'Welcome and thank you for registering at %s!';
-$_['text_denied']  = 'Unfortunately your request has been denied. For more information you can contact the store owner here:';
-$_['text_thanks']  = 'Thanks,';
+// Текст
+$_['text_subject'] = '%s - Ваш партнерський акаунт було відхилено!';
+$_['text_welcome'] = 'Ласкаво просимо і дякуємо за реєстрацію в %s!';
+$_['text_denied']  = 'На жаль, ваш запит було відхилено. Для отримання додаткової інформації ви можете зв’язатися з власником магазину тут:';
+$_['text_thanks']  = 'Дякуємо,';

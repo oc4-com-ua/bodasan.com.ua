@@ -1,21 +1,21 @@
 <?php
-// Heading
-$_['heading_title']    = 'Return Reasons';
+// Заголовок
+$_['heading_title']    = 'Причини повернення';
 
-// Text
-$_['text_success']     = 'Success: You have modified return reasons!';
-$_['text_list']        = 'Return Reason List';
-$_['text_add']         = 'Add Return Reason';
-$_['text_edit']        = 'Edit Return Reason';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили причини повернення!';
+$_['text_list']        = 'Список причин повернення';
+$_['text_add']         = 'Додати причину повернення';
+$_['text_edit']        = 'Редагувати причину повернення';
 
-// Column
-$_['column_name']      = 'Return Reason Name';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва причини повернення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Return Reason Name';
+// Поля вводу
+$_['entry_name']       = 'Назва причини повернення';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify return reasons!';
-$_['error_name']       = 'Return Reason Name must be between 3 and 128 characters!';
-$_['error_return']     = 'Warning: This return reason cannot be deleted as it is currently assigned to %s returned products!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну причин повернення!';
+$_['error_name']       = 'Назва причини повернення повинна містити від 3 до 128 символів!';
+$_['error_return']     = 'Увага: Цю причину повернення не можна видалити, оскільки вона призначена для %s повернених товарів!';

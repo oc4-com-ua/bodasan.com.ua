@@ -1,27 +1,27 @@
 <?php
 // Heading
-$_['heading_title']     = 'Search';
-$_['heading_tag']       = 'Tag - ';
+$_['heading_title']     = 'Пошук';
+$_['heading_tag']       = 'Тег - ';
 
 // Text
-$_['text_search']       = 'Products meeting the search criteria';
-$_['text_keyword']      = 'Keywords';
-$_['text_category']     = 'All Categories';
-$_['text_sub_category'] = 'Search in subcategories';
-$_['text_no_results']   = 'There is no product that matches the search criteria.';
-$_['text_compare']      = 'Product Compare (%s)';
-$_['text_sort']         = 'Sort By';
-$_['text_default']      = 'Default';
-$_['text_name_asc']     = 'Name (A - Z)';
-$_['text_name_desc']    = 'Name (Z - A)';
-$_['text_price_asc']    = 'Price (Low &gt; High)';
-$_['text_price_desc']   = 'Price (High &gt; Low)';
-$_['text_rating_asc']   = 'Rating (Lowest)';
-$_['text_rating_desc']  = 'Rating (Highest)';
-$_['text_model_asc']    = 'Model (A - Z)';
-$_['text_model_desc']   = 'Model (Z - A)';
-$_['text_limit']        = 'Show';
+$_['text_search']       = 'Продукти, що відповідають критеріям пошуку';
+$_['text_keyword']      = 'Ключові слова';
+$_['text_category']     = 'Усі категорії';
+$_['text_sub_category'] = 'Пошук у підкатегоріях';
+$_['text_no_results']   = 'Немає продуктів, що відповідають критеріям пошуку.';
+$_['text_compare']      = 'Порівняння продуктів (%s)';
+$_['text_sort']         = 'Сортувати за';
+$_['text_default']      = 'За замовчуванням';
+$_['text_name_asc']     = 'Назва (A - Z)';
+$_['text_name_desc']    = 'Назва (Z - A)';
+$_['text_price_asc']    = 'Ціна (Низька &gt; Висока)';
+$_['text_price_desc']   = 'Ціна (Висока &gt; Низька)';
+$_['text_rating_asc']   = 'Рейтинг (Низький)';
+$_['text_rating_desc']  = 'Рейтинг (Високий)';
+$_['text_model_asc']    = 'Модель (A - Z)';
+$_['text_model_desc']   = 'Модель (Z - A)';
+$_['text_limit']        = 'Показати';
 
 // Entry
-$_['entry_search']      = 'Search Criteria';
-$_['entry_description'] = 'Search in product descriptions';
+$_['entry_search']      = 'Критерії пошуку';
+$_['entry_description'] = 'Шукати в описах продуктів';

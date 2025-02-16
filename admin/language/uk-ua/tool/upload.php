@@ -1,28 +1,28 @@
 <?php
-// Heading
-$_['heading_title']      = 'Uploads';
+// Заголовок
+$_['heading_title']      = 'Завантаження';
 
-// Text
-$_['text_success']       = 'Success: You have modified uploads!';
-$_['text_list']          = 'Upload List';
-$_['text_filter']        = 'Filter';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили налаштування завантажень!';
+$_['text_list']          = 'Список завантажень';
+$_['text_filter']        = 'Фільтр';
 
-// Column
-$_['column_name']        = 'Upload Name';
-$_['column_code']        = 'Code';
-$_['column_date_added']  = 'Date Added';
-$_['column_action']      = 'Action';
+// Колонка
+$_['column_name']        = 'Назва завантаження';
+$_['column_code']        = 'Код';
+$_['column_date_added']  = 'Дата додавання';
+$_['column_action']      = 'Дія';
 
-// Entry
-$_['entry_name']         = 'Upload Name';
-$_['entry_filename']     = 'Filename';
-$_['entry_date_from']    = 'Date From';
-$_['entry_date_to']      = 'Date To';
+// Вхід
+$_['entry_name']         = 'Назва завантаження';
+$_['entry_filename']     = 'Ім’я файлу';
+$_['entry_date_from']    = 'Дата з';
+$_['entry_date_to']      = 'Дата до';
 
-// Error
-$_['error_permission']   = 'Warning: You do not have permission to modify uploads!';
-$_['error_not_found']    = 'Error: Could not find file %s !';
-$_['error_headers_sent'] = 'Error: Headers already sent out!';
-$_['error_upload']       = 'File could not be uploaded!';
-$_['error_filename']     = 'Filename must be between 3 and 128 characters!';
-$_['error_file_type']    = 'Invalid file type!';
+// Помилка
+$_['error_permission']   = 'Попередження: Ви не маєте дозволу змінювати завантаження!';
+$_['error_not_found']    = 'Помилка: Файл %s не знайдено!';
+$_['error_headers_sent'] = 'Помилка: Заголовки вже надіслані!';
+$_['error_upload']       = 'Файл не вдалося завантажити!';
+$_['error_filename']     = 'Ім’я файлу повинно бути від 3 до 128 символів!';
+$_['error_file_type']    = 'Невірний тип файлу!';

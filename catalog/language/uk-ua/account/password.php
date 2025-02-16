@@ -1,17 +1,17 @@
 <?php
-// Heading
-$_['heading_title']  = 'Change Password';
+// Заголовок
+$_['heading_title']  = 'Змінити пароль';
 
-// Text
-$_['text_account']   = 'Account';
-$_['text_password']  = 'Your Password';
-$_['text_success']   = 'Success: Your password has been successfully updated.';
+// Текст
+$_['text_account']   = 'Обліковий запис';
+$_['text_password']  = 'Ваш пароль';
+$_['text_success']   = 'Успіх: Ваш пароль було успішно оновлено.';
 
-// Entry
-$_['entry_password'] = 'Password';
-$_['entry_confirm']  = 'Password Confirm';
+// Введення
+$_['entry_password'] = 'Пароль';
+$_['entry_confirm']  = 'Підтвердження паролю';
 
-// Error
-$_['error_token']    = 'Warning: Password token invalid!';
-$_['error_password'] = 'Password must be between 6 and 20 characters!';
-$_['error_confirm']  = 'Password confirmation does not match password!';
+// Помилка
+$_['error_token']    = 'Попередження: Токен паролю недійсний!';
+$_['error_password'] = 'Пароль повинен містити від 6 до 20 символів!';
+$_['error_confirm']  = 'Підтвердження паролю не збігається з паролем!';

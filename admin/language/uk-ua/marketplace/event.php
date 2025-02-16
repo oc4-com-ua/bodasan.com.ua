@@ -1,22 +1,22 @@
 <?php
-// Heading
-$_['heading_title']     = 'Events';
+// Заголовок
+$_['heading_title']     = 'Події';
 
-// Text
-$_['text_success']      = 'Success: You have modified events!';
-$_['text_list']         = 'Event List';
-$_['text_event']        = 'Events are used by extensions to override the default functionality of your store. If you have issues you can disable or enable the events here.';
-$_['text_info']         = 'Event Information';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили події!';
+$_['text_list']         = 'Список подій';
+$_['text_event']        = 'Події використовуються розширеннями для перевизначення стандартної функціональності вашого магазину. Якщо у вас виникли проблеми, ви можете вимкнути або ввімкнути події тут.';
+$_['text_info']         = 'Інформація про події';
 
-// Column
-$_['column_code']       = 'Event Code';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+// Колонки
+$_['column_code']       = 'Код події';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_description'] = 'Description';
-$_['entry_trigger']     = 'Trigger';
-$_['entry_action']      = 'Action';
+// Поля введення
+$_['entry_description'] = 'Опис';
+$_['entry_trigger']     = 'Тригер';
+$_['entry_action']      = 'Дія';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify the events!';
+// Помилки
+$_['error_permission']  = 'Попередження: У вас немає дозволу на зміну подій!';

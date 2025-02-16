@@ -1,29 +1,29 @@
 <?php
-// Heading
-$_['heading_title']         = 'Profile';
+// Заголовок
+$_['heading_title']         = 'Профіль';
 
-// Text
-$_['text_success']          = 'Success: You have modified your profile!';
-$_['text_edit']             = 'Edit Your Profile';
-$_['text_user']             = 'Users Details';
-$_['text_password']         = 'Password';
+// Текст
+$_['text_success']          = 'Успіх: Ви змінили свій профіль!';
+$_['text_edit']             = 'Редагувати свій профіль';
+$_['text_user']             = 'Деталі користувача';
+$_['text_password']         = 'Пароль';
 
-// Entry
-$_['entry_username']        = 'Username';
-$_['entry_password']        = 'Password';
-$_['entry_confirm']         = 'Confirm';
-$_['entry_firstname']       = 'First Name';
-$_['entry_lastname']        = 'Last Name';
+// Вхід
+$_['entry_username']        = 'Ім’я користувача';
+$_['entry_password']        = 'Пароль';
+$_['entry_confirm']         = 'Підтвердження';
+$_['entry_firstname']       = 'Ім’я';
+$_['entry_lastname']        = 'Прізвище';
 $_['entry_email']           = 'E-Mail';
-$_['entry_image']           = 'Image';
+$_['entry_image']           = 'Зображення';
 
-// Error
-$_['error_permission']      = 'Warning: You do not have permission to modify your profile!';
-$_['error_username_exists'] = 'Warning: Username is already in use!';
-$_['error_username']        = 'Username must be between 3 and 20 characters!';
-$_['error_password']        = 'Password must be between 6 and 20 characters!';
-$_['error_confirm']         = 'Password and password confirmation do not match!';
-$_['error_firstname']       = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']        = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']           = 'E-Mail Address does not appear to be valid!';
-$_['error_email_exists']    = 'Warning: E-Mail Address is already registered!';
+// Помилка
+$_['error_permission']      = 'Попередження: Ви не маєте дозволу змінювати свій профіль!';
+$_['error_username_exists'] = 'Попередження: Ім’я користувача вже використовується!';
+$_['error_username']        = 'Ім’я користувача повинно бути від 3 до 20 символів!';
+$_['error_password']        = 'Пароль повинен бути від 6 до 20 символів!';
+$_['error_confirm']         = 'Пароль і підтвердження пароля не співпадають!';
+$_['error_firstname']       = 'Ім’я повинно бути від 1 до 32 символів!';
+$_['error_lastname']        = 'Прізвище повинно бути від 1 до 32 символів!';
+$_['error_email']           = 'Адреса E-Mail здається некоректною!';
+$_['error_email_exists']    = 'Попередження: Адреса E-Mail вже зареєстрована!';

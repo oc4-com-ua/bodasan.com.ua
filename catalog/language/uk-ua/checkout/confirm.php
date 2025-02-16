@@ -1,11 +1,11 @@
 <?php
-// Text
-$_['text_model']        = 'Model';
-$_['text_subscription'] = 'Subscription';
-$_['text_points']       = 'Reward Points';
+// Текст
+$_['text_model']        = 'Модель';
+$_['text_subscription'] = 'Підписка';
+$_['text_points']       = 'Бонусні бали';
 
-// Column
-$_['column_product']    = 'Product';
-$_['column_quantity']   = 'Quantity';
-$_['column_price']      = 'Unit Price';
-$_['column_total']      = 'Total';
+// Стовпці
+$_['column_product']    = 'Продукт';
+$_['column_quantity']   = 'Кількість';
+$_['column_price']      = 'Ціна за одиницю';
+$_['column_total']      = 'Загальна сума';

@@ -1,32 +1,32 @@
 <?php
-// Heading
-$_['heading_title']    = 'Language Editor';
+// Заголовок
+$_['heading_title']    = 'Редактор мов';
 
-// Text
-$_['text_success']     = 'Success: You have modified language editor!';
-$_['text_list']        = 'Translation List';
-$_['text_add']         = 'Add Translation';
-$_['text_edit']        = 'Edit Translation';
-$_['text_default']     = 'Default';
-$_['text_store']       = 'Store';
-$_['text_language']    = 'Language';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили редактор мов!';
+$_['text_list']        = 'Список перекладів';
+$_['text_add']         = 'Додати переклад';
+$_['text_edit']        = 'Редагувати переклад';
+$_['text_default']     = 'За замовчуванням';
+$_['text_store']       = 'Магазин';
+$_['text_language']    = 'Мова';
 
-// Column
-$_['column_store']     = 'Store';
-$_['column_language']  = 'Language';
-$_['column_route']     = 'Route';
-$_['column_key']       = 'Key';
-$_['column_value']     = 'Value';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_store']     = 'Магазин';
+$_['column_language']  = 'Мова';
+$_['column_route']     = 'Маршрут';
+$_['column_key']       = 'Ключ';
+$_['column_value']     = 'Значення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_store']      = 'Store';
-$_['entry_language']   = 'Language';
-$_['entry_route']      = 'Route';
-$_['entry_key']        = 'Key';
-$_['entry_default']    = 'Default';
-$_['entry_value']      = 'Value';
+// Поля вводу
+$_['entry_store']      = 'Магазин';
+$_['entry_language']   = 'Мова';
+$_['entry_route']      = 'Маршрут';
+$_['entry_key']        = 'Ключ';
+$_['entry_default']    = 'За замовчуванням';
+$_['entry_value']      = 'Значення';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify language editor!';
-$_['error_key']        = 'Key must be between 3 and 64 characters!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну редактора мов!';
+$_['error_key']        = 'Ключ повинен містити від 3 до 64 символів!';

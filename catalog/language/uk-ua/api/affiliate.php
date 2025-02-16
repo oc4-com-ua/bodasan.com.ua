@@ -1,8 +1,8 @@
 <?php
-// Text
-$_['text_success']    = 'Success: Affiliate commission will be applied to this order!';
-$_['text_remove']     = 'Success: Your affiliate commission has been removed!';
+// Текст
+$_['text_success']    = 'Успіх: Комісія афіліата буде застосована до цього замовлення!';
+$_['text_remove']     = 'Успіх: Ваша комісія афіліата була видалена!';
 
-// Error
-$_['error_affiliate'] = 'Warning: Affiliate could not be found!';
-$_['error_order']     = 'Warning: Sub-Total needs to be above 0 for commission to be applied!';
+// Помилка
+$_['error_affiliate'] = 'Увага: Афіліат не знайдений!';
+$_['error_order']     = 'Увага: Підсумок замовлення повинен бути більше 0, щоб комісія була застосована!';

@@ -1,56 +1,56 @@
 <?php
-// Heading
-$_['heading_title']        = 'Custom Fields';
+// Заголовок
+$_['heading_title']        = 'Додаткові поля';
 
-// Text
-$_['text_success']         = 'Success: You have modified custom fields!';
-$_['text_list']            = 'Custom Field List';
-$_['text_add']             = 'Add Custom Field';
-$_['text_edit']            = 'Edit Custom Field';
-$_['text_choose']          = 'Choose';
-$_['text_select']          = 'Select';
-$_['text_radio']           = 'Radio';
-$_['text_checkbox']        = 'Checkbox';
-$_['text_input']           = 'Input';
-$_['text_text']            = 'Text';
-$_['text_textarea']        = 'Textarea';
-$_['text_file']            = 'File';
-$_['text_date']            = 'Date';
-$_['text_datetime']        = 'Date &amp; Time';
-$_['text_time']            = 'Time';
-$_['text_account']         = 'Account';
-$_['text_address']         = 'Address';
-$_['text_affiliate']       = 'Affiliate';
-$_['text_regex']           = 'Regex';
-$_['text_custom_field']    = 'Custom Field';
-$_['text_value']           = 'Custom Field Values';
+// Текст
+$_['text_success']         = 'Успіх: Ви змінили додаткові поля!';
+$_['text_list']            = 'Список додаткових полів';
+$_['text_add']             = 'Додати додаткове поле';
+$_['text_edit']            = 'Редагувати додаткове поле';
+$_['text_choose']          = 'Вибір';
+$_['text_select']          = 'Випадаючий список';
+$_['text_radio']           = 'Радіокнопка';
+$_['text_checkbox']        = 'Чекбокс';
+$_['text_input']           = 'Поле введення';
+$_['text_text']            = 'Текст';
+$_['text_textarea']        = 'Текстова область';
+$_['text_file']            = 'Файл';
+$_['text_date']            = 'Дата';
+$_['text_datetime']        = 'Дата і час';
+$_['text_time']            = 'Час';
+$_['text_account']         = 'Акаунт';
+$_['text_address']         = 'Адреса';
+$_['text_affiliate']       = 'Партнер';
+$_['text_regex']           = 'Регулярний вираз';
+$_['text_custom_field']    = 'Додаткове поле';
+$_['text_value']           = 'Значення додаткового поля';
 
-// Column
-$_['column_name']          = 'Custom Field Name';
-$_['column_location']      = 'Location';
-$_['column_type']          = 'Type';
-$_['column_status']        = 'Status';
-$_['column_sort_order']    = 'Sort Order';
-$_['column_action']        = 'Action';
+// Стовпці
+$_['column_name']          = 'Назва додаткового поля';
+$_['column_location']      = 'Розташування';
+$_['column_type']          = 'Тип';
+$_['column_status']        = 'Статус';
+$_['column_sort_order']    = 'Порядок сортування';
+$_['column_action']        = 'Дія';
 
-// Entry
-$_['entry_name']           = 'Custom Field Name';
-$_['entry_location']       = 'Location';
-$_['entry_type']           = 'Type';
-$_['entry_value']          = 'Value';
-$_['entry_validation']     = 'Validation';
-$_['entry_custom_value']   = 'Custom Field Value Name';
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_required']       = 'Required';
-$_['entry_status']         = 'Status';
-$_['entry_sort_order']     = 'Sort Order';
+// Поля вводу
+$_['entry_name']           = 'Назва додаткового поля';
+$_['entry_location']       = 'Розташування';
+$_['entry_type']           = 'Тип';
+$_['entry_value']          = 'Значення';
+$_['entry_validation']     = 'Перевірка';
+$_['entry_custom_value']   = 'Назва значення додаткового поля';
+$_['entry_customer_group'] = 'Група клієнтів';
+$_['entry_required']       = 'Обов’язкове';
+$_['entry_status']         = 'Статус';
+$_['entry_sort_order']     = 'Порядок сортування';
 
-// Help
-$_['help_regex']           = 'Use regex. E.g: /[^a-zA-Z0-9_-]/';
-$_['help_sort_order']      = 'Use minus to count backwards from the last field in the set.';
+// Допомога
+$_['help_regex']           = 'Використовуйте регулярний вираз. Наприклад: /[^a-zA-Z0-9_-]/';
+$_['help_sort_order']      = 'Використовуйте мінус, щоб рахувати у зворотному порядку від останнього поля в наборі.';
 
-// Error
-$_['error_permission']     = 'Warning: You do not have permission to modify custom fields!';
-$_['error_name']           = 'Custom Field Name must be between 1 and 128 characters!';
-$_['error_type']           = 'Warning: Custom Field Values required!';
-$_['error_custom_value']   = 'Custom Value Name must be between 1 and 128 characters!';
+// Помилки
+$_['error_permission']     = 'Увага: У вас немає дозволу на зміну додаткових полів!';
+$_['error_name']           = 'Назва додаткового поля повинна містити від 1 до 128 символів!';
+$_['error_type']           = 'Увага: Необхідно вказати значення додаткового поля!';
+$_['error_custom_value']   = 'Назва значення повинна містити від 1 до 128 символів!';

@@ -1,7 +1,7 @@
 <?php
-// Text
-$_['text_subject']  = '%s - Your affiliate account has been activated!';
-$_['text_welcome']  = 'Welcome and thank you for registering at %s!';
-$_['text_login']    = 'Your account has now been approved and you can log in by using your email address and password by visiting our website or at the following URL:';
-$_['text_service']  = 'Upon logging in, you will be able to generate tracking codes, track commission payments and edit your account information.';
-$_['text_thanks']   = 'Thanks,';
+// Текст
+$_['text_subject']  = '%s - Ваш партнерський акаунт було активовано!';
+$_['text_welcome']  = 'Ласкаво просимо і дякуємо за реєстрацію в %s!';
+$_['text_login']    = 'Ваш акаунт було схвалено, і тепер ви можете увійти, використовуючи вашу електронну адресу та пароль, відвідавши наш вебсайт або за наступним посиланням:';
+$_['text_service']  = 'Після входу ви зможете створювати реферальні коди, відстежувати виплати комісій та редагувати інформацію про свій акаунт.';
+$_['text_thanks']   = 'Дякуємо,';

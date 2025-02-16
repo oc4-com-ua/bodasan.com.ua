@@ -1,43 +1,43 @@
 <?php
-// Heading
-$_['heading_title']      = 'Options';
+// Заголовок
+$_['heading_title']      = 'Опції';
 
-// Text
-$_['text_success']       = 'Success: You have modified options!';
-$_['text_list']          = 'Option List';
-$_['text_add']           = 'Add Option';
-$_['text_edit']          = 'Edit Option';
-$_['text_choose']        = 'Choose';
-$_['text_select']        = 'Select';
-$_['text_radio']         = 'Radio';
-$_['text_checkbox']      = 'Checkbox';
-$_['text_input']         = 'Input';
-$_['text_text']          = 'Text';
-$_['text_textarea']      = 'Textarea';
-$_['text_file']          = 'File';
-$_['text_date']          = 'Date';
-$_['text_datetime']      = 'Date &amp; Time';
-$_['text_time']          = 'Time';
-$_['text_option']        = 'Option';
-$_['text_value']         = 'Option Values';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили опції!';
+$_['text_list']          = 'Список опцій';
+$_['text_add']           = 'Додати опцію';
+$_['text_edit']          = 'Редагувати опцію';
+$_['text_choose']        = 'Вибір';
+$_['text_select']        = 'Випадаючий список';
+$_['text_radio']         = 'Радіокнопка';
+$_['text_checkbox']      = 'Чекбокс';
+$_['text_input']         = 'Поле введення';
+$_['text_text']          = 'Текст';
+$_['text_textarea']      = 'Текстова область';
+$_['text_file']          = 'Файл';
+$_['text_date']          = 'Дата';
+$_['text_datetime']      = 'Дата і час';
+$_['text_time']          = 'Час';
+$_['text_option']        = 'Опція';
+$_['text_value']         = 'Значення опції';
 
-// Column
-$_['column_name']        = 'Option Name';
-$_['column_sort_order']  = 'Sort Order';
-$_['column_action']      = 'Action';
+// Стовпці
+$_['column_name']        = 'Назва опції';
+$_['column_sort_order']  = 'Порядок сортування';
+$_['column_action']      = 'Дія';
 
-// Entry
-$_['entry_name']         = 'Option Name';
-$_['entry_type']         = 'Type';
-$_['entry_option_value'] = 'Option Value Name';
-$_['entry_image']        = 'Image';
-$_['entry_sort_order']   = 'Sort Order';
+// Поля вводу
+$_['entry_name']         = 'Назва опції';
+$_['entry_type']         = 'Тип';
+$_['entry_option_value'] = 'Назва значення опції';
+$_['entry_image']        = 'Зображення';
+$_['entry_sort_order']   = 'Порядок сортування';
 
-// Error
-$_['error_warning']      = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']   = 'Warning: You do not have permission to modify options!';
-$_['error_name']         = 'Option Name must be between 1 and 128 characters!';
-$_['error_type']         = 'Warning: Option Values required!';
-$_['error_option_value'] = 'Option Value Name must be between 1 and 128 characters!';
-$_['error_value']        = 'Warning: This option value cannot be deleted as it is currently assigned to %s products!';
-$_['error_product']      = 'Warning: This option cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_warning']      = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission']   = 'Увага: У вас немає дозволу на зміну опцій!';
+$_['error_name']         = 'Назва опції повинна містити від 1 до 128 символів!';
+$_['error_type']         = 'Увага: Необхідно вказати значення опції!';
+$_['error_option_value'] = 'Назва значення опції повинна містити від 1 до 128 символів!';
+$_['error_value']        = 'Увага: Це значення опції не може бути видалене, оскільки воно використовується в %s товарах!';
+$_['error_product']      = 'Увага: Ця опція не може бути видалена, оскільки вона використовується в %s товарах!';

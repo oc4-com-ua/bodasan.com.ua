@@ -1,31 +1,31 @@
 <?php
-// Heading
-$_['heading_title']     = 'APIs';
+// Заголовок
+$_['heading_title']     = 'API';
 
-// Text
-$_['text_success']      = 'Success: You have modified APIs!';
-$_['text_list']         = 'API List';
-$_['text_add']          = 'Add API';
-$_['text_edit']         = 'Edit API';
-$_['text_ip']           = 'Below you can create a list of IP\'s allowed to access the API. Your current IP is %s';
-$_['text_history']      = 'History';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили налаштування API!';
+$_['text_list']         = 'Список API';
+$_['text_add']          = 'Додати API';
+$_['text_edit']         = 'Редагувати API';
+$_['text_ip']           = 'Нижче ви можете створити список IP-адрес, яким дозволено доступ до API. Ваш поточний IP: %s';
+$_['text_history']      = 'Історія';
 
-// Column
-$_['column_username']   = 'API Username';
-$_['column_status']     = 'Status';
+// Колонка
+$_['column_username']   = 'API Ім’я користувача';
+$_['column_status']     = 'Статус';
 $_['column_ip']         = 'IP';
-$_['column_call']       = 'Call';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_call']       = 'Запит';
+$_['column_date_added'] = 'Дата додавання';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_username']    = 'API Username';
-$_['entry_key']         = 'API Key';
-$_['entry_status']      = 'Status';
+// Вхід
+$_['entry_username']    = 'API Ім’я користувача';
+$_['entry_key']         = 'API Ключ';
+$_['entry_status']      = 'Статус';
 $_['entry_ip']          = 'IP';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modified APIs!';
-$_['error_username']    = 'API Username must be between 3 and 20 characters!';
-$_['error_key']         = 'API Key must be between 64 and 256 characters!';
-$_['error_ip']          = 'You must have at least one IP added to the allowed list!';
+// Помилка
+$_['error_permission']  = 'Попередження: Ви не маєте дозволу змінювати налаштування API!';
+$_['error_username']    = 'API Ім’я користувача повинно бути від 3 до 20 символів!';
+$_['error_key']         = 'API Ключ повинен містити від 64 до 256 символів!';
+$_['error_ip']          = 'Ви повинні додати хоча б одну IP-адресу до дозволеного списку!';

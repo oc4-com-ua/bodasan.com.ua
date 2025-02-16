@@ -1,19 +1,19 @@
 <?php
-// Heading
-$_['heading_title']  = 'Administration';
+// Заголовок
+$_['heading_title']  = 'Адміністрування';
 
-// Text
-$_['text_heading']   = 'Administration';
-$_['text_login']     = 'Please enter your login details.';
-$_['text_forgotten'] = 'Forgotten Password';
+// Текст
+$_['text_heading']   = 'Адміністрування';
+$_['text_login']     = 'Будь ласка, введіть ваші облікові дані.';
+$_['text_forgotten'] = 'Забули пароль';
 
-// Entry
-$_['entry_username'] = 'Username';
-$_['entry_password'] = 'Password';
+// Поля вводу
+$_['entry_username'] = 'Ім’я користувача';
+$_['entry_password'] = 'Пароль';
 
-// Button
-$_['button_login']   = 'Login';
+// Кнопка
+$_['button_login']   = 'Увійти';
 
-// Error
-$_['error_login']    = 'No match for Username and/or Password.';
-$_['error_token']    = 'Invalid token session. Please login again.';
+// Помилки
+$_['error_login']    = 'Немає збігу для імені користувача та/або пароля.';
+$_['error_token']    = 'Недійсний токен сесії. Будь ласка, увійдіть знову.';

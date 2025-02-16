@@ -1,28 +1,28 @@
 <?php
 // Text
-$_['text_reviews']    = '%s reviews';
-$_['text_write']      = 'Write a review';
-$_['text_login']      = 'Please <a href="%s">login</a> or <a href="%s">register</a> to review';
-$_['text_no_results'] = 'Be the first to write a review for this product.';
-$_['text_note']       = '<span class="text-danger">Note:</span> HTML is not translated!';
-$_['text_success']    = 'Thank you for your review. It has been submitted to the webmaster for approval.';
+$_['text_reviews']    = '%s відгуків';
+$_['text_write']      = 'Напишіть відгук';
+$_['text_login']      = 'Будь ласка, <a href="%s">увійдіть</a> або <a href="%s">зареєструйтесь</a>, щоб написати відгук';
+$_['text_no_results'] = 'Будьте першими, хто напише відгук про цей продукт.';
+$_['text_note']       = '<span class="text-danger">Примітка:</span> HTML не перекладається!';
+$_['text_success']    = 'Дякуємо за ваш відгук. Він був надісланий адміністратору для перевірки.';
 
 // Entry
-$_['entry_author']     = 'Your Name';
-$_['entry_review']     = 'Your Review';
-$_['entry_rating']     = 'Rating';
-$_['entry_good']       = 'Good';
-$_['entry_bad']        = 'Bad';
+$_['entry_author']     = 'Ваше ім\'я';
+$_['entry_review']     = 'Ваш відгук';
+$_['entry_rating']     = 'Оцінка';
+$_['entry_good']       = 'Добре';
+$_['entry_bad']        = 'Погано';
 
 // Tabs
-$_['tab_review']       = 'Reviews (%s)';
+$_['tab_review']       = 'Відгуки (%s)';
 
 // Error
-$_['error_token']      = 'Warning: Review token invalid!';
-$_['error_product']    = 'Warning: Product could not be found!';
-$_['error_author']     = 'Review Name must be between 3 and 25 characters!';
-$_['error_text']       = 'Review Text must be between 25 and 1000 characters!';
-$_['error_rating']     = 'Please select a review rating!';
-$_['error_login']      = 'You must login to review the product!';
-$_['error_purchased']  = 'You must have purchased this product before you can write a review!';
-$_['error_status']     = 'Reviews are disabled!';
+$_['error_token']      = 'Попередження: Токен відгуку недійсний!';
+$_['error_product']    = 'Попередження: Продукт не знайдений!';
+$_['error_author']     = 'Ім\'я відгуку повинно бути від 3 до 25 символів!';
+$_['error_text']       = 'Текст відгуку повинен бути від 25 до 1000 символів!';
+$_['error_rating']     = 'Будь ласка, виберіть оцінку для відгуку!';
+$_['error_login']      = 'Вам потрібно увійти, щоб написати відгук!';
+$_['error_purchased']  = 'Ви повинні придбати цей продукт, щоб написати відгук!';
+$_['error_status']     = 'Відгуки вимкнені!';

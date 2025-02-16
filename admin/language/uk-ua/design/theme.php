@@ -1,29 +1,29 @@
 <?php
-// Heading
-$_['heading_title']     = 'Theme Editor';
+// Заголовок
+$_['heading_title']     = 'Редактор тем';
 
-// Text
-$_['text_success']      = 'Success: You have modified themes!';
-$_['text_add']          = 'Add Theme';
-$_['text_edit']         = 'Edit Theme';
-$_['text_default']      = 'Default';
-$_['text_extension']    = 'Extensions';
-$_['text_code']         = 'Template Code Editor';
-$_['text_twig']         = 'The theme editor uses the template language Twig. You can read about <a href="https://twig.symfony.com/doc/" target="_blank" class="alert-link">Twig syntax here</a>.';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили теми!';
+$_['text_add']          = 'Додати тему';
+$_['text_edit']         = 'Редагувати тему';
+$_['text_default']      = 'За замовчуванням';
+$_['text_extension']    = 'Розширення';
+$_['text_code']         = 'Редактор коду шаблонів';
+$_['text_twig']         = 'Редактор тем використовує шаблонну мову Twig. Ви можете ознайомитися з <a href="https://twig.symfony.com/doc/" target="_blank" class="alert-link">синтаксисом Twig тут</a>.';
 
-// Column
-$_['column_store']      = 'Store';
-$_['column_route']      = 'Route';
-$_['column_status']     = 'Status';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_store']      = 'Магазин';
+$_['column_route']      = 'Маршрут';
+$_['column_status']     = 'Статус';
+$_['column_date_added'] = 'Дата додавання';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_store']       = 'Store';
-$_['entry_route']       = 'Choose Template';
-$_['entry_code']        = 'Code';
-$_['entry_status']      = 'Status';
+// Поля вводу
+$_['entry_store']       = 'Магазин';
+$_['entry_route']       = 'Виберіть шаблон';
+$_['entry_code']        = 'Код';
+$_['entry_status']      = 'Статус';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify the theme editor!';
-$_['error_file']        = 'Warning: Template file does not exist!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну редактора тем!';
+$_['error_file']        = 'Увага: Файл шаблону не існує!';

@@ -1,26 +1,26 @@
 <?php
-// Heading
-$_['heading_title']     = 'Modifications';
+// Заголовок
+$_['heading_title']     = 'Модифікації';
 
-// Text
-$_['text_success']      = 'Success: You have modified modifications!';
-$_['text_refresh']      = 'Whenever you enable / disable or delete a modification you need to click the refresh button to rebuild your modification cache!';
-$_['text_list']         = 'Modification List';
-$_['text_info']         = 'Modification Information';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили модифікації!';
+$_['text_refresh']      = 'Щоразу, коли ви вмикаєте / вимикаєте або видаляєте модифікацію, потрібно натиснути кнопку оновлення, щоб перебудувати кеш модифікацій!';
+$_['text_list']         = 'Список модифікацій';
+$_['text_info']         = 'Інформація про модифікацію';
 
-// Column
-$_['column_name']       = 'Modification Name';
-$_['column_author']     = 'Author';
-$_['column_version']    = 'Version';
-$_['column_status']     = 'Status';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+// Колонки
+$_['column_name']       = 'Назва модифікації';
+$_['column_author']     = 'Автор';
+$_['column_version']    = 'Версія';
+$_['column_status']     = 'Статус';
+$_['column_date_added'] = 'Дата додавання';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_name']        = 'Modification Name';
-$_['entry_description'] = 'Description';
-$_['entry_code']        = 'Code';
+// Поля введення
+$_['entry_name']        = 'Назва модифікації';
+$_['entry_description'] = 'Опис';
+$_['entry_code']        = 'Код';
 $_['entry_xml']         = 'XML';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify modifications!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну модифікацій!';

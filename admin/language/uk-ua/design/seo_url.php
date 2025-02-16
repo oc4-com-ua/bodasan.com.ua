@@ -1,42 +1,42 @@
 <?php
-// Heading
+// Заголовок
 $_['heading_title']           = 'SEO URL';
 
-// Text
-$_['text_success']            = 'Success: You have modified SEO URL!';
-$_['text_list']               = 'SEO URL List';
-$_['text_add']                = 'Add SEO URL';
-$_['text_edit']               = 'Edit SEO URL';
-$_['text_filter']             = 'Filter';
-$_['text_default']            = 'Default';
+// Текст
+$_['text_success']            = 'Успіх: Ви змінили SEO URL!';
+$_['text_list']               = 'Список SEO URL';
+$_['text_add']                = 'Додати SEO URL';
+$_['text_edit']               = 'Редагувати SEO URL';
+$_['text_filter']             = 'Фільтр';
+$_['text_default']            = 'За замовчуванням';
 
-// Column
-$_['column_key']              = 'Key';
-$_['column_value']            = 'Value';
-$_['column_keyword']          = 'Keyword';
-$_['column_sort_order']       = 'Sort Order';
-$_['column_store']            = 'Store';
-$_['column_language']         = 'Language';
-$_['column_action']           = 'Action';
+// Стовпці
+$_['column_key']              = 'Ключ';
+$_['column_value']            = 'Значення';
+$_['column_keyword']          = 'Ключове слово';
+$_['column_sort_order']       = 'Порядок сортування';
+$_['column_store']            = 'Магазин';
+$_['column_language']         = 'Мова';
+$_['column_action']           = 'Дія';
 
-// Entry
-$_['entry_store']             = 'Store';
-$_['entry_language']          = 'Language';
-$_['entry_key']               = 'Key';
-$_['entry_value']             = 'Value';
-$_['entry_keyword']           = 'Keyword';
-$_['entry_sort_order']        = 'Sort Order';
+// Поля вводу
+$_['entry_store']             = 'Магазин';
+$_['entry_language']          = 'Мова';
+$_['entry_key']               = 'Ключ';
+$_['entry_value']             = 'Значення';
+$_['entry_keyword']           = 'Ключове слово';
+$_['entry_sort_order']        = 'Порядок сортування';
 
-// Help
-$_['help_keyword']            = 'Make sure you only use characters in the a-z or 0-9 use and - or _ for spaces. Use / for categories.';
-$_['help_sort_order']         = 'The sort order of the keywords in the URL.';
+// Допомога
+$_['help_keyword']            = 'Використовуйте лише символи a-z, 0-9, дефіс (-) або підкреслення (_). Використовуйте / для категорій.';
+$_['help_sort_order']         = 'Порядок сортування ключових слів у URL.';
 
-// Error
-$_['error_permission']        = 'Warning: You do not have permission to modify SEO URL!';
-$_['error_exists']            = 'Warning: Combination of store, language key, value, keyword already exists!';
-$_['error_key']               = 'Key must be between 1 and 64 characters!';
-$_['error_value']             = 'Value must be between 1 and 255 characters!';
-$_['error_value_exists']      = 'Value is already in use!';
-$_['error_keyword']           = 'Keyword must be between 1 and 64 characters!';
-$_['error_keyword_exists']    = 'Keyword is already in use!';
-$_['error_keyword_character'] = 'Keyword can only use characters a-z, 0-9, - and _!';
+// Помилки
+$_['error_permission']        = 'Увага: У вас немає дозволу на зміну SEO URL!';
+$_['error_exists']            = 'Увага: Поєднання магазину, мови, ключа, значення та ключового слова вже існує!';
+$_['error_key']               = 'Ключ повинен містити від 1 до 64 символів!';
+$_['error_value']             = 'Значення повинно містити від 1 до 255 символів!';
+$_['error_value_exists']      = 'Це значення вже використовується!';
+$_['error_keyword']           = 'Ключове слово повинно містити від 1 до 64 символів!';
+$_['error_keyword_exists']    = 'Це ключове слово вже використовується!';
+$_['error_keyword_character'] = 'Ключове слово може містити лише символи a-z, 0-9, дефіс (-) і підкреслення (_)!';

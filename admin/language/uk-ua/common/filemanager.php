@@ -1,23 +1,23 @@
 <?php
-// Heading
-$_['heading_title']    = 'Image Manager';
+// Заголовок
+$_['heading_title']    = 'Менеджер зображень';
 
-// Text
-$_['text_uploaded']    = 'Success: Your file has been uploaded!';
-$_['text_directory']   = 'Success: Directory created!';
-$_['text_delete']      = 'Success: Your file or directory has been deleted!';
+// Текст
+$_['text_uploaded']    = 'Успіх: Ваш файл було завантажено!';
+$_['text_directory']   = 'Успіх: Каталог створено!';
+$_['text_delete']      = 'Успіх: Ваш файл або каталог було видалено!';
 
-// Entry
-$_['entry_search']     = 'Search..';
-$_['entry_folder']     = 'Folder Name';
+// Поля вводу
+$_['entry_search']     = 'Пошук...';
+$_['entry_folder']     = 'Назва каталогу';
 
-// Error
-$_['error_permission'] = 'Warning: Permission Denied!';
-$_['error_filename']   = 'Warning: Filename must be between 3 and 255!';
-$_['error_folder']     = 'Warning: Folder name must be between 3 and 255!';
-$_['error_exists']     = 'Warning: A file or directory with the same name already exists!';
-$_['error_directory']  = 'Warning: Directory does not exist!';
-$_['error_filesize']   = 'Warning: Incorrect file size!';
-$_['error_file_type']  = 'Warning: Incorrect file type!';
-$_['error_upload']     = 'Warning: File could not be uploaded for an unknown reason!';
-$_['error_delete']     = 'Warning: You cannot delete this directory!';
+// Помилки
+$_['error_permission'] = 'Увага: Доступ заборонено!';
+$_['error_filename']   = 'Увага: Назва файлу повинна містити від 3 до 255 символів!';
+$_['error_folder']     = 'Увага: Назва каталогу повинна містити від 3 до 255 символів!';
+$_['error_exists']     = 'Увага: Файл або каталог із такою назвою вже існує!';
+$_['error_directory']  = 'Увага: Каталог не існує!';
+$_['error_filesize']   = 'Увага: Некоректний розмір файлу!';
+$_['error_file_type']  = 'Увага: Некоректний тип файлу!';
+$_['error_upload']     = 'Увага: Файл не вдалося завантажити з невідомої причини!';
+$_['error_delete']     = 'Увага: Ви не можете видалити цей каталог!';

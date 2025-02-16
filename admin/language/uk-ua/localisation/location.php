@@ -1,35 +1,35 @@
 <?php
-// Heading
-$_['heading_title']    = 'Store Locations';
+// Заголовок
+$_['heading_title']    = 'Місцезнаходження магазинів';
 
-// Text
-$_['text_success']     = 'Success: You have modified store locations!';
-$_['text_list']        = 'Store Location List';
-$_['text_add']         = 'Add Store Location';
-$_['text_edit']        = 'Edit Store Location';
-$_['text_geocode']     = 'Geocode was not successful for the following reason:';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили місцезнаходження магазинів!';
+$_['text_list']        = 'Список місцезнаходжень магазинів';
+$_['text_add']         = 'Додати місцезнаходження магазину';
+$_['text_edit']        = 'Редагувати місцезнаходження магазину';
+$_['text_geocode']     = 'Геокодування не вдалося з такої причини:';
 
-// Column
-$_['column_name']      = 'Store Name';
-$_['column_address']   = 'Address';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва магазину';
+$_['column_address']   = 'Адреса';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Store Name';
-$_['entry_address']    = 'Address';
-$_['entry_geocode']    = 'Geocode';
-$_['entry_telephone']  = 'Telephone';
-$_['entry_image']      = 'Image';
-$_['entry_open']       = 'Opening Times';
-$_['entry_comment']    = 'Comment';
+// Поля вводу
+$_['entry_name']       = 'Назва магазину';
+$_['entry_address']    = 'Адреса';
+$_['entry_geocode']    = 'Геокод';
+$_['entry_telephone']  = 'Телефон';
+$_['entry_image']      = 'Зображення';
+$_['entry_open']       = 'Години роботи';
+$_['entry_comment']    = 'Коментар';
 
-// Help
-$_['help_geocode']     = 'Please enter your store location geocode manually.';
-$_['help_open']        = 'Fill in your stores opening times.';
-$_['help_comment']     = 'This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques.';
+// Довідка
+$_['help_geocode']     = 'Будь ласка, введіть геокод місцезнаходження вашого магазину вручну.';
+$_['help_open']        = 'Заповніть години роботи вашого магазину.';
+$_['help_comment']     = 'Це поле для будь-яких особливих приміток, які ви хочете повідомити клієнтам, наприклад: "Магазин не приймає чеки".';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify store locations!';
-$_['error_name']       = 'Store name must be between 3 and 32 characters!';
-$_['error_address']    = 'Address must be between 3 and 128 characters!';
-$_['error_telephone']  = 'Telephone must be between 3 and 32 characters!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну місцезнаходження магазинів!';
+$_['error_name']       = 'Назва магазину повинна містити від 3 до 32 символів!';
+$_['error_address']    = 'Адреса повинна містити від 3 до 128 символів!';
+$_['error_telephone']  = 'Телефон повинен містити від 3 до 32 символів!';

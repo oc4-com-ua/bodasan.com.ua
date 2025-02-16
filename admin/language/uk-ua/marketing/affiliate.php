@@ -1,82 +1,82 @@
 <?php
-// Heading
-$_['heading_title']             = 'Affiliates';
+// Заголовок
+$_['heading_title']             = 'Партнери';
 
-// Text
-$_['text_success']              = 'Success: You have modified affiliates!';
-$_['text_list']                 = 'Affiliate List';
-$_['text_add']                  = 'Add Affiliate';
-$_['text_edit']                 = 'Edit Affiliate';
-$_['text_affiliate']            = 'Affiliate Details';
-$_['text_payment']              = 'Payment Details';
-$_['text_other']                = 'Other';
-$_['text_balance']              = 'Balance';
-$_['text_cheque']               = 'Cheque';
+// Текст
+$_['text_success']              = 'Успішно: Ви змінили партнерів!';
+$_['text_list']                 = 'Список партнерів';
+$_['text_add']                  = 'Додати партнера';
+$_['text_edit']                 = 'Редагувати партнера';
+$_['text_affiliate']            = 'Деталі партнера';
+$_['text_payment']              = 'Платіжні дані';
+$_['text_other']                = 'Інше';
+$_['text_balance']              = 'Баланс';
+$_['text_cheque']               = 'Чек';
 $_['text_paypal']               = 'PayPal';
-$_['text_bank']                 = 'Bank Transfer';
-$_['text_history']              = 'History';
-$_['text_history_add']          = 'Add History';
-$_['text_transaction']          = 'Transactions';
-$_['text_transaction_add']      = 'Add Transaction';
-$_['text_report']               = 'Reports';
-$_['text_filter']               = 'Filter';
-$_['text_payment_cheque']       = 'Cheque Payment';
-$_['text_payment_paypal']       = 'PayPal Payment';
-$_['text_payment_bank']         = 'Bank Transfer Payment';
+$_['text_bank']                 = 'Банківський переказ';
+$_['text_history']              = 'Історія';
+$_['text_history_add']          = 'Додати запис до історії';
+$_['text_transaction']          = 'Транзакції';
+$_['text_transaction_add']      = 'Додати транзакцію';
+$_['text_report']               = 'Звіти';
+$_['text_filter']               = 'Фільтр';
+$_['text_payment_cheque']       = 'Оплата чеком';
+$_['text_payment_paypal']       = 'Оплата через PayPal';
+$_['text_payment_bank']         = 'Оплата банківським переказом';
 
-// Column
-$_['column_name']               = 'Customer Name';
-$_['column_tracking']           = 'Tracking';
-$_['column_commission']         = 'Commission';
-$_['column_balance']            = 'Balance';
-$_['column_status']             = 'Status';
+// Колонки
+$_['column_name']               = 'Ім’я клієнта';
+$_['column_tracking']           = 'Трекінг';
+$_['column_commission']         = 'Комісія';
+$_['column_balance']            = 'Баланс';
+$_['column_status']             = 'Статус';
 $_['column_ip']                 = 'IP';
-$_['column_account']            = 'Accounts';
-$_['column_store']              = 'Store';
-$_['column_country']            = 'Country';
-$_['column_date_added']         = 'Date Added';
-$_['column_comment']            = 'Comment';
-$_['column_description']        = 'Description';
-$_['column_amount']             = 'Amount';
-$_['column_action']             = 'Action';
+$_['column_account']            = 'Облікові записи';
+$_['column_store']              = 'Магазин';
+$_['column_country']            = 'Країна';
+$_['column_date_added']         = 'Дата додавання';
+$_['column_comment']            = 'Коментар';
+$_['column_description']        = 'Опис';
+$_['column_amount']             = 'Сума';
+$_['column_action']             = 'Дія';
 
-// Entry
-$_['entry_customer']            = 'Customer';
-$_['entry_company']             = 'Company';
-$_['entry_tracking']            = 'Tracking Code';
-$_['entry_website']             = 'Web Site';
-$_['entry_commission']          = 'Commission (%)';
-$_['entry_tax']                 = 'Tax ID';
-$_['entry_payment_method']      = 'Payment Method';
-$_['entry_cheque']              = 'Cheque Payee Name';
-$_['entry_paypal']              = 'PayPal Email Account';
-$_['entry_bank_name']           = 'Bank Name';
-$_['entry_bank_branch_number']  = 'ABA/BSB number (Branch Number)';
-$_['entry_bank_swift_code']     = 'SWIFT Code';
-$_['entry_bank_account_name']   = 'Account Name';
-$_['entry_bank_account_number'] = 'Account Number';
-$_['entry_comment']             = 'Comment';
-$_['entry_description']         = 'Description';
-$_['entry_amount']              = 'Amount';
-$_['entry_date_from']           = 'Date From';
-$_['entry_date_to']             = 'Date To';
-$_['entry_status']              = 'Status';
-$_['entry_limit']               = 'Limit';
+// Поля введення
+$_['entry_customer']            = 'Клієнт';
+$_['entry_company']             = 'Компанія';
+$_['entry_tracking']            = 'Трекінговий код';
+$_['entry_website']             = 'Вебсайт';
+$_['entry_commission']          = 'Комісія (%)';
+$_['entry_tax']                 = 'Податковий номер';
+$_['entry_payment_method']      = 'Метод оплати';
+$_['entry_cheque']              = 'Ім’я отримувача чека';
+$_['entry_paypal']              = 'Електронна пошта PayPal';
+$_['entry_bank_name']           = 'Назва банку';
+$_['entry_bank_branch_number']  = 'Номер відділення (ABA/BSB)';
+$_['entry_bank_swift_code']     = 'SWIFT-код';
+$_['entry_bank_account_name']   = 'Ім’я власника рахунку';
+$_['entry_bank_account_number'] = 'Номер рахунку';
+$_['entry_comment']             = 'Коментар';
+$_['entry_description']         = 'Опис';
+$_['entry_amount']              = 'Сума';
+$_['entry_date_from']           = 'Дата від';
+$_['entry_date_to']             = 'Дата до';
+$_['entry_status']              = 'Статус';
+$_['entry_limit']               = 'Ліміт';
 
-// Help
-$_['help_tracking']             = 'The tracking code that will be used to track referrals.';
-$_['help_commission']           = 'Percentage the affiliate receives on each order.';
+// Підказки
+$_['help_tracking']             = 'Трекінговий код, який використовується для відстеження рефералів.';
+$_['help_commission']           = 'Відсоток, який партнер отримує з кожного замовлення.';
 
-// Error
-$_['error_warning']             = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']          = 'Warning: You do not have permission to modify affiliates!';
-$_['error_customer']            = 'Warning: Customer required!';
-$_['error_already']             = 'Warning: Customer is already registered as an affiliate!';
-$_['error_tracking']            = 'Tracking Code required!';
-$_['error_exists']              = 'Tracking code is being used by another affiliate!';
-$_['error_payment_method']      = 'Payment method required!';
-$_['error_cheque']              = 'Cheque Payee Name required!';
-$_['error_paypal']              = 'PayPal Email Address does not appear to be valid!';
-$_['error_bank_account_name']   = 'Account Name required!';
-$_['error_bank_account_number'] = 'Account Number required!';
-$_['error_custom_field']        = '%s required!';
+// Помилки
+$_['error_warning']             = 'Попередження: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission']          = 'Попередження: У вас немає дозволу на зміну партнерів!';
+$_['error_customer']            = 'Попередження: Потрібно вказати клієнта!';
+$_['error_already']             = 'Попередження: Клієнт вже зареєстрований як партнер!';
+$_['error_tracking']            = 'Необхідно вказати трекінговий код!';
+$_['error_exists']              = 'Цей трекінговий код уже використовується іншим партнером!';
+$_['error_payment_method']      = 'Необхідно вибрати метод оплати!';
+$_['error_cheque']              = 'Необхідно вказати ім’я отримувача чека!';
+$_['error_paypal']              = 'Електронна пошта PayPal виглядає некоректною!';
+$_['error_bank_account_name']   = 'Необхідно вказати ім’я власника рахунку!';
+$_['error_bank_account_number'] = 'Необхідно вказати номер рахунку!';
+$_['error_custom_field']        = '%s є обов’язковим!';

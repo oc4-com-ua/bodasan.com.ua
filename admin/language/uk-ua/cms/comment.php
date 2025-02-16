@@ -1,31 +1,31 @@
 <?php
-// Heading
-$_['heading_title']    = 'Article Comments';
+// Заголовок
+$_['heading_title']    = 'Коментарі до статей';
 
-// Text
-$_['text_success']     = 'Success: You have modified article comments!';
-$_['text_next']        = 'Success: You have modified %s to %s of %s comment ratings!';
-$_['text_list']        = 'Article Comments List';
-$_['text_filter']      = 'Filter';
-$_['text_by']          = 'by';
-$_['text_info']        = 'Comment Information';
-$_['text_rating']      = 'Rating:';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили коментарі до статей!';
+$_['text_next']        = 'Успіх: Ви змінили %s на %s із %s оцінок коментарів!';
+$_['text_list']        = 'Список коментарів до статей';
+$_['text_filter']      = 'Фільтр';
+$_['text_by']          = 'від';
+$_['text_info']        = 'Інформація про коментар';
+$_['text_rating']      = 'Рейтинг:';
 
-// Column
-$_['column_comment']   = 'Comment';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_comment']   = 'Коментар';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_keyword']    = 'Keyword';
-$_['entry_article']    = 'Article';
-$_['entry_customer']   = 'Customer';
-$_['entry_status']     = 'Status';
-$_['entry_date_from']  = 'Date From';
-$_['entry_date_to']    = 'Date To';
+// Поля вводу
+$_['entry_keyword']    = 'Ключове слово';
+$_['entry_article']    = 'Стаття';
+$_['entry_customer']   = 'Клієнт';
+$_['entry_status']     = 'Статус';
+$_['entry_date_from']  = 'Дата від';
+$_['entry_date_to']    = 'Дата до';
 
-// Button
-$_['button_spam']      = 'Spam';
-$_['button_rating']    = 'Calculate Ratings';
+// Кнопки
+$_['button_spam']      = 'Спам';
+$_['button_rating']    = 'Розрахувати рейтинг';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify article comments!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну коментарів до статей!';

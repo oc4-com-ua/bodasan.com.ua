@@ -1,53 +1,53 @@
 <?php
-// Heading
-$_['heading_title']           = 'Your Personal Details';
+// Заголовок
+$_['heading_title']           = 'Ваші особисті дані';
 
-// Text
-$_['text_login']              = 'If you already have an account with us, please login at the <a href="%s"><strong>login page</strong></a>.';
-$_['text_register']           = 'Register Account';
-$_['text_guest']              = 'Guest Checkout';
-$_['text_payment_address']    = 'Payment Address';
-$_['text_shipping_address']   = 'Shipping Address';
-$_['text_your_password']      = 'Your Password';
-$_['text_agree']              = 'I have read and agree to the <a href="%s" class="modal-link"><b>%s</b></a>';
-$_['text_success_add']        = 'Success: Your account has been created!';
-$_['text_success_guest']      = 'Success: Your guest account information has been saved!';
-$_['text_success_edit']       = 'Success: Your account has been successfully updated.';
+// Текст
+$_['text_login']              = 'Якщо у вас вже є обліковий запис, будь ласка, увійдіть на <a href="%s"><strong>сторінку входу</strong></a>.';
+$_['text_register']           = 'Реєстрація облікового запису';
+$_['text_guest']              = 'Оформлення замовлення без реєстрації';
+$_['text_payment_address']    = 'Адреса для оплати';
+$_['text_shipping_address']   = 'Адреса доставки';
+$_['text_your_password']      = 'Ваш пароль';
+$_['text_agree']              = 'Я прочитав(ла) і погоджуюсь з <a href="%s" class="modal-link"><b>%s</b></a>';
+$_['text_success_add']        = 'Успіх: Ваш обліковий запис було створено!';
+$_['text_success_guest']      = 'Успіх: Інформація вашого гостьового облікового запису була збережена!';
+$_['text_success_edit']       = 'Успіх: Ваш обліковий запис було успішно оновлено.';
 
-// Entry
-$_['entry_customer_group']    = 'Account Type';
-$_['entry_firstname']         = 'First Name';
-$_['entry_lastname']          = 'Last Name';
+// Введення
+$_['entry_customer_group']    = 'Тип облікового запису';
+$_['entry_firstname']         = 'Ім\'я';
+$_['entry_lastname']          = 'Прізвище';
 $_['entry_email']             = 'E-Mail';
-$_['entry_telephone']         = 'Telephone';
-$_['entry_password']          = 'Password';
-$_['entry_confirm']           = 'Password Confirm';
-$_['entry_company']           = 'Company';
-$_['entry_address_1']         = 'Address 1';
-$_['entry_address_2']         = 'Address 2';
-$_['entry_postcode']          = 'Post Code';
-$_['entry_city']              = 'City';
-$_['entry_country']           = 'Country';
-$_['entry_zone']              = 'Region / State';
-$_['entry_match']             = 'My delivery and billing addresses are the same.';
-$_['entry_newsletter']        = 'I wish to subscribe to the %s newsletter.';
+$_['entry_telephone']         = 'Телефон';
+$_['entry_password']          = 'Пароль';
+$_['entry_confirm']           = 'Підтвердження пароля';
+$_['entry_company']           = 'Компанія';
+$_['entry_address_1']         = 'Адреса 1';
+$_['entry_address_2']         = 'Адреса 2';
+$_['entry_postcode']          = 'Поштовий індекс';
+$_['entry_city']              = 'Місто';
+$_['entry_country']           = 'Країна';
+$_['entry_zone']              = 'Регіон / Область';
+$_['entry_match']             = 'Моя адреса доставки та адреса для оплати однакові.';
+$_['entry_newsletter']        = 'Я хочу підписатися на розсилку новин %s.';
 
-// Error
-$_['error_guest']             = 'Warning: Items in your shopping cart require you to register for an account!';
-$_['error_firstname']         = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']          = 'Last Name must be between 1 and 32 characters!';
-$_['error_customer_group']    = 'Customer Group does not appear to be valid!';
-$_['error_customer_approval'] = 'Warning: Your this customer group requires approval and cannot be used with guest account.';
-$_['error_email']             = 'E-Mail address does not appear to be valid!';
-$_['error_exists']            = 'Warning: E-Mail Address is already registered!';
-$_['error_telephone']         = 'Telephone must be between 3 and 32 characters!';
-$_['error_password']          = 'Password must be between 6 and 20 characters!';
-$_['error_confirm']           = 'Password confirmation does not match password!';
-$_['error_address_1']         = 'Address 1 must be between 3 and 128 characters!';
-$_['error_city']              = 'City must be between 2 and 128 characters!';
-$_['error_postcode']          = 'Postcode must be between 2 and 10 characters!';
-$_['error_country']           = 'Please select a country!';
-$_['error_zone']              = 'Please select a region / state!';
-$_['error_agree']             = 'Warning: You must agree to the %s!';
-$_['error_custom_field']      = '%s required!';
-$_['error_regex']             = '%s is not a valid input!';
+// Помилки
+$_['error_guest']             = 'Увага: Товари у вашій корзині вимагають реєстрації для оформлення замовлення!';
+$_['error_firstname']         = 'Ім\'я повинно містити від 1 до 32 символів!';
+$_['error_lastname']          = 'Прізвище повинно містити від 1 до 32 символів!';
+$_['error_customer_group']    = 'Група клієнтів не є дійсною!';
+$_['error_customer_approval'] = 'Увага: Для цієї групи клієнтів потрібне схвалення, тому вона не може бути використана з гостьовим обліковим записом.';
+$_['error_email']             = 'Адреса E-Mail не є дійсною!';
+$_['error_exists']            = 'Увага: E-Mail адреса вже зареєстрована!';
+$_['error_telephone']         = 'Телефон повинен містити від 3 до 32 символів!';
+$_['error_password']          = 'Пароль повинен містити від 6 до 20 символів!';
+$_['error_confirm']           = 'Пароль і підтвердження пароля не співпадають!';
+$_['error_address_1']         = 'Адреса 1 повинна містити від 3 до 128 символів!';
+$_['error_city']              = 'Місто повинно містити від 2 до 128 символів!';
+$_['error_postcode']          = 'Поштовий індекс повинен містити від 2 до 10 символів!';
+$_['error_country']           = 'Будь ласка, виберіть країну!';
+$_['error_zone']              = 'Будь ласка, виберіть регіон / область!';
+$_['error_agree']             = 'Увага: Ви повинні погодитись з %s!';
+$_['error_custom_field']      = '%s обов\'язкове!';
+$_['error_regex']             = '%s не є дійсним введенням!';

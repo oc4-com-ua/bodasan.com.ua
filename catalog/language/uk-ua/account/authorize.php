@@ -1,20 +1,20 @@
 <?php
-// Heading
-$_['heading_title'] = 'Protect your account';
+// Заголовок
+$_['heading_title'] = 'Захистіть свій обліковий запис';
 
-// Text
-$_['text_security'] = 'You must answer security question whenever you login from an unknown device or computer.';
-$_['text_code']     = 'An email has been sent to your email account with a security code. Enter the code below to continue.';
-$_['text_locked']   = 'Your account has been locked!';
-$_['text_unlock']   = 'Your account has been locked because of to many incorrect attempts at entering the security code. Click the reset button to receive a reset link via your email account.';
-$_['text_unlocked'] = 'Success: Your account has been unlocked!';
-$_['text_link']     = 'Success: An email with a reset link has been sent your email address!';
-$_['text_resend']   = 'Success: An email has been sent to your email account with a security code!';
+// Текст
+$_['text_security'] = 'Вам потрібно відповісти на питання безпеки щоразу, коли ви входите з невідомого пристрою або комп\'ютера.';
+$_['text_code']     = 'На вашу електронну адресу було надіслано код безпеки. Введіть код нижче, щоб продовжити.';
+$_['text_locked']   = 'Ваш обліковий запис заблоковано!';
+$_['text_unlock']   = 'Ваш обліковий запис заблоковано через занадто багато невірних спроб введення коду безпеки. Натисніть кнопку скидання, щоб отримати посилання для скидання через вашу електронну пошту.';
+$_['text_unlocked'] = 'Успіх: Ваш обліковий запис розблоковано!';
+$_['text_link']     = 'Успіх: Посилання для скидання було надіслано на вашу електронну адресу!';
+$_['text_resend']   = 'Успіх: Код безпеки було надіслано на вашу електронну адресу!';
 
-// Entry
-$_['entry_code']    = 'Security Code';
+// Вхід
+$_['entry_code']    = 'Код безпеки';
 
-// Error
-$_['error_warning'] = 'You have exceeded the allowed number of security code attempts!';
-$_['error_code']    = 'Security code does not match!';
-$_['error_reset']   = 'Warning: Could not reset your security code!';
+// Помилка
+$_['error_warning'] = 'Ви перевищили дозволену кількість спроб введення коду безпеки!';
+$_['error_code']    = 'Код безпеки не співпадає!';
+$_['error_reset']   = 'Попередження: Не вдалося скинути ваш код безпеки!';

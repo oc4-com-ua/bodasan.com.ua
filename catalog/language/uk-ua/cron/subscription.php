@@ -1,16 +1,16 @@
 <?php
-// Text
-$_['text_log']               = 'Check the subscription log for more information.';
+// Текст
+$_['text_log']               = 'Перевірте журнал підписки для отримання додаткової інформації.';
 
-// Error
-$_['error_store'] 		     = 'Warning: Store not found!';
-$_['error_language']         = 'Warning: Language could not be found!';
-$_['error_currency']         = 'Warning: Currency could not be found!';
-$_['error_customer']         = 'Warning: Customer could not be found!';
-$_['error_payment_address']  = 'Warning: Payment address could not be found!';
-$_['error_shipping_address'] = 'Warning: Shipping address could not be found!';
-$_['error_product']          = 'Warning: Product %s could not be found!';
-$_['error_option']           = 'Warning: Option %s could not be found!';
-$_['error_shipping_method']  = 'Warning: Shipping method required!';
-$_['error_payment_method']   = 'Warning: Payment method required!';
-$_['error_extension']        = 'Warning: Payment method extension could not be found!';
+// Помилка
+$_['error_store'] 		     = 'Попередження: Магазин не знайдено!';
+$_['error_language']         = 'Попередження: Мову не знайдено!';
+$_['error_currency']         = 'Попередження: Валюту не знайдено!';
+$_['error_customer']         = 'Попередження: Клієнт не знайдений!';
+$_['error_payment_address']  = 'Попередження: Адресу платника не знайдено!';
+$_['error_shipping_address'] = 'Попередження: Адресу доставки не знайдено!';
+$_['error_product']          = 'Попередження: Продукт %s не знайдений!';
+$_['error_option']           = 'Попередження: Опція %s не знайдена!';
+$_['error_shipping_method']  = 'Попередження: Потрібен метод доставки!';
+$_['error_payment_method']   = 'Попередження: Потрібен метод оплати!';
+$_['error_extension']        = 'Попередження: Розширення методу оплати не знайдено!';

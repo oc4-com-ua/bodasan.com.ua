@@ -1,25 +1,25 @@
 <?php
-// Heading
-$_['heading_title']    = 'User Groups';
+// Заголовок
+$_['heading_title']    = 'Групи користувачів';
 
-// Text
-$_['text_success']     = 'Success: You have modified user groups!';
-$_['text_list']        = 'User Group';
-$_['text_add']         = 'Add User Group';
-$_['text_edit']        = 'Edit User Group';
-$_['text_access']      = 'Access';
-$_['text_modify']      = 'Modify';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили групи користувачів!';
+$_['text_list']        = 'Група користувачів';
+$_['text_add']         = 'Додати групу користувачів';
+$_['text_edit']        = 'Редагувати групу користувачів';
+$_['text_access']      = 'Доступ';
+$_['text_modify']      = 'Зміни';
 
-// Column
-$_['column_name']      = 'User Group Name';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва групи користувачів';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'User Group Name';
-$_['entry_permission'] = 'Permissions';
-$_['entry_extension']  = 'Extensions';
+// Вхід
+$_['entry_name']       = 'Назва групи користувачів';
+$_['entry_permission'] = 'Дозволи';
+$_['entry_extension']  = 'Розширення';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify user groups!';
-$_['error_name']       = 'User Group Name must be between 3 and 64 characters!';
-$_['error_user']       = 'Warning: This user group cannot be deleted as it is currently assigned to %s users!';
+// Помилка
+$_['error_permission'] = 'Попередження: Ви не маєте дозволу змінювати групи користувачів!';
+$_['error_name']       = 'Назва групи користувачів повинна бути від 3 до 64 символів!';
+$_['error_user']       = 'Попередження: Цю групу користувачів неможливо видалити, оскільки вона зараз призначена %s користувачам!';

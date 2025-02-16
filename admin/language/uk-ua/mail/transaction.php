@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_subject']  = '%s - Affiliate Credit';
-$_['text_received'] = 'You have received %s credit!';
-$_['text_total']    = 'Your total amount of credit is now %s.';
-$_['text_credit']   = 'Your account credit can deducted from your next purchase.';
+// Текст
+$_['text_subject']  = '%s - Партнерський кредит';
+$_['text_received'] = 'Ви отримали %s кредиту!';
+$_['text_total']    = 'Загальна сума вашого кредиту тепер складає %s.';
+$_['text_credit']   = 'Ваш кредит на рахунку може бути використаний для вирахування з вашої наступної покупки.';

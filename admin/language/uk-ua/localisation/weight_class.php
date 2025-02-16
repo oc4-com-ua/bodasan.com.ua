@@ -1,30 +1,30 @@
 <?php
-// Heading
-$_['heading_title']    = 'Weight Classes';
+// Заголовок
+$_['heading_title']    = 'Класи ваги';
 
-// Text
-$_['text_success']     = 'Success: You have modified weight classes!';
-$_['text_list']        = 'Weight Class List';
-$_['text_add']         = 'Add Weight Class';
-$_['text_edit']        = 'Edit Weight Class';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили класи ваги!';
+$_['text_list']        = 'Список класів ваги';
+$_['text_add']         = 'Додати клас ваги';
+$_['text_edit']        = 'Редагувати клас ваги';
 
-// Column
-$_['column_title']     = 'Weight Title';
-$_['column_unit']      = 'Weight Unit';
-$_['column_value']     = 'Value';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_title']     = 'Назва ваги';
+$_['column_unit']      = 'Одиниця вимірювання';
+$_['column_value']     = 'Значення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_title']      = 'Weight Title';
-$_['entry_unit']       = 'Weight Unit';
-$_['entry_value']      = 'Value';
+// Поля вводу
+$_['entry_title']      = 'Назва ваги';
+$_['entry_unit']       = 'Одиниця вимірювання';
+$_['entry_value']      = 'Значення';
 
-// Help
-$_['help_value']       = 'The value of your default weight in the current weight unit. Set to 1 for your default weight.';
+// Допомога
+$_['help_value']       = 'Значення вашої основної одиниці ваги у вибраній системі вимірювання. Встановіть 1 для основної одиниці ваги.';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify weight classes!';
-$_['error_title']      = 'Weight Title must be between 3 and 32 characters!';
-$_['error_unit']       = 'Weight Unit must be between 1 and 4 characters!';
-$_['error_default']    = 'Warning: This weight class cannot be deleted as it is currently assigned as the default store weight class!';
-$_['error_product']    = 'Warning: This weight class cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну класів ваги!';
+$_['error_title']      = 'Назва ваги повинна містити від 3 до 32 символів!';
+$_['error_unit']       = 'Одиниця вимірювання повинна містити від 1 до 4 символів!';
+$_['error_default']    = 'Увага: Цей клас ваги не можна видалити, оскільки він використовується як основний клас ваги магазину!';
+$_['error_product']    = 'Увага: Цей клас ваги не можна видалити, оскільки він використовується у %s товарах!';

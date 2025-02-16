@@ -1,9 +1,9 @@
 <?php
 // Text
-$_['text_upload']     = 'Your file was successfully uploaded!';
+$_['text_upload']     = 'Ваш файл було успішно завантажено!';
 
 // Error
-$_['error_token']     = 'Warning: upload token invalid!';
-$_['error_filename']  = 'Filename must be between 3 and 64 characters!';
-$_['error_file_type'] = 'Invalid file type!';
-$_['error_upload']    = 'Upload required!';
+$_['error_token']     = 'Попередження: недійсний токен завантаження!';
+$_['error_filename']  = 'Назва файлу повинна бути від 3 до 64 символів!';
+$_['error_file_type'] = 'Неправильний тип файлу!';
+$_['error_upload']    = 'Необхідне завантаження!';

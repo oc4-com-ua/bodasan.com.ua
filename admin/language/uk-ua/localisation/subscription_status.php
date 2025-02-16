@@ -1,22 +1,22 @@
 <?php
-// Heading
-$_['heading_title']      = 'Subscription Statuses';
+// Заголовок
+$_['heading_title']      = 'Статуси підписок';
 
-// Text
-$_['text_success']       = 'Success: You have modified subscription statuses!';
-$_['text_list']          = 'Subscription Status List';
-$_['text_add']           = 'Add Subscription Status';
-$_['text_edit']          = 'Edit Subscription Status';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили статуси підписок!';
+$_['text_list']          = 'Список статусів підписок';
+$_['text_add']           = 'Додати статус підписки';
+$_['text_edit']          = 'Редагувати статус підписки';
 
-// Column
-$_['column_name']        = 'Subscription Status Name';
-$_['column_action']      = 'Action';
+// Стовпці
+$_['column_name']        = 'Назва статусу підписки';
+$_['column_action']      = 'Дія';
 
-// Entry
-$_['entry_name']         = 'Subscription Status Name';
+// Поля вводу
+$_['entry_name']         = 'Назва статусу підписки';
 
-// Error
-$_['error_permission']   = 'Warning: You do not have permission to modify subscription statuses!';
-$_['error_name']         = 'Subscription Status Name must be between 3 and 32 characters!';
-$_['error_default']      = 'Warning: This subscription status cannot be deleted as it is currently assigned as the default store subscription status!';
-$_['error_subscription'] = 'Warning: This subscription status cannot be deleted as it is currently assigned to %s subscriptions!';
+// Помилки
+$_['error_permission']   = 'Увага: У вас немає дозволу на зміну статусів підписок!';
+$_['error_name']         = 'Назва статусу підписки повинна містити від 3 до 32 символів!';
+$_['error_default']      = 'Увага: Цей статус підписки не можна видалити, оскільки він призначений як статус підписки за замовчуванням!';
+$_['error_subscription'] = 'Увага: Цей статус підписки не можна видалити, оскільки він призначений для %s підписок!';

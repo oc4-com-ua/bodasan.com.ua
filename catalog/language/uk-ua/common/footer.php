@@ -1,18 +1,18 @@
 <?php
-// Text
-$_['text_information']  = 'Information';
-$_['text_blog']         = 'Blog';
-$_['text_service']      = 'Customer Service';
-$_['text_extra']        = 'Extras';
-$_['text_contact']      = 'Contact Us';
-$_['text_return']       = 'Returns';
-$_['text_sitemap']      = 'Site Map';
+// Текст
+$_['text_information']  = 'Інформація';
+$_['text_blog']         = 'Блог';
+$_['text_service']      = 'Обслуговування клієнтів';
+$_['text_extra']        = 'Додатково';
+$_['text_contact']      = 'Зв\'яжіться з нами';
+$_['text_return']       = 'Повернення';
+$_['text_sitemap']      = 'Карта сайту';
 $_['text_gdpr']         = 'GDPR';
-$_['text_manufacturer'] = 'Brands';
-$_['text_affiliate']    = 'Affiliate';
-$_['text_special']      = 'Specials';
-$_['text_account']      = 'My Account';
-$_['text_order']        = 'Order History';
-$_['text_wishlist']     = 'Wish List';
-$_['text_newsletter']   = 'Newsletter';
-$_['text_powered']      = 'Powered By <a href="https://www.opencart.com">OpenCart</a><br/> %s &copy; %s';
+$_['text_manufacturer'] = 'Бренди';
+$_['text_affiliate']    = 'Партнери';
+$_['text_special']      = 'Акції';
+$_['text_account']      = 'Мій обліковий запис';
+$_['text_order']        = 'Історія замовлень';
+$_['text_wishlist']     = 'Список бажаного';
+$_['text_newsletter']   = 'Розсилка новин';
+$_['text_powered']      = 'Розроблено за допомогою <a href="https://www.opencart.com">OpenCart</a><br/> %s &copy; %s';

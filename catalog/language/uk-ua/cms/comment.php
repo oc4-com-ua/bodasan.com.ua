@@ -1,43 +1,43 @@
 <?php
-// Heading
-$_['heading_title']         = 'Comments';
+// Заголовок
+$_['heading_title']         = 'Коментарі';
 
-// Text
-$_['text_by']               = 'By';
-$_['text_write']            = 'Write a comment';
-$_['text_login']            = 'Please <a href="%s">login</a> or <a href="%s">register</a> to comment';
-$_['text_no_results']       = 'Be the first to write a comment for this article.';
-$_['text_sort']             = 'Sort By';
-$_['text_rating_asc']       = 'Rating (Lowest)';
-$_['text_rating_desc']      = 'Rating (Highest)';
-$_['text_date_added_asc']   = 'Date Added (Oldest)';
-$_['text_date_added_desc']  = 'Date Added (Latest)';
-$_['text_like']             = 'Like!';
-$_['text_dislike']          = 'Dislike!';
-$_['text_success']          = 'Success: Thank you for your comment!';
-$_['text_queue']            = 'Success: Your comment has been added to our moderation queue!';
-$_['text_rating']           = 'Success: Thank you for your rating!';
+// Текст
+$_['text_by']               = 'Автор:';
+$_['text_write']            = 'Написати коментар';
+$_['text_login']            = 'Будь ласка, <a href="%s">увійдіть</a> або <a href="%s">зареєструйтесь</a>, щоб залишити коментар';
+$_['text_no_results']       = 'Будьте першим, хто напише коментар до цієї статті.';
+$_['text_sort']             = 'Сортувати за';
+$_['text_rating_asc']       = 'Рейтинг (Низький)';
+$_['text_rating_desc']      = 'Рейтинг (Високий)';
+$_['text_date_added_asc']   = 'Дата додавання (Старіші)';
+$_['text_date_added_desc']  = 'Дата додавання (Новіші)';
+$_['text_like']             = 'Подобається!';
+$_['text_dislike']          = 'Не подобається!';
+$_['text_success']          = 'Успіх: Дякуємо за ваш коментар!';
+$_['text_queue']            = 'Успіх: Ваш коментар додано до черги модерації!';
+$_['text_rating']           = 'Успіх: Дякуємо за вашу оцінку!';
 
-// Entry
-$_['entry_author']          = 'Your Name';
-$_['entry_comment']         = 'Comment';
+// Вхід
+$_['entry_author']          = 'Ваше ім\'я';
+$_['entry_comment']         = 'Коментар';
 
-// Buttons
-$_['button_comment']        = 'Post Comment';
-$_['button_reply']          = 'Post Reply';
-$_['button_replies']        = 'Show Replies';
-$_['button_more']           = 'See more replies...';
-$_['button_login']          = 'Login to Comment';
-$_['button_login_reply']    = 'Login to Reply';
-$_['button_like']           = 'Like';
-$_['button_dislike']        = 'Dislike';
+// Кнопки
+$_['button_comment']        = 'Опублікувати коментар';
+$_['button_reply']          = 'Відповісти';
+$_['button_replies']        = 'Показати відповіді';
+$_['button_more']           = 'Показати більше відповідей...';
+$_['button_login']          = 'Увійти для коментування';
+$_['button_login_reply']    = 'Увійти для відповіді';
+$_['button_like']           = 'Подобається';
+$_['button_dislike']        = 'Не подобається';
 
-// Error
-$_['error_article']         = 'Warning: Article could not be found!';
-$_['error_article_comment'] = 'Warning: Article comment could not be found!';
-$_['error_token']           = 'Warning: Comment token invalid!';
-$_['error_author']          = 'Your Name must be between 3 and 25 characters!';
-$_['error_comment']         = 'Comment must be between 25 and 1000 characters!';
-$_['error_interval']        = 'Warning: you must wait %s minutes before making another comment!';
-$_['error_login']           = 'You must login to comment on the article or rate it!';
-$_['error_status']          = 'Comments are disabled!';
+// Помилки
+$_['error_article']         = 'Попередження: Статтю не знайдено!';
+$_['error_article_comment'] = 'Попередження: Коментар до статті не знайдено!';
+$_['error_token']           = 'Попередження: Невірний токен коментаря!';
+$_['error_author']          = 'Ваше ім\'я має бути від 3 до 25 символів!';
+$_['error_comment']         = 'Коментар має бути від 25 до 1000 символів!';
+$_['error_interval']        = 'Попередження: Ви повинні почекати %s хвилин перед тим, як написати новий коментар!';
+$_['error_login']           = 'Ви повинні увійти, щоб коментувати статтю або оцінити її!';
+$_['error_status']          = 'Коментарі вимкнені!';

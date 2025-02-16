@@ -1,16 +1,16 @@
 <?php
-// Heading
-$_['heading_title']    = 'Currency Rates';
+// Заголовок
+$_['heading_title']    = 'Курси валют';
 
-// Text
-$_['text_success']     = 'Success: You have modified currencies rates!';
-$_['text_list']        = 'Currency Rate List';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили курси валют!';
+$_['text_list']        = 'Список курсів валют';
 
-// Column
-$_['column_name']      = 'Currency Rate Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва курсу валюти';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Дія';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify currencies rates!';
-$_['error_extension']  = 'Warning: Extension does not exist!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну курсів валют!';
+$_['error_extension']  = 'Увага: Розширення не існує!';

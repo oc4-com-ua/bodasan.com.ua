@@ -1,37 +1,37 @@
 <?php
-// Heading
-$_['heading_title']              = 'Shopping Cart';
+// Заголовок
+$_['heading_title']              = 'Кошик для покупок';
 
-// Text
-$_['text_success']               = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">shopping cart</a>!';
-$_['text_edit']                  = 'Success: You have modified your shopping cart!';
-$_['text_remove']                = 'Success: You have removed an item from your shopping cart!';
-$_['text_login']                 = 'Attention: You must <a href="%s">login</a> or <a href="%s">create an account</a> to view prices!';
-$_['text_no_results']            = 'Your shopping cart is empty!';
-$_['text_model']                 = 'Model';
-$_['text_subscription']          = 'Subscription';
-$_['text_subscription_trial']    = '%s every %d %s(s) for %d payment(s) then ';
-$_['text_subscription_duration'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']   = '%s every %d %s(s) until canceled';
-$_['text_day']                   = 'day';
-$_['text_week']                  = 'week';
-$_['text_semi_month']            = 'half-month';
-$_['text_month']                 = 'month';
-$_['text_year']                  = 'year';
-$_['text_points']                = 'Reward Points';
-$_['text_next']                  = 'What would you like to do next?';
-$_['text_next_choice']           = 'Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.';
+// Текст
+$_['text_success']               = 'Успіх: Ви додали <a href="%s">%s</a> до вашого <a href="%s">кошика</a>!';
+$_['text_edit']                  = 'Успіх: Ви змінили ваш кошик для покупок!';
+$_['text_remove']                = 'Успіх: Ви видалили товар з вашого кошика для покупок!';
+$_['text_login']                 = 'Увага: Ви повинні <a href="%s">увійти</a> або <a href="%s">створити обліковий запис</a>, щоб переглядати ціни!';
+$_['text_no_results']            = 'Ваш кошик порожній!';
+$_['text_model']                 = 'Модель';
+$_['text_subscription']          = 'Підписка';
+$_['text_subscription_trial']    = '%s кожен %d %s(и) за %d платежів, а потім ';
+$_['text_subscription_duration'] = '%s кожен %d %s(и) за %d платежів';
+$_['text_subscription_cancel']   = '%s кожен %d %s(и) до скасування';
+$_['text_day']                   = 'день';
+$_['text_week']                  = 'тиждень';
+$_['text_semi_month']            = 'півмісяця';
+$_['text_month']                 = 'місяць';
+$_['text_year']                  = 'рік';
+$_['text_points']                = 'Бонусні бали';
+$_['text_next']                  = 'Що ви хочете зробити далі?';
+$_['text_next_choice']           = 'Виберіть, чи хочете ви використати код знижки чи бонусні бали або розрахувати вартість доставки.';
 
-// Column
-$_['column_image']               = 'Image';
-$_['column_name']                = 'Product';
-$_['column_quantity']            = 'Quantity';
-$_['column_price']               = 'Unit Price';
-$_['column_total']               = 'Total';
+// Колонка
+$_['column_image']               = 'Зображення';
+$_['column_name']                = 'Продукт';
+$_['column_quantity']            = 'Кількість';
+$_['column_price']               = 'Ціна за одиницю';
+$_['column_total']               = 'Загальна сума';
 
-// Error
-$_['error_stock']                = 'Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']              = 'Minimum order amount is %s!';
-$_['error_required']             = '%s required!';
-$_['error_product']              = 'Warning: Product could not be found!';
-$_['error_subscription']         = 'Subscription Plan is not valid!';
+// Помилка
+$_['error_stock']                = 'Продукти, позначені *** не доступні в бажаній кількості або відсутні на складі!';
+$_['error_minimum']              = 'Мінімальна сума замовлення складає %s!';
+$_['error_required']             = '%s обов\'язково!';
+$_['error_product']              = 'Попередження: Продукт не знайдено!';
+$_['error_subscription']         = 'План підписки не дійсний!';

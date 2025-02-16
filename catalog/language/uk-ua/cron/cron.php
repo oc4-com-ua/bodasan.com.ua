@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_success']     = 'Success: You have run %s cron job!';
+// Текст
+$_['text_success']     = 'Успіх: Ви успішно виконали cron задачу %s!';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify cron jobs!';
+// Помилка
+$_['error_permission'] = 'Попередження: У вас немає дозволу змінювати cron задачі!';

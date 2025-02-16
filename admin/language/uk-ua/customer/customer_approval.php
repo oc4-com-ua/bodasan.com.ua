@@ -1,32 +1,32 @@
 <?php
-// Heading
-$_['heading_title']         = 'Customer Approvals';
+// Заголовок
+$_['heading_title']         = 'Схвалення клієнтів';
 
-// Text
-$_['text_success']          = 'Success: You have modified customer approvals!';
-$_['text_list']             = 'Customer Approval List';
-$_['text_default']          = 'Default';
-$_['text_customer']         = 'Customer';
-$_['text_affiliate']        = 'Affiliate';
-$_['text_filter']           = 'Filter';
-$_['text_approve']          = 'Approve';
-$_['text_deny']             = 'Deny';
+// Текст
+$_['text_success']          = 'Успіх: Ви змінили схвалення клієнтів!';
+$_['text_list']             = 'Список схвалень клієнтів';
+$_['text_default']          = 'За замовчуванням';
+$_['text_customer']         = 'Клієнт';
+$_['text_affiliate']        = 'Партнер';
+$_['text_filter']           = 'Фільтр';
+$_['text_approve']          = 'Схвалити';
+$_['text_deny']             = 'Відхилити';
 
-// Column
-$_['column_customer']       = 'Customer';
+// Стовпці
+$_['column_customer']       = 'Клієнт';
 $_['column_email']          = 'E-Mail';
-$_['column_customer_group'] = 'Customer Group';
-$_['column_type']           = 'Type';
-$_['column_date_added']     = 'Date Added';
-$_['column_action']         = 'Action';
+$_['column_customer_group'] = 'Група клієнтів';
+$_['column_type']           = 'Тип';
+$_['column_date_added']     = 'Дата додавання';
+$_['column_action']         = 'Дія';
 
-// Entry
-$_['entry_customer']        = 'Customer';
+// Поля вводу
+$_['entry_customer']        = 'Клієнт';
 $_['entry_email']           = 'E-Mail';
-$_['entry_customer_group']  = 'Customer Group';
-$_['entry_type']            = 'Type';
-$_['entry_date_from']       = 'Date From';
-$_['entry_date_to']         = 'Date To';
+$_['entry_customer_group']  = 'Група клієнтів';
+$_['entry_type']            = 'Тип';
+$_['entry_date_from']       = 'Дата від';
+$_['entry_date_to']         = 'Дата до';
 
-// Error
-$_['error_permission']      = 'Warning: You do not have permission to modify customer approvals!';
+// Помилки
+$_['error_permission']      = 'Увага: У вас немає дозволу на зміну схвалень клієнтів!';

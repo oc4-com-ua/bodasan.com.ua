@@ -1,48 +1,48 @@
 <?php
-// Heading
-$_['heading_title']           = 'Articles';
+// Заголовок
+$_['heading_title']           = 'Статті';
 
-// Text
-$_['text_success']            = 'Success: You have modified articles!';
-$_['text_next']               = 'Success: You have modified %s to %s of %s article ratings!';
-$_['text_list']               = 'Article List';
-$_['text_add']                = 'Add Article';
-$_['text_edit']               = 'Edit Article';
-$_['text_default']            = 'Default';
-$_['text_keyword']            = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+// Текст
+$_['text_success']            = 'Успіх: Ви змінили статті!';
+$_['text_next']               = 'Успіх: Ви змінили %s на %s із %s оцінок статей!';
+$_['text_list']               = 'Список статей';
+$_['text_add']                = 'Додати статтю';
+$_['text_edit']               = 'Редагувати статтю';
+$_['text_default']            = 'За замовчуванням';
+$_['text_keyword']            = 'Не використовуйте пробіли, замініть їх на дефіс (-) і переконайтеся, що SEO URL є унікальним.';
 
-// Column
-$_['column_name']             = 'Article Name';
-$_['column_author']           = 'Author';
-$_['column_rating']           = 'Rating';
-$_['column_date_added']       = 'Date Added';
-$_['column_action']           = 'Action';
+// Стовпці
+$_['column_name']             = 'Назва статті';
+$_['column_author']           = 'Автор';
+$_['column_rating']           = 'Рейтинг';
+$_['column_date_added']       = 'Дата додавання';
+$_['column_action']           = 'Дія';
 
-// Entry
-$_['entry_image']             = 'Image';
-$_['entry_name']              = 'Article Name';
-$_['entry_description']       = 'Description';
-$_['entry_tag']               = 'Tags';
-$_['entry_meta_title']        = 'Meta Tag Title';
-$_['entry_meta_keyword']      = 'Meta Tag Keywords';
-$_['entry_meta_description']  = 'Meta Tag Description';
-$_['entry_topic']             = 'Topic';
-$_['entry_author']            = 'Author';
-$_['entry_store']             = 'Stores';
-$_['entry_sort_order']        = 'Sort Order';
-$_['entry_status']            = 'Status';
-$_['entry_keyword']           = 'Keyword';
-$_['entry_layout']            = 'Layout Override';
+// Поля вводу
+$_['entry_image']             = 'Зображення';
+$_['entry_name']              = 'Назва статті';
+$_['entry_description']       = 'Опис';
+$_['entry_tag']               = 'Теги';
+$_['entry_meta_title']        = 'Мета-тег Title';
+$_['entry_meta_keyword']      = 'Мета-тег Keywords';
+$_['entry_meta_description']  = 'Мета-тег Description';
+$_['entry_topic']             = 'Тема';
+$_['entry_author']            = 'Автор';
+$_['entry_store']             = 'Магазини';
+$_['entry_sort_order']        = 'Порядок сортування';
+$_['entry_status']            = 'Статус';
+$_['entry_keyword']           = 'SEO URL';
+$_['entry_layout']            = 'Перевизначення макета';
 
-// Button
-$_['button_rating']           = 'Calculate Ratings';
+// Кнопка
+$_['button_rating']           = 'Розрахувати рейтинг';
 
-// Error
-$_['error_warning']           = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']        = 'Warning: You do not have permission to modify articles!';
-$_['error_name']              = 'Article Name must be between 1 and 255 characters!';
-$_['error_meta_title']        = 'Meta Title must be greater than 1 and less than 255 characters!';
-$_['error_keyword']           = 'SEO URL must be between 1 and 64 characters!';
-$_['error_keyword_exists']    = 'SEO URL must be unique!';
-$_['error_keyword_character'] = 'Keyword can only use characters a-z, 0-9, - and _!';
-$_['error_author']            = 'Author must be between 3 and 64 characters!';
+// Помилки
+$_['error_warning']           = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission']        = 'Увага: У вас немає дозволу на зміну статей!';
+$_['error_name']              = 'Назва статті повинна містити від 1 до 255 символів!';
+$_['error_meta_title']        = 'Мета-тег Title повинен містити від 1 до 255 символів!';
+$_['error_keyword']           = 'SEO URL повинен містити від 1 до 64 символів!';
+$_['error_keyword_exists']    = 'SEO URL повинен бути унікальним!';
+$_['error_keyword_character'] = 'Ключове слово може містити лише символи a-z, 0-9, - і _!';
+$_['error_author']            = 'Ім’я автора повинно містити від 3 до 64 символів!';

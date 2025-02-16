@@ -1,15 +1,15 @@
 <?php
-// Heading
-$_['heading_title']    = 'Affiliate Tracking';
+// Заголовок
+$_['heading_title']    = 'Відстеження партнерів';
 
-// Text
-$_['text_account']     = 'Account';
-$_['text_description'] = 'To make sure you get paid for referrals you send to us we need to track the referral by placing a tracking code in the URL\'s linking to us. You can use the tools below to generate links to the %s web site.';
+// Текст
+$_['text_account']     = 'Обліковий запис';
+$_['text_description'] = 'Щоб ми могли оплачувати вам рефералів, яких ви надішлете до нас, необхідно відстежувати рефералів, додавши код відстеження до URL-адрес, які ведуть до нас. Ви можете використовувати інструменти нижче для створення посилань на сайт %s.';
 
-// Entry
-$_['entry_code']       = 'Your Tracking Code';
-$_['entry_generator']  = 'Tracking Link Generator';
-$_['entry_link']       = 'Tracking Link';
+// Вхід
+$_['entry_code']       = 'Ваш код відстеження';
+$_['entry_generator']  = 'Генератор посилань для відстеження';
+$_['entry_link']       = 'Посилання для відстеження';
 
-// Help
-$_['help_generator']   = 'Type in the name of a product you would like to link to';
+// Допомога
+$_['help_generator']   = 'Введіть назву продукту, до якого ви хочете створити посилання';

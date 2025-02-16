@@ -1,21 +1,21 @@
 <?php
-// Heading
-$_['heading_title']    = 'Stock Statuses';
+// Заголовок
+$_['heading_title']    = 'Статуси наявності';
 
-// Text
-$_['text_success']     = 'Success: You have modified stock statuses!';
-$_['text_list']        = 'Stock Status List';
-$_['text_add']         = 'Add Stock Status';
-$_['text_edit']        = 'Edit Stock Status';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили статуси наявності!';
+$_['text_list']        = 'Список статусів наявності';
+$_['text_add']         = 'Додати статус наявності';
+$_['text_edit']        = 'Редагувати статус наявності';
 
-// Column
-$_['column_name']      = 'Stock Status Name';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва статусу наявності';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Stock Status Name';
+// Поля вводу
+$_['entry_name']       = 'Назва статусу наявності';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify stock statuses!';
-$_['error_name']       = 'Stock Status Name must be between 3 and 32 characters!';
-$_['error_product']    = 'Warning: This stock status cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну статусів наявності!';
+$_['error_name']       = 'Назва статусу наявності повинна містити від 3 до 32 символів!';
+$_['error_product']    = 'Увага: Цей статус наявності не можна видалити, оскільки він призначений для %s товарів!';

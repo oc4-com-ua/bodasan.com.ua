@@ -1,43 +1,43 @@
 <?php
-// Heading
-$_['heading_title']     = 'Marketing Tracking';
+// Заголовок
+$_['heading_title']     = 'Маркетингове відстеження';
 
-// Text
-$_['text_success']      = 'Success: You have modified marketing tracking!';
-$_['text_list']         = 'Marketing Tracking List';
-$_['text_add']          = 'Add Marketing Tracking';
-$_['text_edit']         = 'Edit Marketing Tracking';
-$_['text_filter']       = 'Filter';
-$_['text_history']      = 'History';
-$_['text_history_add']  = 'Add History';
-$_['text_report']       = 'Reports';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили маркетингове відстеження!';
+$_['text_list']         = 'Список маркетингового відстеження';
+$_['text_add']          = 'Додати маркетингове відстеження';
+$_['text_edit']         = 'Редагувати маркетингове відстеження';
+$_['text_filter']       = 'Фільтр';
+$_['text_history']      = 'Історія';
+$_['text_history_add']  = 'Додати історію';
+$_['text_report']       = 'Звіти';
 
-// Column
-$_['column_name']       = 'Campaign Name';
-$_['column_code']       = 'Code';
-$_['column_clicks']     = 'Clicks';
-$_['column_orders']     = 'Orders';
+// Колонки
+$_['column_name']       = 'Назва кампанії';
+$_['column_code']       = 'Код';
+$_['column_clicks']     = 'Кліки';
+$_['column_orders']     = 'Замовлення';
 $_['column_ip']         = 'IP';
-$_['column_account']    = 'Accounts';
-$_['column_store']      = 'Store';
-$_['column_country']    = 'Country';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_account']    = 'Облікові записи';
+$_['column_store']      = 'Магазин';
+$_['column_country']    = 'Країна';
+$_['column_date_added'] = 'Дата додавання';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_name']        = 'Campaign Name';
-$_['entry_description'] = 'Campaign Description';
-$_['entry_code']        = 'Tracking Code';
-$_['entry_example']     = 'Examples';
-$_['entry_date_from']   = 'Date From';
-$_['entry_date_to']     = 'Date To';
+// Поля введення
+$_['entry_name']        = 'Назва кампанії';
+$_['entry_description'] = 'Опис кампанії';
+$_['entry_code']        = 'Код відстеження';
+$_['entry_example']     = 'Приклади';
+$_['entry_date_from']   = 'Дата від';
+$_['entry_date_to']     = 'Дата до';
 
-// Help
-$_['help_code']         = 'The tracking code that will be used to track marketing campaigns.';
-$_['help_example']      = 'So the system can track referrals you need to add the tracking code to the end of the URL linking to your site.';
+// Підказки
+$_['help_code']         = 'Код відстеження, який буде використовуватися для відстеження маркетингових кампаній.';
+$_['help_example']      = 'Щоб система могла відстежувати рефералів, вам потрібно додати код відстеження в кінець URL-адреси, що веде на ваш сайт.';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify marketing tracking!';
-$_['error_name']        = 'Campaign must be between 1 and 32 characters!';
-$_['error_code']        = 'Tracking Code required!';
-$_['error_exists']      = 'Tracking code is being used by another campaign!';
+// Помилки
+$_['error_permission']  = 'Попередження: У вас немає прав для зміни маркетингового відстеження!';
+$_['error_name']        = 'Назва кампанії має містити від 1 до 32 символів!';
+$_['error_code']        = 'Необхідно вказати код відстеження!';
+$_['error_exists']      = 'Код відстеження вже використовується іншою кампанією!';

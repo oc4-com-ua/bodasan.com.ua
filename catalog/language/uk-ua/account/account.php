@@ -1,26 +1,26 @@
 <?php
-// Heading
-$_['heading_title']       = 'My Account';
+// Заголовок
+$_['heading_title']       = 'Мій обліковий запис';
 
-// Text
-$_['text_account']        = 'Account';
-$_['text_my_account']     = 'My Account';
-$_['text_my_orders']      = 'My Orders';
-$_['text_my_affiliate']   = 'My Affiliate Account';
-$_['text_my_newsletter']  = 'Newsletter';
-$_['text_edit']           = 'Edit your account information';
-$_['text_password']       = 'Change your password';
-$_['text_address']        = 'Modify your address book entries';
-$_['text_payment_method'] = 'Stored payment methods';
-$_['text_wishlist']       = 'Modify your wish list';
-$_['text_order']          = 'View your order history';
-$_['text_subscription']   = 'Subscriptions';
-$_['text_download']       = 'Downloads';
-$_['text_reward']         = 'Your Reward Points';
-$_['text_return']         = 'View your return requests';
-$_['text_transaction']    = 'Your Transactions';
-$_['text_newsletter']     = 'Subscribe / unsubscribe to newsletter';
-$_['text_transactions']   = 'Transactions';
-$_['text_affiliate_add']  = 'Register for an affiliate account';
-$_['text_affiliate_edit'] = 'Edit your affiliate information';
-$_['text_tracking']       = 'Custom Affiliate Tracking Code';
+// Текст
+$_['text_account']        = 'Обліковий запис';
+$_['text_my_account']     = 'Мій обліковий запис';
+$_['text_my_orders']      = 'Мої замовлення';
+$_['text_my_affiliate']   = 'Мій афілійований акаунт';
+$_['text_my_newsletter']  = 'Розсилка';
+$_['text_edit']           = 'Редагувати інформацію про акаунт';
+$_['text_password']       = 'Змінити пароль';
+$_['text_address']        = 'Редагувати адресну книгу';
+$_['text_payment_method'] = 'Збережені платіжні методи';
+$_['text_wishlist']       = 'Редагувати список бажаних товарів';
+$_['text_order']          = 'Переглянути історію замовлень';
+$_['text_subscription']   = 'Підписки';
+$_['text_download']       = 'Завантаження';
+$_['text_reward']         = 'Ваші бонусні бали';
+$_['text_return']         = 'Переглянути ваші запити на повернення';
+$_['text_transaction']    = 'Ваші транзакції';
+$_['text_newsletter']     = 'Підписатися / відписатися від розсилки';
+$_['text_transactions']   = 'Транзакції';
+$_['text_affiliate_add']  = 'Зареєструватися для афілійованого акаунту';
+$_['text_affiliate_edit'] = 'Редагувати інформацію про афілійований акаунт';
+$_['text_tracking']       = 'Користувацький код відстеження афілійованого акаунту';

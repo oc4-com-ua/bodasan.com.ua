@@ -1,40 +1,40 @@
 <?php
-// Heading
-$_['heading_title']        = 'Currencies';
+// Заголовок
+$_['heading_title']        = 'Валюти';
 
-// Text
-$_['text_success']         = 'Success: You have modified currencies!';
-$_['text_list']            = 'Currency List';
-$_['text_add']             = 'Add Currency';
-$_['text_edit']            = 'Edit Currency';
-$_['text_iso']             = 'You can find a full list of ISO currency codes and settings <a href="http://www.xe.com/iso4217.php" target="_blank" class="alert-link">here</a>.';
+// Текст
+$_['text_success']         = 'Успіх: Ви змінили список валют!';
+$_['text_list']            = 'Список валют';
+$_['text_add']             = 'Додати валюту';
+$_['text_edit']            = 'Редагувати валюту';
+$_['text_iso']             = 'Повний список кодів ISO валют і налаштувань можна знайти <a href="http://www.xe.com/iso4217.php" target="_blank" class="alert-link">тут</a>.';
 
-// Column
-$_['column_title']         = 'Currency Title';
-$_['column_code']          = 'Code';
-$_['column_value']         = 'Value';
-$_['column_status']        = 'Status';
-$_['column_date_modified'] = 'Last Updated';
-$_['column_action']        = 'Action';
+// Стовпці
+$_['column_title']         = 'Назва валюти';
+$_['column_code']          = 'Код';
+$_['column_value']         = 'Курс';
+$_['column_status']        = 'Статус';
+$_['column_date_modified'] = 'Останнє оновлення';
+$_['column_action']        = 'Дія';
 
-// Entry
-$_['entry_title']          = 'Currency Title';
-$_['entry_code']           = 'Code';
-$_['entry_value']          = 'Value';
-$_['entry_symbol_left']    = 'Symbol Left';
-$_['entry_symbol_right']   = 'Symbol Right';
-$_['entry_decimal_place']  = 'Decimal Places';
-$_['entry_status']         = 'Status';
+// Поля вводу
+$_['entry_title']          = 'Назва валюти';
+$_['entry_code']           = 'Код';
+$_['entry_value']          = 'Курс';
+$_['entry_symbol_left']    = 'Символ зліва';
+$_['entry_symbol_right']   = 'Символ справа';
+$_['entry_decimal_place']  = 'Кількість десяткових знаків';
+$_['entry_status']         = 'Статус';
 
-// Help
-$_['help_code']            = 'Do not change if this is your default currency.';
-$_['help_value']           = 'The value of your default currency in the current currency unit. Set to 1 for your default currency.';
+// Довідка
+$_['help_code']            = 'Не змінюйте, якщо це ваша основна валюта.';
+$_['help_value']           = 'Курс відносно основної валюти. Для основної валюти встановіть значення 1.';
 
-// Error
-$_['error_permission']     = 'Warning: You do not have permission to modify currencies!';
-$_['error_extension']      = 'Warning: The currency extension could not be found!';
-$_['error_title']          = 'Currency Title must be between 3 and 32 characters!';
-$_['error_code']           = 'Currency Code must contain 3 characters!';
-$_['error_default']        = 'Warning: This currency cannot be deleted as it is currently assigned as the default store currency!';
-$_['error_store']          = 'Warning: This currency cannot be deleted as it is currently assigned to %s stores!';
-$_['error_order']          = 'Warning: This currency cannot be deleted as it is currently assigned to %s orders!';
+// Помилки
+$_['error_permission']     = 'Увага: У вас немає дозволу на зміну валют!';
+$_['error_extension']      = 'Увага: Розширення для валюти не знайдено!';
+$_['error_title']          = 'Назва валюти повинна містити від 3 до 32 символів!';
+$_['error_code']           = 'Код валюти повинен містити 3 символи!';
+$_['error_default']        = 'Увага: Цю валюту не можна видалити, оскільки вона використовується як основна валюта магазину!';
+$_['error_store']          = 'Увага: Цю валюту не можна видалити, оскільки вона використовується в %s магазинах!';
+$_['error_order']          = 'Увага: Цю валюту не можна видалити, оскільки вона використовується в %s замовленнях!';

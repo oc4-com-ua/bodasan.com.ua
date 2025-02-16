@@ -1,16 +1,16 @@
 <?php
-// Heading
-$_['heading_title']    = 'Feeds';
+// Заголовок
+$_['heading_title']    = 'Канали даних';
 
-// Text
-$_['text_success']     = 'Success: You have modified feeds!';
-$_['text_list']        = 'Feed List';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили канали даних!';
+$_['text_list']        = 'Список каналів';
 
-// Column
-$_['column_name']      = 'Product Feed Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва каналу даних';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Дія';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify feeds!';
-$_['error_extension']  = 'Warning: Extension does not exist!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну каналів даних!';
+$_['error_extension']  = 'Увага: Розширення не існує!';

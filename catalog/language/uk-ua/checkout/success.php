@@ -1,10 +1,10 @@
 <?php
-// Heading
-$_['heading_title'] = 'Your order has been placed!';
+// Заголовок
+$_['heading_title'] = 'Ваше замовлення було оформлено!';
 
-// Text
-$_['text_basket']   = 'Shopping Cart';
-$_['text_checkout'] = 'Checkout';
-$_['text_success']  = 'Success';
-$_['text_customer'] = '<p>Your order has been successfully processed!</p><p>You can view your order history by going to the <a href="%s">my account</a> page and by clicking on <a href="%s">history</a>.</p><p>If your purchase has an associated download, you can go to the account <a href="%s">downloads</a> page to view them.</p><p>Please direct any questions you have to the <a href="%s">store owner</a>.</p><p>Thanks for shopping with us online!</p>';
-$_['text_guest']    = '<p>Your order has been successfully processed!</p><p>Please direct any questions you have to the <a href="%s">store owner</a>.</p><p>Thanks for shopping with us online!</p>';
+// Текст
+$_['text_basket']   = 'Кошик';
+$_['text_checkout'] = 'Оформлення замовлення';
+$_['text_success']  = 'Успіх';
+$_['text_customer'] = '<p>Ваше замовлення було успішно оброблено!</p><p>Ви можете переглянути історію замовлень, перейшовши на сторінку <a href="%s">мій аккаунт</a> та натиснувши на <a href="%s">історія</a>.</p><p>Якщо ваша покупка має асоційовані файли для завантаження, ви можете перейти на сторінку <a href="%s">завантаження</a> в акаунті, щоб переглянути їх.</p><p>Будь ласка, направляйте будь-які запитання до <a href="%s">власника магазину</a>.</p><p>Дякуємо, що обрали наш магазин!</p>';
+$_['text_guest']    = '<p>Ваше замовлення було успішно оброблено!</p><p>Будь ласка, направляйте будь-які запитання до <a href="%s">власника магазину</a>.</p><p>Дякуємо, що обрали наш магазин!</p>';

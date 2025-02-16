@@ -1,58 +1,58 @@
 <?php
-// Heading
-$_['heading_title']         = 'Users';
+// Заголовок
+$_['heading_title']         = 'Користувачі';
 
-// Text
-$_['text_success']          = 'Success: You have modified users!';
-$_['text_list']             = 'User List';
-$_['text_add']              = 'Add User';
-$_['text_edit']             = 'Edit User';
-$_['text_user']             = 'Users Details';
-$_['text_password']         = 'Password';
-$_['text_other']            = 'Other';
-$_['text_login']            = 'Login History';
-$_['text_authorize']        = 'Authorize History';
-$_['text_filter']           = 'Filter';
+// Текст
+$_['text_success']          = 'Успіх: Ви змінили користувачів!';
+$_['text_list']             = 'Список користувачів';
+$_['text_add']              = 'Додати користувача';
+$_['text_edit']             = 'Редагувати користувача';
+$_['text_user']             = 'Деталі користувача';
+$_['text_password']         = 'Пароль';
+$_['text_other']            = 'Інше';
+$_['text_login']            = 'Історія входів';
+$_['text_authorize']        = 'Історія авторизацій';
+$_['text_filter']           = 'Фільтр';
 
-// Column
-$_['column_username']       = 'Username';
-$_['column_name']           = 'Name';
+// Стовпці
+$_['column_username']       = 'Ім’я користувача';
+$_['column_name']           = 'Ім’я';
 $_['column_email']          = 'E-Mail';
-$_['column_user_group']     = 'User Group';
-$_['column_status']         = 'Status';
+$_['column_user_group']     = 'Група користувачів';
+$_['column_status']         = 'Статус';
 $_['column_ip']             = 'IP';
 $_['column_user_agent']     = 'User Agent';
-$_['column_date_added']     = 'Date Added';
-$_['column_action']         = 'Action';
+$_['column_date_added']     = 'Дата додавання';
+$_['column_action']         = 'Дія';
 
-// Entry
-$_['entry_username']        = 'Username';
-$_['entry_user_group']      = 'User Group';
-$_['entry_password']        = 'Password';
-$_['entry_confirm']         = 'Confirm';
-$_['entry_firstname']       = 'First Name';
-$_['entry_lastname']        = 'Last Name';
+// Вхід
+$_['entry_username']        = 'Ім’я користувача';
+$_['entry_user_group']      = 'Група користувачів';
+$_['entry_password']        = 'Пароль';
+$_['entry_confirm']         = 'Підтвердження';
+$_['entry_firstname']       = 'Ім’я';
+$_['entry_lastname']        = 'Прізвище';
 $_['entry_email']           = 'E-Mail';
-$_['entry_image']           = 'Image';
-$_['entry_status']          = 'Status';
-$_['entry_name']            = 'Name';
+$_['entry_image']           = 'Зображення';
+$_['entry_status']          = 'Статус';
+$_['entry_name']            = 'Ім’я';
 $_['entry_ip']              = 'IP';
-$_['entry_date_from']       = 'Date From';
-$_['entry_date_to']         = 'Date To';
+$_['entry_date_from']       = 'Дата з';
+$_['entry_date_to']         = 'Дата до';
 
-// Tabs
-$_['tab_authorize']         = 'Authorize';
-$_['tab_login']             = 'Login';
+// Вкладки
+$_['tab_authorize']         = 'Авторизація';
+$_['tab_login']             = 'Вхід';
 
-// Error
-$_['error_permission']      = 'Warning: You do not have permission to modify users!';
-$_['error_account']         = 'Warning: You cannot delete your own account!';
-$_['error_login']           = 'Warning: User login does not exist!';
-$_['error_username']        = 'Username must be between 3 and 20 characters!';
-$_['error_username_exists'] = 'Warning: Username is already in use!';
-$_['error_firstname']       = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']        = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']           = 'E-Mail Address does not appear to be valid!';
-$_['error_email_exists']    = 'Warning: E-Mail Address is already registered!';
-$_['error_password']        = 'Password must be between 6 and 20 characters!';
-$_['error_confirm']         = 'Password and password confirmation do not match!';
+// Помилка
+$_['error_permission']      = 'Попередження: Ви не маєте дозволу змінювати користувачів!';
+$_['error_account']         = 'Попередження: Ви не можете видалити свій власний акаунт!';
+$_['error_login']           = 'Попередження: Логін користувача не існує!';
+$_['error_username']        = 'Ім’я користувача повинно бути від 3 до 20 символів!';
+$_['error_username_exists'] = 'Попередження: Ім’я користувача вже використовується!';
+$_['error_firstname']       = 'Ім’я повинно бути від 1 до 32 символів!';
+$_['error_lastname']        = 'Прізвище повинно бути від 1 до 32 символів!';
+$_['error_email']           = 'Адреса E-Mail здається некоректною!';
+$_['error_email_exists']    = 'Попередження: Адреса E-Mail вже зареєстрована!';
+$_['error_password']        = 'Пароль повинен бути від 6 до 20 символів!';
+$_['error_confirm']         = 'Пароль і підтвердження пароля не співпадають!';

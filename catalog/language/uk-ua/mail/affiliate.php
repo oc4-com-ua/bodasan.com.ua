@@ -1,20 +1,20 @@
 <?php
-// Text
-$_['text_subject']        = '%s - Affiliate Program';
-$_['text_welcome']        = 'Thank you for joining the %s Affiliate Program!';
-$_['text_login']          = 'Your account has now been created and you can log in by using your e-mail address and password by visiting our website or at the following URL:';
-$_['text_approval']       = 'Your account must be approved before you can login. Once approved you can log in by using your e-mail address and password by visiting our website or at the following URL:';
-$_['text_service']        = 'Upon logging in, you will be able to generate tracking codes, track commission payments and edit your account information.';
-$_['text_thanks']         = 'Thanks,';
-$_['text_new_affiliate']  = 'New Affiliate';
-$_['text_signup']         = 'A new affiliate has signed up:';
-$_['text_website']        = 'Web Site:';
-$_['text_customer_group'] = 'Customer Group:';
-$_['text_firstname']      = 'First Name:';
-$_['text_lastname']       = 'Last Name:';
-$_['text_company']        = 'Company:';
-$_['text_email']          = 'E-Mail:';
-$_['text_telephone']      = 'Telephone:';
+// Текст
+$_['text_subject']        = '%s - Партнерська програма';
+$_['text_welcome']        = 'Дякуємо за приєднання до партнерської програми %s!';
+$_['text_login']          = 'Ваш акаунт було успішно створено, і ви можете увійти, використовуючи свою електронну адресу та пароль, відвідавши наш вебсайт або за наступним посиланням:';
+$_['text_approval']       = 'Ваш акаунт повинен бути схвалений, перш ніж ви зможете увійти. Після схвалення ви зможете увійти, використовуючи свою електронну адресу та пароль, відвідавши наш вебсайт або за наступним посиланням:';
+$_['text_service']        = 'Після входу ви зможете генерувати код для відстеження, відстежувати виплати комісій та редагувати інформацію про свій акаунт.';
+$_['text_thanks']         = 'Дякуємо,';
+$_['text_new_affiliate']  = 'Новий партнер';
+$_['text_signup']         = 'Новий партнер зареєструвався:';
+$_['text_website']        = 'Вебсайт:';
+$_['text_customer_group'] = 'Група клієнтів:';
+$_['text_firstname']      = 'Ім\'я:';
+$_['text_lastname']       = 'Прізвище:';
+$_['text_company']        = 'Компанія:';
+$_['text_email']          = 'Електронна пошта:';
+$_['text_telephone']      = 'Телефон:';
 
-// Button
-$_['button_login']        = 'Login';
+// Кнопка
+$_['button_login']        = 'Увійти';

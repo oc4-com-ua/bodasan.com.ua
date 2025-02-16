@@ -1,16 +1,16 @@
 <?php
-// Text
-$_['text_success']           = 'Success: You have modified orders!';
+// Текст
+$_['text_success']           = 'Успіх: Ви успішно змінили замовлення!';
 
-// Error
-$_['error_order']            = 'Warning: Order could not be found!';
-$_['error_customer']         = 'Warning: Customer details required!';
-$_['error_payment_address']  = 'Warning: Payment address required!';
-$_['error_payment_method']   = 'Warning: Payment method required!';
-$_['error_shipping_address'] = 'Warning: Shipping address required!';
-$_['error_shipping_method']  = 'Warning: Shipping method required!';
-$_['error_product']          = 'Warning: Products required!';
-$_['error_stock']            = 'Warning: Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']          = 'Warning: Minimum order amount for %s is %s!';
-$_['error_affiliate']        = 'Warning: Affiliate details required!';
-$_['error_call']             = 'API call not found';
+// Помилка
+$_['error_order']            = 'Увага: Замовлення не знайдено!';
+$_['error_customer']         = 'Увага: Необхідні дані клієнта!';
+$_['error_payment_address']  = 'Увага: Необхідна платіжна адреса!';
+$_['error_payment_method']   = 'Увага: Необхідний платіжний метод!';
+$_['error_shipping_address'] = 'Увага: Необхідна адреса доставки!';
+$_['error_shipping_method']  = 'Увага: Необхідний метод доставки!';
+$_['error_product']          = 'Увага: Продукти необхідні!';
+$_['error_stock']            = 'Увага: Продукти, позначені *** недоступні в бажаній кількості або відсутні на складі!';
+$_['error_minimum']          = 'Увага: Мінімальна сума замовлення для %s становить %s!';
+$_['error_affiliate']        = 'Увага: Необхідні дані партнера!';
+$_['error_call']             = 'API виклик не знайдено';

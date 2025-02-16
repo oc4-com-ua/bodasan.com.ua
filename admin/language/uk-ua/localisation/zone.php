@@ -1,30 +1,30 @@
 <?php
-// Heading
-$_['heading_title']          = 'Zones';
+// Заголовок
+$_['heading_title']          = 'Регіони';
 
-// Text
-$_['text_success']           = 'Success: You have modified zones!';
-$_['text_list']              = 'Zone List';
-$_['text_add']               = 'Add Zone';
-$_['text_edit']              = 'Edit Zone';
-$_['text_filter']            = 'Filter';
+// Текст
+$_['text_success']           = 'Успіх: Ви змінили регіони!';
+$_['text_list']              = 'Список регіонів';
+$_['text_add']               = 'Додати регіон';
+$_['text_edit']              = 'Редагувати регіон';
+$_['text_filter']            = 'Фільтр';
 
-// Column
-$_['column_name']            = 'Zone Name';
-$_['column_code']            = 'Zone Code';
-$_['column_country']         = 'Country';
-$_['column_action']          = 'Action';
+// Стовпці
+$_['column_name']            = 'Назва регіону';
+$_['column_code']            = 'Код регіону';
+$_['column_country']         = 'Країна';
+$_['column_action']          = 'Дія';
 
-// Entry
-$_['entry_name']             = 'Zone Name';
-$_['entry_code']             = 'Zone Code';
-$_['entry_country']          = 'Country';
-$_['entry_status']           = 'Status';
+// Поля вводу
+$_['entry_name']             = 'Назва регіону';
+$_['entry_code']             = 'Код регіону';
+$_['entry_country']          = 'Країна';
+$_['entry_status']           = 'Статус';
 
-// Error
-$_['error_permission']       = 'Warning: You do not have permission to modify zones!';
-$_['error_name']             = 'Zone Name must be between 1 and 128 characters!';
-$_['error_default']          = 'Warning: This zone cannot be deleted as it is currently assigned as the default store zone!';
-$_['error_store']            = 'Warning: This zone cannot be deleted as it is currently assigned to %s stores!';
-$_['error_address']          = 'Warning: This zone cannot be deleted as it is currently assigned to %s address book entries!';
-$_['error_zone_to_geo_zone'] = 'Warning: This zone cannot be deleted as it is currently assigned to %s zones to geo zones!';
+// Помилки
+$_['error_permission']       = 'Увага: У вас немає дозволу на зміну регіонів!';
+$_['error_name']             = 'Назва регіону повинна містити від 1 до 128 символів!';
+$_['error_default']          = 'Увага: Цей регіон не можна видалити, оскільки він використовується як регіон за замовчуванням у магазині!';
+$_['error_store']            = 'Увага: Цей регіон не можна видалити, оскільки він використовується у %s магазинах!';
+$_['error_address']          = 'Увага: Цей регіон не можна видалити, оскільки він використовується у %s записах адресної книги!';
+$_['error_zone_to_geo_zone'] = 'Увага: Цей регіон не можна видалити, оскільки він використовується у %s геозонах!';

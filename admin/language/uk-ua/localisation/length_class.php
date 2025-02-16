@@ -1,30 +1,30 @@
 <?php
-// Heading
-$_['heading_title']    = 'Length Classes';
+// Заголовок
+$_['heading_title']    = 'Одиниці довжини';
 
-// Text
-$_['text_success']     = 'Success: You have modified length classes!';
-$_['text_list']        = 'Length Class List';
-$_['text_add']         = 'Add Length Class';
-$_['text_edit']        = 'Edit Length Class';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили одиниці довжини!';
+$_['text_list']        = 'Список одиниць довжини';
+$_['text_add']         = 'Додати одиницю довжини';
+$_['text_edit']        = 'Редагувати одиницю довжини';
 
-// Column
-$_['column_title']     = 'Length Title';
-$_['column_unit']      = 'Length Unit';
-$_['column_value']     = 'Value';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_title']     = 'Назва одиниці довжини';
+$_['column_unit']      = 'Позначення';
+$_['column_value']     = 'Значення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_title']      = 'Length Title';
-$_['entry_unit']       = 'Length Unit';
-$_['entry_value']      = 'Value';
+// Поля вводу
+$_['entry_title']      = 'Назва одиниці довжини';
+$_['entry_unit']       = 'Позначення';
+$_['entry_value']      = 'Значення';
 
-// Help
-$_['help_value']       = 'The value of your default length in the current length unit. Set to 1 for your default length.';
+// Довідка
+$_['help_value']       = 'Значення для вашої основної одиниці довжини в поточній одиниці виміру. Встановіть 1 для одиниці довжини за замовчуванням.';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify length classes!';
-$_['error_title']      = 'Length Title must be between 3 and 32 characters!';
-$_['error_unit']       = 'Length Unit must be between 1 and 4 characters!';
-$_['error_default']    = 'Warning: This length class cannot be deleted as it is currently assigned as the default store length class!';
-$_['error_product']    = 'Warning: This length class cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну одиниць довжини!';
+$_['error_title']      = 'Назва одиниці довжини повинна містити від 3 до 32 символів!';
+$_['error_unit']       = 'Позначення одиниці довжини повинно містити від 1 до 4 символів!';
+$_['error_default']    = 'Увага: Цю одиницю довжини не можна видалити, оскільки вона використовується як одиниця довжини магазину за замовчуванням!';
+$_['error_product']    = 'Увага: Цю одиницю довжини не можна видалити, оскільки вона використовується в %s товарах!';

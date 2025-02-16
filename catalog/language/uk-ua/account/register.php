@@ -1,35 +1,35 @@
 <?php
-// Heading
-$_['heading_title']        = 'Register Account';
+// Заголовок
+$_['heading_title']        = 'Реєстрація акаунту';
 
-// Text
-$_['text_account']         = 'Account';
-$_['text_register']        = 'Register';
-$_['text_account_already'] = 'If you already have an account with us, please login at the <a href="%s">login page</a>.';
-$_['text_your_details']    = 'Your Personal Details';
-$_['text_newsletter']      = 'Newsletter';
-$_['text_your_password']   = 'Your Password';
-$_['text_agree']           = 'I have read and agree to the <a href="%s" class="modal-link"><b>%s</b></a>';
+// Текст
+$_['text_account']         = 'Обліковий запис';
+$_['text_register']        = 'Реєстрація';
+$_['text_account_already'] = 'Якщо у вас вже є акаунт, будь ласка, увійдіть на <a href="%s">сторінці входу</a>.';
+$_['text_your_details']    = 'Ваші особисті дані';
+$_['text_newsletter']      = 'Розсилка новин';
+$_['text_your_password']   = 'Ваш пароль';
+$_['text_agree']           = 'Я прочитав і погоджуюсь з <a href="%s" class="modal-link"><b>%s</b></a>';
 
-// Entry
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_firstname']      = 'First Name';
-$_['entry_lastname']       = 'Last Name';
+// Введення
+$_['entry_customer_group'] = 'Група покупця';
+$_['entry_firstname']      = 'Ім\'я';
+$_['entry_lastname']       = 'Прізвище';
 $_['entry_email']          = 'E-Mail';
-$_['entry_telephone']      = 'Telephone';
-$_['entry_newsletter']     = 'Subscribe';
-$_['entry_password']       = 'Password';
-$_['entry_confirm']        = 'Password Confirm';
+$_['entry_telephone']      = 'Телефон';
+$_['entry_newsletter']     = 'Підписка';
+$_['entry_password']       = 'Пароль';
+$_['entry_confirm']        = 'Підтвердження паролю';
 
-// Error
-$_['error_token']          = 'Warning: Register token invalid!';
-$_['error_exists']         = 'Warning: E-Mail Address is already registered!';
-$_['error_customer_group'] = 'Customer Group does not appear to be valid!';
-$_['error_firstname']      = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']       = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']          = 'E-Mail Address does not appear to be valid!';
-$_['error_telephone']      = 'Telephone must be between 3 and 32 characters!';
-$_['error_custom_field']   = '%s required!';
-$_['error_regex']          = '%s is not a valid input!';
-$_['error_password']       = 'Password must be between 6 and 20 characters!';
-$_['error_agree']          = 'Warning: You must agree to the %s!';
+// Помилка
+$_['error_token']          = 'Попередження: Токен реєстрації недійсний!';
+$_['error_exists']         = 'Попередження: Адреса електронної пошти вже зареєстрована!';
+$_['error_customer_group'] = 'Попередження: Група покупця не є дійсною!';
+$_['error_firstname']      = 'Ім\'я повинно бути від 1 до 32 символів!';
+$_['error_lastname']       = 'Прізвище повинно бути від 1 до 32 символів!';
+$_['error_email']          = 'Попередження: Адреса електронної пошти здається недійсною!';
+$_['error_telephone']      = 'Телефон повинен містити від 3 до 32 символів!';
+$_['error_custom_field']   = '%s обов\'язкове!';
+$_['error_regex']          = '%s недійсне введення!';
+$_['error_password']       = 'Пароль повинен бути від 6 до 20 символів!';
+$_['error_agree']          = 'Попередження: Ви повинні погодитись з %s!';

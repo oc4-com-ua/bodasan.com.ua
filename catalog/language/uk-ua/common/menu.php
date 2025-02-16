@@ -1,4 +1,4 @@
 <?php
-// Text
-$_['text_category']  = 'Categories';
-$_['text_all']       = 'Show All';
+// Текст
+$_['text_category']  = 'Категорії';
+$_['text_all']       = 'Показати все';

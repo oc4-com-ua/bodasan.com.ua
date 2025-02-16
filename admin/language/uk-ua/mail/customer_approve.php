@@ -1,10 +1,10 @@
 <?php
-// Text
-$_['text_subject'] = '%s - Your Account has been activated!';
-$_['text_welcome'] = 'Welcome and thank you for registering at %s!';
-$_['text_login']   = 'Your account has now been created and you can log in by using your email address and password by visiting our website or at the following URL:';
-$_['text_service'] = 'Upon logging in, you will be able to access other services including reviewing past orders, printing invoices and editing your account information.';
-$_['text_thanks']  = 'Thanks,';
+// Текст
+$_['text_subject'] = '%s - Ваш обліковий запис активовано!';
+$_['text_welcome'] = 'Ласкаво просимо та дякуємо за реєстрацію на %s!';
+$_['text_login']   = 'Ваш обліковий запис було створено, і ви можете увійти, використовуючи свою електронну адресу та пароль, відвідавши наш сайт або за наступним посиланням:';
+$_['text_service'] = 'Після входу ви зможете отримати доступ до інших послуг, включаючи перегляд історії замовлень, друк рахунків-фактур та редагування інформації про ваш обліковий запис.';
+$_['text_thanks']  = 'Дякуємо,';
 
-// Button
-$_['button_login'] = 'Login';
+// Кнопка
+$_['button_login'] = 'Увійти';

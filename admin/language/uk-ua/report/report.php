@@ -1,8 +1,8 @@
 <?php
-// Heading
-$_['heading_title'] = 'Reports';
+// Заголовок
+$_['heading_title'] = 'Звіти';
 
-// Text
-$_['text_success']  = 'Success: You have modified reports!';
-$_['text_type']     = 'Choose the report type';
-$_['text_filter']   = 'Filter';
+// Текст
+$_['text_success']  = 'Успіх: Ви змінили звіти!';
+$_['text_type']     = 'Оберіть тип звіту';
+$_['text_filter']   = 'Фільтр';

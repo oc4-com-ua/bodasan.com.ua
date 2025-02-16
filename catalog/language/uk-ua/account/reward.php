@@ -1,14 +1,14 @@
 <?php
-// Heading
-$_['heading_title']      = 'Your Reward Points';
+// Заголовок
+$_['heading_title']      = 'Ваші бонусні бали';
 
-// Column
-$_['column_date_added']  = 'Date Added';
-$_['column_description'] = 'Description';
-$_['column_points']      = 'Points';
+// Стовпці
+$_['column_date_added']  = 'Дата додавання';
+$_['column_description'] = 'Опис';
+$_['column_points']      = 'Бали';
 
-// Text
-$_['text_account']       = 'Account';
-$_['text_reward']        = 'Reward Points';
-$_['text_total']         = 'Your total number of reward points is:';
-$_['text_no_results']    = 'You do not have any reward points!';
+// Текст
+$_['text_account']       = 'Обліковий запис';
+$_['text_reward']        = 'Бонусні бали';
+$_['text_total']         = 'Ваш загальний рахунок бонусних балів складає:';
+$_['text_no_results']    = 'У вас немає бонусних балів!';

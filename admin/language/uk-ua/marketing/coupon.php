@@ -1,56 +1,56 @@
 <?php
-// Heading
-$_['heading_title']       = 'Coupons';
+// Заголовок
+$_['heading_title']       = 'Купони';
 
-// Text
-$_['text_success']        = 'Success: You have modified coupons!';
-$_['text_list']           = 'Coupon List';
-$_['text_add']            = 'Add Coupon';
-$_['text_edit']           = 'Edit Coupon';
-$_['text_percent']        = 'Percentage';
-$_['text_amount']         = 'Fixed Amount';
-$_['text_coupon']         = 'History';
+// Текст
+$_['text_success']        = 'Успіх: Ви змінили купони!';
+$_['text_list']           = 'Список купонів';
+$_['text_add']            = 'Додати купон';
+$_['text_edit']           = 'Редагувати купон';
+$_['text_percent']        = 'Відсоток';
+$_['text_amount']         = 'Фіксована сума';
+$_['text_coupon']         = 'Історія';
 
-// Column
-$_['column_name']         = 'Coupon Name';
-$_['column_code']         = 'Code';
-$_['column_discount']     = 'Discount';
-$_['column_date_start']   = 'Date Start';
-$_['column_date_end']     = 'Date End';
-$_['column_status']       = 'Status';
-$_['column_order_id']     = 'Order ID';
-$_['column_customer']     = 'Customer';
-$_['column_amount']       = 'Amount';
-$_['column_date_added']   = 'Date Added';
-$_['column_action']       = 'Action';
+// Колонки
+$_['column_name']         = 'Назва купона';
+$_['column_code']         = 'Код';
+$_['column_discount']     = 'Знижка';
+$_['column_date_start']   = 'Дата початку';
+$_['column_date_end']     = 'Дата завершення';
+$_['column_status']       = 'Статус';
+$_['column_order_id']     = 'ID замовлення';
+$_['column_customer']     = 'Клієнт';
+$_['column_amount']       = 'Сума';
+$_['column_date_added']   = 'Дата додавання';
+$_['column_action']       = 'Дія';
 
-// Entry
-$_['entry_name']          = 'Coupon Name';
-$_['entry_code']          = 'Code';
-$_['entry_type']          = 'Type';
-$_['entry_discount']      = 'Discount';
-$_['entry_logged']        = 'Customer Login';
-$_['entry_shipping']      = 'Free Shipping';
-$_['entry_total']         = 'Total Amount';
-$_['entry_category']      = 'Category';
-$_['entry_product']       = 'Products';
-$_['entry_date']          = 'Dates';
-$_['entry_uses_total']    = 'Uses Per Coupon';
-$_['entry_uses_customer'] = 'Uses Per Customer';
-$_['entry_status']        = 'Status';
+// Поля введення
+$_['entry_name']          = 'Назва купона';
+$_['entry_code']          = 'Код';
+$_['entry_type']          = 'Тип';
+$_['entry_discount']      = 'Знижка';
+$_['entry_logged']        = 'Вхід клієнта';
+$_['entry_shipping']      = 'Безкоштовна доставка';
+$_['entry_total']         = 'Загальна сума';
+$_['entry_category']      = 'Категорія';
+$_['entry_product']       = 'Товари';
+$_['entry_date']          = 'Дати';
+$_['entry_uses_total']    = 'Використань на купон';
+$_['entry_uses_customer'] = 'Використань на клієнта';
+$_['entry_status']        = 'Статус';
 
-// Help
-$_['help_code']           = 'The code the customer enters to get the discount.';
-$_['help_type']           = 'Percentage or Fixed Amount.';
-$_['help_logged']         = 'Customer must be logged in to use the coupon.';
-$_['help_total']          = 'The total amount that must be reached before the coupon is valid.';
-$_['help_category']       = 'Choose all products under selected category.';
-$_['help_product']        = 'Choose specific products the coupon will apply to. Select no products to apply coupon to entire cart.';
-$_['help_uses_total']     = 'The maximum number of times the coupon can be used by any customer. Leave blank for unlimited';
-$_['help_uses_customer']  = 'The maximum number of times the coupon can be used by a single customer. Leave blank for unlimited';
+// Підказки
+$_['help_code']           = 'Код, який клієнт вводить для отримання знижки.';
+$_['help_type']           = 'Відсоток або фіксована сума.';
+$_['help_logged']         = 'Клієнт повинен увійти в обліковий запис, щоб використати купон.';
+$_['help_total']          = 'Мінімальна сума замовлення для активації купона.';
+$_['help_category']       = 'Застосовується до всіх товарів у вибраній категорії.';
+$_['help_product']        = 'Застосовується до вибраних товарів. Якщо не вибрано жодного товару, купон діятиме на весь кошик.';
+$_['help_uses_total']     = 'Максимальна кількість використань купона будь-яким клієнтом. Залиште порожнім для необмеженого використання.';
+$_['help_uses_customer']  = 'Максимальна кількість використань купона одним клієнтом. Залиште порожнім для необмеженого використання.';
 
-// Error
-$_['error_permission']    = 'Warning: You do not have permission to modify coupons!';
-$_['error_exists']        = 'Warning: Coupon code is already in use!';
-$_['error_name']          = 'Coupon Name must be between 3 and 128 characters!';
-$_['error_code']          = 'Code must be between 3 and 20 characters!';
+// Помилки
+$_['error_permission']    = 'Попередження: У вас немає прав для зміни купонів!';
+$_['error_exists']        = 'Попередження: Код купона вже використовується!';
+$_['error_name']          = 'Назва купона має містити від 3 до 128 символів!';
+$_['error_code']          = 'Код купона має містити від 3 до 20 символів!';

@@ -1,12 +1,12 @@
 <?php
-// Text
-$_['text_subject']   = '%s - GDPR request denied!';
-$_['text_export']    = 'Account Export Data Request';
-$_['text_remove']    = 'Account Deletion Request';
-$_['text_hello']     = 'Hello <strong>%s</strong>,';
-$_['text_user']      = 'User';
-$_['text_contact']   = 'Unfortunately your request has been denied. For more information you can contact the store here:';
-$_['text_thanks']    = 'Thanks,';
+// Текст
+$_['text_subject']   = '%s - Запит GDPR відхилено!';
+$_['text_export']    = 'Запит на експорт даних облікового запису';
+$_['text_remove']    = 'Запит на видалення облікового запису';
+$_['text_hello']     = 'Вітаємо, <strong>%s</strong>,';
+$_['text_user']      = 'Користувач';
+$_['text_contact']   = 'На жаль, ваш запит було відхилено. Для отримання додаткової інформації ви можете зв’язатися з магазином тут:';
+$_['text_thanks']    = 'Дякуємо,';
 
-// Button
-$_['button_contact'] = 'Contact Us';
+// Кнопка
+$_['button_contact'] = 'Зв’язатися з нами';

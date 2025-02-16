@@ -1,28 +1,28 @@
 <?php
-// Heading
-$_['heading_title']        = 'CRON Jobs';
+// Заголовок
+$_['heading_title']        = 'CRON Завдання';
 
-// Text
-$_['text_success']         = 'Success: You have modified CRON jobs!';
-$_['text_instruction']     = 'CRON Instructions';
-$_['text_list']            = 'CRON List';
-$_['text_cron_1']          = 'CRON Job\'s are scheduled tasks that are run periodically. To setup your servers to use cron job you can read the <a href="http://docs.opencart.com/extension/cron/" target="_blank" class="alert-link">opencart documentation</a> page.';
-$_['text_cron_2']          = 'You need to set your CRON task to run every hour.';
-$_['text_info']            = 'CRON Information';
-$_['text_hour']            = 'Hour';
-$_['text_day']             = 'Day';
-$_['text_month']           = 'Month';
+// Текст
+$_['text_success']         = 'Успіх: Ви змінили CRON завдання!';
+$_['text_instruction']     = 'Інструкції CRON';
+$_['text_list']            = 'Список CRON';
+$_['text_cron_1']          = 'CRON-завдання — це заплановані завдання, які виконуються періодично. Щоб налаштувати використання CRON-завдань на вашому сервері, ви можете переглянути сторінку <a href="http://docs.opencart.com/extension/cron/" target="_blank" class="alert-link">документації OpenCart</a>.';
+$_['text_cron_2']          = 'Вам потрібно налаштувати запуск CRON-завдання щогодини.';
+$_['text_info']            = 'Інформація про CRON';
+$_['text_hour']            = 'Година';
+$_['text_day']             = 'День';
+$_['text_month']           = 'Місяць';
 
-// Column
-$_['column_code']          = 'CRON Code';
-$_['column_cycle']         = 'Cycle';
-$_['column_date_added']    = 'Date Added';
-$_['column_date_modified'] = 'Date Modified';
-$_['column_action']        = 'Action';
+// Колонки
+$_['column_code']          = 'CRON Код';
+$_['column_cycle']         = 'Цикл';
+$_['column_date_added']    = 'Дата додавання';
+$_['column_date_modified'] = 'Дата зміни';
+$_['column_action']        = 'Дія';
 
-// Entry
+// Поля введення
 $_['entry_cron']           = 'CRON URL';
-$_['entry_description']    = 'Description';
+$_['entry_description']    = 'Опис';
 
-// Error
-$_['error_permission']     = 'Warning: You do not have permission to modify CRON jobs!';
+// Помилки
+$_['error_permission']     = 'Попередження: У вас немає дозволу на зміну CRON-завдань!';

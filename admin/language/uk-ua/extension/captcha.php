@@ -1,16 +1,16 @@
 <?php
-// Heading
-$_['heading_title']    = 'Captchas';
+// Заголовок
+$_['heading_title']    = 'Капчі';
 
-// Text
-$_['text_success']     = 'Success: You have modified captchas!';
-$_['text_list']        = 'Captcha List';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили капчі!';
+$_['text_list']        = 'Список капч';
 
-// Column
-$_['column_name']      = 'Captcha Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва капчі';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Дія';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify captchas!';
-$_['error_extension']  = 'Warning: Extension does not exist!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну капч!';
+$_['error_extension']  = 'Увага: Розширення не існує!';

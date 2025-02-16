@@ -1,23 +1,23 @@
 <?php
-// Heading
-$_['heading_title'] = 'Blog';
+// Заголовок
+$_['heading_title'] = 'Блог';
 
-// Text
-$_['text_refine'] = 'Refine Search';
-$_['text_all'] = 'All';
-$_['text_blog'] = 'Blog';
-$_['text_by'] = 'By';
-$_['text_tags'] = 'Tags:';
-$_['text_comment'] = 'comments';
-$_['text_no_results'] = 'There are no articles.';
-$_['text_sort'] = 'Sort By';
-$_['text_rating_asc'] = 'Rating (Lowest)';
-$_['text_rating_desc'] = 'Rating (Highest)';
-$_['text_date_added_asc'] = 'Date Added (Oldest)';
-$_['text_date_added_desc'] = 'Date Added (Latest)';
+// Текст
+$_['text_refine'] = 'Уточнити пошук';
+$_['text_all'] = 'Усі';
+$_['text_blog'] = 'Блог';
+$_['text_by'] = 'Автор:';
+$_['text_tags'] = 'Теги:';
+$_['text_comment'] = 'коментарів';
+$_['text_no_results'] = 'Статей не знайдено.';
+$_['text_sort'] = 'Сортувати за';
+$_['text_rating_asc'] = 'Рейтинг (Низький)';
+$_['text_rating_desc'] = 'Рейтинг (Високий)';
+$_['text_date_added_asc'] = 'Дата додавання (Старіші)';
+$_['text_date_added_desc'] = 'Дата додавання (Новіші)';
 
-// Entry
-$_['entry_search'] = 'Search';
+// Вхід
+$_['entry_search'] = 'Пошук';
 
-// Button
-$_['button_continue'] = 'Continue Reading';
+// Кнопка
+$_['button_continue'] = 'Продовжити читання';

@@ -1,15 +1,15 @@
 <?php
-// Heading
-$_['heading_title']    = 'Themes';
+// Заголовок
+$_['heading_title']    = 'Теми';
 
-// Text
-$_['text_success']     = 'Success: You have modified themes!';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили теми!';
 
-// Column
-$_['column_name']      = 'Theme Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва теми';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Дія';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify themes!';
-$_['error_extension']  = 'Warning: Extension does not exist!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну тем!';
+$_['error_extension']  = 'Увага: Розширення не існує!';

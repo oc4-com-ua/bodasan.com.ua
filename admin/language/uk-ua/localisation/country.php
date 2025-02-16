@@ -1,35 +1,35 @@
 <?php
-// Heading
-$_['heading_title']           = 'Countries';
+// Заголовок
+$_['heading_title']           = 'Країни';
 
-// Text
-$_['text_success']            = 'Success: You have modified countries!';
-$_['text_list']               = 'Country List';
-$_['text_add']                = 'Add Country';
-$_['text_edit']               = 'Edit Country';
-$_['text_filter']             = 'Filter';
+// Текст
+$_['text_success']            = 'Успіх: Ви змінили список країн!';
+$_['text_list']               = 'Список країн';
+$_['text_add']                = 'Додати країну';
+$_['text_edit']               = 'Редагувати країну';
+$_['text_filter']             = 'Фільтр';
 
-// Column
-$_['column_name']             = 'Country Name';
-$_['column_iso_code_2']       = 'ISO Code (2)';
-$_['column_iso_code_3']       = 'ISO Code (3)';
-$_['column_action']           = 'Action';
+// Стовпці
+$_['column_name']             = 'Назва країни';
+$_['column_iso_code_2']       = 'ISO код (2)';
+$_['column_iso_code_3']       = 'ISO код (3)';
+$_['column_action']           = 'Дія';
 
-// Entry
-$_['entry_name']              = 'Country Name';
-$_['entry_iso_code_2']        = 'ISO Code (2)';
-$_['entry_iso_code_3']        = 'ISO Code (3)';
-$_['entry_address_format']    = 'Address Format';
-$_['entry_postcode_required'] = 'Postcode Required';
-$_['entry_status']            = 'Status';
+// Поля вводу
+$_['entry_name']              = 'Назва країни';
+$_['entry_iso_code_2']        = 'ISO код (2)';
+$_['entry_iso_code_3']        = 'ISO код (3)';
+$_['entry_address_format']    = 'Формат адреси';
+$_['entry_postcode_required'] = 'Потрібен поштовий індекс';
+$_['entry_status']            = 'Статус';
 
-// Error
-$_['error_permission']        = 'Warning: You do not have permission to modify countries!';
-$_['error_name']              = 'Country Name must be between 1 and 128 characters!';
-$_['error_iso_code_2']        = 'ISO Code 2 must be 2 characters!';
-$_['error_iso_code_3']        = 'ISO Code 3 must be between 3 characters!';
-$_['error_default']           = 'Warning: This country cannot be deleted as it is currently assigned as the default store country!';
-$_['error_store']             = 'Warning: This country cannot be deleted as it is currently assigned to %s stores!';
-$_['error_address']           = 'Warning: This country cannot be deleted as it is currently assigned to %s address book entries!';
-$_['error_zone']              = 'Warning: This country cannot be deleted as it is currently assigned to %s zones!';
-$_['error_zone_to_geo_zone']  = 'Warning: This country cannot be deleted as it is currently assigned to %s zones to geo zones!';
+// Помилки
+$_['error_permission']        = 'Увага: У вас немає дозволу на зміну списку країн!';
+$_['error_name']              = 'Назва країни повинна містити від 1 до 128 символів!';
+$_['error_iso_code_2']        = 'ISO код 2 повинен містити 2 символи!';
+$_['error_iso_code_3']        = 'ISO код 3 повинен містити 3 символи!';
+$_['error_default']           = 'Увага: Цю країну не можна видалити, оскільки вона використовується як країна магазину за замовчуванням!';
+$_['error_store']             = 'Увага: Цю країну не можна видалити, оскільки вона призначена для %s магазинів!';
+$_['error_address']           = 'Увага: Цю країну не можна видалити, оскільки вона використовується в %s записах адресної книги!';
+$_['error_zone']              = 'Увага: Цю країну не можна видалити, оскільки вона використовується в %s регіонах!';
+$_['error_zone_to_geo_zone']  = 'Увага: Цю країну не можна видалити, оскільки вона використовується в %s географічних зонах!';

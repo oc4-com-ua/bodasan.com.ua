@@ -1,18 +1,18 @@
 <?php
-// Text
-$_['text_subject']        = '%s - Thank you for registering';
-$_['text_welcome']        = 'Welcome and thank you for registering at %s!';
-$_['text_login']          = 'Your account has now been created and you can log in by using your email address and password by visiting our website or at the following URL:';
-$_['text_approval']       = 'Your account must be approved before you can login. Once approved you can log in by using your email address and password by visiting our website or at the following URL:';
-$_['text_service']        = 'Upon logging in, you will be able to access other services including reviewing past orders, printing invoices and editing your account information.';
-$_['text_thanks']         = 'Thanks,';
-$_['text_new_customer']   = 'New customer';
-$_['text_signup']         = 'A new customer has signed up:';
-$_['text_customer_group'] = 'Customer Group:';
-$_['text_firstname']      = 'First Name:';
-$_['text_lastname']       = 'Last Name:';
-$_['text_email']          = 'E-Mail:';
-$_['text_telephone']      = 'Telephone:';
+// Текст
+$_['text_subject']        = '%s - Дякуємо за реєстрацію';
+$_['text_welcome']        = 'Ласкаво просимо та дякуємо за реєстрацію на %s!';
+$_['text_login']          = 'Ваш обліковий запис був створений, і ви можете увійти, використовуючи свою електронну пошту та пароль, відвідавши наш сайт або за наступним посиланням:';
+$_['text_approval']       = 'Ваш обліковий запис має бути схвалений, перш ніж ви зможете увійти. Після схвалення ви зможете увійти, використовуючи свою електронну пошту та пароль, відвідавши наш сайт або за наступним посиланням:';
+$_['text_service']        = 'Після входу ви зможете скористатися іншими сервісами, включаючи перегляд попередніх замовлень, друк рахунків та редагування інформації про ваш обліковий запис.';
+$_['text_thanks']         = 'Дякуємо,';
+$_['text_new_customer']   = 'Новий клієнт';
+$_['text_signup']         = 'Зареєстровано нового клієнта:';
+$_['text_customer_group'] = 'Група клієнта:';
+$_['text_firstname']      = 'Ім\'я:';
+$_['text_lastname']       = 'Прізвище:';
+$_['text_email']          = 'Електронна пошта:';
+$_['text_telephone']      = 'Телефон:';
 
-// Button
-$_['button_login']        = 'Login';
+// Кнопка
+$_['button_login']        = 'Увійти';

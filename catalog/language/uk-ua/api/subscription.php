@@ -1,14 +1,14 @@
 <?php
-// Text
-$_['text_success']           = 'Success: You have modified subscriptions!';
+// Текст
+$_['text_success']           = 'Успіх: Ви змінили підписки!';
 
-// Error
-$_['error_customer']         = 'Warning: Customer details required!';
-$_['error_payment_address']  = 'Warning: Payment address required!';
-$_['error_payment_method']   = 'Warning: Payment method required!';
-$_['error_shipping_address'] = 'Warning: Shipping address required!';
-$_['error_shipping_method']  = 'Warning: Shipping method required!';
-$_['error_product']          = 'Warning: Products required!';
-$_['error_stock']            = 'Warning: Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']          = 'Warning: Minimum order amount for %s is %s!';
-$_['error_call']             = 'API call not found';
+// Помилка
+$_['error_customer']         = 'Попередження: Потрібні дані клієнта!';
+$_['error_payment_address']  = 'Попередження: Потрібна адреса для оплати!';
+$_['error_payment_method']   = 'Попередження: Потрібен метод оплати!';
+$_['error_shipping_address'] = 'Попередження: Потрібна адреса доставки!';
+$_['error_shipping_method']  = 'Попередження: Потрібен метод доставки!';
+$_['error_product']          = 'Попередження: Потрібні продукти!';
+$_['error_stock']            = 'Попередження: Продукти, позначені *** не доступні в бажаній кількості або відсутні на складі!';
+$_['error_minimum']          = 'Попередження: Мінімальна сума замовлення для %s становить %s!';
+$_['error_call']             = 'API виклик не знайдено';

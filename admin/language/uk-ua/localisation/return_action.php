@@ -1,21 +1,21 @@
 <?php
-// Heading
-$_['heading_title']    = 'Return Actions';
+// Заголовок
+$_['heading_title']    = 'Дії з повернення';
 
-// Text
-$_['text_success']     = 'Success: You have modified return actions!';
-$_['text_list']        = 'Return Action List';
-$_['text_add']         = 'Add Return Action';
-$_['text_edit']        = 'Edit Return Action';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили дії з повернення!';
+$_['text_list']        = 'Список дій з повернення';
+$_['text_add']         = 'Додати дію з повернення';
+$_['text_edit']        = 'Редагувати дію з повернення';
 
-// Column
-$_['column_name']      = 'Return Action Name';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва дії з повернення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Return Action Name';
+// Поля вводу
+$_['entry_name']       = 'Назва дії з повернення';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify return actions!';
-$_['error_name']       = 'Return Action Name must be between 3 and 64 characters!';
-$_['error_return']     = 'Warning: This return action cannot be deleted as it is currently assigned to %s returned products!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну дій з повернення!';
+$_['error_name']       = 'Назва дії з повернення повинна містити від 3 до 64 символів!';
+$_['error_return']     = 'Увага: Цю дію з повернення не можна видалити, оскільки вона призначена для %s повернених товарів!';

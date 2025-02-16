@@ -1,40 +1,40 @@
 <?php
-// Heading
-$_['heading_title']      = 'Address Book';
+// Заголовок
+$_['heading_title']      = 'Адресна книга';
 
-// Text
-$_['text_account']       = 'Account';
-$_['text_address_book']  = 'Address Book Entries';
-$_['text_address_add']   = 'Add Address';
-$_['text_address_edit']  = 'Edit Address';
-$_['text_add']           = 'Your address has been successfully added';
-$_['text_edit']          = 'Your address has been successfully updated';
-$_['text_delete']        = 'Your address has been successfully deleted';
-$_['text_no_results']    = 'You have no addresses in your account.';
+// Текст
+$_['text_account']       = 'Обліковий запис';
+$_['text_address_book']  = 'Записи адресної книги';
+$_['text_address_add']   = 'Додати адресу';
+$_['text_address_edit']  = 'Редагувати адресу';
+$_['text_add']           = 'Ваша адреса була успішно додана';
+$_['text_edit']          = 'Ваша адреса була успішно оновлена';
+$_['text_delete']        = 'Ваша адреса була успішно видалена';
+$_['text_no_results']    = 'У вас немає адрес в акаунті.';
 
-// Entry
-$_['entry_firstname']    = 'First Name';
-$_['entry_lastname']     = 'Last Name';
-$_['entry_company']      = 'Company';
-$_['entry_address_1']    = 'Address 1';
-$_['entry_address_2']    = 'Address 2';
-$_['entry_postcode']     = 'Post Code';
-$_['entry_city']         = 'City';
-$_['entry_country']      = 'Country';
-$_['entry_zone']         = 'Region / State';
-$_['entry_default']      = 'Default Address';
+// Вхід
+$_['entry_firstname']    = 'Ім\'я';
+$_['entry_lastname']     = 'Прізвище';
+$_['entry_company']      = 'Компанія';
+$_['entry_address_1']    = 'Адреса 1';
+$_['entry_address_2']    = 'Адреса 2';
+$_['entry_postcode']     = 'Поштовий індекс';
+$_['entry_city']         = 'Місто';
+$_['entry_country']      = 'Країна';
+$_['entry_zone']         = 'Регіон / Область';
+$_['entry_default']      = 'Адреса за замовчуванням';
 
-// Error
-$_['error_token']        = 'Warning: Address token invalid!';
-$_['error_subscription'] = 'Warning: Address is still being used by %s active subscriptions!';
-$_['error_default']      = 'Warning: Default address required!';
-$_['error_delete']       = 'Warning: You must have at least one address!';
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_address_1']    = 'Address must be between 3 and 128 characters!';
-$_['error_postcode']     = 'Postcode must be between 2 and 10 characters!';
-$_['error_city']         = 'City must be between 2 and 128 characters!';
-$_['error_country']      = 'Please select a country!';
-$_['error_zone']         = 'Please select a region / state!';
-$_['error_custom_field'] = '%s required!';
-$_['error_regex']        = '%s is not a valid input!';
+// Помилка
+$_['error_token']        = 'Попередження: Токен адреси недійсний!';
+$_['error_subscription'] = 'Попередження: Адреса все ще використовується в %s активних підписках!';
+$_['error_default']      = 'Попередження: Потрібна адреса за замовчуванням!';
+$_['error_delete']       = 'Попередження: Ви повинні мати хоча б одну адресу!';
+$_['error_firstname']    = 'Ім\'я повинно бути від 1 до 32 символів!';
+$_['error_lastname']     = 'Прізвище повинно бути від 1 до 32 символів!';
+$_['error_address_1']    = 'Адреса повинна бути від 3 до 128 символів!';
+$_['error_postcode']     = 'Поштовий індекс повинен бути від 2 до 10 символів!';
+$_['error_city']         = 'Місто повинно бути від 2 до 128 символів!';
+$_['error_country']      = 'Будь ласка, виберіть країну!';
+$_['error_zone']         = 'Будь ласка, виберіть регіон / область!';
+$_['error_custom_field'] = '%s обов\'язкове!';
+$_['error_regex']        = '%s є недійсним введенням!';

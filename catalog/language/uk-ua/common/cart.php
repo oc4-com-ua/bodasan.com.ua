@@ -1,18 +1,18 @@
 <?php
-// Text
-$_['text_items']                 = '%s item(s) - %s';
-$_['text_points']                = 'Reward Points';
-$_['text_subscription']          = 'Subscription';
-$_['text_subscription_duration'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']   = '%s every %d %s(s) until canceled';
-$_['text_day']                   = 'day';
-$_['text_week']                  = 'week';
-$_['text_semi_month']            = 'half-month';
-$_['text_month']                 = 'month';
-$_['text_year']                  = 'year';
-$_['text_no_results']            = 'Your shopping cart is empty!';
-$_['text_cart']                  = 'View Cart';
-$_['text_checkout']              = 'Checkout';
+// Текст
+$_['text_items']                 = '%s товар(и) - %s';
+$_['text_points']                = 'Бонусні бали';
+$_['text_subscription']          = 'Підписка';
+$_['text_subscription_duration'] = '%s кожні %d %s(ів) протягом %d платежів';
+$_['text_subscription_cancel']   = '%s кожні %d %s(ів) до скасування';
+$_['text_day']                   = 'день';
+$_['text_week']                  = 'тиждень';
+$_['text_semi_month']            = 'півмісяця';
+$_['text_month']                 = 'місяць';
+$_['text_year']                  = 'рік';
+$_['text_no_results']            = 'Ваш кошик порожній!';
+$_['text_cart']                  = 'Переглянути кошик';
+$_['text_checkout']              = 'Оформлення замовлення';
 
-// Error
-$_['error_product']              = 'Warning: Product could not be found!';
+// Помилка
+$_['error_product']              = 'Попередження: Товар не знайдений!';

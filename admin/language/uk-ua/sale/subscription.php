@@ -1,80 +1,80 @@
 <?php
-// Heading
-$_['heading_title']              = 'Subscriptions';
+// Заголовок
+$_['heading_title']              = 'Підписки';
 
-// Text
-$_['text_success']               = 'Success: You have modified subscriptions!';
-$_['text_list']                  = 'Subscription List';
-$_['text_add']                   = 'Add Subscription';
-$_['text_edit']                  = 'Subscription (#%s)';
-$_['text_filter']                = 'Filter';
-$_['text_date_added']            = 'Date Added';
-$_['text_order_id']              = 'Order ID';
-$_['text_order']                 = 'Orders';
-$_['text_product_add']           = 'Add Product';
-$_['text_model'] 			     = 'Model';
-$_['text_subscription']          = 'Subscription';
-$_['text_date_next']             = 'Date Next';
-$_['text_remaining']             = 'Remaining';
-$_['text_subscription_trial']    = '%s every %d %s(s) for %d payment(s) then ';
-$_['text_subscription_duration'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']   = '%s every %d %s(s) until canceled';
-$_['text_cancel']                = 'Until Canceled';
-$_['text_day']                   = 'Day';
-$_['text_week']                  = 'Week';
-$_['text_semi_month']            = 'Half-Month';
-$_['text_month']                 = 'Month';
-$_['text_year']                  = 'Year';
-$_['text_payment_method']        = 'Payment Method';
-$_['text_payment']               = 'Please select the preferred payment method to use for this subscription.';
-$_['text_shipping_method']       = 'Shipping Method';
-$_['text_shipping']              = 'Please select the preferred shipping method to use for this subscription.';
-$_['text_history']               = 'History';
-$_['text_history_add']           = 'Add History';
-$_['text_log']                   = 'Logs';
+// Текст
+$_['text_success']               = 'Успіх: Ви змінили підписки!';
+$_['text_list']                  = 'Список підписок';
+$_['text_add']                   = 'Додати підписку';
+$_['text_edit']                  = 'Підписка (#%s)';
+$_['text_filter']                = 'Фільтр';
+$_['text_date_added']            = 'Дата додавання';
+$_['text_order_id']              = 'ID замовлення';
+$_['text_order']                 = 'Замовлення';
+$_['text_product_add']           = 'Додати товар';
+$_['text_model'] 			     = 'Модель';
+$_['text_subscription']          = 'Підписка';
+$_['text_date_next']             = 'Дата наступної';
+$_['text_remaining']             = 'Залишилось';
+$_['text_subscription_trial']    = '%s кожен %d %s(ів) на %d платіж(ів), потім ';
+$_['text_subscription_duration'] = '%s кожен %d %s(ів) на %d платіж(ів)';
+$_['text_subscription_cancel']   = '%s кожен %d %s(ів) до скасування';
+$_['text_cancel']                = 'До скасування';
+$_['text_day']                   = 'День';
+$_['text_week']                  = 'Тиждень';
+$_['text_semi_month']            = 'Півмісяця';
+$_['text_month']                 = 'Місяць';
+$_['text_year']                  = 'Рік';
+$_['text_payment_method']        = 'Метод оплати';
+$_['text_payment']               = 'Будь ласка, виберіть бажаний метод оплати для цієї підписки.';
+$_['text_shipping_method']       = 'Метод доставки';
+$_['text_shipping']              = 'Будь ласка, виберіть бажаний метод доставки для цієї підписки.';
+$_['text_history']               = 'Історія';
+$_['text_history_add']           = 'Додати історію';
+$_['text_log']                   = 'Логи';
 
-// Column
-$_['column_subscription_id']     = 'Subscription ID';
-$_['column_order_id']            = 'Order ID';
-$_['column_customer']            = 'Customer';
-$_['column_comment']             = 'Comment';
-$_['column_notify']              = 'Customer Notified';
-$_['column_status']              = 'Status';
-$_['column_date_added']          = 'Date Added';
-$_['column_product']             = 'Product';
-$_['column_model']               = 'Model';
-$_['column_quantity']            = 'Quantity';
-$_['column_trial_price']         = 'Trial Price';
-$_['column_price']               = 'Price';
-$_['column_amount']              = 'Amount';
-$_['column_code']                = 'Code';
-$_['column_description']         = 'Description';
-$_['column_action']              = 'Action';
+// Стовпці
+$_['column_subscription_id']     = 'ID підписки';
+$_['column_order_id']            = 'ID замовлення';
+$_['column_customer']            = 'Клієнт';
+$_['column_comment']             = 'Коментар';
+$_['column_notify']              = 'Клієнта повідомлено';
+$_['column_status']              = 'Статус';
+$_['column_date_added']          = 'Дата додавання';
+$_['column_product']             = 'Товар';
+$_['column_model']               = 'Модель';
+$_['column_quantity']            = 'Кількість';
+$_['column_trial_price']         = 'Ціна пробної версії';
+$_['column_price']               = 'Ціна';
+$_['column_amount']              = 'Сума';
+$_['column_code']                = 'Код';
+$_['column_description']         = 'Опис';
+$_['column_action']              = 'Дія';
 
-// Entry
-$_['entry_subscription_id']      = 'Subscription ID';
-$_['entry_order_id']             = 'Order ID';
-$_['entry_customer']             = 'Customer';
-$_['entry_store']                = 'Store';
-$_['entry_language']             = 'Language';
-$_['entry_currency']             = 'Currency';
-$_['entry_subscription_plan']    = 'Subscription Plan';
-$_['entry_date_next']            = 'Date Next';
-$_['entry_comment']              = 'Comment';
-$_['entry_notify']               = 'Notify Customer';
-$_['entry_date_from']            = 'Date From';
-$_['entry_date_to']              = 'Date To';
-$_['entry_subscription_status']  = 'Subscription Status';
-$_['entry_product']              = 'Choose Product';
-$_['entry_option']               = 'Choose Option(s)';
-$_['entry_quantity']             = 'Quantity';
-$_['entry_payment_address']      = 'Payment Address';
-$_['entry_shipping_address']     = 'Shipping Address';
+// Поля вводу
+$_['entry_subscription_id']      = 'ID підписки';
+$_['entry_order_id']             = 'ID замовлення';
+$_['entry_customer']             = 'Клієнт';
+$_['entry_store']                = 'Магазин';
+$_['entry_language']             = 'Мова';
+$_['entry_currency']             = 'Валюта';
+$_['entry_subscription_plan']    = 'План підписки';
+$_['entry_date_next']            = 'Дата наступної';
+$_['entry_comment']              = 'Коментар';
+$_['entry_notify']               = 'Повідомити клієнта';
+$_['entry_date_from']            = 'Дата з';
+$_['entry_date_to']              = 'Дата по';
+$_['entry_subscription_status']  = 'Статус підписки';
+$_['entry_product']              = 'Виберіть товар';
+$_['entry_option']               = 'Вибір опцій';
+$_['entry_quantity']             = 'Кількість';
+$_['entry_payment_address']      = 'Адреса оплати';
+$_['entry_shipping_address']     = 'Адреса доставки';
 
-// Tab
-$_['tab_order']                  = 'Orders';
+// Вкладки
+$_['tab_order']                  = 'Замовлення';
 
-// Error
-$_['error_permission']           = 'Warning: You do not have permission to modify subscriptions!';
-$_['error_subscription_status']  = 'Warning: Subscription status needs to be selected!';
-$_['error_payment_method']       = 'Warning: Payment method does not exist!';
+// Помилки
+$_['error_permission']           = 'Попередження: У вас немає дозволу змінювати підписки!';
+$_['error_subscription_status']  = 'Попередження: Потрібно вибрати статус підписки!';
+$_['error_payment_method']       = 'Попередження: Метод оплати не існує!';

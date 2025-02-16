@@ -1,18 +1,18 @@
 <?php
-// Heading
-$_['heading_title']          = 'Shipping Method';
+// Заголовок
+$_['heading_title']          = 'Метод доставки';
 
-// Text
-$_['text_shipping_method']   = 'Shipping method options';
-$_['text_shipping']          = 'Please select the preferred shipping method to use for this order.';
-$_['text_success']           = 'Success: You have changed shipping method!';
+// Текст
+$_['text_shipping_method']   = 'Опції методу доставки';
+$_['text_shipping']          = 'Будь ласка, виберіть бажаний метод доставки для цього замовлення.';
+$_['text_success']           = 'Успіх: Ви змінили метод доставки!';
 
-// Entry
-$_['entry_shipping_method']  = 'Choose shipping method...';
+// Введення
+$_['entry_shipping_method']  = 'Виберіть метод доставки...';
 
-// Error
-$_['error_customer']         = 'Customer required!';
-$_['error_payment_address']  = 'Payment address required!';
-$_['error_shipping_address'] = 'Shipping address required!';
-$_['error_shipping_method']  = 'Shipping method required!';
-$_['error_no_shipping']      = 'No Shipping options are available. Please <a href="%s">contact us</a> for assistance!';
+// Помилки
+$_['error_customer']         = 'Необхідні дані клієнта!';
+$_['error_payment_address']  = 'Необхідна адреса для оплати!';
+$_['error_shipping_address'] = 'Необхідна адреса для доставки!';
+$_['error_shipping_method']  = 'Необхідний метод доставки!';
+$_['error_no_shipping']      = 'Не доступні опції доставки. Будь ласка, <a href="%s">зв\'яжіться з нами</a> для допомоги!';

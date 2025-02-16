@@ -1,14 +1,14 @@
 <?php
-// Text
-$_['text_success']       = 'Success: You have modified your shopping cart!';
-$_['text_subscription']  = 'Subscription';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили своє замовлення в кошику!';
+$_['text_subscription']  = 'Підписка';
 
-// Error
-$_['error_warning']      = 'Warning: Please check the cart carefully for errors!';
-$_['error_product']      = 'Warning: Product could not be found!';
-$_['error_stock']        = 'Product not available in the desired quantity or not in stock!';
-$_['error_minimum']      = 'Minimum order amount for %s is %s!';
-$_['error_option']       = 'Option could not be found!';
-$_['error_option_stock'] = 'Option not available in the desired quantity or not in stock!';
-$_['error_required']     = '%s required!';
-$_['error_subscription'] = 'Subscription Plan is not valid!';
+// Помилка
+$_['error_warning']      = 'Увага: Будь ласка, перевірте кошик на наявність помилок!';
+$_['error_product']      = 'Увага: Продукт не знайдений!';
+$_['error_stock']        = 'Продукт недоступний в бажаній кількості або немає в наявності!';
+$_['error_minimum']      = 'Мінімальна сума замовлення для %s складає %s!';
+$_['error_option']       = 'Опцію не знайдено!';
+$_['error_option_stock'] = 'Опція недоступна в бажаній кількості або немає в наявності!';
+$_['error_required']     = '%s обов\'язкове!';
+$_['error_subscription'] = 'План підписки недійсний!';

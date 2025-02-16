@@ -1,27 +1,27 @@
 <?php
-// Heading
-$_['heading_title']      = 'Geo Zones';
+// Заголовок
+$_['heading_title']      = 'Географічні зони';
 
-// Text
-$_['text_success']       = 'Success: You have modified geo zones!';
-$_['text_list']          = 'Geo Zone List';
-$_['text_add']           = 'Add Geo Zone';
-$_['text_edit']          = 'Edit Geo Zone';
-$_['text_geo_zone']      = 'Geo Zones';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили географічні зони!';
+$_['text_list']          = 'Список географічних зон';
+$_['text_add']           = 'Додати географічну зону';
+$_['text_edit']          = 'Редагувати географічну зону';
+$_['text_geo_zone']      = 'Географічні зони';
 
-// Column
-$_['column_name']        = 'Geo Zone Name';
-$_['column_description'] = 'Description';
-$_['column_action']      = 'Action';
+// Стовпці
+$_['column_name']        = 'Назва географічної зони';
+$_['column_description'] = 'Опис';
+$_['column_action']      = 'Дія';
 
-// Entry
-$_['entry_name']         = 'Geo Zone Name';
-$_['entry_description']  = 'Description';
-$_['entry_country']      = 'Country';
-$_['entry_zone']         = 'Zone';
+// Поля вводу
+$_['entry_name']         = 'Назва географічної зони';
+$_['entry_description']  = 'Опис';
+$_['entry_country']      = 'Країна';
+$_['entry_zone']         = 'Регіон';
 
-// Error
-$_['error_permission']   = 'Warning: You do not have permission to modify geo zones!';
-$_['error_name']         = 'Geo Zone Name must be between 3 and 32 characters!';
-$_['error_description']  = 'Description Name must be between 3 and 255 characters!';
-$_['error_tax_rate']     = 'Warning: This geo zone cannot be deleted as it is currently assigned to one or more tax rates!';
+// Помилки
+$_['error_permission']   = 'Увага: У вас немає дозволу на зміну географічних зон!';
+$_['error_name']         = 'Назва географічної зони повинна містити від 3 до 32 символів!';
+$_['error_description']  = 'Опис повинен містити від 3 до 255 символів!';
+$_['error_tax_rate']     = 'Увага: Цю географічну зону не можна видалити, оскільки вона призначена для одного або кількох податкових ставок!';

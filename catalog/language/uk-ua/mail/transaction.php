@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_subject']  = '%s - Affiliate Commission';
-$_['text_received'] = 'Congratulations! You have received a commission payment from the %s affiliate program';
-$_['text_amount']   = 'You have received:';
-$_['text_total']    = 'Your total amount of commission is now:';
+// Текст
+$_['text_subject']  = '%s - Комісія за афіліацію';
+$_['text_received'] = 'Вітаємо! Ви отримали платіж комісії від програми афіліації %s';
+$_['text_amount']   = 'Ви отримали:';
+$_['text_total']    = 'Ваш загальний розмір комісії наразі складає:';

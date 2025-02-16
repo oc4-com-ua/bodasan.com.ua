@@ -1,22 +1,22 @@
 <?php
-// Heading
-$_['heading_title']        = 'Anti-Spam';
+// Заголовок
+$_['heading_title']        = 'Антиспам';
 
-// Text
-$_['text_success']         = 'Success: You have modified anti-spam!';
-$_['text_list']            = 'Anti-Spam List';
-$_['text_add']             = 'Add Anti-Spam';
-$_['text_edit']            = 'Edit Anti-Spam';
+// Текст
+$_['text_success']         = 'Успіх: Ви змінили налаштування антиспаму!';
+$_['text_list']            = 'Список антиспаму';
+$_['text_add']             = 'Додати правило антиспаму';
+$_['text_edit']            = 'Редагувати правило антиспаму';
 
-// Column
-$_['column_keyword']       = 'Keyword';
-$_['column_action']        = 'Action';
+// Стовпці
+$_['column_keyword']       = 'Ключове слово';
+$_['column_action']        = 'Дія';
 
-// Entry
-$_['entry_keyword']        = 'Keyword';
+// Поля вводу
+$_['entry_keyword']        = 'Ключове слово';
 
-// Error
-$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']     = 'Warning: You do not have permission to modify anti-spam!';
-$_['error_keyword']        = 'Keyword must be between 1 and 64 characters!';
-$_['error_keyword_exists'] = 'Keyword must be unique!';
+// Помилки
+$_['error_warning']        = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission']     = 'Увага: У вас немає дозволу на зміну налаштувань антиспаму!';
+$_['error_keyword']        = 'Ключове слово повинно містити від 1 до 64 символів!';
+$_['error_keyword_exists'] = 'Ключове слово повинно бути унікальним!';

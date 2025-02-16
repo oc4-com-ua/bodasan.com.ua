@@ -1,23 +1,23 @@
 <?php
-// Heading
-$_['heading_title']   = 'My Wishlist';
+// Заголовок
+$_['heading_title']   = 'Мій список бажаних товарів';
 
-// Text
-$_['text_account']    = 'Account';
-$_['text_wishlist']   = 'Wish List (%s)';
-$_['text_login']      = 'You must <a href="%s">login</a> or <a href="%s">create an account</a> to save <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
-$_['text_success']    = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">wish list</a>!';
-$_['text_remove']     = 'Success: You have removed an item from your wishlist';
-$_['text_no_results'] = 'Your wish list is empty.';
+// Текст
+$_['text_account']    = 'Обліковий запис';
+$_['text_wishlist']   = 'Список бажаних товарів (%s)';
+$_['text_login']      = 'Ви повинні <a href="%s">увійти</a> або <a href="%s">створити обліковий запис</a>, щоб зберегти <a href="%s">%s</a> до вашого <a href="%s">списку бажаних товарів</a>!';
+$_['text_success']    = 'Успіх: Ви додали <a href="%s">%s</a> до вашого <a href="%s">списку бажаних товарів</a>!';
+$_['text_remove']     = 'Успіх: Ви видалили товар зі списку бажаних';
+$_['text_no_results'] = 'Ваш список бажаних товарів порожній.';
 
-// Column
-$_['column_image']    = 'Image';
-$_['column_name']     = 'Product Name';
-$_['column_model']    = 'Model';
-$_['column_stock']    = 'Stock';
-$_['column_price']    = 'Unit Price';
-$_['column_action']   = 'Action';
+// Колонка
+$_['column_image']    = 'Зображення';
+$_['column_name']     = 'Назва товару';
+$_['column_model']    = 'Модель';
+$_['column_stock']    = 'Наявність';
+$_['column_price']    = 'Ціна за одиницю';
+$_['column_action']   = 'Дія';
 
-// Error
-$_['error_product']   = 'Warning: Product could not be found!';
-$_['error_login']     = 'Warning: You must <a href="%s">login</a> or <a href="%s">create an account</a> to remove items from your <a href="%s">wish list</a>!';
+// Помилка
+$_['error_product']   = 'Увага: Товар не знайдено!';
+$_['error_login']     = 'Увага: Ви повинні <a href="%s">увійти</a> або <a href="%s">створити обліковий запис</a>, щоб видаляти товари зі свого <a href="%s">списку бажаних товарів</a>!';

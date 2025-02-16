@@ -1,46 +1,46 @@
 <?php
-// Heading
-$_['heading_title']          = 'Extension Installer';
+// Заголовок
+$_['heading_title']          = 'Інсталятор розширень';
 
-// Text
-$_['text_upload']            = 'Success: The extension has been uploaded!';
-$_['text_success']           = 'Success: You have modified extensions!';
-$_['text_progress']          = 'Install Progress';
-$_['text_installed']         = 'Installed Extensions';
-$_['text_info']              = 'Extension Information';
-$_['text_install']           = 'Installing files %s to %s of %s';
-$_['text_vendor']            = 'Refresh vendor files';
-$_['text_xml']               = 'Install OCMOD files';
+// Текст
+$_['text_upload']            = 'Успіх: Розширення було завантажено!';
+$_['text_success']           = 'Успіх: Ви змінили розширення!';
+$_['text_progress']          = 'Хід встановлення';
+$_['text_installed']         = 'Встановлені розширення';
+$_['text_info']              = 'Інформація про розширення';
+$_['text_install']           = 'Встановлення файлів %s з %s із %s';
+$_['text_vendor']            = 'Оновлення файлів постачальника';
+$_['text_xml']               = 'Встановлення OCMOD файлів';
 
-// Column
-$_['column_image']           = 'Image';
-$_['column_name']            = 'Extension Name';
-$_['column_version']         = 'Version';
-$_['column_date_added']      = 'Date Added';
-$_['column_action']          = 'Action';
+// Колонки
+$_['column_image']           = 'Зображення';
+$_['column_name']            = 'Назва розширення';
+$_['column_version']         = 'Версія';
+$_['column_date_added']      = 'Дата додавання';
+$_['column_action']          = 'Дія';
 
-// Entry
-$_['entry_progress']         = 'Progress';
-$_['entry_name']             = 'Extension Name';
-$_['entry_description']      = 'Description';
-$_['entry_code']             = 'Code';
+// Поля введення
+$_['entry_progress']         = 'Прогрес';
+$_['entry_name']             = 'Назва розширення';
+$_['entry_description']      = 'Опис';
+$_['entry_code']             = 'Код';
 
-// Error
-$_['error_permission']       = 'Warning: You do not have permission to modify extensions!';
-$_['error_install']          = 'Warning: Could not find install.json!';
-$_['error_default']          = 'Default extension could not be uninstalled or deleted!';
-$_['error_extension']        = 'Installed extension could not be found!';
-$_['error_installed']        = 'Extension already installed!';
-$_['error_uninstall']        = 'There are %s extensions that need to be uninstalled before this extension can be safely removed!';
-$_['error_name']             = 'Name must be between 3 and 128 characters!';
-$_['error_version']          = 'Version must be between 3 and 128 characters!';
-$_['error_author']           = 'Author must be between 3 and 128 characters!';
-$_['error_link']             = 'Link must be between 3 and 128 characters!';
-$_['error_filename']         = 'Filename must be between 3 and 128 characters!';
-$_['error_file']             = 'Install file %s could not be found!';
-$_['error_file_exists']      = 'File already exist!';
-$_['error_file_type']        = 'Invalid file type!';
-$_['error_directory']        = 'Install directory %s could not be found!';
-$_['error_directory_exists'] = 'Path %s already exists!';
-$_['error_unzip']            = 'Zip file could not be opened!';
-$_['error_upload']           = 'File could not be uploaded!';
+// Помилки
+$_['error_permission']       = 'Увага: У вас немає прав для зміни розширень!';
+$_['error_install']          = 'Увага: Неможливо знайти install.json!';
+$_['error_default']          = 'Стандартне розширення не можна видалити!';
+$_['error_extension']        = 'Встановлене розширення не знайдено!';
+$_['error_installed']        = 'Розширення вже встановлене!';
+$_['error_uninstall']        = 'Необхідно спочатку видалити %s розширень перед безпечним видаленням цього!';
+$_['error_name']             = 'Назва має бути від 3 до 128 символів!';
+$_['error_version']          = 'Версія має бути від 3 до 128 символів!';
+$_['error_author']           = 'Автор має бути від 3 до 128 символів!';
+$_['error_link']             = 'Посилання має бути від 3 до 128 символів!';
+$_['error_filename']         = 'Ім\'я файлу має бути від 3 до 128 символів!';
+$_['error_file']             = 'Файл встановлення %s не знайдено!';
+$_['error_file_exists']      = 'Файл вже існує!';
+$_['error_file_type']        = 'Недійсний тип файлу!';
+$_['error_directory']        = 'Каталог встановлення %s не знайдено!';
+$_['error_directory_exists'] = 'Шлях %s вже існує!';
+$_['error_unzip']            = 'Не вдалося відкрити zip-файл!';
+$_['error_upload']           = 'Не вдалося завантажити файл!';

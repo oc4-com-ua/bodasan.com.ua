@@ -1,23 +1,23 @@
 <?php
-// Heading
-$_['heading_title']          = 'Payment Method';
+// Заголовок
+$_['heading_title']          = 'Метод оплати';
 
-// Text
-$_['text_payment_method']    = 'Payment method options';
-$_['text_payment']           = 'Please select the preferred payment method to use for this order.';
-$_['text_comments']          = 'Add Comments About Your Order';
-$_['text_agree']             = 'I have read and agree to the <a href="%s" class="modal-link"><b>%s</b></a>';
-$_['text_success']           = 'Success: You have changed payment method!';
-$_['text_comment']           = 'Success: Comment added!';
+// Текст
+$_['text_payment_method']    = 'Опції методів оплати';
+$_['text_payment']           = 'Будь ласка, виберіть бажаний метод оплати для цього замовлення.';
+$_['text_comments']          = 'Додати коментарі до вашого замовлення';
+$_['text_agree']             = 'Я прочитав(ла) і погоджуюсь з <a href="%s" class="modal-link"><b>%s</b></a>';
+$_['text_success']           = 'Успіх: Ви змінили метод оплати!';
+$_['text_comment']           = 'Успіх: Коментар додано!';
 
-// Entry
-$_['entry_payment_method']   = 'Choose payment method...';
+// Введення
+$_['entry_payment_method']   = 'Виберіть метод оплати...';
 
-// Error
-$_['error_order']            = 'Order not found! Please refresh the page.';
-$_['error_customer']         = 'Customer required!';
-$_['error_payment_address']  = 'Payment address required!';
-$_['error_shipping_address'] = 'Shipping address required!';
-$_['error_shipping_method']  = 'Shipping method required!';
-$_['error_payment_method']   = 'Payment method required!';
-$_['error_no_payment']       = 'No Payment options are available. Please <a href="%s">contact us</a> for assistance!';
+// Помилки
+$_['error_order']            = 'Замовлення не знайдено! Будь ласка, оновіть сторінку.';
+$_['error_customer']         = 'Необхідно вказати покупця!';
+$_['error_payment_address']  = 'Необхідно вказати адресу оплати!';
+$_['error_shipping_address'] = 'Необхідно вказати адресу доставки!';
+$_['error_shipping_method']  = 'Необхідно вказати метод доставки!';
+$_['error_payment_method']   = 'Необхідно вказати метод оплати!';
+$_['error_no_payment']       = 'Методи оплати недоступні. Будь ласка, <a href="%s">зверніться до нас</a> за допомогою!';

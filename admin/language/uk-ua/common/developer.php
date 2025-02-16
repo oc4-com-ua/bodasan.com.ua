@@ -1,28 +1,28 @@
 <?php
-// Heading
-$_['heading_title']          = 'Developer Options';
+// Заголовок
+$_['heading_title']          = 'Опції розробника';
 
-// Text
-$_['text_developer_success'] = 'Success: You have modified developer settings!';
-$_['text_cache_success']     = 'Success: You have cleared the cache!';
-$_['text_theme_success']     = 'Success: You have cleared the theme cache!';
-$_['text_sass_success']      = 'Success: You have cleared the SASS cache!';
-$_['text_vendor_success']    = 'Success: You have cleared the vendor cache!';
-$_['text_theme']             = 'Theme';
+// Текст
+$_['text_developer_success'] = 'Успіх: Ви змінили налаштування розробника!';
+$_['text_cache_success']     = 'Успіх: Ви очистили кеш!';
+$_['text_theme_success']     = 'Успіх: Ви очистили кеш теми!';
+$_['text_sass_success']      = 'Успіх: Ви очистили кеш SASS!';
+$_['text_vendor_success']    = 'Успіх: Ви очистили кеш постачальників!';
+$_['text_theme']             = 'Тема';
 $_['text_sass']              = 'SASS';
-$_['text_cache']             = 'Cache';
+$_['text_cache']             = 'Кеш';
 $_['text_vendor']            = 'Vendor';
 
-// Column
-$_['column_component']       = 'Component';
-$_['column_action']          = 'Action';
+// Стовпці
+$_['column_component']       = 'Компонент';
+$_['column_action']          = 'Дія';
 
-// Entry
-$_['entry_cache']            = 'Cache';
+// Поля вводу
+$_['entry_cache']            = 'Кеш';
 
-// Buttons
-$_['button_on']              = 'On';
-$_['button_off']             = 'Off';
+// Кнопки
+$_['button_on']              = 'Увімкнено';
+$_['button_off']             = 'Вимкнено';
 
-// Error
-$_['error_permission']       = 'Warning: You do not have permission to modify developer settings!';
+// Помилки
+$_['error_permission']       = 'Увага: У вас немає дозволу на зміну налаштувань розробника!';

@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_recommended'] = 'Recommended';
-$_['text_install']     = 'Install';
-$_['text_uninstall']   = 'Uninstall';
-$_['text_delete']      = 'Delete';
+// Текст
+$_['text_recommended'] = 'Рекомендовано';
+$_['text_install']     = 'Встановити';
+$_['text_uninstall']   = 'Видалити';
+$_['text_delete']      = 'Видалити';

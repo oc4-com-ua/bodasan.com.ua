@@ -1,52 +1,52 @@
 <?php
-// Heading
-$_['heading_title']              = 'Subscriptions';
+// Заголовок
+$_['heading_title']              = 'Підписки';
 
-// Text
-$_['text_account']               = 'Account';
-$_['text_success']               = 'Success: Your subscription has successfully been canceled!';
-$_['text_subscription']          = 'Subscription #%s';
-$_['text_subscription_id']       = 'Subscription ID';
-$_['text_order_id']              = 'Order ID';
-$_['text_shipping_address']      = 'Shipping Address';
-$_['text_shipping_method']       = 'Shipping Method';
-$_['text_payment_address']       = 'Payment Address';
-$_['text_payment_method']        = 'Payment Method';
-$_['text_model']                 = 'Model';
-$_['text_subscription_plan']     = 'Subscription Plan';
-$_['text_subscription_trial']    = '%s every %d %s(s) for %d payment(s) then ';
-$_['text_subscription_duration'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']   = '%s every %d %s(s) until canceled';
-$_['text_day']                   = 'day';
-$_['text_week']                  = 'week';
-$_['text_semi_month']            = 'half-month';
-$_['text_month']                 = 'month';
-$_['text_year']                  = 'year';
-$_['text_quantity']              = 'Quantity';
-$_['text_date_next']             = 'Date Next';
-$_['text_remaining']             = 'Remaining';
-$_['text_history']               = 'Subscription History';
-$_['text_order']                 = 'Order History';
-$_['text_no_subscription']       = 'No subscriptions found!';
+// Текст
+$_['text_account']               = 'Обліковий запис';
+$_['text_success']               = 'Успіх: Ваша підписка була успішно скасована!';
+$_['text_subscription']          = 'Підписка #%s';
+$_['text_subscription_id']       = 'ID підписки';
+$_['text_order_id']              = 'ID замовлення';
+$_['text_shipping_address']      = 'Адреса доставки';
+$_['text_shipping_method']       = 'Метод доставки';
+$_['text_payment_address']       = 'Адреса для оплати';
+$_['text_payment_method']        = 'Метод оплати';
+$_['text_model']                 = 'Модель';
+$_['text_subscription_plan']     = 'План підписки';
+$_['text_subscription_trial']    = '%s кожні %d %s(и) для %d платежів, а потім ';
+$_['text_subscription_duration'] = '%s кожні %d %s(и) для %d платежів';
+$_['text_subscription_cancel']   = '%s кожні %d %s(и) до скасування';
+$_['text_day']                   = 'день';
+$_['text_week']                  = 'тиждень';
+$_['text_semi_month']            = 'півмісяця';
+$_['text_month']                 = 'місяць';
+$_['text_year']                  = 'рік';
+$_['text_quantity']              = 'Кількість';
+$_['text_date_next']             = 'Наступна дата';
+$_['text_remaining']             = 'Залишилось';
+$_['text_history']               = 'Історія підписки';
+$_['text_order']                 = 'Історія замовлень';
+$_['text_no_subscription']       = 'Підписок не знайдено!';
 
-// Column
-$_['column_subscription_id']     = 'Subscription ID';
-$_['column_product']             = 'Product';
-$_['column_product_total']       = 'No. of Products';
-$_['column_description']         = 'Description';
-$_['column_order_id']            = 'Order ID';
-$_['column_status']              = 'Status';
-$_['column_quantity']            = 'Quantity';
-$_['column_trial_price']         = 'Trial Price';
-$_['column_price']               = 'Price';
-$_['column_total']               = 'Total';
-$_['column_comment']             = 'Comment';
-$_['column_date_added']          = 'Date Added';
+// Стовпці
+$_['column_subscription_id']     = 'ID підписки';
+$_['column_product']             = 'Продукт';
+$_['column_product_total']       = 'Кількість продуктів';
+$_['column_description']         = 'Опис';
+$_['column_order_id']            = 'ID замовлення';
+$_['column_status']              = 'Статус';
+$_['column_quantity']            = 'Кількість';
+$_['column_trial_price']         = 'Ціна пробного періоду';
+$_['column_price']               = 'Ціна';
+$_['column_total']               = 'Загальна сума';
+$_['column_comment']             = 'Коментар';
+$_['column_date_added']          = 'Дата додавання';
 
-// Button
-$_['button_cancel']              = 'Cancel Subscription';
+// Кнопка
+$_['button_cancel']              = 'Скасувати підписку';
 
-// Error
-$_['error_subscription']         = 'Subscription could not be found!';
-$_['error_duration']             = 'Subscription can not be canceled until %s more orders!';
-$_['error_canceled']             = 'Subscription already canceled!';
+// Помилка
+$_['error_subscription']         = 'Підписку не знайдено!';
+$_['error_duration']             = 'Підписка не може бути скасована до %s ще замовлень!';
+$_['error_canceled']             = 'Підписка вже скасована!';

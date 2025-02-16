@@ -1,78 +1,78 @@
 <?php
-// Heading
-$_['heading_title']      = 'Extension Marketplace';
+// Заголовок
+$_['heading_title']      = 'Маркетплейс розширень';
 
-// Text
-$_['text_success']       = 'Success: You have modified extensions!';
-$_['text_list']          = 'Extension List';
-$_['text_filter']        = 'Filter';
-$_['text_search']        = 'Search for extensions and themes';
-$_['text_category']      = 'Categories';
-$_['text_all']           = 'All';
-$_['text_theme']         = 'Themes';
-$_['text_marketplace']   = 'Marketplaces';
-$_['text_language']      = 'Languages';
-$_['text_payment']       = 'Payment';
-$_['text_shipping']      = 'Shipping';
-$_['text_module']        = 'Modules';
-$_['text_total']         = 'Order Totals';
-$_['text_feed']          = 'Feeds';
-$_['text_report']        = 'Reports';
-$_['text_other']         = 'Other';
-$_['text_free']          = 'Free';
-$_['text_paid']          = 'Paid';
-$_['text_purchased']     = 'Purchased';
-$_['text_recommended']   = 'Recommended';
-$_['text_date_modified'] = 'Date Modified';
-$_['text_date_added']    = 'Date Added';
-$_['text_rating']        = 'Rating';
-$_['text_reviews']       = 'reviews';
-$_['text_compatibility'] = 'Compatibility';
-$_['text_downloaded']    = 'Downloaded';
-$_['text_member_since']  = 'Member since:';
-$_['text_price']         = 'Price';
-$_['text_featured']      = 'Featured';
-$_['text_partner']       = 'Developed by OpenCart Partner';
-$_['text_support']       = '12 Months free support';
-$_['text_documentation'] = 'Documentation Included';
-$_['text_sales']         = 'Sales';
-$_['text_comment']       = 'Comments';
-$_['text_download']      = 'Downloading';
-$_['text_install']       = 'Installing';
-$_['text_comment_add']   = 'Leave your comment';
-$_['text_write']         = 'Write your comment here.';
-$_['text_purchase']      = 'Please confirm who you are!';
-$_['text_pin']           = 'Please enter your 4 digit PIN number. This PIN number is to protect your account.';
-$_['text_secure']        = 'Do not give your PIN to anyone (including developers). If you require assistance, please send an email to the extension seller in regards to the specific extension package.';
-$_['text_name']          = 'Download Name';
-$_['text_available']     = 'Available Installs';
-$_['text_action']        = 'Action';
-$_['text_install']       = 'Install';
-$_['text_uninstall']     = 'Uninstall';
-$_['text_delete']        = 'Delete';
-$_['text_more']          = 'see more replies...';
-$_['text_refresh']       = 'refresh';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили розширення!';
+$_['text_list']          = 'Список розширень';
+$_['text_filter']        = 'Фільтр';
+$_['text_search']        = 'Пошук розширень і тем';
+$_['text_category']      = 'Категорії';
+$_['text_all']           = 'Усі';
+$_['text_theme']         = 'Теми';
+$_['text_marketplace']   = 'Маркетплейси';
+$_['text_language']      = 'Мови';
+$_['text_payment']       = 'Оплата';
+$_['text_shipping']      = 'Доставка';
+$_['text_module']        = 'Модулі';
+$_['text_total']         = 'Разом у замовленні';
+$_['text_feed']          = 'Стрічки';
+$_['text_report']        = 'Звіти';
+$_['text_other']         = 'Інше';
+$_['text_free']          = 'Безкоштовні';
+$_['text_paid']          = 'Платні';
+$_['text_purchased']     = 'Придбані';
+$_['text_recommended']   = 'Рекомендовані';
+$_['text_date_modified'] = 'Дата змін';
+$_['text_date_added']    = 'Дата додавання';
+$_['text_rating']        = 'Рейтинг';
+$_['text_reviews']       = 'відгуків';
+$_['text_compatibility'] = 'Сумісність';
+$_['text_downloaded']    = 'Завантажено';
+$_['text_member_since']  = 'Учасник з:';
+$_['text_price']         = 'Ціна';
+$_['text_featured']      = 'Популярні';
+$_['text_partner']       = 'Розроблено партнером OpenCart';
+$_['text_support']       = '12 місяців безкоштовної підтримки';
+$_['text_documentation'] = 'Документація включена';
+$_['text_sales']         = 'Продажі';
+$_['text_comment']       = 'Коментарі';
+$_['text_download']      = 'Завантаження';
+$_['text_install']       = 'Встановлення';
+$_['text_comment_add']   = 'Залиште ваш коментар';
+$_['text_write']         = 'Напишіть ваш коментар тут.';
+$_['text_purchase']      = 'Будь ласка, підтвердьте вашу особу!';
+$_['text_pin']           = 'Введіть ваш 4-значний PIN-код. Цей PIN-код захищає ваш акаунт.';
+$_['text_secure']        = 'Не передавайте свій PIN нікому (включаючи розробників). Якщо вам потрібна допомога, зверніться до продавця розширення.';
+$_['text_name']          = 'Назва завантаження';
+$_['text_available']     = 'Доступні встановлення';
+$_['text_action']        = 'Дія';
+$_['text_install']       = 'Встановити';
+$_['text_uninstall']     = 'Видалити';
+$_['text_delete']        = 'Видалити';
+$_['text_more']          = 'дивитися більше відповідей...';
+$_['text_refresh']       = 'Оновити';
 
-// Entry
-$_['entry_pin']          = 'PIN';
+// Поля введення
+$_['entry_pin']          = 'PIN-код';
 
-// Tabs
-$_['tab_description']    = 'Description';
-$_['tab_documentation']  = 'Documentation';
-$_['tab_download']       = 'Download';
-$_['tab_comment']        = 'Comment';
+// Вкладки
+$_['tab_description']    = 'Опис';
+$_['tab_documentation']  = 'Документація';
+$_['tab_download']       = 'Завантаження';
+$_['tab_comment']        = 'Коментар';
 
-// Buttons
-$_['button_api']         = 'Marketplace API';
-$_['button_purchase']    = 'Purchase';
-$_['button_view_all']    = 'View all extensions';
-$_['button_support']     = 'Get Support';
-$_['button_comment']     = 'Comment';
-$_['button_reply']       = 'Reply';
-$_['button_forgot_pin']  = 'Forgot PIN?';
+// Кнопки
+$_['button_api']         = 'API Маркетплейсу';
+$_['button_purchase']    = 'Придбати';
+$_['button_view_all']    = 'Переглянути всі розширення';
+$_['button_support']     = 'Отримати підтримку';
+$_['button_comment']     = 'Коментувати';
+$_['button_reply']       = 'Відповісти';
+$_['button_forgot_pin']  = 'Забули PIN?';
 
-// Error
-$_['error_permission']   = 'Warning: You do not have permission to modify extensions!';
-$_['error_api']          = 'Warning: You must enter your OpenCart API information by clicking the <i class="fa-solid fa-triangle-exclamation"></i> before you can download extensions or make any purchases!';
-$_['error_purchase']     = 'The extension could not be purchased!';
-$_['error_download']     = 'The extension could not be downloaded!';
+// Помилки
+$_['error_permission']   = 'Увага: У вас немає дозволу на зміну розширень!';
+$_['error_api']          = 'Увага: Ви повинні ввести ваші API-дані OpenCart, натиснувши <i class="fa-solid fa-triangle-exclamation"></i>, перш ніж завантажувати розширення або здійснювати покупки!';
+$_['error_purchase']     = 'Не вдалося придбати розширення!';
+$_['error_download']     = 'Не вдалося завантажити розширення!';

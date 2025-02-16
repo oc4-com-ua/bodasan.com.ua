@@ -1,17 +1,17 @@
 <?php
-// Heading
-$_['heading_title']    = 'Site Map';
+// Заголовок
+$_['heading_title']    = 'Карта сайту';
 
-// Text
-$_['text_special']     = 'Special Offers';
-$_['text_account']     = 'My Account';
-$_['text_edit']        = 'Edit Information';
-$_['text_password']    = 'Password';
-$_['text_address']     = 'Address Book';
-$_['text_history']     = 'Order History';
-$_['text_download']    = 'Downloads';
-$_['text_cart']        = 'Shopping Cart';
-$_['text_checkout']    = 'Checkout';
-$_['text_search']      = 'Search';
-$_['text_information'] = 'Information';
-$_['text_contact']     = 'Contact Us';
+// Текст
+$_['text_special']     = 'Спеціальні пропозиції';
+$_['text_account']     = 'Мій акаунт';
+$_['text_edit']        = 'Редагувати інформацію';
+$_['text_password']    = 'Пароль';
+$_['text_address']     = 'Адресна книга';
+$_['text_history']     = 'Історія замовлень';
+$_['text_download']    = 'Завантаження';
+$_['text_cart']        = 'Кошик';
+$_['text_checkout']    = 'Оформлення замовлення';
+$_['text_search']      = 'Пошук';
+$_['text_information'] = 'Інформація';
+$_['text_contact']     = 'Зв\'язатися з нами';

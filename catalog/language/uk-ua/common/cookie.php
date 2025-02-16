@@ -1,8 +1,8 @@
 <?php
-// Text
-$_['text_success']    = 'Thank you for letting us know your choice!';
-$_['text_cookie']     = 'This website uses cookies. For more information <a href="%s" class="alert-link modal-link">click here</a>.';
+// Текст
+$_['text_success']    = 'Дякуємо, що повідомили нам про свій вибір!';
+$_['text_cookie']     = 'Цей вебсайт використовує cookies. Для отримання додаткової інформації <a href="%s" class="alert-link modal-link">натисніть тут</a>.';
 
-// Buttons
-$_['button_agree']    = 'Yes, that\'s fine!';
-$_['button_disagree'] = 'No Thanks!';
+// Кнопки
+$_['button_agree']    = 'Так, це в порядку!';
+$_['button_disagree'] = 'Ні, дякую!';

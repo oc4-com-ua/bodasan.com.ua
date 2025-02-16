@@ -1,48 +1,48 @@
 <?php
-// Heading
-$_['heading_title']          = 'Subscription Plans';
+// Заголовок
+$_['heading_title']          = 'Плани підписки';
 
-// Text
-$_['text_success']           = 'Success: You have modified subscription plans!';
-$_['text_list']              = 'Subscription Plan List';
-$_['text_add']               = 'Add Subscription Plan';
-$_['text_edit']              = 'Edit Subscription Plan';
-$_['text_subscription']      = 'Subscription';
-$_['text_trial']             = 'Trial';
-$_['text_day']               = 'Day';
-$_['text_week']              = 'Week';
-$_['text_semi_month']        = 'Semi Month';
-$_['text_month']             = 'Month';
-$_['text_year']              = 'Year';
+// Текст
+$_['text_success']           = 'Успіх: Ви змінили плани підписки!';
+$_['text_list']              = 'Список планів підписки';
+$_['text_add']               = 'Додати план підписки';
+$_['text_edit']              = 'Редагувати план підписки';
+$_['text_subscription']      = 'Підписка';
+$_['text_trial']             = 'Пробний період';
+$_['text_day']               = 'День';
+$_['text_week']              = 'Тиждень';
+$_['text_semi_month']        = 'Півмісяця';
+$_['text_month']             = 'Місяць';
+$_['text_year']              = 'Рік';
 
-// Entry
-$_['entry_name']             = 'Subscription Plan Name';
-$_['entry_trial_duration']   = 'Trial Duration';
-$_['entry_trial_cycle']      = 'Trial Cycle';
-$_['entry_trial_frequency']  = 'Trial Frequency';
-$_['entry_trial_status']     = 'Trial Status';
-$_['entry_duration']         = 'Duration';
-$_['entry_cycle']            = 'Cycle';
-$_['entry_frequency']        = 'Frequency';
-$_['entry_status']           = 'Status';
-$_['entry_sort_order']       = 'Sort Order';
+// Поля вводу
+$_['entry_name']             = 'Назва плану підписки';
+$_['entry_trial_duration']   = 'Тривалість пробного періоду';
+$_['entry_trial_cycle']      = 'Цикл пробного періоду';
+$_['entry_trial_frequency']  = 'Частота пробного періоду';
+$_['entry_trial_status']     = 'Статус пробного періоду';
+$_['entry_duration']         = 'Тривалість';
+$_['entry_cycle']            = 'Цикл';
+$_['entry_frequency']        = 'Частота';
+$_['entry_status']           = 'Статус';
+$_['entry_sort_order']       = 'Порядок сортування';
 
-// Column
-$_['column_name']            = 'Subscription Plan Name';
-$_['column_sort_order']      = 'Sort Order';
-$_['column_action']          = 'Action';
+// Стовпці
+$_['column_name']            = 'Назва плану підписки';
+$_['column_sort_order']      = 'Порядок сортування';
+$_['column_action']          = 'Дія';
 
-// Help
-$_['help_trial_duration']    = 'The duration is the number of times the user will make a payment.';
-$_['help_trial_cycle']       = 'Subscription amounts are calculated by the frequency and cycles.';
-$_['help_trial_frequency']   = 'If you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks.';
-$_['help_duration']          = 'The duration is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
-$_['help_cycle']             = 'Subscription amounts are calculated by the frequency and cycles.';
-$_['help_frequency']         = 'If you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks.';
+// Допомога
+$_['help_trial_duration']    = 'Тривалість — це кількість платежів, які користувач здійснить.';
+$_['help_trial_cycle']       = 'Сума підписки розраховується за частотою та циклами.';
+$_['help_trial_frequency']   = 'Якщо ви використовуєте частоту "тиждень" і цикл "2", то користувач буде сплачувати кожні 2 тижні.';
+$_['help_duration']          = 'Тривалість — це кількість платежів, які користувач здійснить. Встановіть 0, якщо бажаєте, щоб платежі здійснювалися до їхнього скасування.';
+$_['help_cycle']             = 'Сума підписки розраховується за частотою та циклами.';
+$_['help_frequency']         = 'Якщо ви використовуєте частоту "тиждень" і цикл "2", то користувач буде сплачувати кожні 2 тижні.';
 
-// Error
-$_['error_warning']          = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']       = 'Warning: You do not have permission to modify subscription plans!';
-$_['error_name']             = 'Subscription Plan Name must be greater than 3 and less than 255 characters!';
-$_['error_trial_duration']   = 'Trial duration must be greater than 0!';
-$_['error_product']          = 'Warning: This subscription plans cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_warning']          = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission']       = 'Увага: У вас немає дозволу на зміну планів підписки!';
+$_['error_name']             = 'Назва плану підписки повинна містити від 3 до 255 символів!';
+$_['error_trial_duration']   = 'Тривалість пробного періоду повинна бути більше 0!';
+$_['error_product']          = 'Увага: Цей план підписки не може бути видалений, оскільки він призначений для %s товарів!';

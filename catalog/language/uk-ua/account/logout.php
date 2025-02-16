@@ -1,8 +1,8 @@
 <?php
-// Heading
-$_['heading_title'] = 'Account Logout';
+// Заголовок
+$_['heading_title'] = 'Вихід з облікового запису';
 
-// Text
-$_['text_message']  = '<p>You have been logged off your account. It is now safe to leave the computer.</p><p>Your shopping cart has been saved, the items inside it will be restored whenever you log back into your account.</p>';
-$_['text_account']  = 'Account';
-$_['text_logout']   = 'Logout';
+// Текст
+$_['text_message']  = '<p>Ви вийшли з вашого облікового запису. Тепер можна безпечно залишати комп’ютер.</p><p>Ваш кошик зберігся, товари в ньому будуть відновлені, коли ви знову увійдете в свій обліковий запис.</p>';
+$_['text_account']  = 'Обліковий запис';
+$_['text_logout']   = 'Вийти';

@@ -1,9 +1,9 @@
 <?php
-// Heading
-$_['heading_title'] = 'Extensions';
+// Заголовок
+$_['heading_title'] = 'Розширення';
 
-// Text
-$_['text_success']  = 'Success: You have modified extensions!';
-$_['text_list']     = 'Extension List';
-$_['text_type']     = 'Choose the extension type';
-$_['text_filter']   = 'Filter';
+// Текст
+$_['text_success']  = 'Успіх: Ви змінили розширення!';
+$_['text_list']     = 'Список розширень';
+$_['text_type']     = 'Виберіть тип розширення';
+$_['text_filter']   = 'Фільтр';

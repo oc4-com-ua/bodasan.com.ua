@@ -1,12 +1,12 @@
 <?php
-// Text
-$_['text_success']           = 'Success: Payment method has been set!';
+// Текст
+$_['text_success']           = 'Успіх: Платіжний метод був встановлений!';
 
-// Error
-$_['error_customer']         = 'Warning: Customer details required!';
-$_['error_product']          = 'Warning: Products required!';
-$_['error_shipping_address'] = 'Warning: Shipping address required!';
-$_['error_shipping_method']  = 'Warning: Shipping method required!';
-$_['error_payment_address']  = 'Warning: Payment address required!';
-$_['error_no_payment']       = 'Warning: No payment options are available!';
-$_['error_payment_method']   = 'Warning: Payment method required!';
+// Помилка
+$_['error_customer']         = 'Попередження: Необхідно вказати дані клієнта!';
+$_['error_product']          = 'Попередження: Необхідно вказати продукти!';
+$_['error_shipping_address'] = 'Попередження: Необхідно вказати адресу доставки!';
+$_['error_shipping_method']  = 'Попередження: Необхідно вибрати метод доставки!';
+$_['error_payment_address']  = 'Попередження: Необхідно вказати платіжну адресу!';
+$_['error_no_payment']       = 'Попередження: Доступні варіанти оплати відсутні!';
+$_['error_payment_method']   = 'Попередження: Необхідно вибрати платіжний метод!';

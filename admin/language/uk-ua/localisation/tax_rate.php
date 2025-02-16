@@ -1,31 +1,31 @@
 <?php
-// Heading
-$_['heading_title']        = 'Tax Rates';
+// Заголовок
+$_['heading_title']        = 'Податкові ставки';
 
-// Text
-$_['text_success']         = 'Success: You have modified tax rates!';
-$_['text_list']            = 'Tax Rate List';
-$_['text_add']             = 'Add Tax Rate';
-$_['text_edit']            = 'Edit Tax Rate';
-$_['text_percent']         = 'Percentage';
-$_['text_amount']          = 'Fixed Amount';
+// Текст
+$_['text_success']         = 'Успіх: Ви змінили податкові ставки!';
+$_['text_list']            = 'Список податкових ставок';
+$_['text_add']             = 'Додати податкову ставку';
+$_['text_edit']            = 'Редагувати податкову ставку';
+$_['text_percent']         = 'Відсоток';
+$_['text_amount']          = 'Фіксована сума';
 
-// Column
-$_['column_name']          = 'Tax Name';
-$_['column_rate']          = 'Tax Rate';
-$_['column_type']          = 'Type';
-$_['column_geo_zone']      = 'Geo Zone';
-$_['column_action']        = 'Action';
+// Стовпці
+$_['column_name']          = 'Назва податку';
+$_['column_rate']          = 'Податкова ставка';
+$_['column_type']          = 'Тип';
+$_['column_geo_zone']      = 'Геозона';
+$_['column_action']        = 'Дія';
 
-// Entry
-$_['entry_name']           = 'Tax Name';
-$_['entry_rate']           = 'Tax Rate';
-$_['entry_type']           = 'Type';
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_geo_zone']       = 'Geo Zone';
+// Поля вводу
+$_['entry_name']           = 'Назва податку';
+$_['entry_rate']           = 'Податкова ставка';
+$_['entry_type']           = 'Тип';
+$_['entry_customer_group'] = 'Група клієнтів';
+$_['entry_geo_zone']       = 'Геозона';
 
-// Error
-$_['error_permission']     = 'Warning: You do not have permission to modify tax rates!';
-$_['error_tax_rule']       = 'Warning: This tax rate cannot be deleted as it is currently assigned to %s tax classes!';
-$_['error_name']           = 'Tax Name must be between 3 and 32 characters!';
-$_['error_rate']           = 'Tax Rate required!';
+// Помилки
+$_['error_permission']     = 'Увага: У вас немає дозволу на зміну податкових ставок!';
+$_['error_tax_rule']       = 'Увага: Цю податкову ставку не можна видалити, оскільки вона призначена для %s податкових класів!';
+$_['error_name']           = 'Назва податку повинна містити від 3 до 32 символів!';
+$_['error_rate']           = 'Необхідно вказати податкову ставку!';

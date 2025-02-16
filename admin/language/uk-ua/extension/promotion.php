@@ -1,3 +1,3 @@
 <?php
-// Heading Title
-$_['heading_title']	= 'Promotion';
+// Заголовок
+$_['heading_title']	= 'Промоакція';

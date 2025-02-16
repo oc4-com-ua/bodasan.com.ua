@@ -1,25 +1,25 @@
 <?php
-// Heading
-$_['heading_title']      = 'Forgot Your Password?';
-$_['heading_reset']      = 'Reset your password';
+// Заголовок
+$_['heading_title']      = 'Забули пароль?';
+$_['heading_reset']      = 'Скиньте свій пароль';
 
-// Text
-$_['text_account']       = 'Account';
-$_['text_forgotten']     = 'Forgotten Password';
-$_['text_your_email']    = 'Your E-Mail Address';
-$_['text_email']         = 'Enter the e-mail address associated with your account. Click submit to have a password reset link e-mailed to you.';
-$_['text_password']      = 'Enter the new password you wish to use.';
-$_['text_success']       = 'An email with a confirmation link has been sent to your email address.';
+// Текст
+$_['text_account']       = 'Обліковий запис';
+$_['text_forgotten']     = 'Забутий пароль';
+$_['text_your_email']    = 'Ваша електронна адреса';
+$_['text_email']         = 'Введіть електронну адресу, пов’язану з вашим обліковим записом. Натисніть "Надіслати", щоб отримати посилання для скидання пароля на вашу електронну пошту.';
+$_['text_password']      = 'Введіть новий пароль, який ви хочете використовувати.';
+$_['text_success']       = 'На вашу електронну адресу було надіслано лист з підтвердженням.';
 
-// Entry
-$_['entry_email']        = 'E-Mail Address';
-$_['entry_new_password'] = 'New Password';
-$_['entry_password']     = 'Password';
-$_['entry_confirm']      = 'Confirm';
+// Вхід
+$_['entry_email']        = 'Електронна адреса';
+$_['entry_new_password'] = 'Новий пароль';
+$_['entry_password']     = 'Пароль';
+$_['entry_confirm']      = 'Підтвердження пароля';
 
-// Error
-$_['error_email']        = 'E-Mail Address does not appear to be valid!';
-$_['error_not_found']    = 'Warning: The E-Mail Address was not found in our records!';
-$_['error_password']     = 'Password must be between 6 and 20 characters!';
-$_['error_confirm']      = 'Password and password confirmation do not match!';
-$_['error_code']         = 'Password reset code is invalid or was used previously!';
+// Помилка
+$_['error_email']        = 'Електронна адреса виглядає недійсною!';
+$_['error_not_found']    = 'Попередження: Електронна адреса не знайдена в наших записах!';
+$_['error_password']     = 'Пароль повинен містити від 6 до 20 символів!';
+$_['error_confirm']      = 'Пароль і підтвердження пароля не збігаються!';
+$_['error_code']         = 'Код скидання пароля недійсний або вже був використаний!';

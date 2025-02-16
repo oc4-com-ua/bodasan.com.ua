@@ -1,10 +1,10 @@
 <?php
-// Text
-$_['text_success']           = 'Success: Shipping method has been set!';
+// Текст
+$_['text_success']           = 'Успіх: Метод доставки було встановлено!';
 
-// Error
-$_['error_customer']         = 'Warning: Customer details required!';
-$_['error_shipping_address'] = 'Warning: Shipping address required!';
-$_['error_shipping']         = 'Warning: There are no products that require shipping';
-$_['error_no_shipping']      = 'Warning: No Shipping options are available!';
-$_['error_shipping_method']  = 'Warning: Shipping method required!';
+// Помилка
+$_['error_customer']         = 'Попередження: Потрібні дані клієнта!';
+$_['error_shipping_address'] = 'Попередження: Потрібна адреса доставки!';
+$_['error_shipping']         = 'Попередження: Немає продуктів, що потребують доставки';
+$_['error_no_shipping']      = 'Попередження: Немає доступних варіантів доставки!';
+$_['error_shipping_method']  = 'Попередження: Потрібен метод доставки!';

@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_subject'] = 'Security';
-$_['text_code']    = 'You must enter the security code in the admin security check.';
+// Текст
+$_['text_subject'] = 'Безпека';
+$_['text_code']    = 'Вам необхідно ввести код безпеки під час перевірки безпеки адміністратора.';
 $_['text_ip']      = 'IP:';
-$_['text_regards'] = 'Best Regards';
+$_['text_regards'] = 'З найкращими побажаннями';

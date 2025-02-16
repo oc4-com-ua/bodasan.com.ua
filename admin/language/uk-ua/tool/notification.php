@@ -1,14 +1,14 @@
 <?php
-// Heading
-$_['heading_title']    = 'Notifications';
+// Заголовок
+$_['heading_title']    = 'Сповіщення';
 
-// Text
-$_['text_success']     = 'Success: You have modified notifications!';
-$_['text_list']        = 'Notification List';
+// Текст
+$_['text_success']     = 'Успіх: Ви успішно змінити сповіщення!';
+$_['text_list']        = 'Список сповіщень';
 
-// Column
-$_['column_message']   = 'Message';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_message']   = 'Повідомлення';
+$_['column_action']    = 'Дія';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify notifications!';
+// Помилка
+$_['error_permission'] = 'Попередження: Ви не маєте дозволу змінювати сповіщення!';

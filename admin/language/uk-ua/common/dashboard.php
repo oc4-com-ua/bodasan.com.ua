@@ -1,3 +1,3 @@
 <?php
-// Heading
-$_['heading_title'] = 'Dashboard';
+// Заголовок
+$_['heading_title'] = 'Панель керування';

@@ -1,27 +1,27 @@
 <?php
-// Heading
-$_['heading_title']           = 'Address Format';
+// Заголовок
+$_['heading_title']           = 'Формат адреси';
 
-// Text
-$_['text_success']            = 'Success: You have modified address formats!';
-$_['text_list']               = 'Address Format List';
-$_['text_add']                = 'Add Address Format';
-$_['text_edit']               = 'Edit Address Format';
+// Текст
+$_['text_success']            = 'Успіх: Ви змінили формати адрес!';
+$_['text_list']               = 'Список форматів адрес';
+$_['text_add']                = 'Додати формат адреси';
+$_['text_edit']               = 'Редагувати формат адреси';
 
-// Column
-$_['column_name']             = 'Address Format Name';
-$_['column_address_format']   = 'Address Format';
-$_['column_action']           = 'Action';
+// Стовпці
+$_['column_name']             = 'Назва формату адреси';
+$_['column_address_format']   = 'Формат адреси';
+$_['column_action']           = 'Дія';
 
-// Entry
-$_['entry_name']              = 'Address Format Name';
-$_['entry_address_format']    = 'Address Format';
+// Поля вводу
+$_['entry_name']              = 'Назва формату адреси';
+$_['entry_address_format']    = 'Формат адреси';
 
-// Help
-$_['help_address_format']     = 'First Name = {firstname}<br/>Last Name = {lastname}<br/>Company = {company}<br/>Address 1 = {address_1}<br/>Address 2 = {address_2}<br/>City = {city}<br/>Postcode = {postcode}<br/>Zone = {zone}<br/>Zone Code = {zone_code}<br/>Country = {country}';
+// Довідка
+$_['help_address_format']     = 'Ім’я = {firstname}<br/>Прізвище = {lastname}<br/>Компанія = {company}<br/>Адреса 1 = {address_1}<br/>Адреса 2 = {address_2}<br/>Місто = {city}<br/>Поштовий індекс = {postcode}<br/>Регіон = {zone}<br/>Код регіону = {zone_code}<br/>Країна = {country}';
 
-// Error
-$_['error_permission']        = 'Warning: You do not have permission to modify address formats!';
-$_['error_name']              = 'Address Format Name must be between 1 and 128 characters!';
-$_['error_default']           = 'Warning: This address format cannot be deleted as it is currently assigned as the default address format!';
-$_['error_country']           = 'Warning: This address format cannot be deleted as it is currently assigned to %s countries!';
+// Помилки
+$_['error_permission']        = 'Увага: У вас немає дозволу на зміну форматів адрес!';
+$_['error_name']              = 'Назва формату адреси повинна містити від 1 до 128 символів!';
+$_['error_default']           = 'Увага: Цей формат адреси не можна видалити, оскільки він використовується за замовчуванням!';
+$_['error_country']           = 'Увага: Цей формат адреси не можна видалити, оскільки він використовується в %s країнах!';

@@ -1,23 +1,23 @@
 <?php
-// Heading
-$_['heading_title']    = 'Order Statuses';
+// Заголовок
+$_['heading_title']    = 'Статуси замовлень';
 
-// Text
-$_['text_success']     = 'Success: You have modified order statuses!';
-$_['text_list']        = 'Order Status List';
-$_['text_add']         = 'Add Order Status';
-$_['text_edit']        = 'Edit Order Status';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили статуси замовлень!';
+$_['text_list']        = 'Список статусів замовлень';
+$_['text_add']         = 'Додати статус замовлення';
+$_['text_edit']        = 'Редагувати статус замовлення';
 
-// Column
-$_['column_name']      = 'Order Status Name';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва статусу замовлення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Order Status Name';
+// Поля вводу
+$_['entry_name']       = 'Назва статусу замовлення';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify order statuses!';
-$_['error_name']       = 'Order Status Name must be between 3 and 32 characters!';
-$_['error_default']    = 'Warning: This order status cannot be deleted as it is currently assigned as the default store order status!';
-$_['error_download']   = 'Warning: This order status cannot be deleted as it is currently assigned as the default download status!';
-$_['error_order']      = 'Warning: This order status cannot be deleted as it is currently assigned to %s orders!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну статусів замовлень!';
+$_['error_name']       = 'Назва статусу замовлення повинна містити від 3 до 32 символів!';
+$_['error_default']    = 'Увага: Цей статус замовлення не можна видалити, оскільки він призначений як статус замовлення за замовчуванням у магазині!';
+$_['error_download']   = 'Увага: Цей статус замовлення не можна видалити, оскільки він використовується як статус за замовчуванням для завантажень!';
+$_['error_order']      = 'Увага: Цей статус замовлення не можна видалити, оскільки він призначений для %s замовлень!';

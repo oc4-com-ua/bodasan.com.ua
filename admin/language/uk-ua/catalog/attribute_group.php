@@ -1,25 +1,25 @@
 <?php
-// Heading
-$_['heading_title']     = 'Attribute Groups';
+// Заголовок
+$_['heading_title'] = 'Групи атрибутів';
 
-// Text
-$_['text_success']      = 'Success: You have modified attribute groups!';
-$_['text_list']         = 'Attribute Group List';
-$_['text_add']          = 'Add Attribute Group';
-$_['text_edit']         = 'Edit Attribute Group';
+// Текст
+$_['text_success'] = 'Успіх: Ви змінили групи атрибутів!';
+$_['text_list'] = 'Список груп атрибутів';
+$_['text_add'] = 'Додати групу атрибутів';
+$_['text_edit'] = 'Редагувати групу атрибутів';
 
-// Column
-$_['column_name']       = 'Attribute Group Name';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_name'] = 'Назва групи атрибутів';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action'] = 'Дія';
 
-// Entry
-$_['entry_name']        = 'Attribute Group Name';
-$_['entry_sort_order']  = 'Sort Order';
+// Поля вводу
+$_['entry_name'] = 'Назва групи атрибутів';
+$_['entry_sort_order'] = 'Порядок сортування';
 
-// Error
-$_['error_warning']     = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']  = 'Warning: You do not have permission to modify attribute groups!';
-$_['error_name']        = 'Attribute Group Name must be between 1 and 64 characters!';
-$_['error_attribute']   = 'Warning: This attribute group cannot be deleted as it is currently assigned to %s attributes!';
-$_['error_product']     = 'Warning: This attribute group cannot be deleted as it is currently assigned to %s products!';
+// Помилки
+$_['error_warning'] = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну груп атрибутів!';
+$_['error_name'] = 'Назва групи атрибутів повинна містити від 1 до 64 символів!';
+$_['error_attribute'] = 'Увага: Цю групу атрибутів не можна видалити, оскільки вона призначена до %s атрибутів!';
+$_['error_product'] = 'Увага: Цю групу атрибутів не можна видалити, оскільки вона призначена до %s товарів!';

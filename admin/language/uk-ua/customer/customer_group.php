@@ -1,30 +1,30 @@
 <?php
-// Heading
-$_['heading_title']     = 'Customer Groups';
+// Заголовок
+$_['heading_title']     = 'Групи клієнтів';
 
-// Text
-$_['text_success']      = 'Success: You have modified customer groups!';
-$_['text_list']         = 'Customer Group List';
-$_['text_add']          = 'Add Customer Group';
-$_['text_edit']         = 'Edit Customer Group';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили групи клієнтів!';
+$_['text_list']         = 'Список груп клієнтів';
+$_['text_add']          = 'Додати групу клієнтів';
+$_['text_edit']         = 'Редагувати групу клієнтів';
 
-// Column
-$_['column_name']       = 'Customer Group Name';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_name']       = 'Назва групи клієнтів';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action']     = 'Дія';
 
-// Entry
-$_['entry_name']        = 'Customer Group Name';
-$_['entry_description'] = 'Description';
-$_['entry_approval']    = 'Approve New Customers';
-$_['entry_sort_order']  = 'Sort Order';
+// Поля вводу
+$_['entry_name']        = 'Назва групи клієнтів';
+$_['entry_description'] = 'Опис';
+$_['entry_approval']    = 'Схвалення нових клієнтів';
+$_['entry_sort_order']  = 'Порядок сортування';
 
-// Help
-$_['help_approval']     = 'Customers must be approved by an administrator before they can login.';
+// Допомога
+$_['help_approval']     = 'Клієнти повинні бути схвалені адміністратором перед входом в систему.';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify customer groups!';
-$_['error_name']        = 'Customer Group Name must be between 3 and 32 characters!';
-$_['error_default']     = 'Warning: This customer group cannot be deleted as it is currently assigned as the default store customer group!';
-$_['error_store']       = 'Warning: This customer group cannot be deleted as it is currently assigned to %s stores!';
-$_['error_customer']    = 'Warning: This customer group cannot be deleted as it is currently assigned to %s customers!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну груп клієнтів!';
+$_['error_name']        = 'Назва групи клієнтів повинна містити від 3 до 32 символів!';
+$_['error_default']     = 'Увага: Цю групу клієнтів не можна видалити, оскільки вона встановлена як група клієнтів за замовчуванням!';
+$_['error_store']       = 'Увага: Цю групу клієнтів не можна видалити, оскільки вона наразі використовується в %s магазинах!';
+$_['error_customer']    = 'Увага: Цю групу клієнтів не можна видалити, оскільки вона наразі призначена %s клієнтам!';

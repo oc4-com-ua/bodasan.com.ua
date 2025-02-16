@@ -1,15 +1,15 @@
 <?php
-// Text
-$_['text_success']       = 'Success: Shipping address has been set!';
+// Текст
+$_['text_success']       = 'Успіх: Адреса доставки була встановлена!';
 
-// Error
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_address_1']    = 'Address 1 must be between 3 and 128 characters!';
-$_['error_city']         = 'City must be between 3 and 128 characters!';
-$_['error_postcode']     = 'Postcode must be between 2 and 10 characters for this country!';
-$_['error_country']      = 'Please select a country!';
-$_['error_zone']         = 'Please select a region / state!';
-$_['error_custom_field'] = '%s required!';
-$_['error_regex']        = '%s is not a valid input!';
-$_['error_shipping']     = 'Warning: There are no products that require shipping';
+// Помилка
+$_['error_firstname']    = 'Ім\'я має бути від 1 до 32 символів!';
+$_['error_lastname']     = 'Прізвище має бути від 1 до 32 символів!';
+$_['error_address_1']    = 'Адреса 1 має бути від 3 до 128 символів!';
+$_['error_city']         = 'Місто має бути від 3 до 128 символів!';
+$_['error_postcode']     = 'Поштовий індекс має бути від 2 до 10 символів для цієї країни!';
+$_['error_country']      = 'Будь ласка, виберіть країну!';
+$_['error_zone']         = 'Будь ласка, виберіть регіон / область!';
+$_['error_custom_field'] = '%s обов\'язкове!';
+$_['error_regex']        = '%s не є допустимим ввідним значенням!';
+$_['error_shipping']     = 'Попередження: Немає продуктів, що потребують доставки';

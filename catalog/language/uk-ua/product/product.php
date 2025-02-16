@@ -1,34 +1,34 @@
 <?php
-// Text
-$_['text_search']                = 'Search';
-$_['text_brand']                 = 'Brand';
-$_['text_manufacturer']          = 'Brand:';
-$_['text_model']                 = 'Product Code:';
-$_['text_reward']                = 'Reward Points:';
-$_['text_points']                = 'Price in reward points:';
-$_['text_stock']                 = 'Availability:';
-$_['text_tax']                   = 'Ex Tax:';
-$_['text_discount']              = ' or more ';
-$_['text_option']                = 'Available Options';
-$_['text_minimum']               = 'This product has a minimum quantity of %s';
-$_['text_reviews']               = '%s reviews';
-$_['text_write']                 = 'Write a review';
-$_['text_login']                 = 'Please <a href="%s">login</a> or <a href="%s">register</a> to review';
-$_['text_tags']                  = 'Tags:';
-$_['text_subscription']          = 'Subscription';
-$_['text_subscription_duration'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']   = '%s every %d %s(s) until canceled';
-$_['text_day']                   = 'day';
-$_['text_week']                  = 'week';
-$_['text_semi_month']            = 'half-month';
-$_['text_month']                 = 'month';
-$_['text_year']                  = 'year';
+// Текст
+$_['text_search']                = 'Пошук';
+$_['text_brand']                 = 'Бренд';
+$_['text_manufacturer']          = 'Бренд:';
+$_['text_model']                 = 'Код продукту:';
+$_['text_reward']                = 'Бонусні бали:';
+$_['text_points']                = 'Ціна у бонусних балів:';
+$_['text_stock']                 = 'Доступність:';
+$_['text_tax']                   = 'Без податку:';
+$_['text_discount']              = ' або більше ';
+$_['text_option']                = 'Доступні опції';
+$_['text_minimum']               = 'Цей продукт має мінімальну кількість %s';
+$_['text_reviews']               = '%s відгуків';
+$_['text_write']                 = 'Напишіть відгук';
+$_['text_login']                 = 'Будь ласка, <a href="%s">увійдіть</a> або <a href="%s">зареєструйтеся</a>, щоб залишити відгук';
+$_['text_tags']                  = 'Теги:';
+$_['text_subscription']          = 'Підписка';
+$_['text_subscription_duration'] = '%s кожні %d %s(и) для %d платежів';
+$_['text_subscription_cancel']   = '%s кожні %d %s(и) до скасування';
+$_['text_day']                   = 'день';
+$_['text_week']                  = 'тиждень';
+$_['text_semi_month']            = 'півмісяця';
+$_['text_month']                 = 'місяць';
+$_['text_year']                  = 'рік';
 
-// Entry
-$_['entry_qty']                  = 'Qty';
-$_['entry_rating']               = 'Rating';
+// Вхід
+$_['entry_qty']                  = 'Кількість';
+$_['entry_rating']               = 'Рейтинг';
 
-// Tabs
-$_['tab_description']            = 'Description';
-$_['tab_attribute']              = 'Specification';
-$_['tab_review']                 = 'Reviews (%s)';
+// Вкладки
+$_['tab_description']            = 'Опис';
+$_['tab_attribute']              = 'Характеристики';
+$_['tab_review']                 = 'Відгуки (%s)';

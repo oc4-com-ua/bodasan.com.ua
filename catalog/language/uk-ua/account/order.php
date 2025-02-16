@@ -1,47 +1,47 @@
 <?php
-// Heading
-$_['heading_title']              = 'Orders';
+// Заголовок
+$_['heading_title']              = 'Замовлення';
 
-// Text
-$_['text_account']               = 'Account';
-$_['text_order']                 = 'Order #%s';
-$_['text_order_id']              = 'Order ID';
-$_['text_invoice_no']            = 'Invoice No.';
+// Текст
+$_['text_account']               = 'Обліковий запис';
+$_['text_order']                 = 'Замовлення #%s';
+$_['text_order_id']              = 'Номер замовлення';
+$_['text_invoice_no']            = 'Номер рахунку';
 $_['text_tbc']                   = 'TBC';
-$_['text_shipping_address']      = 'Shipping Address';
-$_['text_payment_address']       = 'Payment Address';
-$_['text_shipping_method']       = 'Shipping Method';
-$_['text_payment_method']        = 'Payment Method';
-$_['text_model']                 = 'Model';
-$_['text_points']                = 'Reward Points';
-$_['text_subscription']          = 'Subscription';
-$_['text_subscription_trial']    = '%s every %d %s(s) for %d payment(s) then ';
-$_['text_subscription_duration'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']   = '%s every %d %s(s) until canceled';
-$_['text_day']                   = 'day';
-$_['text_week']                  = 'week';
-$_['text_semi_month']            = 'half-month';
-$_['text_month']                 = 'month';
-$_['text_year']                  = 'year';
-$_['text_date_next']             = 'Date Next';
-$_['text_remaining']             = 'Remaining';
-$_['text_comment']               = 'Note';
-$_['text_history']               = 'Order History';
-$_['text_success']               = 'Success: You have added <a href="%s">%s</a> to your <a href="%s">shopping cart</a>!';
-$_['text_no_results']            = 'You have not made any previous orders!';
+$_['text_shipping_address']      = 'Адреса доставки';
+$_['text_payment_address']       = 'Адреса платіжна';
+$_['text_shipping_method']       = 'Метод доставки';
+$_['text_payment_method']        = 'Метод оплати';
+$_['text_model']                 = 'Модель';
+$_['text_points']                = 'Бонусні бали';
+$_['text_subscription']          = 'Підписка';
+$_['text_subscription_trial']    = '%s кожні %d %s(и) за %d оплат(и), а потім ';
+$_['text_subscription_duration'] = '%s кожні %d %s(и) за %d оплат(и)';
+$_['text_subscription_cancel']   = '%s кожні %d %s(и) до скасування';
+$_['text_day']                   = 'день';
+$_['text_week']                  = 'тиждень';
+$_['text_semi_month']            = 'півмісяця';
+$_['text_month']                 = 'місяць';
+$_['text_year']                  = 'рік';
+$_['text_date_next']             = 'Наступна дата';
+$_['text_remaining']             = 'Залишилось';
+$_['text_comment']               = 'Примітка';
+$_['text_history']               = 'Історія замовлень';
+$_['text_success']               = 'Успіх: Ви додали <a href="%s">%s</a> до вашого <a href="%s">кошика</a>!';
+$_['text_no_results']            = 'Ви ще не зробили жодного замовлення!';
 
-// Column
-$_['column_order_id']            = 'Order ID';
-$_['column_customer']            = 'Customer';
-$_['column_product']             = 'Product';
-$_['column_product_total']       = 'No. of Products';
-$_['column_status']              = 'Status';
-$_['column_total']               = 'Total';
-$_['column_date_added']          = 'Date Added';
-$_['column_quantity']            = 'Quantity';
-$_['column_price']               = 'Price';
-$_['column_comment']             = 'Comment';
-$_['column_action']              = 'Action';
+// Колонка
+$_['column_order_id']            = 'Номер замовлення';
+$_['column_customer']            = 'Клієнт';
+$_['column_product']             = 'Товар';
+$_['column_product_total']       = 'Кількість товарів';
+$_['column_status']              = 'Статус';
+$_['column_total']               = 'Загальна сума';
+$_['column_date_added']          = 'Дата додавання';
+$_['column_quantity']            = 'Кількість';
+$_['column_price']               = 'Ціна';
+$_['column_comment']             = 'Коментар';
+$_['column_action']              = 'Дія';
 
-// Error
-$_['error_reorder']              = 'The product you are trying to purchase again has some issues. Please check the error messages shown below.';
+// Помилка
+$_['error_reorder']              = 'Товар, який ви намагаєтеся придбати знову, має деякі проблеми. Будь ласка, перевірте повідомлення про помилки, які відображаються нижче.';

@@ -1,36 +1,36 @@
 <?php
-// Heading
-$_['heading_title']     = 'GDPR Approvals';
+// Заголовок
+$_['heading_title']     = 'Схвалення GDPR';
 
-// Text
-$_['text_success']      = 'Success: You have modified GDPR approvals!';
-$_['text_list']         = 'GDPR Approval List';
-$_['text_info']         = '<strong>GDPR</strong> account deletion requests will process after <strong>%s days</strong> so any fraud detection, chargebacks or refunds can be processed.';
-$_['text_approve']      = 'Approve';
-$_['text_deny']         = 'Deny';
-$_['text_delete']       = 'Delete';
-$_['text_unverified']   = 'Unverified';
-$_['text_pending']      = 'Pending';
-$_['text_processing']   = 'Processing';
-$_['text_complete']     = 'Complete';
-$_['text_denied']       = 'Denied';
-$_['text_export']       = 'Export';
-$_['text_remove']       = 'Remove';
-$_['text_filter']       = 'Filter';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили схвалення GDPR!';
+$_['text_list']         = 'Список схвалень GDPR';
+$_['text_info']         = '<strong>Запити на видалення акаунтів за GDPR</strong> будуть оброблятися через <strong>%s днів</strong>, щоб можна було завершити перевірку на шахрайство, повернення платежів або відшкодування.';
+$_['text_approve']      = 'Схвалити';
+$_['text_deny']         = 'Відхилити';
+$_['text_delete']       = 'Видалити';
+$_['text_unverified']   = 'Не підтверджено';
+$_['text_pending']      = 'Очікується';
+$_['text_processing']   = 'Обробка';
+$_['text_complete']     = 'Завершено';
+$_['text_denied']       = 'Відхилено';
+$_['text_export']       = 'Експортувати';
+$_['text_remove']       = 'Видалити';
+$_['text_filter']       = 'Фільтр';
 
-// Column
+// Стовпці
 $_['column_email']      = 'E-Mail';
-$_['column_request']    = 'Request';
-$_['column_status']     = 'Status';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_request']    = 'Запит';
+$_['column_status']     = 'Статус';
+$_['column_date_added'] = 'Дата додавання';
+$_['column_action']     = 'Дія';
 
-// Entry
+// Поля вводу
 $_['entry_email']       = 'E-Mail';
-$_['entry_action']      = 'Action';
-$_['entry_status']      = 'Status';
-$_['entry_date_from']   = 'Date From';
-$_['entry_date_to']     = 'Date To';
+$_['entry_action']      = 'Дія';
+$_['entry_status']      = 'Статус';
+$_['entry_date_from']   = 'Дата від';
+$_['entry_date_to']     = 'Дата до';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify GDPR approvals!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну схвалень GDPR!';

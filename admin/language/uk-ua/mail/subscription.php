@@ -1,10 +1,10 @@
 <?php
-// Text
-$_['text_subject']             = '%s - Subscription';
-$_['text_subscription_id']     = 'Subscription ID';
-$_['text_date_added']          = 'Subscription Date:';
-$_['text_subscription_status'] = 'Your subscription has been added to the following status:';
-$_['text_comment']             = 'The comments for your subscription are:';
-$_['text_payment_method']      = 'Payment Method';
-$_['text_payment_code']        = 'Payment Code';
-$_['text_footer']              = 'Please reply to this email if you have any questions.';
+// Текст
+$_['text_subject']             = '%s - Підписка';
+$_['text_subscription_id']     = 'ID підписки';
+$_['text_date_added']          = 'Дата підписки:';
+$_['text_subscription_status'] = 'Вашу підписку оновлено до такого статусу:';
+$_['text_comment']             = 'Коментарі щодо вашої підписки:';
+$_['text_payment_method']      = 'Спосіб оплати';
+$_['text_payment_code']        = 'Код оплати';
+$_['text_footer']              = 'Будь ласка, відповідайте на цей електронний лист, якщо у вас є запитання.';

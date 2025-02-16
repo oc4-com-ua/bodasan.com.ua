@@ -1,72 +1,72 @@
 <?php
-// Heading
-$_['heading_title']      = 'Returns';
+// Заголовок
+$_['heading_title']      = 'Повернення';
 
-// Text
-$_['text_success']       = 'Success: You have modified returns!';
-$_['text_list']          = 'Return List';
-$_['text_add']           = 'Add Return';
-$_['text_edit']          = 'Return (#%s)';
-$_['text_order_id']      = 'Order ID';
-$_['text_filter']        = 'Filter';
-$_['text_customer']      = 'Customer';
-$_['text_date_added']    = 'Date Added';
-$_['text_return']        = 'Return Item';
-$_['text_product']       = 'Choose Product to return';
-$_['text_opened']        = 'Opened';
-$_['text_unopened']      = 'Unopened';
-$_['text_history']       = 'History';
-$_['text_history_add']   = 'Add History';
+// Текст
+$_['text_success']       = 'Успіх: Ви змінили повернення!';
+$_['text_list']          = 'Список повернень';
+$_['text_add']           = 'Додати повернення';
+$_['text_edit']          = 'Повернення (#%s)';
+$_['text_order_id']      = 'ID замовлення';
+$_['text_filter']        = 'Фільтр';
+$_['text_customer']      = 'Клієнт';
+$_['text_date_added']    = 'Дата додавання';
+$_['text_return']        = 'Товар для повернення';
+$_['text_product']       = 'Виберіть товар для повернення';
+$_['text_opened']        = 'Відкрито';
+$_['text_unopened']      = 'Не відкрито';
+$_['text_history']       = 'Історія';
+$_['text_history_add']   = 'Додати історію';
 
-// Column
-$_['column_return_id']   = 'Return ID';
-$_['column_order_id']    = 'Order ID';
-$_['column_customer']    = 'Customer';
-$_['column_product']     = 'Product';
-$_['column_model']       = 'Model';
-$_['column_quantity']    = 'Quantity';
-$_['column_status']      = 'Status';
-$_['column_date_added']  = 'Date Added';
-$_['column_comment']     = 'Comment';
-$_['column_notify']      = 'Customer Notified';
-$_['column_action']      = 'Action';
+// Стовпці
+$_['column_return_id']   = 'ID повернення';
+$_['column_order_id']    = 'ID замовлення';
+$_['column_customer']    = 'Клієнт';
+$_['column_product']     = 'Товар';
+$_['column_model']       = 'Модель';
+$_['column_quantity']    = 'Кількість';
+$_['column_status']      = 'Статус';
+$_['column_date_added']  = 'Дата додавання';
+$_['column_comment']     = 'Коментар';
+$_['column_notify']      = 'Клієнта повідомлено';
+$_['column_action']      = 'Дія';
 
-// Entry
-$_['entry_customer']     = 'Customer';
-$_['entry_order_id']     = 'Order ID';
-$_['entry_date_ordered'] = 'Order Date';
-$_['entry_firstname']    = 'First Name';
-$_['entry_lastname']     = 'Last Name';
+// Поля вводу
+$_['entry_customer']     = 'Клієнт';
+$_['entry_order_id']     = 'ID замовлення';
+$_['entry_date_ordered'] = 'Дата замовлення';
+$_['entry_firstname']    = 'Ім’я';
+$_['entry_lastname']     = 'Прізвище';
 $_['entry_email']        = 'E-Mail';
-$_['entry_telephone']    = 'Telephone';
-$_['entry_product']      = 'Product';
-$_['entry_model']        = 'Model';
-$_['entry_quantity']     = 'Quantity';
-$_['entry_opened']       = 'Opened';
-$_['entry_comment']      = 'Comment';
-$_['entry_reason']       = 'Return Reason';
-$_['entry_action']       = 'Return Action';
-$_['entry_status']       = 'Return Status';
-$_['entry_notify']       = 'Notify Customer';
-$_['entry_return_id']    = 'Return ID';
-$_['entry_date_from']    = 'Date From';
-$_['entry_date_to']      = 'Date To';
+$_['entry_telephone']    = 'Телефон';
+$_['entry_product']      = 'Товар';
+$_['entry_model']        = 'Модель';
+$_['entry_quantity']     = 'Кількість';
+$_['entry_opened']       = 'Відкрито';
+$_['entry_comment']      = 'Коментар';
+$_['entry_reason']       = 'Причина повернення';
+$_['entry_action']       = 'Дія при поверненні';
+$_['entry_status']       = 'Статус повернення';
+$_['entry_notify']       = 'Повідомити клієнта';
+$_['entry_return_id']    = 'ID повернення';
+$_['entry_date_from']    = 'Дата з';
+$_['entry_date_to']      = 'Дата по';
 
-// Help
-$_['help_product']       = '(Autocomplete)';
+// Допомога
+$_['help_product']       = '(Автозаповнення)';
 
-// Error
-$_['error_warning']      = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']   = 'Warning: You do not have permission to modify returns!';
-$_['error_order']        = 'Order not found!';
-$_['error_customer']     = 'Customer not found!';
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']        = 'E-Mail Address does not appear to be valid!';
-$_['error_telephone']    = 'Telephone must be between 3 and 32 characters!';
-$_['error_product']      = 'Product not found!';
-$_['error_name']         = 'Product Name must be greater than 1 and less than 255 characters!';
-$_['error_model']        = 'Product Model must be greater than 1 and less than 64 characters!';
-$_['error_quantity']     = 'Return quantity must be at least 1!';
-$_['error_reason']       = 'You must select a return reason!';
-$_['error_action']       = 'You must select a return action!';
+// Помилки
+$_['error_warning']      = 'Попередження: Будь ласка, уважно перевірте форму на наявність помилок!';
+$_['error_permission']   = 'Попередження: У вас немає дозволу на зміну повернень!';
+$_['error_order']        = 'Замовлення не знайдено!';
+$_['error_customer']     = 'Клієнт не знайдений!';
+$_['error_firstname']    = 'Ім’я повинно бути від 1 до 32 символів!';
+$_['error_lastname']     = 'Прізвище повинно бути від 1 до 32 символів!';
+$_['error_email']        = 'E-Mail адреса виглядає некоректно!';
+$_['error_telephone']    = 'Телефон повинен бути від 3 до 32 символів!';
+$_['error_product']      = 'Товар не знайдений!';
+$_['error_name']         = 'Назва товару повинна бути більше 1 та менше 255 символів!';
+$_['error_model']        = 'Модель товару повинна бути більше 1 та менше 64 символів!';
+$_['error_quantity']     = 'Кількість для повернення повинна бути не менше 1!';
+$_['error_reason']       = 'Ви повинні вибрати причину повернення!';
+$_['error_action']       = 'Ви повинні вибрати дію при поверненні!';

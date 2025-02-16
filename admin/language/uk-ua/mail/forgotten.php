@@ -1,6 +1,6 @@
 <?php
-// Text
-$_['text_subject']  = '%s - Password reset request';
-$_['text_greeting'] = 'A new password was requested for %s administration.';
-$_['text_change']   = 'To reset your password click on the link below:';
-$_['text_ip']       = 'The IP used to make this request was:';
+// Текст
+$_['text_subject']  = '%s - Запит на скидання пароля';
+$_['text_greeting'] = 'Було запрошено новий пароль для адміністрації %s.';
+$_['text_change']   = 'Щоб скинути пароль, натисніть на посилання нижче:';
+$_['text_ip']       = 'IP-адреса, з якої було здійснено цей запит:';

@@ -1,14 +1,14 @@
 <?php
-// Text
-$_['text_success']       = 'Success: Payment address has been set!';
+// Текст
+$_['text_success']       = 'Успіх: Платіжна адреса була встановлена!';
 
-// Error
-$_['error_firstname']    = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']     = 'Last Name must be between 1 and 32 characters!';
-$_['error_address_1']    = 'Address 1 must be between 3 and 128 characters!';
-$_['error_city']         = 'City must be between 3 and 128 characters!';
-$_['error_postcode']     = 'Postcode must be between 2 and 10 characters for this country!';
-$_['error_country']      = 'Please select a country!';
-$_['error_zone']         = 'Please select a region / state!';
-$_['error_custom_field'] = '%s required!';
-$_['error_regex']        = '%s is not a valid input!';
+// Помилка
+$_['error_firstname']    = 'Ім\'я повинно містити від 1 до 32 символів!';
+$_['error_lastname']     = 'Прізвище повинно містити від 1 до 32 символів!';
+$_['error_address_1']    = 'Адреса 1 повинна містити від 3 до 128 символів!';
+$_['error_city']         = 'Місто повинно містити від 3 до 128 символів!';
+$_['error_postcode']     = 'Поштовий індекс повинен містити від 2 до 10 символів для цієї країни!';
+$_['error_country']      = 'Будь ласка, виберіть країну!';
+$_['error_zone']         = 'Будь ласка, виберіть регіон / область!';
+$_['error_custom_field'] = '%s є обов\'язковим!';
+$_['error_regex']        = '%s є недійсним введенням!';

@@ -1,25 +1,25 @@
 <?php
-// Heading
-$_['heading_title']     = 'Online Report';
+// Заголовок
+$_['heading_title']     = 'Звіт про онлайн-користувачів';
 
-// Text
-$_['text_extension']    = 'Extensions';
-$_['text_success']      = 'Success: You have modified customers online report!';
-$_['text_list']         = 'Online List';
-$_['text_filter']       = 'Filter';
-$_['text_guest']        = 'Guest';
+// Текст
+$_['text_extension']    = 'Розширення';
+$_['text_success']      = 'Успіх: Ви змінили звіт про онлайн-користувачів!';
+$_['text_list']         = 'Список онлайн-користувачів';
+$_['text_filter']       = 'Фільтр';
+$_['text_guest']        = 'Гість';
 
-// Column
+// Стовпці
 $_['column_ip']         = 'IP';
-$_['column_customer']   = 'Customer';
-$_['column_url']        = 'Last Page Visited';
-$_['column_referer']    = 'Referer';
-$_['column_date_added'] = 'Last Click';
-$_['column_action']     = 'Action';
+$_['column_customer']   = 'Клієнт';
+$_['column_url']        = 'Остання відвідана сторінка';
+$_['column_referer']    = 'Джерело переходу';
+$_['column_date_added'] = 'Останній клік';
+$_['column_action']     = 'Дія';
 
-// Entry
+// Поля введення
 $_['entry_ip']          = 'IP';
-$_['entry_customer']    = 'Customer';
+$_['entry_customer']    = 'Клієнт';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify customers online report!';
+// Помилки
+$_['error_permission']  = 'Попередження: У вас немає дозволу на зміну звіту про онлайн-користувачів!';

@@ -1,17 +1,17 @@
 <?php
-// Heading
-$_['heading_title']    = 'Languages';
+// Заголовок
+$_['heading_title']    = 'Мови';
 
-// Text
-$_['text_success']     = 'Success: You have modified languages!';
-$_['text_list']        = 'Language List';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили мови!';
+$_['text_list']        = 'Список мов';
 
-// Column
-$_['column_name']      = 'Language Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва мови';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Дія';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify languages!';
-$_['error_extension']  = 'Warning: Extension does not exist!';
-$_['error_default']    = 'Warning: This extension cannot be uninstalled as it is currently assigned as the administration language!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну мов!';
+$_['error_extension']  = 'Увага: Розширення не існує!';
+$_['error_default']    = 'Увага: Це розширення не можна видалити, оскільки воно встановлено як мова адміністративної панелі!';

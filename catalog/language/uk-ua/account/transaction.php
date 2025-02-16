@@ -1,14 +1,14 @@
 <?php
-// Heading
-$_['heading_title']      = 'Your Transactions';
+// Заголовок
+$_['heading_title']      = 'Ваші транзакції';
 
-// Column
-$_['column_date_added']  = 'Date Added';
-$_['column_description'] = 'Description';
-$_['column_amount']      = 'Amount (%s)';
+// Колонка
+$_['column_date_added']  = 'Дата додавання';
+$_['column_description'] = 'Опис';
+$_['column_amount']      = 'Сума (%s)';
 
-// Text
-$_['text_account']       = 'Account';
-$_['text_transaction']   = 'Your Transactions';
-$_['text_total']         = 'Your current balance is:';
-$_['text_no_results']    = 'You do not have any transactions!';
+// Текст
+$_['text_account']       = 'Обліковий запис';
+$_['text_transaction']   = 'Ваші транзакції';
+$_['text_total']         = 'Ваш поточний баланс:';
+$_['text_no_results']    = 'У вас немає жодних транзакцій!';

@@ -1,14 +1,14 @@
 <?php
-// Text
-$_['text_subject']  = '%s - GDPR Export/Deletion Request!';
-$_['text_export']   = 'Export Data Request';
-$_['text_remove']   = 'Account Deletion Request';
-$_['text_gdpr']     = 'A GDPR request from this email address, To confirm this action please click on the link below:';
-$_['text_ip']       = 'The IP used to make this request was:';
-$_['text_contact']  = 'If you did not make this request please contact the store owner here:';
-$_['text_thanks']   = 'Thanks,';
-$_['text_ignore']   = 'If you did not created this request, please ignore this email.';
+// Текст
+$_['text_subject']  = '%s - Запит на експорт/видалення згідно з GDPR!';
+$_['text_export']   = 'Запит на експорт даних';
+$_['text_remove']   = 'Запит на видалення акаунту';
+$_['text_gdpr']     = 'Запит GDPR з цієї електронної пошти. Щоб підтвердити цю дію, будь ласка, натисніть на посилання нижче:';
+$_['text_ip']       = 'IP, який використовувався для цього запиту:';
+$_['text_contact']  = 'Якщо ви не робили цей запит, будь ласка, зв’яжіться з власником магазину тут:';
+$_['text_thanks']   = 'Дякуємо,';
+$_['text_ignore']   = 'Якщо ви не створювали цей запит, будь ласка, ігноруйте цей лист.';
 
-// Buttons
-$_['button_export'] = 'I confirm export my data';
-$_['button_remove'] = 'I confirm delete my account';
+// Кнопки
+$_['button_export'] = 'Підтверджую експорт моїх даних';
+$_['button_remove'] = 'Підтверджую видалення мого акаунту';

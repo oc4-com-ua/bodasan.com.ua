@@ -1,17 +1,17 @@
 <?php
-// Heading
-$_['heading_title']     = 'Shipping';
+// Заголовок
+$_['heading_title']     = 'Доставка';
 
-// Text
-$_['text_success']      = 'Success: You have modified shipping!';
-$_['text_list']         = 'Shipping List';
+// Текст
+$_['text_success']      = 'Успіх: Ви змінили способи доставки!';
+$_['text_list']         = 'Список способів доставки';
 
-// Column
-$_['column_name']       = 'Shipping Method';
-$_['column_status']     = 'Status';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+// Стовпці
+$_['column_name']       = 'Метод доставки';
+$_['column_status']     = 'Статус';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action']     = 'Дія';
 
-// Error
-$_['error_permission']  = 'Warning: You do not have permission to modify shipping!';
-$_['error_extension']   = 'Warning: Extension does not exist!';
+// Помилки
+$_['error_permission']  = 'Увага: У вас немає дозволу на зміну способів доставки!';
+$_['error_extension']   = 'Увага: Розширення не існує!';

@@ -1,6 +1,6 @@
 <?php
-// Heading
-$_['heading_title']  = 'Page Not Found!';
+// Заголовок
+$_['heading_title']  = 'Сторінку не знайдено!';
 
-// Text
-$_['text_not_found'] = 'The page you are looking for could not be found! Please contact your administrator if the problem persists.';
+// Текст
+$_['text_not_found'] = 'Сторінку, яку ви шукаєте, не вдалося знайти! Будь ласка, зверніться до адміністратора, якщо проблема не зникає.';

@@ -1,22 +1,22 @@
 <?php
-// Heading
-$_['heading_title']    = 'Return Statuses';
+// Заголовок
+$_['heading_title']    = 'Статуси повернень';
 
-// Text
-$_['text_success']     = 'Success: You have modified return statuses!';
-$_['text_list']        = 'Return Status List';
-$_['text_add']         = 'Add Return Status';
-$_['text_edit']        = 'Edit Return Status';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили статуси повернень!';
+$_['text_list']        = 'Список статусів повернень';
+$_['text_add']         = 'Додати статус повернення';
+$_['text_edit']        = 'Редагувати статус повернення';
 
-// Column
-$_['column_name']      = 'Return Status Name';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва статусу повернення';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Return Status Name';
+// Поля вводу
+$_['entry_name']       = 'Назва статусу повернення';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify return statuses!';
-$_['error_name']       = 'Return Status Name must be between 3 and 32 characters!';
-$_['error_default']    = 'Warning: This return status cannot be deleted as it is currently assigned as the default return status!';
-$_['error_return']     = 'Warning: This return status cannot be deleted as it is currently assigned to %s returns!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну статусів повернень!';
+$_['error_name']       = 'Назва статусу повернення повинна містити від 3 до 32 символів!';
+$_['error_default']    = 'Увага: Цей статус повернення не можна видалити, оскільки він встановлений за замовчуванням!';
+$_['error_return']     = 'Увага: Цей статус повернення не можна видалити, оскільки він призначений для %s повернень!';

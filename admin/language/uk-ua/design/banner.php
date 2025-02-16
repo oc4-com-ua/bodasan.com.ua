@@ -1,28 +1,28 @@
 <?php
-// Heading
-$_['heading_title']    = 'Banners';
+// Заголовок
+$_['heading_title']    = 'Банери';
 
-// Text
-$_['text_success']     = 'Success: You have modified banners!';
-$_['text_list']        = 'Banner List';
-$_['text_add']         = 'Add Banner';
-$_['text_edit']        = 'Edit Banner';
-$_['text_default']     = 'Default';
+// Текст
+$_['text_success']     = 'Успіх: Ви змінили банери!';
+$_['text_list']        = 'Список банерів';
+$_['text_add']         = 'Додати банер';
+$_['text_edit']        = 'Редагувати банер';
+$_['text_default']     = 'За замовчуванням';
 
-// Column
-$_['column_name']      = 'Banner Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+// Стовпці
+$_['column_name']      = 'Назва банера';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Дія';
 
-// Entry
-$_['entry_name']       = 'Banner Name';
-$_['entry_title']      = 'Title';
-$_['entry_link']       = 'Link';
-$_['entry_image']      = 'Image';
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+// Поля вводу
+$_['entry_name']       = 'Назва банера';
+$_['entry_title']      = 'Заголовок';
+$_['entry_link']       = 'Посилання';
+$_['entry_image']      = 'Зображення';
+$_['entry_status']     = 'Статус';
+$_['entry_sort_order'] = 'Порядок сортування';
 
-// Error
-$_['error_permission'] = 'Warning: You do not have permission to modify banners!';
-$_['error_name']       = 'Banner Name must be between 3 and 64 characters!';
-$_['error_title']      = 'Banner Title must be between 2 and 64 characters!';
+// Помилки
+$_['error_permission'] = 'Увага: У вас немає дозволу на зміну банерів!';
+$_['error_name']       = 'Назва банера повинна містити від 3 до 64 символів!';
+$_['error_title']      = 'Заголовок банера повинен містити від 2 до 64 символів!';
