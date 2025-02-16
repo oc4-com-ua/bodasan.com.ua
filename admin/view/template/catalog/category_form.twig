@@ -71,6 +71,13 @@
               </div>
             </div>
             <div id="tab-data" class="tab-pane">
+                <div class="row mb-3 required">
+                    <label for="input-external-id" class="col-sm-2 col-form-label">{{ entry_external_id }}</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="external_id" value="{{ external_id }}" placeholder="{{ entry_external_id }}" id="input-external-id" class="form-control"/>
+                        <div id="error-external-id" class="invalid-feedback">{% if error_external_id %}{{ error_external_id }}{% endif %}</div>
+                    </div>
+                </div>
               <div class="row mb-3">
                 <label for="input-parent" class="col-sm-2 col-form-label">{{ entry_parent }}</label>
                 <div class="col-sm-10">

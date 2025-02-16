@@ -166,9 +166,19 @@ class Category extends \Opencart\System\Engine\Controller {
 
 		$results = $this->model_catalog_category->getCategories($filter_data);
 
-		foreach ($results as $result) {
+		/*foreach ($results as $result) {
 			$data['categories'][] = ['edit' => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)] + $result;
-		}
+		}*/
+        foreach ($results as $result) {
+            $data['categories'][] = [
+                'category_id' => $result['category_id'],
+                'external_id' => $result['external_id'], // Додаємо поле
+                'name'        => $result['name'],
+                'sort_order'  => $result['sort_order'],
+                'status'      => $result['status'],
+                'edit'        => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
+            ];
+        }
 
 		$url = '';
 
@@ -302,6 +312,12 @@ class Category extends \Opencart\System\Engine\Controller {
 			$data['parent_id'] = 0;
 		}
 
+        if (!empty($category_info)) {
+            $data['external_id'] = $category_info['external_id'];
+        } else {
+            $data['external_id'] = '';
+        }
+
 		$this->load->model('catalog/filter');
 
 		if (isset($this->request->get['category_id'])) {
@@ -424,6 +440,18 @@ class Category extends \Opencart\System\Engine\Controller {
 		if (!$this->user->hasPermission('modify', 'catalog/category')) {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
+
+        // Validate external_id
+        if (empty($this->request->post['external_id'])) {
+            $json['error']['external_id'] = $this->language->get('error_external_id');
+        } else {
+            $this->load->model('catalog/category');
+            $existing_category = $this->model_catalog_category->getCategoryByExternalId($this->request->post['external_id']);
+
+            if ($existing_category && (!isset($this->request->post['category_id']) || $existing_category['category_id'] != $this->request->post['category_id'])) {
+                $json['error']['external_id'] = $this->language->get('error_external_id_exists');
+            }
+        }
 
 		foreach ($this->request->post['category_description'] as $language_id => $value) {
 			if (!oc_validate_length($value['name'], 1, 255)) {

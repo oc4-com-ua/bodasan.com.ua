@@ -31,7 +31,7 @@ class Category extends \Opencart\System\Engine\Model {
 	 * $category_id = $this->model_catalog_category->addCategory($category_data);
 	 */
 	public function addCategory(array $data): int {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "category` SET `image` = '" . $this->db->escape((string)$data['image']) . "', `parent_id` = '" . (int)$data['parent_id'] . "', `sort_order` = '" . (int)$data['sort_order'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_modified` = NOW(), `date_added` = NOW()");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "category` SET `external_id` = '" . $this->db->escape($data['external_id']) . "', `image` = '" . $this->db->escape((string)$data['image']) . "', `parent_id` = '" . (int)$data['parent_id'] . "', `sort_order` = '" . (int)$data['sort_order'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_modified` = NOW(), `date_added` = NOW()");
 
 		$category_id = $this->db->getLastId();
 
@@ -122,7 +122,7 @@ class Category extends \Opencart\System\Engine\Model {
 	 * $this->model_catalog_category->editCategory($category_id, $category_data);
 	 */
 	public function editCategory(int $category_id, array $data): void {
-		$this->db->query("UPDATE `" . DB_PREFIX . "category` SET `image` = '" . $this->db->escape((string)$data['image']) . "', `parent_id` = '" . (int)$data['parent_id'] . "', `sort_order` = '" . (int)$data['sort_order'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_modified` = NOW() WHERE `category_id` = '" . (int)$category_id . "'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "category` SET `external_id` = '" . $this->db->escape($data['external_id']) . "', `image` = '" . $this->db->escape((string)$data['image']) . "', `parent_id` = '" . (int)$data['parent_id'] . "', `sort_order` = '" . (int)$data['sort_order'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_modified` = NOW() WHERE `category_id` = '" . (int)$category_id . "'");
 
 		$this->model_catalog_category->deleteDescriptions($category_id);
 
@@ -415,7 +415,7 @@ class Category extends \Opencart\System\Engine\Model {
 	 * $results = $this->model_catalog_category->getCategories();
 	 */
 	public function getCategories(array $data = []): array {
-		$sql = "SELECT `cp`.`category_id` AS `category_id`, GROUP_CONCAT(`cd1`.`name` ORDER BY `cp`.`level` SEPARATOR ' > ') AS `name`, `c1`.`parent_id`, `c1`.`sort_order`, `c1`.`status` FROM `" . DB_PREFIX . "category_path` `cp` LEFT JOIN `" . DB_PREFIX . "category` `c1` ON (`cp`.`category_id` = `c1`.`category_id`) LEFT JOIN `" . DB_PREFIX . "category` `c2` ON (`cp`.`path_id` = `c2`.`category_id`) LEFT JOIN `" . DB_PREFIX . "category_description` `cd1` ON (`cp`.`path_id` = `cd1`.`category_id`) LEFT JOIN `" . DB_PREFIX . "category_description` `cd2` ON (`cp`.`category_id` = `cd2`.`category_id`) WHERE `cd1`.`language_id` = '" . (int)$this->config->get('config_language_id') . "' AND `cd2`.`language_id` = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT `cp`.`category_id` AS `category_id`, `c1`.`external_id`, GROUP_CONCAT(`cd1`.`name` ORDER BY `cp`.`level` SEPARATOR ' > ') AS `name`, `c1`.`parent_id`, `c1`.`sort_order`, `c1`.`status` FROM `" . DB_PREFIX . "category_path` `cp` LEFT JOIN `" . DB_PREFIX . "category` `c1` ON (`cp`.`category_id` = `c1`.`category_id`) LEFT JOIN `" . DB_PREFIX . "category` `c2` ON (`cp`.`path_id` = `c2`.`category_id`) LEFT JOIN `" . DB_PREFIX . "category_description` `cd1` ON (`cp`.`path_id` = `cd1`.`category_id`) LEFT JOIN `" . DB_PREFIX . "category_description` `cd2` ON (`cp`.`category_id` = `cd2`.`category_id`) WHERE `cd1`.`language_id` = '" . (int)$this->config->get('config_language_id') . "' AND `cd2`.`language_id` = '" . (int)$this->config->get('config_language_id') . "'";
 
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND LCASE(`cd2`.`name`) LIKE '" . $this->db->escape(oc_strtolower($data['filter_name'])) . "'";
@@ -481,7 +481,19 @@ class Category extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
-	/**
+    /**
+     * Retrieves category information by external ID.
+     *
+     * @param string $external_id The external ID of the category.
+     * @return array|false Array containing category data or false if not found.
+     */
+    public function getCategoryByExternalId($external_id) {
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category WHERE external_id = '" . $this->db->escape($external_id) . "'");
+
+        return $query->row;
+    }
+
+    /**
 	 * Get Total Categories
 	 *
 	 * @param array<string, mixed> $data array of filters
