@@ -49,6 +49,7 @@ $_['entry_quantity'] = 'Кількість';
 $_['entry_minimum'] = 'Мінімальна кількість';
 $_['entry_stock_status'] = 'Статус відсутності на складі';
 $_['entry_price'] = 'Ціна';
+$_['entry_old_price'] = 'Стара ціна';
 $_['entry_tax_class'] = 'Податкова категорія';
 $_['entry_points'] = 'Бали';
 $_['entry_option_points'] = 'Бали';

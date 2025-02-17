@@ -294,6 +294,21 @@
                   </div>
                 </div>
                 <div class="row mb-3">
+                  <label for="input-old-price" class="col-sm-2 col-form-label">{{ entry_old_price }}</label>
+                  <div class="col-sm-10">
+                    <div class="input-group">
+                      <input type="text" name="old_price" value="{{ old_price }}" placeholder="{{ entry_old_price }}" id="input-old-price" class="form-control"/>
+                      {% if master_id %}
+                        <div class="input-group-text">
+                          <div class="form-check form-switch">
+                            <input type="checkbox" name="override[old_price]" value="1" id="input-variant-old-price" data-oc-toggle="switch" data-oc-target="#input-old-price" class="form-check-input"{% if override.old_price %} checked{% endif %}/> <label for="input-variant-old-price" class="form-check-label"></label>
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
                   <label for="input-tax-class" class="col-sm-2 col-form-label">{{ entry_tax_class }}</label>
                   <div class="col-sm-10">
                     <div class="input-group">

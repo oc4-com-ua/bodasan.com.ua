@@ -727,6 +727,12 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['price'] = '';
 		}
 
+        if (!empty($product_info)) {
+            $data['old_price'] = $product_info['old_price'];
+        } else {
+            $data['old_price'] = '';
+        }
+
 		$this->load->model('localisation/tax_class');
 
 		$data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();
