@@ -1203,6 +1203,12 @@ class Product extends \Opencart\System\Engine\Controller {
 
 		$this->load->model('catalog/product');
 
+        $product_id = isset($this->request->post['product_id']) ? (int)$this->request->post['product_id'] : 0;
+
+        if ($this->model_catalog_product->checkDuplicateModel($this->request->post['model'], $product_id)) {
+            $json['error']['model'] = $this->language->get('error_model_unique');
+        }
+
 		if ($this->request->post['master_id']) {
 			$product_options = $this->model_catalog_product->getOptions($this->request->post['master_id']);
 

@@ -2695,4 +2695,13 @@ class Product extends \Opencart\System\Engine\Model {
 
 		return (int)$query->row['total'];
 	}
+
+    /**
+     * Check Duplicate Model
+     */
+
+    public function checkDuplicateModel(string $model, int $product_id): bool {
+        $query = $this->db->query("SELECT product_id FROM `" . DB_PREFIX . "product` WHERE `model` = '" . $this->db->escape($model) . "' AND `product_id` != '" . (int)$product_id . "' LIMIT 1");
+        return $query->num_rows > 0;
+    }
 }
