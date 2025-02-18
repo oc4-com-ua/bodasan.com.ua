@@ -358,10 +358,6 @@ a {
     transition: margin ease 0.5s;
 }
 
-#menu li li a:hover:before {
-    margin-right: 20px;
-}
-
 #menu li li a:hover {
     color: #FFFFFF;
     background-color: #242d37;
