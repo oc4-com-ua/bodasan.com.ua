@@ -50,7 +50,9 @@
               {% endif %}
             </div>
           </li>
-          <li id="nav-language" class="nav-item dropdown">{{ language }}</li>
+          {% if languages|length > 1 %}
+            <li id="nav-language" class="nav-item dropdown">{{ language }}</li>
+          {% endif %}
           <li id="nav-profile" class="nav-item dropdown">
             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle"><img src="{{ image }}" alt="{{ firstname }} {{ lastname }}" title="{{ firstname }} {{ lastname }}" class="rounded-circle"/><span class="d-none d-md-inline d-lg-inline">&nbsp;&nbsp;&nbsp;{{ firstname }} {{ lastname }} <i class="fa-solid fa-caret-down fa-fw"></i></span></a>
             <ul class="dropdown-menu dropdown-menu-end">

@@ -45,7 +45,16 @@ class Header extends \Opencart\System\Engine\Controller {
 
 			$data['home'] = $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token']);
 
-			$data['language'] = $this->load->controller('common/language');
+            $this->load->model('localisation/language');
+            $languages = $this->model_localisation_language->getLanguages();
+
+            if (count($languages) > 1) {
+                $data['languages'] = $languages;
+            } else {
+                $data['languages'] = [];
+            }
+
+            $data['language'] = $this->load->controller('common/language');
 
 			// Notifications
 			$filter_data = [

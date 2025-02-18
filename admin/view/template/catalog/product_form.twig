@@ -37,11 +37,13 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
-              <ul class="nav nav-tabs">
-                {% for language in languages %}
-                  <li class="nav-item"><a href="#language-{{ language.language_id }}" data-bs-toggle="tab" class="nav-link{% if loop.first %} active{% endif %}"><img src="{{ language.image }}" title="{{ language.name }}"/> {{ language.name }}</a></li>
-                {% endfor %}
-              </ul>
+              {% if languages|length > 1 %}
+                <ul class="nav nav-tabs">
+                  {% for language in languages %}
+                    <li class="nav-item"><a href="#language-{{ language.language_id }}" data-bs-toggle="tab" class="nav-link{% if loop.first %} active{% endif %}"><img src="{{ language.image }}" title="{{ language.name }}"/> {{ language.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
               <div class="tab-content">
                 {% for language in languages %}
                   <div id="language-{{ language.language_id }}" class="tab-pane{% if loop.first %} active{% endif %}">
@@ -725,7 +727,9 @@
 
                         <td>{% for language in languages %}
                             <div class="input-group mb-12">
-                              <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
+                              {% if languages|length > 1 %}
+                                <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
+                              {% endif %}
                               <textarea name="product_attribute[{{ attribute_row }}][product_attribute_description][{{ language.language_id }}][text]" rows="5" placeholder="{{ entry_text }}" id="input-text-{{ attribute_row }}-{{ language.language_id }}" class="form-control">{{ product_attribute.product_attribute_description[language.language_id] ? product_attribute.product_attribute_description[language.language_id].text }}</textarea>
                             </div>
                           {% endfor %}</td>
@@ -1303,7 +1307,9 @@
                         <td>
                           {% for language in languages %}
                             <div class="input-group">
-                              <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
+                              {% if languages|length > 1 %}
+                                <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
+                              {% endif %}
                               <input type="text" name="product_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if product_seo_url[store.store_id][language.language_id] %}{{ product_seo_url[store.store_id][language.language_id] }}{% endif %}" id="input-keyword-{{ store.store_id }}-{{ language.language_id }}" placeholder="{{ entry_keyword }}" class="form-control"/>
                             </div>
                             <div id="error-keyword-{{ store.store_id }}-{{ language.language_id }}" class="invalid-feedback"></div>
@@ -1567,7 +1573,9 @@ $('#button-attribute').on('click', function() {
     html += '  <td>';
   {% for language in languages %}
     html += '<div class="input-group">';
-    html += '  <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name|escape('js') }}" /></div>';
+    {% if languages|length > 1 %}
+      html += '  <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name|escape('js') }}" /></div>';
+    {% endif %}
     html += '  <textarea name="product_attribute[' + attribute_row + '][product_attribute_description][{{ language.language_id }}][text]" rows="5" placeholder="{{ entry_text|escape('js') }}" id="input-text-' + attribute_row + '-{{ language.language_id }}" class="form-control"></textarea>';
     html += '</div>';
   {% endfor %}

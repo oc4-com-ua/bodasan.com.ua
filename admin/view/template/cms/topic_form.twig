@@ -25,11 +25,13 @@
           </ul>
           <div class="tab-content">
             <div id="tab-general" class="tab-pane active">
-              <ul class="nav nav-tabs">
-                {% for language in languages %}
-                  <li class="nav-item"><a href="#language-{{ language.language_id }}" data-bs-toggle="tab" class="nav-link{% if loop.first %} active{% endif %}"><img src="{{ language.image }}" title="{{ language.name }}"/> {{ language.name }}</a></li>
-                {% endfor %}
-              </ul>
+              {% if languages|length > 1 %}
+                <ul class="nav nav-tabs">
+                  {% for language in languages %}
+                    <li class="nav-item"><a href="#language-{{ language.language_id }}" data-bs-toggle="tab" class="nav-link{% if loop.first %} active{% endif %}"><img src="{{ language.image }}" title="{{ language.name }}"/> {{ language.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
               <div class="tab-content">
                 {% for language in languages %}
                   <div id="language-{{ language.language_id }}" class="tab-pane{% if loop.first %} active{% endif %}">
@@ -128,7 +130,9 @@
                         <td>
                           {% for language in languages %}
                             <div class="input-group">
-                              <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
+                              {% if languages|length > 1 %}
+                                <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
+                              {% endif %}
                               <input type="text" name="topic_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if topic_seo_url[store.store_id][language.language_id] %}{{ topic_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" id="input-keyword-{{ store.store_id }}-{{ language.language_id }}" class="form-control"/>
                             </div>
                             <div id="error-keyword-{{ store.store_id }}-{{ language.language_id }}" class="invalid-feedback"></div>
