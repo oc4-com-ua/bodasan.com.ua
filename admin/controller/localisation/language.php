@@ -118,7 +118,7 @@ class Language extends \Opencart\System\Engine\Controller {
 
 		$this->load->model('localisation/language');
 
-		$results = $this->model_localisation_language->getLanguages($filter_data);
+        $results = $this->model_localisation_language->getLanguages(['all' => true]);
 
 		foreach ($results as $result) {
 			$data['languages'][] = [
