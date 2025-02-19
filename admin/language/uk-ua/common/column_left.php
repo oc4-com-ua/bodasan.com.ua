@@ -86,3 +86,5 @@ $_['text_zone']                = 'Регіони';
 $_['text_complete_status']     = 'Завершені замовлення';
 $_['text_processing_status']   = 'Замовлення в обробці';
 $_['text_other_status']        = 'Інші статуси';
+$_['text_import']              = 'Імпорт';
+$_['text_import_panel']        = 'Панель імпорту';
