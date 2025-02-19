@@ -813,6 +813,13 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
                     'href'     => $this->url->link('import/import', 'user_token=' . $this->session->data['user_token']),
                     'children' => []
                 ];
+
+                $import[] = [
+                    'name'     => $this->language->get('text_import_settings'),
+                    'href'     => $this->url->link('import/import.settings', 'user_token=' . $this->session->data['user_token']),
+                    'children' => []
+                ];
+
             }
 
             // Додаємо «імпорт» у загальний список меню, якщо є що додавати

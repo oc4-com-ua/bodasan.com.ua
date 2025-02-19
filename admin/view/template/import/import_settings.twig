@@ -1,0 +1,54 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="float-end">
+                <button type="submit" form="form-import-settings" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i></button>
+            </div>
+            <h1>{{ heading_settings }}</h1>
+            <ol class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-pencil"></i>
+                {{ text_edit }}
+            </div>
+            <div class="card-body">
+                <form action="{{ save }}" method="post" id="form-import-settings" data-oc-toggle="ajax">
+                    <div class="row mb-3 required">
+                        <label class="col-sm-2 col-form-label" for="input-feed-url">{{ entry_feed_url }}</label>
+                        <div class="col-sm-10">
+                            <textarea name="feed_url" rows="5" placeholder="https://example.com/feed.xml" id="input-feed-url" class="form-control">{{ import_settings.feed_url ?: '' }}</textarea>
+                            <div id="error-feed-url" class="invalid-feedback"></div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="input-import-limit">{{ entry_import_limit }}</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="import_limit" value="{{ import_settings.import_limit ?: 50 }}"
+                                   id="input-import-limit" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">{{ entry_import_images }}</label>
+                        <div class="col-sm-10">
+                            <select name="import_images" class="form-select">
+                                <option value="1" {% if import_settings.import_images == '1' %}selected{% endif %}>Так</option>
+                                <option value="0" {% if import_settings.import_images == '0' %}selected{% endif %}>Ні</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{ footer }}

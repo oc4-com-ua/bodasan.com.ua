@@ -88,3 +88,4 @@ $_['text_processing_status']   = 'Замовлення в обробці';
 $_['text_other_status']        = 'Інші статуси';
 $_['text_import']              = 'Імпорт';
 $_['text_import_panel']        = 'Панель імпорту';
+$_['text_import_settings']     = 'Налаштування';
