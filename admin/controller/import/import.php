@@ -19,6 +19,8 @@ class Import extends \Opencart\System\Engine\Controller {
             'href' => $this->url->link('import/import', 'user_token=' . $this->session->data['user_token'])
         ];
 
+        $data['preview'] = $this->url->link('import/import.parseFeed', 'user_token=' . $this->session->data['user_token']);
+
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
@@ -72,6 +74,25 @@ class Import extends \Opencart\System\Engine\Controller {
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
+    }
+
+    public function parseFeed(): void {
+        $this->load->language('import/import');
+        $this->load->model('import/import');
+
+        $result = $this->model_import_import->parseAndStore(FEED_PROM_URL);
+
+        if (!empty($result['error'])) {
+            $this->session->data['error_warning'] = $result['error'];
+        } else {
+            $this->session->data['success'] = $this->language->get('text_parse_success');
+        }
+
+//        $this->response->redirect($this->url->link('import/import.settings', 'user_token=' . $this->session->data['user_token']));
+
+        // Тимчасово просто виводимо повідомлення
+        echo '<div style="margin:20px;">Парсинг завершено. Дані збережено в тимчасові таблиці.</div>';
+        exit;
     }
 
 
