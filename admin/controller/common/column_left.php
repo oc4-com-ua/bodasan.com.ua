@@ -803,36 +803,13 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 
-            // Імпорт
-            $import = [];
-
-            // Перевіряємо, чи є права на доступ до контролера "import/import"
-            if ($this->user->hasPermission('access', 'import/import')) {
-                $import[] = [
-                    'name'     => $this->language->get('text_import_panel'),
-                    'href'     => $this->url->link('import/import', 'user_token=' . $this->session->data['user_token']),
-                    'children' => []
-                ];
-
-                $import[] = [
-                    'name'     => $this->language->get('text_import_settings'),
-                    'href'     => $this->url->link('import/import.settings', 'user_token=' . $this->session->data['user_token']),
-                    'children' => []
-                ];
-
-            }
-
-            // Додаємо «імпорт» у загальний список меню, якщо є що додавати
-            if ($import) {
-                $data['menus'][] = array(
-                    'id'       => 'menu-import',
-                    'icon'     => 'fas fa-file-import', // іконка Font Awesome
-                    'name'     => $this->language->get('text_import'),
-                    'href'     => '',
-                    'children' => $import
-                );
-            }
-
+            $data['menus'][] = array(
+                'id'       => 'menu-import',
+                'icon'     => 'fas fa-file-import',
+                'name'     => $this->language->get('text_import'),
+                'href'     => $this->url->link('import/import', 'user_token=' . $this->session->data['user_token']),
+                'children' => []
+            );
 
             // Stats
 			if ($this->user->hasPermission('access', 'report/statistics')) {

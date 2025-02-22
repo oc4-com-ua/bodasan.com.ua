@@ -6,30 +6,6 @@ class Import extends \Opencart\System\Engine\Model {
         parent::__construct($registry);
     }
 
-    public function saveSettings(array $data): void {
-        // Видаляємо попередні налаштування, які зберігаються під ключем 'import_settings'
-        $this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `code` = 'import_settings'");
-
-        // Записуємо кожне значення з $data в таблицю setting
-        foreach ($data as $key => $value) {
-            $this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET 
-            `store_id` = '0',
-            `code` = 'import_settings',
-            `key` = '" . $this->db->escape($key) . "', 
-            `value` = '" . $this->db->escape($value) . "'");
-        }
-    }
-
-    public function getSettings(): array {
-        $result = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `code` = 'import_settings'");
-        $settings = [];
-        foreach ($result->rows as $row) {
-            $settings[$row['key']] = $row['value'];
-        }
-
-        return $settings;
-    }
-
     public function parseAndStore(string $feed_url): array {
         $result = [];
 
@@ -124,12 +100,18 @@ class Import extends \Opencart\System\Engine\Model {
 
                 // Зображення
                 if (isset($offer->picture)) {
+                    $is_first_image = true;
+
                     foreach ($offer->picture as $picture) {
                         $picture_url = (string)$picture;
+
                         $this->db->query("INSERT INTO `" . DB_PREFIX . "import_image` SET
-                        `product_external_id` = '" . $this->db->escape($external_id) . "',
-                        `image_url` = '" . $this->db->escape($picture_url) . "'
-                    ");
+                            `product_external_id` = '" . $this->db->escape($external_id) . "',
+                            `image_url` = '" . $this->db->escape($picture_url) . "',
+                            `main_image` = '" . ($is_first_image ? 1 : 0) . "'
+                        ");
+
+                        $is_first_image = false;
                     }
                 }
 
@@ -160,6 +142,4 @@ class Import extends \Opencart\System\Engine\Model {
         $result['success'] = 'OK';
         return $result;
     }
-
-
 }

@@ -11,14 +11,17 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{ heading_title }}</h3>
+        <div class="card mb-4">
+            <div class="card-header"><i class="fa-solid fa-images"></i> Завантаження зображень</div>
+            <div class="card-body">
+                <a href="{{ action_import_images }}" class="btn btn-primary" id="button-images">{{ button_import_images }}</a>
             </div>
-            <div class="panel-body">
-                <p>Тут буде наш майбутній функціонал імпорту :)</p>
-                <a href="{{ preview }}" class="btn btn-primary" id="button-preview">{{ button_preview }}</a>
-                <button type="button" class="btn btn-success" id="button-import">{{ button_import }}</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><i class="fa-solid fa-tag"></i> Імпорт товарів</div>
+            <div class="card-body">
+                <a href="{{ action_import_products }}" class="btn btn-success" id="button-preview">{{ button_import_products }}</a>
             </div>
         </div>
     </div>
