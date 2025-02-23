@@ -29,6 +29,12 @@ class Import extends \Opencart\System\Engine\Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
+        $data['action_import'] = $this->url->link('import/import.importAll', 'user_token=' . $this->session->data['user_token']);
+
+        $data['import_summary'] = !empty($this->session->data['import_summary']) ? $this->session->data['import_summary'] : '';
+
+        unset($this->session->data['import_summary']);
+
         $this->response->setOutput($this->load->view('import/import', $data));
     }
 
@@ -57,6 +63,36 @@ class Import extends \Opencart\System\Engine\Controller {
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
+    }
+
+    public function importAll(): void {
+        $this->load->language('import/import');
+        $this->load->model('import/import');
+
+        if (!isset($this->session->data['import_summary'])) {
+            $this->session->data['import_summary'] = [];
+        }
+
+        // 1. Імпорт категорій
+        $import_categories = $this->model_import_import->importCategories();
+
+        $this->session->data['import_summary']['categories'] = sprintf(
+            $this->language->get('text_import_categories'),
+            $import_categories['total'],
+            $import_categories['new'],
+            $import_categories['updated']
+        );
+
+        // 2. Імпорт виробників
+        // $this->model_import_import->importManufacturers();
+
+        // 3. Імпорт атрибутів
+        // $this->model_import_import->importAttributes();
+
+        // 4. Імпорт товарів
+        // $this->model_import_import->importProducts();
+
+        $this->response->redirect($this->url->link('import/import', 'user_token=' . $this->session->data['user_token']));
     }
 
 }

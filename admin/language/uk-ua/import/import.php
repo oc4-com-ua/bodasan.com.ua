@@ -6,6 +6,8 @@ $_['heading_card_products'] = 'Імпорт товарів';
 
 // Text
 $_['text_parse_success'] = 'Парсинг фіда успішно завершено!';
+$_['text_import_heading'] = 'Імпорт завершено!';
+$_['text_import_categories'] = '- <b>Категорії:</b> всього %d, нових %d, оновлених %d';
 
 // JS text
 $_['js_img_heading_success'] = 'Готово!';

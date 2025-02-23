@@ -26,7 +26,16 @@
         <div class="card">
             <div class="card-header"><i class="fa-solid fa-tag"></i> {{ heading_card_products }}</div>
             <div class="card-body">
-                <a href="{{ action_import_products }}" class="btn btn-success" id="button-preview">{{ button_import_products }}</a>
+                {% if import_summary %}
+                    <div class="alert alert-success">
+                        <h5 class="alert-heading">{{ text_import_heading }}</h5>
+                        <hr>
+                        {% if import_summary['categories'] %}
+                            <p class="mb-0">{{ import_summary['categories'] }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <a href="{{ action_import }}" class="btn btn-success">{{ button_import_products }}</a>
             </div>
         </div>
     </div>
