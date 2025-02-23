@@ -8,6 +8,8 @@ $_['heading_card_products'] = 'Імпорт товарів';
 $_['text_parse_success'] = 'Парсинг фіда успішно завершено!';
 $_['text_import_heading'] = 'Імпорт завершено!';
 $_['text_import_categories'] = '- <b>Категорії:</b> всього %d, нових %d, оновлених %d';
+$_['text_import_manufacturers'] = '- <b>Виробники:</b> всього %d, нових %d, пропущено %d';
+$_['text_import_attributes'] = '- <b>Атрибути:</b> всього %d, нових %d, пропущено %d';
 
 // JS text
 $_['js_img_heading_success'] = 'Готово!';

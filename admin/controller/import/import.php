@@ -84,10 +84,23 @@ class Import extends \Opencart\System\Engine\Controller {
         );
 
         // 2. Імпорт виробників
-        // $this->model_import_import->importManufacturers();
+        $import_manufacturers = $this->model_import_import->importManufacturers();
+
+        $this->session->data['import_summary']['manufacturers'] = sprintf(
+            $this->language->get('text_import_manufacturers'),
+            $import_manufacturers['total'],
+            $import_manufacturers['new'],
+            $import_manufacturers['skipped']
+        );
 
         // 3. Імпорт атрибутів
-        // $this->model_import_import->importAttributes();
+        $import_attributes = $this->model_import_import->importAttributes();
+        $this->session->data['import_summary']['attributes'] = sprintf(
+            $this->language->get('text_import_attributes'),
+            $import_attributes['total'],
+            $import_attributes['new'],
+            $import_attributes['skipped']
+        );
 
         // 4. Імпорт товарів
         // $this->model_import_import->importProducts();

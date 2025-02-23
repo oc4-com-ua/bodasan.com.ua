@@ -471,4 +471,157 @@ class Import extends \Opencart\System\Engine\Model {
         return strtolower($transliterated);
     }
 
+    public function importManufacturers(): array {
+        $stats = [
+            'total'   => 0,
+            'new'     => 0,
+            'skipped' => 0
+        ];
+
+        $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "import_manufacturer`");
+        $rows = $q->rows;
+
+        if (!$rows) {
+            return $stats;
+        }
+
+        $stats['total'] = count($rows);
+
+        foreach ($rows as $row) {
+            $name = trim($row['name'] ?? '');
+
+            $res = $this->saveManufacturer($name);
+
+            if ($res === 'new') {
+                $stats['new']++;
+            } elseif ($res === 'skipped') {
+                $stats['skipped']++;
+            }
+        }
+
+        return $stats;
+    }
+
+    private function saveManufacturer(string $name): string {
+        $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "manufacturer` WHERE `name` = '" . $this->db->escape($name) . "'");
+
+        if ($q->num_rows) {
+            return 'skipped';
+        } else {
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "manufacturer` 
+                SET `name` = '" . $this->db->escape($name) . "', 
+                    `sort_order` = '0'
+            ");
+
+            $manufacturer_id = $this->db->getLastId();
+
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "manufacturer_to_store`
+                SET `manufacturer_id` = '" . (int)$manufacturer_id . "',
+                    `store_id` = '0'
+            ");
+
+            $this->addSeoUrlManufacturer($manufacturer_id, $name);
+
+            return 'new';
+        }
+    }
+
+    private function addSeoUrlManufacturer(int $manufacturer_id, string $name): void {
+        $keyword = $this->transliterate($name);
+
+        $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seo_url`
+            WHERE `store_id` = 0
+            AND `keyword` = '" . $this->db->escape($keyword) . "'
+        ");
+
+        if ($q->num_rows) {
+             throw new \Exception('SEO URL зайнятий');
+        }
+
+        $this->db->query("INSERT INTO `" . DB_PREFIX . "seo_url` SET
+            `store_id` = 0,
+            `language_id` = 2,
+            `key` = 'manufacturer_id',
+            `value` = '" . (int)$manufacturer_id . "',
+            `keyword` = '" . $this->db->escape($keyword) . "'
+        ");
+    }
+
+    public function importAttributes(): array {
+        $stats = [
+            'total'   => 0,
+            'new'     => 0,
+            'skipped' => 0
+        ];
+
+        // 1. Зчитаємо дані з `import_attribute`
+        //    але там може бути багато рядків із однаковими `attribute_name`
+        $q = $this->db->query("SELECT attribute_name FROM `" . DB_PREFIX . "import_attribute`");
+        $rows = $q->rows;
+
+        if (!$rows) {
+            return $stats; // нічого імпортувати
+        }
+
+        // 2. Створюємо унікальний список назв
+        $names = [];
+        foreach ($rows as $row) {
+            $names[ trim($row['attribute_name']) ] = true;
+        }
+
+        // Тепер у $names — унікальні ключі
+        $uniqueNames = array_keys($names);
+
+        $stats['total'] = count($uniqueNames);
+
+        // 3. Для кожної унікальної назви викликаємо saveAttributeName()
+        //    і збільшуємо лічильники
+        foreach ($uniqueNames as $attrName) {
+            $res = $this->saveAttributeName($attrName);
+
+            if ($res === 'new') {
+                $stats['new']++;
+            } else {
+                // якщо 'skip' або 'skipped', то ++$stats['skipped']
+                $stats['skipped']++;
+            }
+        }
+
+        return $stats;
+    }
+
+    private function saveAttributeName(string $attrName): string {
+        // 1) Шукаємо в oc_attribute_description, де language_id=2 і name=attrName
+        $sql = "SELECT ad.attribute_id 
+            FROM `" . DB_PREFIX . "attribute_description` ad
+            JOIN `" . DB_PREFIX . "attribute` a ON (ad.attribute_id = a.attribute_id)
+            WHERE ad.language_id = '2'
+              AND ad.name = '" . $this->db->escape($attrName) . "'
+              AND a.attribute_group_id = '1'";
+        $q = $this->db->query($sql);
+
+        if ($q->num_rows) {
+            // Цей атрибут уже існує
+            return 'skip';
+        } else {
+            // 2) Створюємо новий атрибут
+            // припустимо, attribute_group_id=1, sort_order=0
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "attribute` SET
+                `attribute_group_id` = '1',
+                `sort_order` = '0'
+            ");
+
+            $attribute_id = $this->db->getLastId();
+
+            // 3) Додаємо назву в attribute_description
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "attribute_description` SET
+                `attribute_id` = '" . (int)$attribute_id . "',
+                `language_id` = '2',
+                `name` = '" . $this->db->escape($attrName) . "'
+            ");
+
+            return 'new';
+        }
+    }
+
 }
