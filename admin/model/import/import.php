@@ -142,4 +142,58 @@ class Import extends \Opencart\System\Engine\Model {
         $result['success'] = 'OK';
         return $result;
     }
+    
+    public function downloadImagesChunk(int $offset, int $limit): array {
+        $stats = [
+            'processed' => 0,
+            'downloaded' => 0,
+            'skipped' => 0,
+            'failed' => 0,
+            'finished' => false
+        ];
+
+        // Вибираємо $limit записів з oc_import_image, починаючи з $offset
+        $sql = "SELECT * FROM `" . DB_PREFIX . "import_image` ORDER BY import_image_id ASC LIMIT " . (int)$offset . "," . (int)$limit;
+        $rows = $this->db->query($sql)->rows;
+
+        // Якщо немає записів, значить все вже опрацьовано
+        if (!$rows) {
+            $stats['finished'] = true;
+            return $stats;
+        }
+
+        foreach ($rows as $row) {
+            $stats['processed']++;
+
+            $external_id = $row['product_external_id'];
+            $image_url   = $row['image_url'];
+
+            $baseDir = DIR_IMAGE . 'catalog/products/' . $this->db->escape($external_id) . '/';
+            if (!is_dir($baseDir)) {
+                mkdir($baseDir, 0755, true);
+            }
+
+            $fileName = basename($image_url);
+            $savePath = $baseDir . $fileName;
+
+            if (is_file($savePath)) {
+                $stats['skipped']++;
+                // $this->log->write("Image skip: $savePath");
+                continue;
+            }
+
+            $imageContent = @file_get_contents($image_url);
+            if ($imageContent !== false) {
+                file_put_contents($savePath, $imageContent);
+                $stats['downloaded']++;
+                // $this->log->write("Image downloaded: $savePath");
+            } else {
+                $stats['failed']++;
+                 $this->log->write("Image download FAILED: $image_url");
+            }
+        }
+
+        return $stats;
+    }
+
 }

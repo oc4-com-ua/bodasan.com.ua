@@ -21,9 +21,9 @@ class Import extends \Opencart\System\Engine\Controller {
 
         $this->load->model('import/import');
 
-
-        $data['action_import_images'] = $this->url->link('import/import.downloadImages', 'user_token=' . $this->session->data['user_token']);
         $data['action_import_products'] = $this->url->link('import/import.parseFeed', 'user_token=' . $this->session->data['user_token']);
+
+        $data['fetch_url_img'] = $this->url->link('import/import.downloadImagesAjax', 'user_token=' . $this->session->data['user_token']);
 
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
@@ -47,5 +47,16 @@ class Import extends \Opencart\System\Engine\Controller {
         $this->response->redirect($this->url->link('import/import', 'user_token=' . $this->session->data['user_token']));
     }
 
+    public function downloadImagesAjax(): void {
+        $offset = (int)($this->request->get['offset'] ?? 0);
+        $limit  = (int)($this->request->get['limit'] ?? 100);
+
+        $this->load->model('import/import');
+
+        $json = $this->model_import_import->downloadImagesChunk($offset, $limit);
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
 
 }

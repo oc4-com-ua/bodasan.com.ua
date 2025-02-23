@@ -12,18 +12,99 @@
     </div>
     <div class="container-fluid">
         <div class="card mb-4">
-            <div class="card-header"><i class="fa-solid fa-images"></i> Завантаження зображень</div>
+            <div class="card-header"><i class="fa-solid fa-images"></i> {{ heading_card_images }}</div>
             <div class="card-body">
-                <a href="{{ action_import_images }}" class="btn btn-primary" id="button-images">{{ button_import_images }}</a>
+                <div class="alert alert-warning" id="alert-import-images" style="display: none;">
+                    <h5 class="alert-heading" id="heading-import-images"></h5>
+                    <hr>
+                    <p class="mb-0" id="status-import-images"></p>
+                </div>
+                <button class="btn btn-primary" id="button-images">{{ button_import_images }}</button>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header"><i class="fa-solid fa-tag"></i> Імпорт товарів</div>
+            <div class="card-header"><i class="fa-solid fa-tag"></i> {{ heading_card_products }}</div>
             <div class="card-body">
                 <a href="{{ action_import_products }}" class="btn btn-success" id="button-preview">{{ button_import_products }}</a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    async function downloadImagesAll() {
+        let offset = 0;
+        const limit = 100;
+        let totalProcessed = 0;
+        let totalDownloaded = 0;
+        let totalSkipped = 0;
+        let totalFailed = 0;
+        let isRunning = false;
+
+        const alertBox = document.getElementById('alert-import-images');
+        const heading = document.getElementById('heading-import-images');
+        const statusText = document.getElementById('status-import-images');
+        const button = document.getElementById('button-images');
+
+        if (isRunning) return;
+        isRunning = true;
+
+        const originalButtonText = button.innerHTML;
+
+        function updateUI(status, message = '') {
+            alertBox.style.display = 'block';
+            alertBox.classList.remove('alert-success', 'alert-warning', 'alert-danger');
+            alertBox.classList.add(status === 'success' ? 'alert-success' : status === 'error' ? 'alert-danger' : 'alert-warning');
+            heading.innerHTML = status === 'success' ? '{{ js_img_heading_success }}' : status === 'error' ? '{{ js_img_heading_error }}' : '{{ js_img_heading_process }}';
+            statusText.innerHTML = message ||
+                `{{ js_img_message_total }}: ${totalProcessed}, {{ js_img_message_downloaded }}: ${totalDownloaded}, {{ js_img_message_skipped }}: ${totalSkipped}, {{ js_img_message_failed }}: ${totalFailed}`;
+        }
+
+        function toggleButton(loading) {
+            button.disabled = loading;
+            button.innerHTML = loading ? '<span class="spinner-border spinner-border-sm"></span> {{ js_img_spinner }}' : originalButtonText;
+        }
+
+        toggleButton(true);
+        updateUI('warning', '{{ js_img_message_start }}');
+
+        async function processChunk() {
+            try {
+                const response = await fetch(`{{ fetch_url_img|replace({'&amp;': '&'}) }}&offset=${offset}&limit=${limit}`);
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+                const json = await response.json();
+
+                totalProcessed += json.processed || 0;
+                totalDownloaded += json.downloaded || 0;
+                totalSkipped += json.skipped || 0;
+                totalFailed += json.failed || 0;
+
+                updateUI(json.finished ? 'success' : 'warning');
+
+                if (!json.finished) {
+                    offset += limit;
+                    setTimeout(processChunk, 500);
+                } else {
+                    isRunning = false;
+                    toggleButton(false);
+                }
+            } catch (error) {
+                console.error('{{ js_img_error_console }}:', error);
+                updateUI('error', '{{ js_img_error_message }}');
+                isRunning = false;
+                toggleButton(false);
+            }
+        }
+
+        processChunk();
+    }
+
+    document.getElementById('button-images').addEventListener('click', function(e) {
+        e.preventDefault();
+        downloadImagesAll();
+    });
+</script>
+
 {{ footer }}
