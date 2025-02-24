@@ -81,7 +81,6 @@ class Import extends \Opencart\System\Engine\Controller {
             $this->session->data['import_summary'] = [];
         }
 
-        // 1. Імпорт категорій
         $import_categories = $this->model_import_import->importCategories();
 
         $this->session->data['import_summary']['categories'] = sprintf(
@@ -91,7 +90,6 @@ class Import extends \Opencart\System\Engine\Controller {
             $import_categories['updated']
         );
 
-        // 2. Імпорт виробників
         $import_manufacturers = $this->model_import_import->importManufacturers();
 
         $this->session->data['import_summary']['manufacturers'] = sprintf(
@@ -101,7 +99,6 @@ class Import extends \Opencart\System\Engine\Controller {
             $import_manufacturers['skipped']
         );
 
-        // 3. Імпорт атрибутів
         $import_attributes = $this->model_import_import->importAttributes();
         $this->session->data['import_summary']['attributes'] = sprintf(
             $this->language->get('text_import_attributes'),
@@ -110,7 +107,6 @@ class Import extends \Opencart\System\Engine\Controller {
             $import_attributes['skipped']
         );
 
-        // 4. Імпорт товарів
         $import_products = $this->model_import_import->importProducts();
         $this->session->data['import_summary']['products'] = sprintf(
             $this->language->get('text_import_products'),

@@ -9,21 +9,18 @@ class Import extends \Opencart\System\Engine\Model {
     public function parseAndStore(string $feed_url, $language): array {
         $result = [];
 
-        // 1. Очищаємо таблиці (truncate)
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_category`");
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_manufacturer`");
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_product`");
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_image`");
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_attribute`");
 
-        // Лічильники
         $category_count = 0;
         $product_count = 0;
         $image_count = 0;
         $attribute_count = 0;
         $manufacturer_count = 0;
 
-        // 2. Зчитаємо XML
         $xml_content = @file_get_contents($feed_url);
 
         if (!$xml_content) {
@@ -37,7 +34,6 @@ class Import extends \Opencart\System\Engine\Model {
             return $result;
         }
 
-        // 3. Парсимо категорії
         if (isset($xml->shop->categories->category)) {
             foreach ($xml->shop->categories->category as $category) {
                 $external_id = (string)$category['id'];
@@ -45,12 +41,12 @@ class Import extends \Opencart\System\Engine\Model {
                 $name        = trim((string)$category);
 
                 $this->db->query("INSERT INTO `" . DB_PREFIX . "import_category` SET
-                `external_id` = '" . $this->db->escape($external_id) . "',
-                `parent_external_id` = '" . $this->db->escape($parent_id) . "',
-                `name` = '" . $this->db->escape($name) . "',
-                `date_added` = NOW(),
-                `date_modified` = NOW()
-            ");
+                    `external_id` = '" . $this->db->escape($external_id) . "',
+                    `parent_external_id` = '" . $this->db->escape($parent_id) . "',
+                    `name` = '" . $this->db->escape($name) . "',
+                    `date_added` = NOW(),
+                    `date_modified` = NOW()
+                ");
 
                 if ($this->db->countAffected() > 0) {
                     $category_count++;
@@ -58,13 +54,10 @@ class Import extends \Opencart\System\Engine\Model {
             }
         }
 
-        // 4. Парсимо offers (товари)
         if (isset($xml->shop->offers->offer)) {
-            // Заводимо масив для зберігання унікальних виробників
             $manufacturers = [];
 
             foreach ($xml->shop->offers->offer as $offer) {
-                // Основні поля
                 $external_id   = (string)$offer['id'];
                 $available     = (string)$offer['available'];
                 $name          = (string)$offer->name;
@@ -72,48 +65,42 @@ class Import extends \Opencart\System\Engine\Model {
                 $price         = (float)$offer->price;
                 $quantity      = (int)($offer->quantity_in_stock ?? 0);
                 $keywords      = (string)$offer->keywords;
-                $vendor        = (string)$offer->vendor; // виробник
+                $vendor        = (string)$offer->vendor;
                 $sku           = (string)$offer->vendorCode;
                 $url           = (string)$offer->url;
 
-                // categoryId
                 $category_external_id = null;
                 if (isset($offer->categoryId)) {
                     $category_external_id = (string)$offer->categoryId[0];
                 }
 
-                // «Статус» можна визначити на основі 'available' або залишити 1
                 $status = ($available === 'true') ? 1 : 0;
 
-                // Додаємо унікального виробника в масив
                 if ($vendor) {
-                    // можна все в lower, якщо боїшся дублікатів
                     $vendors_key = mb_strtolower($vendor);
                     $manufacturers[$vendors_key] = $vendor;
                 }
 
-                // Запис у import_product
                 $this->db->query("INSERT INTO `" . DB_PREFIX . "import_product` SET
-                `external_id` = '" . $this->db->escape($external_id) . "',
-                `manufacturer` = '" . $this->db->escape($vendor) . "',
-                `name` = '" . $this->db->escape($name) . "',
-                `description` = '" . $this->db->escape($description) . "',
-                `price` = '" . (float)$price . "',
-                `quantity` = '" . (int)$quantity . "',
-                `keywords` = '" . $this->db->escape($keywords) . "',
-                `category_external_id` = '" . $this->db->escape($category_external_id) . "',
-                `status` = '" . (int)$status . "',
-                `sku` = '" . $this->db->escape($sku) . "',
-                `seo_url` = '" . $this->db->escape($url) . "',
-                `date_added` = NOW(),
-                `date_modified` = NOW()
-            ");
+                    `external_id` = '" . $this->db->escape($external_id) . "',
+                    `manufacturer` = '" . $this->db->escape($vendor) . "',
+                    `name` = '" . $this->db->escape($name) . "',
+                    `description` = '" . $this->db->escape($description) . "',
+                    `price` = '" . (float)$price . "',
+                    `quantity` = '" . (int)$quantity . "',
+                    `keywords` = '" . $this->db->escape($keywords) . "',
+                    `category_external_id` = '" . $this->db->escape($category_external_id) . "',
+                    `status` = '" . (int)$status . "',
+                    `sku` = '" . $this->db->escape($sku) . "',
+                    `seo_url` = '" . $this->db->escape($url) . "',
+                    `date_added` = NOW(),
+                    `date_modified` = NOW()
+                ");
 
                 if ($this->db->countAffected() > 0) {
                     $product_count++;
                 }
 
-                // Зображення
                 if (isset($offer->picture)) {
                     $is_first_image = true;
 
@@ -134,7 +121,6 @@ class Import extends \Opencart\System\Engine\Model {
                     }
                 }
 
-                // Атрибути (param)
                 if (isset($offer->param)) {
                     foreach ($offer->param as $param) {
                         $param_name  = (string)$param['name'];
@@ -153,11 +139,10 @@ class Import extends \Opencart\System\Engine\Model {
                 }
             }
 
-            // 5. Записуємо виробників у import_manufacturer
             foreach ($manufacturers as $key => $vendor_name) {
                 $this->db->query("INSERT IGNORE INTO `" . DB_PREFIX . "import_manufacturer` SET
-                `name` = '" . $this->db->escape($vendor_name) . "'
-            ");
+                    `name` = '" . $this->db->escape($vendor_name) . "'
+                ");
 
                 if ($this->db->countAffected() > 0) {
                     $manufacturer_count++;
@@ -165,8 +150,6 @@ class Import extends \Opencart\System\Engine\Model {
             }
         }
 
-
-        // Якщо дійшли сюди, все ок
         $result['success_parse_feed'] = sprintf(
             $language->get('text_parse_success_summary'),
             $category_count,
@@ -176,7 +159,6 @@ class Import extends \Opencart\System\Engine\Model {
             $attribute_count
         );
 
-        // Зберігаємо в oc_setting через спеціальний метод
         $parse_stats = [
             'date'          => date('Y-m-d H:i:s'),
             'categories'    => $category_count,
@@ -192,15 +174,12 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function saveParseStats(array $stats): void {
-        // Конвертуємо у JSON (щоб усі поля були в одному місці)
         $json_value = json_encode($stats, JSON_UNESCAPED_UNICODE);
 
-        // Прибираємо попередній запис
         $this->db->query("DELETE FROM `" . DB_PREFIX . "setting`
         WHERE `code` = 'import_feed'
         AND `key` = 'import_feed_stats'");
 
-        // Додаємо новий
         $this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET
             `store_id` = 0,
             `code` = 'import_feed',
@@ -217,6 +196,7 @@ class Import extends \Opencart\System\Engine\Model {
         if ($q->num_rows) {
             return json_decode($q->row['value'], true);
         }
+
         return [];
     }
 
@@ -229,11 +209,9 @@ class Import extends \Opencart\System\Engine\Model {
             'finished' => false
         ];
 
-        // Вибираємо $limit записів з oc_import_image, починаючи з $offset
         $sql = "SELECT * FROM `" . DB_PREFIX . "import_image` ORDER BY import_image_id ASC LIMIT " . (int)$offset . "," . (int)$limit;
         $rows = $this->db->query($sql)->rows;
 
-        // Якщо немає записів, значить все вже опрацьовано
         if (!$rows) {
             $stats['finished'] = true;
             return $stats;
@@ -266,7 +244,7 @@ class Import extends \Opencart\System\Engine\Model {
                 // $this->log->write("Image downloaded: $savePath");
             } else {
                 $stats['failed']++;
-                 $this->log->write("Image download FAILED: $image_url");
+                $this->log->write("Image download FAILED: $image_url");
             }
         }
 
@@ -445,10 +423,8 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function sortCategoriesByLevel(array $categories): array {
-        // Визначаємо рівень кожної категорії
         $levels = [];
 
-        // Функція для визначення рівня категорії
         function determineLevel($category_id, $categories, &$levels) {
             if (isset($levels[$category_id])) {
                 return $levels[$category_id];
@@ -457,7 +433,7 @@ class Import extends \Opencart\System\Engine\Model {
             foreach ($categories as $category) {
                 if ($category['external_id'] == $category_id) {
                     if ($category['parent_external_id'] == 0) {
-                        $levels[$category_id] = 1; // Головна категорія
+                        $levels[$category_id] = 1;
                     } else {
                         $levels[$category_id] = determineLevel($category['parent_external_id'], $categories, $levels) + 1;
                     }
@@ -465,21 +441,18 @@ class Import extends \Opencart\System\Engine\Model {
                 }
             }
 
-            return 1; // За замовчуванням рівень 1
+            return 1;
         }
 
-        // Визначаємо рівні для всіх категорій
         foreach ($categories as $category) {
             $levels[$category['external_id']] = determineLevel($category['external_id'], $categories, $levels);
         }
 
-        // Додаємо рівень до кожної категорії
         foreach ($categories as &$category) {
             $category['level'] = $levels[$category['external_id']];
         }
         unset($category);
 
-        // Сортуємо за рівнем
         usort($categories, function ($a, $b) {
             return $a['level'] <=> $b['level'];
         });
@@ -631,35 +604,28 @@ class Import extends \Opencart\System\Engine\Model {
             'skipped' => 0
         ];
 
-        // 1. Зчитаємо дані з `import_attribute`
-        //    але там може бути багато рядків із однаковими `attribute_name`
         $q = $this->db->query("SELECT attribute_name FROM `" . DB_PREFIX . "import_attribute`");
         $rows = $q->rows;
 
         if (!$rows) {
-            return $stats; // нічого імпортувати
+            return $stats;
         }
 
-        // 2. Створюємо унікальний список назв
         $names = [];
         foreach ($rows as $row) {
             $names[ trim($row['attribute_name']) ] = true;
         }
 
-        // Тепер у $names — унікальні ключі
         $uniqueNames = array_keys($names);
 
         $stats['total'] = count($uniqueNames);
 
-        // 3. Для кожної унікальної назви викликаємо saveAttributeName()
-        //    і збільшуємо лічильники
         foreach ($uniqueNames as $attrName) {
             $res = $this->saveAttributeName($attrName);
 
             if ($res === 'new') {
                 $stats['new']++;
             } else {
-                // якщо 'skip' або 'skipped', то ++$stats['skipped']
                 $stats['skipped']++;
             }
         }
@@ -668,7 +634,6 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function saveAttributeName(string $attrName): string {
-        // 1) Шукаємо в oc_attribute_description, де language_id=2 і name=attrName
         $sql = "SELECT ad.attribute_id 
             FROM `" . DB_PREFIX . "attribute_description` ad
             JOIN `" . DB_PREFIX . "attribute` a ON (ad.attribute_id = a.attribute_id)
@@ -678,11 +643,8 @@ class Import extends \Opencart\System\Engine\Model {
         $q = $this->db->query($sql);
 
         if ($q->num_rows) {
-            // Цей атрибут уже існує
             return 'skip';
         } else {
-            // 2) Створюємо новий атрибут
-            // припустимо, attribute_group_id=1, sort_order=0
             $this->db->query("INSERT INTO `" . DB_PREFIX . "attribute` SET
                 `attribute_group_id` = '1',
                 `sort_order` = '0'
@@ -690,7 +652,6 @@ class Import extends \Opencart\System\Engine\Model {
 
             $attribute_id = $this->db->getLastId();
 
-            // 3) Додаємо назву в attribute_description
             $this->db->query("INSERT INTO `" . DB_PREFIX . "attribute_description` SET
                 `attribute_id` = '" . (int)$attribute_id . "',
                 `language_id` = '2',
@@ -708,18 +669,16 @@ class Import extends \Opencart\System\Engine\Model {
             'updated' => 0
         ];
 
-        // 1. Зчитаємо дані з `import_product` (де зберігається external_id, manufacturer, category_external_id, seo_url...)
         $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "import_product`");
         $rows = $q->rows;
 
         if (!$rows) {
-            return $stats; // немає товарів
+            return $stats;
         }
 
         $stats['total'] = count($rows);
 
         foreach ($rows as $row) {
-            // Викликаємо saveProduct($row) — який робить INSERT/UPDATE
             $res = $this->saveProduct($row);
 
             if ($res === 'new') {
@@ -733,7 +692,6 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function saveProduct(array $p): string {
-        // p містить external_id, manufacturer, name, description, price, quantity, category_external_id, seo_url, sku, status, keywords...
         $external_id  = $p['external_id'];
         $name         = $p['name'];
         $description  = $p['description'];
@@ -742,16 +700,14 @@ class Import extends \Opencart\System\Engine\Model {
         $sku          = $p['sku'];
         $status       = (int)$p['status'];
         $keywords     = $p['keywords'];
-        $seo_url      = $p['seo_url'] ?? ''; // якщо треба
+        $seo_url      = $p['seo_url'] ?? '';
         $manufacturer = $p['manufacturer'];
         $category_ext = $p['category_external_id'];
 
-        // Шукаємо чи товар існує
         $q = $this->db->query("SELECT product_id FROM `" . DB_PREFIX . "product`
                            WHERE `model` = '" . $this->db->escape($external_id) . "'");
 
         if ($q->num_rows) {
-            // UPDATE
             $product_id = (int)$q->row['product_id'];
 
             $this->db->query("UPDATE `" . DB_PREFIX . "product` SET
@@ -763,7 +719,6 @@ class Import extends \Opencart\System\Engine\Model {
                 WHERE `product_id` = '" . (int)$product_id . "'
             ");
 
-            // UPDATE product_description (тут 1 мова = language_id=2)
             $this->db->query("UPDATE `" . DB_PREFIX . "product_description` SET
                 `name` = '" . $this->db->escape($name) . "',
                 `description` = '" . $this->db->escape($description) . "',
@@ -774,13 +729,11 @@ class Import extends \Opencart\System\Engine\Model {
                 AND `language_id` = '2'
             ");
 
-            // UPDATE manufacturer_id
             $manufacturer_id = $this->getManufacturerIdByName($manufacturer);
             $this->db->query("UPDATE `" . DB_PREFIX . "product` 
             SET `manufacturer_id` = '" . (int)$manufacturer_id . "'
             WHERE `product_id` = '" . (int)$product_id . "'");
 
-            // UPDATE category (product_to_category) — видалити старі, додати нові
             $this->db->query("DELETE FROM `" . DB_PREFIX . "product_to_category`
             WHERE `product_id` = '" . (int)$product_id . "'");
 
@@ -793,16 +746,12 @@ class Import extends \Opencart\System\Engine\Model {
                 }
             }
 
-            // Зображення
             $this->updateProductImages($product_id, $external_id);
 
-            // Атрибути
             $this->updateProductAttributes($product_id, $external_id);
 
             return 'updated';
-
         } else {
-            // INSERT
             $this->db->query("INSERT INTO `" . DB_PREFIX . "product` SET
                 `model`         = '" . $this->db->escape($external_id) . "',
                 `sku`           = '" . $this->db->escape($sku) . "',
@@ -818,7 +767,6 @@ class Import extends \Opencart\System\Engine\Model {
 
             $product_id = $this->db->getLastId();
 
-            // product_description
             $this->db->query("INSERT INTO `" . DB_PREFIX . "product_description` SET
                 `product_id`   = '" . (int)$product_id . "',
                 `language_id`  = '2',
@@ -829,7 +777,6 @@ class Import extends \Opencart\System\Engine\Model {
                 `meta_keyword` = '" . $this->db->escape($keywords) . "'
             ");
 
-            // manufacturer_id
             if ($manufacturer) {
                 $manufacturer_id = $this->getManufacturerIdByName($manufacturer);
                 $this->db->query("UPDATE `" . DB_PREFIX . "product`
@@ -837,7 +784,6 @@ class Import extends \Opencart\System\Engine\Model {
                 WHERE `product_id` = '" . (int)$product_id . "'");
             }
 
-            // product_to_category
             if ($category_ext) {
                 $cat_id = $this->getCategoryIdByExternalId($category_ext);
                 if ($cat_id) {
@@ -847,19 +793,15 @@ class Import extends \Opencart\System\Engine\Model {
                 }
             }
 
-            // product_to_store
             $this->db->query("INSERT INTO `" . DB_PREFIX . "product_to_store` SET
                 `product_id` = '" . (int)$product_id . "',
                 `store_id` = '0'
             ");
 
-            // Зображення
             $this->updateProductImages($product_id, $external_id);
 
-            // Атрибути
             $this->updateProductAttributes($product_id, $external_id);
 
-            // SEO
             $this->addSeoUrlProduct($product_id, $seo_url, $name, $external_id);
 
             return 'new';
@@ -867,19 +809,17 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function getManufacturerIdByName(string $manufacturer_name): int {
-        static $manufacturer_cache = []; // Кеш для уникнення повторних запитів
+        static $manufacturer_cache = [];
 
-        // Перевірка в кеші
         if (isset($manufacturer_cache[$manufacturer_name])) {
             return $manufacturer_cache[$manufacturer_name];
         }
 
-        // Отримання manufacturer_id з бази
         $query = $this->db->query("SELECT `manufacturer_id` FROM `" . DB_PREFIX . "manufacturer` WHERE `name` = '" . $this->db->escape($manufacturer_name) . "'");
 
         if ($query->num_rows > 0) {
             $manufacturer_id = $query->row['manufacturer_id'];
-            $manufacturer_cache[$manufacturer_name] = $manufacturer_id; // Збереження в кеші
+            $manufacturer_cache[$manufacturer_name] = $manufacturer_id;
             return (int)$manufacturer_id;
         }
 
@@ -898,11 +838,9 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function updateProductImages(int $product_id, string $external_id): void {
-        // 1. Видаляємо старі product_image
         $this->db->query("DELETE FROM `" . DB_PREFIX . "product_image`
                       WHERE `product_id` = '" . (int)$product_id . "'");
 
-        // 2. Отримуємо всі зображення для товару
         $q = $this->db->query("SELECT `image_url`, `main_image` FROM `" . DB_PREFIX . "import_image`
                            WHERE `product_external_id` = '" . $this->db->escape($external_id) . "'
                            ORDER BY `main_image` DESC, `import_image_id` ASC");
@@ -917,16 +855,15 @@ class Import extends \Opencart\System\Engine\Model {
             $img_path = 'catalog/products/' . $external_id . '/' . $filename;
 
             if ($row['main_image'] == 1) {
-                // Встановлюємо головне зображення
                 $this->db->query("UPDATE `" . DB_PREFIX . "product`
                 SET `image` = '" . $this->db->escape($img_path) . "'
                 WHERE `product_id` = '" . (int)$product_id . "'");
             } else {
-                // Додаємо додаткове зображення
                 $this->db->query("INSERT INTO `" . DB_PREFIX . "product_image` SET
-                `product_id` = '" . (int)$product_id . "',
-                `image` = '" . $this->db->escape($img_path) . "',
-                `sort_order` = '" . (int)$sort_order . "'");
+                    `product_id` = '" . (int)$product_id . "',
+                    `image` = '" . $this->db->escape($img_path) . "',
+                    `sort_order` = '" . (int)$sort_order . "'
+                ");
 
                 $sort_order++;
             }
@@ -934,7 +871,6 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function updateProductAttributes(int $product_id, string $external_id): void {
-        // 1. Отримуємо всі атрибути для товару з `oc_product_attribute`
         $existing_attributes = [];
         $q_existing = $this->db->query("SELECT `attribute_id`, `text` FROM `" . DB_PREFIX . "product_attribute`
                                     WHERE `product_id` = '" . (int)$product_id . "'
@@ -943,7 +879,6 @@ class Import extends \Opencart\System\Engine\Model {
             $existing_attributes[$row['attribute_id']] = $row['text'];
         }
 
-        // 2. Отримуємо всі атрибути з імпорту для цього товару
         $import_attributes = [];
         $q_import = $this->db->query("SELECT `attribute_name`, `attribute_value` FROM `" . DB_PREFIX . "import_attribute`
                                   WHERE `product_external_id` = '" . $this->db->escape($external_id) . "'");
@@ -952,26 +887,22 @@ class Import extends \Opencart\System\Engine\Model {
             $attr_name = trim($row['attribute_name']);
             $attr_value = trim($row['attribute_value']);
 
-            // Отримуємо attribute_id (з кешуванням)
             $attribute_id = $this->getAttributeIdByName($attr_name);
             if ($attribute_id) {
                 $import_attributes[$attribute_id] = $attr_value;
             }
         }
 
-        // 3. Визначаємо, що оновлювати, що додавати, а що видаляти
-        $attributes_to_delete = array_diff_key($existing_attributes, $import_attributes); // В БД, але немає в імпорті
-        $attributes_to_insert = array_diff_key($import_attributes, $existing_attributes); // В імпорті, але немає в БД
-        $attributes_to_update = array_intersect_key($import_attributes, $existing_attributes); // Є в обох, але значення може відрізнятися
+        $attributes_to_delete = array_diff_key($existing_attributes, $import_attributes);
+        $attributes_to_insert = array_diff_key($import_attributes, $existing_attributes);
+        $attributes_to_update = array_intersect_key($import_attributes, $existing_attributes);
 
-        // 4. Видаляємо атрибути, які більше не існують у нових даних
         if (!empty($attributes_to_delete)) {
             $this->db->query("DELETE FROM `" . DB_PREFIX . "product_attribute`
                           WHERE `product_id` = '" . (int)$product_id . "'
                           AND `attribute_id` IN (" . implode(',', array_keys($attributes_to_delete)) . ")");
         }
 
-        // 5. Додаємо нові атрибути
         if (!empty($attributes_to_insert)) {
             $insert_values = [];
             foreach ($attributes_to_insert as $attribute_id => $attr_value) {
@@ -981,9 +912,8 @@ class Import extends \Opencart\System\Engine\Model {
                           VALUES " . implode(',', $insert_values));
         }
 
-        // 6. Оновлюємо значення атрибутів, якщо вони змінилися
         foreach ($attributes_to_update as $attribute_id => $attr_value) {
-            if ($existing_attributes[$attribute_id] !== $attr_value) { // Якщо значення змінилося
+            if ($existing_attributes[$attribute_id] !== $attr_value) {
                 $this->db->query("UPDATE `" . DB_PREFIX . "product_attribute` 
                               SET `text` = '" . $this->db->escape($attr_value) . "' 
                               WHERE `product_id` = '" . (int)$product_id . "' 
@@ -994,14 +924,12 @@ class Import extends \Opencart\System\Engine\Model {
     }
 
     private function getAttributeIdByName(string $attr_name): int {
-        static $attribute_cache = []; // Локальний кеш у межах одного запиту
+        static $attribute_cache = [];
 
-        // Перевірка в кеші
         if (isset($attribute_cache[$attr_name])) {
             return $attribute_cache[$attr_name];
         }
 
-        // Отримання attribute_id з бази
         $sql = "SELECT a.attribute_id
             FROM `" . DB_PREFIX . "attribute` a
             JOIN `" . DB_PREFIX . "attribute_description` ad ON (a.attribute_id = ad.attribute_id)
@@ -1012,30 +940,27 @@ class Import extends \Opencart\System\Engine\Model {
 
         if ($q->num_rows > 0) {
             $attribute_id = (int)$q->row['attribute_id'];
-            $attribute_cache[$attr_name] = $attribute_id; // Збереження в кеші
+            $attribute_cache[$attr_name] = $attribute_id;
             return $attribute_id;
         }
 
-        // Якщо не знайдено, кешуємо значення 0, щоб уникнути зайвих запитів
         $attribute_cache[$attr_name] = 0;
+
         return 0;
     }
 
     private function addSeoUrlProduct(int $product_id, string $seo_url, string $name, string $external_id): void {
-        $clean_url = parse_url($seo_url, PHP_URL_PATH); // Отримуємо шлях без домену
-        $clean_url = pathinfo($clean_url, PATHINFO_FILENAME); // Видаляємо розширення
+        $clean_url = parse_url($seo_url, PHP_URL_PATH);
+        $clean_url = pathinfo($clean_url, PATHINFO_FILENAME);
 
-        // Перевірка унікальності
         $q = $this->db->query("SELECT seo_url_id FROM `" . DB_PREFIX . "seo_url`
         WHERE `keyword` = '" . $this->db->escape($clean_url) . "'
         AND `store_id` = 0");
 
         if ($q->num_rows) {
-            // Можеш кинути Exception або додати суфікс
              throw new \Exception('SEO URL зайнятий');
         }
 
-        // Додаємо
         $this->db->query("INSERT INTO `" . DB_PREFIX . "seo_url` SET
             `store_id` = 0,
             `language_id` = '2',
