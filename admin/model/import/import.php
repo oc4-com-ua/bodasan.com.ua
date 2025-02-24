@@ -624,4 +624,348 @@ class Import extends \Opencart\System\Engine\Model {
         }
     }
 
+    public function importProducts(): array {
+        $stats = [
+            'total'   => 0,
+            'new'     => 0,
+            'updated' => 0
+        ];
+
+        // 1. Зчитаємо дані з `import_product` (де зберігається external_id, manufacturer, category_external_id, seo_url...)
+        $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "import_product`");
+        $rows = $q->rows;
+
+        if (!$rows) {
+            return $stats; // немає товарів
+        }
+
+        $stats['total'] = count($rows);
+
+        foreach ($rows as $row) {
+            // Викликаємо saveProduct($row) — який робить INSERT/UPDATE
+            $res = $this->saveProduct($row);
+
+            if ($res === 'new') {
+                $stats['new']++;
+            } elseif ($res === 'updated') {
+                $stats['updated']++;
+            }
+        }
+
+        return $stats;
+    }
+
+    private function saveProduct(array $p): string {
+        // p містить external_id, manufacturer, name, description, price, quantity, category_external_id, seo_url, sku, status, keywords...
+        $external_id  = $p['external_id'];
+        $name         = $p['name'];
+        $description  = $p['description'];
+        $price        = (float)$p['price'];
+        $quantity     = (int)$p['quantity'];
+        $sku          = $p['sku'];
+        $status       = (int)$p['status'];
+        $keywords     = $p['keywords'];
+        $seo_url      = $p['seo_url'] ?? ''; // якщо треба
+        $manufacturer = $p['manufacturer'];
+        $category_ext = $p['category_external_id'];
+
+        // Шукаємо чи товар існує
+        $q = $this->db->query("SELECT product_id FROM `" . DB_PREFIX . "product`
+                           WHERE `model` = '" . $this->db->escape($external_id) . "'");
+
+        if ($q->num_rows) {
+            // UPDATE
+            $product_id = (int)$q->row['product_id'];
+
+            $this->db->query("UPDATE `" . DB_PREFIX . "product` SET
+                `sku`       = '" . $this->db->escape($sku) . "',
+                `quantity`  = '" . (int)$quantity . "',
+                `price`     = '" . (float)$price . "',
+                `status`    = '" . (int)$status . "',
+                `date_modified` = NOW()
+                WHERE `product_id` = '" . (int)$product_id . "'
+            ");
+
+            // UPDATE product_description (тут 1 мова = language_id=2)
+            $this->db->query("UPDATE `" . DB_PREFIX . "product_description` SET
+                `name` = '" . $this->db->escape($name) . "',
+                `description` = '" . $this->db->escape($description) . "',
+                `meta_title` = '" . $this->db->escape($name) . "',
+                `meta_description` = '',
+                `meta_keyword` = '" . $this->db->escape($keywords) . "'
+                WHERE `product_id` = '" . (int)$product_id . "'
+                AND `language_id` = '2'
+            ");
+
+            // UPDATE manufacturer_id
+            $manufacturer_id = $this->getManufacturerIdByName($manufacturer);
+            $this->db->query("UPDATE `" . DB_PREFIX . "product` 
+            SET `manufacturer_id` = '" . (int)$manufacturer_id . "'
+            WHERE `product_id` = '" . (int)$product_id . "'");
+
+            // UPDATE category (product_to_category) — видалити старі, додати нові
+            $this->db->query("DELETE FROM `" . DB_PREFIX . "product_to_category`
+            WHERE `product_id` = '" . (int)$product_id . "'");
+
+            if ($category_ext) {
+                $cat_id = $this->getCategoryIdByExternalId($category_ext);
+                if ($cat_id) {
+                    $this->db->query("INSERT INTO `" . DB_PREFIX . "product_to_category` SET
+                    `product_id` = '" . (int)$product_id . "',
+                    `category_id` = '" . (int)$cat_id . "'");
+                }
+            }
+
+            // Зображення
+            $this->updateProductImages($product_id, $external_id);
+
+            // Атрибути
+            $this->updateProductAttributes($product_id, $external_id);
+
+            return 'updated';
+
+        } else {
+            // INSERT
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product` SET
+                `model`         = '" . $this->db->escape($external_id) . "',
+                `sku`           = '" . $this->db->escape($sku) . "',
+                `quantity`      = '" . (int)$quantity . "',
+                `price`         = '" . (float)$price . "',
+                `status`        = '" . (int)$status . "',
+                `stock_status_id` = 5,
+                `variant` = '',
+                `override` = '',
+                `date_added`    = NOW(),
+                `date_modified` = NOW()
+            ");
+
+            $product_id = $this->db->getLastId();
+
+            // product_description
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product_description` SET
+                `product_id`   = '" . (int)$product_id . "',
+                `language_id`  = '2',
+                `name`         = '" . $this->db->escape($name) . "',
+                `description`  = '" . $this->db->escape($description) . "',
+                `meta_title`   = '" . $this->db->escape($name) . "',
+                `meta_description` = '',
+                `meta_keyword` = '" . $this->db->escape($keywords) . "'
+            ");
+
+            // manufacturer_id
+            if ($manufacturer) {
+                $manufacturer_id = $this->getManufacturerIdByName($manufacturer);
+                $this->db->query("UPDATE `" . DB_PREFIX . "product`
+                SET `manufacturer_id` = '" . (int)$manufacturer_id . "'
+                WHERE `product_id` = '" . (int)$product_id . "'");
+            }
+
+            // product_to_category
+            if ($category_ext) {
+                $cat_id = $this->getCategoryIdByExternalId($category_ext);
+                if ($cat_id) {
+                    $this->db->query("INSERT INTO `" . DB_PREFIX . "product_to_category` SET
+                    `product_id` = '" . (int)$product_id . "',
+                    `category_id` = '" . (int)$cat_id . "'");
+                }
+            }
+
+            // product_to_store
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product_to_store` SET
+                `product_id` = '" . (int)$product_id . "',
+                `store_id` = '0'
+            ");
+
+            // Зображення
+            $this->updateProductImages($product_id, $external_id);
+
+            // Атрибути
+            $this->updateProductAttributes($product_id, $external_id);
+
+            // SEO
+            $this->addSeoUrlProduct($product_id, $seo_url, $name, $external_id);
+
+            return 'new';
+        }
+    }
+
+    private function getManufacturerIdByName(string $manufacturer_name): int {
+        static $manufacturer_cache = []; // Кеш для уникнення повторних запитів
+
+        // Перевірка в кеші
+        if (isset($manufacturer_cache[$manufacturer_name])) {
+            return $manufacturer_cache[$manufacturer_name];
+        }
+
+        // Отримання manufacturer_id з бази
+        $query = $this->db->query("SELECT `manufacturer_id` FROM `" . DB_PREFIX . "manufacturer` WHERE `name` = '" . $this->db->escape($manufacturer_name) . "'");
+
+        if ($query->num_rows > 0) {
+            $manufacturer_id = $query->row['manufacturer_id'];
+            $manufacturer_cache[$manufacturer_name] = $manufacturer_id; // Збереження в кеші
+            return (int)$manufacturer_id;
+        }
+
+        return 0;
+    }
+
+    private function getCategoryIdByExternalId(string $category_external_id): int {
+        $q = $this->db->query("SELECT category_id FROM `" . DB_PREFIX . "category`
+                           WHERE `external_id` = '" . $this->db->escape($category_external_id) . "'");
+
+        if ($q->num_rows) {
+            return (int)$q->row['category_id'];
+        }
+
+        return 0;
+    }
+
+    private function updateProductImages(int $product_id, string $external_id): void {
+        // 1. Видаляємо старі product_image
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "product_image`
+                      WHERE `product_id` = '" . (int)$product_id . "'");
+
+        // 2. Отримуємо всі зображення для товару
+        $q = $this->db->query("SELECT `image_url`, `main_image` FROM `" . DB_PREFIX . "import_image`
+                           WHERE `product_external_id` = '" . $this->db->escape($external_id) . "'
+                           ORDER BY `main_image` DESC, `import_image_id` ASC");
+
+        if ($q->num_rows === 0) {
+            return;
+        }
+
+        $sort_order = 1;
+        foreach ($q->rows as $row) {
+            $filename = basename(parse_url($row['image_url'], PHP_URL_PATH));
+            $img_path = 'catalog/products/' . $external_id . '/' . $filename;
+
+            if ($row['main_image'] == 1) {
+                // Встановлюємо головне зображення
+                $this->db->query("UPDATE `" . DB_PREFIX . "product`
+                SET `image` = '" . $this->db->escape($img_path) . "'
+                WHERE `product_id` = '" . (int)$product_id . "'");
+            } else {
+                // Додаємо додаткове зображення
+                $this->db->query("INSERT INTO `" . DB_PREFIX . "product_image` SET
+                `product_id` = '" . (int)$product_id . "',
+                `image` = '" . $this->db->escape($img_path) . "',
+                `sort_order` = '" . (int)$sort_order . "'");
+
+                $sort_order++;
+            }
+        }
+    }
+
+    private function updateProductAttributes(int $product_id, string $external_id): void {
+        // 1. Отримуємо всі атрибути для товару з `oc_product_attribute`
+        $existing_attributes = [];
+        $q_existing = $this->db->query("SELECT `attribute_id`, `text` FROM `" . DB_PREFIX . "product_attribute`
+                                    WHERE `product_id` = '" . (int)$product_id . "'
+                                    AND `language_id` = '2'");
+        foreach ($q_existing->rows as $row) {
+            $existing_attributes[$row['attribute_id']] = $row['text'];
+        }
+
+        // 2. Отримуємо всі атрибути з імпорту для цього товару
+        $import_attributes = [];
+        $q_import = $this->db->query("SELECT `attribute_name`, `attribute_value` FROM `" . DB_PREFIX . "import_attribute`
+                                  WHERE `product_external_id` = '" . $this->db->escape($external_id) . "'");
+
+        foreach ($q_import->rows as $row) {
+            $attr_name = trim($row['attribute_name']);
+            $attr_value = trim($row['attribute_value']);
+
+            // Отримуємо attribute_id (з кешуванням)
+            $attribute_id = $this->getAttributeIdByName($attr_name);
+            if ($attribute_id) {
+                $import_attributes[$attribute_id] = $attr_value;
+            }
+        }
+
+        // 3. Визначаємо, що оновлювати, що додавати, а що видаляти
+        $attributes_to_delete = array_diff_key($existing_attributes, $import_attributes); // В БД, але немає в імпорті
+        $attributes_to_insert = array_diff_key($import_attributes, $existing_attributes); // В імпорті, але немає в БД
+        $attributes_to_update = array_intersect_key($import_attributes, $existing_attributes); // Є в обох, але значення може відрізнятися
+
+        // 4. Видаляємо атрибути, які більше не існують у нових даних
+        if (!empty($attributes_to_delete)) {
+            $this->db->query("DELETE FROM `" . DB_PREFIX . "product_attribute`
+                          WHERE `product_id` = '" . (int)$product_id . "'
+                          AND `attribute_id` IN (" . implode(',', array_keys($attributes_to_delete)) . ")");
+        }
+
+        // 5. Додаємо нові атрибути
+        if (!empty($attributes_to_insert)) {
+            $insert_values = [];
+            foreach ($attributes_to_insert as $attribute_id => $attr_value) {
+                $insert_values[] = "('" . (int)$product_id . "', '" . (int)$attribute_id . "', '2', '" . $this->db->escape($attr_value) . "')";
+            }
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product_attribute` (`product_id`, `attribute_id`, `language_id`, `text`) 
+                          VALUES " . implode(',', $insert_values));
+        }
+
+        // 6. Оновлюємо значення атрибутів, якщо вони змінилися
+        foreach ($attributes_to_update as $attribute_id => $attr_value) {
+            if ($existing_attributes[$attribute_id] !== $attr_value) { // Якщо значення змінилося
+                $this->db->query("UPDATE `" . DB_PREFIX . "product_attribute` 
+                              SET `text` = '" . $this->db->escape($attr_value) . "' 
+                              WHERE `product_id` = '" . (int)$product_id . "' 
+                              AND `attribute_id` = '" . (int)$attribute_id . "' 
+                              AND `language_id` = '2'");
+            }
+        }
+    }
+
+    private function getAttributeIdByName(string $attr_name): int {
+        static $attribute_cache = []; // Локальний кеш у межах одного запиту
+
+        // Перевірка в кеші
+        if (isset($attribute_cache[$attr_name])) {
+            return $attribute_cache[$attr_name];
+        }
+
+        // Отримання attribute_id з бази
+        $sql = "SELECT a.attribute_id
+            FROM `" . DB_PREFIX . "attribute` a
+            JOIN `" . DB_PREFIX . "attribute_description` ad ON (a.attribute_id = ad.attribute_id)
+            WHERE ad.language_id = '2'
+              AND ad.name = '" . $this->db->escape($attr_name) . "'
+              AND a.attribute_group_id = '1'";
+        $q = $this->db->query($sql);
+
+        if ($q->num_rows > 0) {
+            $attribute_id = (int)$q->row['attribute_id'];
+            $attribute_cache[$attr_name] = $attribute_id; // Збереження в кеші
+            return $attribute_id;
+        }
+
+        // Якщо не знайдено, кешуємо значення 0, щоб уникнути зайвих запитів
+        $attribute_cache[$attr_name] = 0;
+        return 0;
+    }
+
+    private function addSeoUrlProduct(int $product_id, string $seo_url, string $name, string $external_id): void {
+        $clean_url = parse_url($seo_url, PHP_URL_PATH); // Отримуємо шлях без домену
+        $clean_url = pathinfo($clean_url, PATHINFO_FILENAME); // Видаляємо розширення
+
+        // Перевірка унікальності
+        $q = $this->db->query("SELECT seo_url_id FROM `" . DB_PREFIX . "seo_url`
+        WHERE `keyword` = '" . $this->db->escape($clean_url) . "'
+        AND `store_id` = 0");
+
+        if ($q->num_rows) {
+            // Можеш кинути Exception або додати суфікс
+             throw new \Exception('SEO URL зайнятий');
+        }
+
+        // Додаємо
+        $this->db->query("INSERT INTO `" . DB_PREFIX . "seo_url` SET
+            `store_id` = 0,
+            `language_id` = '2',
+            `key` = 'product_id',
+            `value` = '" . (int)$product_id . "',
+            `keyword` = '" . $this->db->escape($clean_url) . "'
+        ");
+    }
+
 }

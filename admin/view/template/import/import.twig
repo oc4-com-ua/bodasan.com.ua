@@ -39,6 +39,9 @@
                         {% if import_summary['attributes'] %}
                             <p class="mb-0">{{ import_summary['attributes'] }}</p>
                         {% endif %}
+                        {% if import_summary['products'] %}
+                            <p class="mb-0">{{ import_summary['products'] }}</p>
+                        {% endif %}
                     </div>
                 {% endif %}
                 <a href="{{ action_import }}" class="btn btn-success">{{ button_import_products }}</a>

@@ -103,7 +103,13 @@ class Import extends \Opencart\System\Engine\Controller {
         );
 
         // 4. Імпорт товарів
-        // $this->model_import_import->importProducts();
+        $import_products = $this->model_import_import->importProducts();
+        $this->session->data['import_summary']['products'] = sprintf(
+            $this->language->get('text_import_products'),
+            $import_products['total'],
+            $import_products['new'],
+            $import_products['updated']
+        );
 
         $this->response->redirect($this->url->link('import/import', 'user_token=' . $this->session->data['user_token']));
     }
