@@ -1045,4 +1045,21 @@ class Import extends \Opencart\System\Engine\Model {
         ");
     }
 
+    public function clearImportTables(): void {
+        $tables = [
+            'import_category',
+            'import_manufacturer',
+            'import_product',
+            'import_image',
+            'import_attribute'
+        ];
+
+        foreach ($tables as $tbl) {
+            $this->db->query("TRUNCATE `" . DB_PREFIX . $tbl . "`");
+        }
+
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "setting`
+        WHERE `code` = 'import_feed'
+        AND `key` = 'import_feed_stats'");
+    }
 }

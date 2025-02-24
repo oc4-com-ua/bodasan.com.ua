@@ -33,12 +33,15 @@ class Import extends \Opencart\System\Engine\Controller {
         $data['footer'] = $this->load->controller('common/footer');
 
         $data['action_import'] = $this->url->link('import/import.importAll', 'user_token=' . $this->session->data['user_token']);
+        $data['action_clear_parse'] = $this->url->link('import/import.clearImportData', 'user_token=' . $this->session->data['user_token']);
 
         $data['success_parse_feed'] = !empty($this->session->data['success_parse_feed']) ? $this->session->data['success_parse_feed'] : '';
         $data['import_summary'] = !empty($this->session->data['import_summary']) ? $this->session->data['import_summary'] : '';
+        $data['success_clear_parse'] = !empty($this->session->data['success_clear_parse']) ? $this->session->data['success_clear_parse'] : '';
 
         unset($this->session->data['success_parse_feed']);
         unset($this->session->data['import_summary']);
+        unset($this->session->data['success_clear_parse']);
 
         $this->response->setOutput($this->load->view('import/import', $data));
     }
@@ -119,4 +122,18 @@ class Import extends \Opencart\System\Engine\Controller {
         $this->response->redirect($this->url->link('import/import', 'user_token=' . $this->session->data['user_token']));
     }
 
+    public function clearImportData(): void {
+        $this->load->language('import/import');
+        $this->load->model('import/import');
+
+        try {
+            $this->model_import_import->clearImportTables();
+
+            $this->session->data['success_clear_parse'] = $this->language->get('text_clear_success');
+        } catch (\Exception $e) {
+            $this->session->data['error_warning'] = 'Error: ' . $e->getMessage();
+        }
+
+        $this->response->redirect($this->url->link('import/import', 'user_token=' . $this->session->data['user_token']));
+    }
 }
