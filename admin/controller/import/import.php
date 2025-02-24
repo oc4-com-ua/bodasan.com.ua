@@ -21,7 +21,7 @@ class Import extends \Opencart\System\Engine\Controller {
 
         $this->load->model('import/import');
 
-        $data['action_import_products'] = $this->url->link('import/import.parseFeed', 'user_token=' . $this->session->data['user_token']);
+        $data['action_parse_feed'] = $this->url->link('import/import.parseFeed', 'user_token=' . $this->session->data['user_token']);
 
         $data['fetch_url_img'] = $this->url->link('import/import.downloadImagesAjax', 'user_token=' . $this->session->data['user_token']);
 
@@ -42,7 +42,7 @@ class Import extends \Opencart\System\Engine\Controller {
         $this->load->language('import/import');
         $this->load->model('import/import');
 
-        $result = $this->model_import_import->parseAndStore(FEED_PROM_URL);
+        $result = $this->model_import_import->parseAndStore(FEED_PROM_URL, $this->language);
 
         if (!empty($result['error'])) {
             $this->session->data['error_warning'] = $result['error'];

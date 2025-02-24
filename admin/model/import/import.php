@@ -6,7 +6,7 @@ class Import extends \Opencart\System\Engine\Model {
         parent::__construct($registry);
     }
 
-    public function parseAndStore(string $feed_url): array {
+    public function parseAndStore(string $feed_url, $language): array {
         $result = [];
 
         // 1. Очищаємо таблиці (truncate)
@@ -20,13 +20,13 @@ class Import extends \Opencart\System\Engine\Model {
         $xml_content = @file_get_contents($feed_url);
 
         if (!$xml_content) {
-            $result['error'] = 'Не вдалося отримати вміст фіда. Перевір URL!';
+            $result['error'] = $language->get('error_feed_unavailable');
             return $result;
         }
 
         $xml = simplexml_load_string($xml_content);
         if (!$xml) {
-            $result['error'] = 'XML фід пошкоджений або неможливо розпарсити!';
+            $result['error'] = $language->get('error_invalid_xml');
             return $result;
         }
 
@@ -139,7 +139,7 @@ class Import extends \Opencart\System\Engine\Model {
         }
 
         // Якщо дійшли сюди, все ок
-        $result['success'] = 'OK';
+        $result['success'] = $language->get('text_parse_success');
         return $result;
     }
 

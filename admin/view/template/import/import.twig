@@ -12,6 +12,13 @@
     </div>
     <div class="container-fluid">
         <div class="card mb-4">
+            <div class="card-header"><i class="fa-solid fa-file-import"></i> {{ heading_card_feed }}</div>
+            <div class="card-body">
+                <a href="{{ action_parse_feed }}" class="btn btn-info">{{ button_import_feed }}</a>
+            </div>
+        </div>
+
+        <div class="card mb-4">
             <div class="card-header"><i class="fa-solid fa-images"></i> {{ heading_card_images }}</div>
             <div class="card-body">
                 <div class="alert alert-warning" id="alert-import-images" style="display: none;">

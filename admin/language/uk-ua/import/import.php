@@ -1,6 +1,7 @@
 <?php
 // Heading
 $_['heading_title'] = 'Імпорт товарів';
+$_['heading_card_feed'] = 'Парсинг фіда із Prom';
 $_['heading_card_images'] = 'Завантаження зображень';
 $_['heading_card_products'] = 'Імпорт товарів';
 
@@ -26,9 +27,12 @@ $_['js_img_error_console'] = 'Помилка при завантаженні';
 $_['js_img_error_message'] = 'Сталася помилка при завантаженні зображень.';
 
 // Buttons
+$_['button_import_feed'] = 'Парсинг фіда';
 $_['button_import_images'] = 'Завантажити зображення';
 $_['button_import_products'] = 'Імпортувати товари';
 
 // Errors
 $_['error_warning'] = 'Увага: Будь ласка, уважно перевірте форму на наявність помилок!';
 $_['error_permission'] = 'У вас немає прав для змін імпорту!';
+$_['error_feed_unavailable'] = 'Не вдалося отримати вміст фіда. Перевір URL!';
+$_['error_invalid_xml'] = 'XML фід пошкоджений або неможливо розпарсити!';
