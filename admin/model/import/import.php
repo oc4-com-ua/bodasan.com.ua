@@ -176,7 +176,48 @@ class Import extends \Opencart\System\Engine\Model {
             $attribute_count
         );
 
+        // Зберігаємо в oc_setting через спеціальний метод
+        $parse_stats = [
+            'date'          => date('Y-m-d H:i:s'),
+            'categories'    => $category_count,
+            'products'      => $product_count,
+            'manufacturers' => $manufacturer_count,
+            'images'        => $image_count,
+            'attributes'    => $attribute_count
+        ];
+
+        $this->saveParseStats($parse_stats);
+
         return $result;
+    }
+
+    private function saveParseStats(array $stats): void {
+        // Конвертуємо у JSON (щоб усі поля були в одному місці)
+        $json_value = json_encode($stats, JSON_UNESCAPED_UNICODE);
+
+        // Прибираємо попередній запис
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "setting`
+        WHERE `code` = 'import_feed'
+        AND `key` = 'import_feed_stats'");
+
+        // Додаємо новий
+        $this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET
+            `store_id` = 0,
+            `code` = 'import_feed',
+            `key` = 'import_feed_stats',
+            `value` = '" . $this->db->escape($json_value) . "'
+        ");
+    }
+
+    public function getParseStats(): array {
+        $q = $this->db->query("SELECT `value` FROM `" . DB_PREFIX . "setting`
+        WHERE `code` = 'import_feed'
+        AND `key` = 'import_feed_stats'");
+
+        if ($q->num_rows) {
+            return json_decode($q->row['value'], true);
+        }
+        return [];
     }
 
     public function downloadImagesChunk(int $offset, int $limit): array {

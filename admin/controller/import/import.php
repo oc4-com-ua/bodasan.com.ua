@@ -21,6 +21,9 @@ class Import extends \Opencart\System\Engine\Controller {
 
         $this->load->model('import/import');
 
+        $parse_stats = $this->model_import_import->getParseStats();
+        $data['parse_stats'] = $parse_stats;
+
         $data['action_parse_feed'] = $this->url->link('import/import.parseFeed', 'user_token=' . $this->session->data['user_token']);
 
         $data['fetch_url_img'] = $this->url->link('import/import.downloadImagesAjax', 'user_token=' . $this->session->data['user_token']);

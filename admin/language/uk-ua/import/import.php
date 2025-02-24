@@ -7,6 +7,13 @@ $_['heading_card_products'] = 'Імпорт товарів';
 
 // Text
 $_['text_parse_success_summary'] = '<b>Парсинг фіда завершено!</b> <br>Категорій: %d, товарів: %d, виробників: %d, зображень: %d, атрибутів: %d.';
+$_['text_parse_stats_heading'] = 'Останній парсинг';
+$_['text_parse_stats_categories'] = 'Категорій';
+$_['text_parse_stats_products'] = 'товарів';
+$_['text_parse_stats_manufacturers'] = 'виробників';
+$_['text_parse_stats_images'] = 'зображень';
+$_['text_parse_stats_attributes'] = 'атрибутів';
+
 $_['text_import_heading'] = 'Імпорт завершено!';
 $_['text_import_categories'] = '- <b>Категорії:</b> всього %d, нових %d, оновлених %d';
 $_['text_import_manufacturers'] = '- <b>Виробники:</b> всього %d, нових %d, пропущено %d';

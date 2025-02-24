@@ -18,6 +18,15 @@
                     <div class="alert alert-success">
                         <p class="mb-0">{{ success_parse_feed }}</p>
                     </div>
+                {% elseif parse_stats.date %}
+                    <div class="alert alert-light">
+                    <b>{{ text_parse_stats_heading }}:</b> {{ parse_stats.date }}<br/>
+                    {{ text_parse_stats_categories }}: {{ parse_stats.categories }},
+                    {{ text_parse_stats_products }}: {{ parse_stats.products }},
+                    {{ text_parse_stats_manufacturers }}: {{ parse_stats.manufacturers }},
+                    {{ text_parse_stats_images }}: {{ parse_stats.images }},
+                    {{ text_parse_stats_attributes }}: {{ parse_stats.attributes }}.
+                    </div>
                 {% endif %}
                 <a href="{{ action_parse_feed }}" class="btn btn-info">{{ button_import_feed }}</a>
             </div>
