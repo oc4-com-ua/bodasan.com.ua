@@ -31,8 +31,10 @@ class Import extends \Opencart\System\Engine\Controller {
 
         $data['action_import'] = $this->url->link('import/import.importAll', 'user_token=' . $this->session->data['user_token']);
 
+        $data['success_parse_feed'] = !empty($this->session->data['success_parse_feed']) ? $this->session->data['success_parse_feed'] : '';
         $data['import_summary'] = !empty($this->session->data['import_summary']) ? $this->session->data['import_summary'] : '';
 
+        unset($this->session->data['success_parse_feed']);
         unset($this->session->data['import_summary']);
 
         $this->response->setOutput($this->load->view('import/import', $data));
@@ -47,7 +49,7 @@ class Import extends \Opencart\System\Engine\Controller {
         if (!empty($result['error'])) {
             $this->session->data['error_warning'] = $result['error'];
         } else {
-            $this->session->data['success'] = $this->language->get('text_parse_success');
+            $this->session->data['success_parse_feed'] = $result['success_parse_feed'];
         }
 
         $this->response->redirect($this->url->link('import/import', 'user_token=' . $this->session->data['user_token']));

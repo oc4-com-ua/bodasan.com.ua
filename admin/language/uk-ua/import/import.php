@@ -6,7 +6,7 @@ $_['heading_card_images'] = 'Завантаження зображень';
 $_['heading_card_products'] = 'Імпорт товарів';
 
 // Text
-$_['text_parse_success'] = 'Парсинг фіда успішно завершено!';
+$_['text_parse_success_summary'] = '<b>Парсинг фіда завершено!</b> <br>Категорій: %d, товарів: %d, виробників: %d, зображень: %d, атрибутів: %d.';
 $_['text_import_heading'] = 'Імпорт завершено!';
 $_['text_import_categories'] = '- <b>Категорії:</b> всього %d, нових %d, оновлених %d';
 $_['text_import_manufacturers'] = '- <b>Виробники:</b> всього %d, нових %d, пропущено %d';

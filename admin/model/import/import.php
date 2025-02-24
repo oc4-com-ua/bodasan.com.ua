@@ -16,6 +16,13 @@ class Import extends \Opencart\System\Engine\Model {
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_image`");
         $this->db->query("TRUNCATE `" . DB_PREFIX . "import_attribute`");
 
+        // Лічильники
+        $category_count = 0;
+        $product_count = 0;
+        $image_count = 0;
+        $attribute_count = 0;
+        $manufacturer_count = 0;
+
         // 2. Зчитаємо XML
         $xml_content = @file_get_contents($feed_url);
 
@@ -44,6 +51,10 @@ class Import extends \Opencart\System\Engine\Model {
                 `date_added` = NOW(),
                 `date_modified` = NOW()
             ");
+
+                if ($this->db->countAffected() > 0) {
+                    $category_count++;
+                }
             }
         }
 
@@ -98,6 +109,10 @@ class Import extends \Opencart\System\Engine\Model {
                 `date_modified` = NOW()
             ");
 
+                if ($this->db->countAffected() > 0) {
+                    $product_count++;
+                }
+
                 // Зображення
                 if (isset($offer->picture)) {
                     $is_first_image = true;
@@ -110,6 +125,10 @@ class Import extends \Opencart\System\Engine\Model {
                             `image_url` = '" . $this->db->escape($picture_url) . "',
                             `main_image` = '" . ($is_first_image ? 1 : 0) . "'
                         ");
+
+                        if ($this->db->countAffected() > 0) {
+                            $image_count++;
+                        }
 
                         $is_first_image = false;
                     }
@@ -126,6 +145,10 @@ class Import extends \Opencart\System\Engine\Model {
                         `attribute_name` = '" . $this->db->escape($param_name) . "',
                         `attribute_value` = '" . $this->db->escape($param_value) . "'
                     ");
+
+                        if ($this->db->countAffected() > 0) {
+                            $attribute_count++;
+                        }
                     }
                 }
             }
@@ -135,11 +158,24 @@ class Import extends \Opencart\System\Engine\Model {
                 $this->db->query("INSERT IGNORE INTO `" . DB_PREFIX . "import_manufacturer` SET
                 `name` = '" . $this->db->escape($vendor_name) . "'
             ");
+
+                if ($this->db->countAffected() > 0) {
+                    $manufacturer_count++;
+                }
             }
         }
 
+
         // Якщо дійшли сюди, все ок
-        $result['success'] = $language->get('text_parse_success');
+        $result['success_parse_feed'] = sprintf(
+            $language->get('text_parse_success_summary'),
+            $category_count,
+            $product_count,
+            $manufacturer_count,
+            $image_count,
+            $attribute_count
+        );
+
         return $result;
     }
 
