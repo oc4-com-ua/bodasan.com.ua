@@ -35,6 +35,7 @@ $_['js_img_message_failed'] = 'помилок';
 $_['js_img_spinner'] = 'Завантаження';
 $_['js_img_error_console'] = 'Помилка при завантаженні';
 $_['js_img_error_message'] = 'Сталася помилка при завантаженні зображень.';
+$_['js_loading_btn'] = 'Завантаження...';
 
 // Buttons
 $_['button_import_feed'] = 'Парсинг фіда';

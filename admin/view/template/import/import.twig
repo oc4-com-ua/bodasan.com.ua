@@ -28,7 +28,7 @@
                     {{ text_parse_stats_attributes }}: {{ parse_stats.attributes }}.
                     </div>
                 {% endif %}
-                <a href="{{ action_parse_feed }}" class="btn btn-info">{{ button_import_feed }}</a>
+                <a href="{{ action_parse_feed }}" class="btn btn-info js-loading-btn">{{ button_import_feed }}</a>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                         {% endif %}
                     </div>
                 {% endif %}
-                <a href="{{ action_import }}" class="btn btn-success{% if parse_stats is empty %} disabled{% endif %}">{{ button_import_products }}</a>
+                <a href="{{ action_import }}" class="btn btn-success js-loading-btn{% if parse_stats is empty %} disabled{% endif %}">{{ button_import_products }}</a>
             </div>
         </div>
 
@@ -156,6 +156,14 @@
         e.preventDefault();
         downloadImagesAll();
     });
+
+    document.querySelectorAll(".js-loading-btn").forEach(button => {
+        button.addEventListener("click", function (e) {
+            this.classList.add("disabled");
+            this.innerHTML = '<span class="spinner-border spinner-border-sm"></span> {{ js_loading_btn }}';
+        });
+    });
+
 </script>
 
 {{ footer }}
