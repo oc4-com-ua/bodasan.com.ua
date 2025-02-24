@@ -700,7 +700,7 @@ class Import extends \Opencart\System\Engine\Model {
         $sku          = $p['sku'];
         $status       = (int)$p['status'];
         $keywords     = $p['keywords'];
-        $seo_url      = $p['seo_url'] ?? '';
+        $seo_url      = $p['seo_url'];
         $manufacturer = $p['manufacturer'];
         $category_ext = $p['category_external_id'];
 
