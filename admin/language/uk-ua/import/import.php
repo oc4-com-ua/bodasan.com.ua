@@ -1,10 +1,10 @@
 <?php
 // Heading
 $_['heading_title'] = 'Імпорт товарів';
-$_['heading_card_feed'] = 'Парсинг фіда із Prom';
-$_['heading_card_images'] = 'Завантаження зображень';
-$_['heading_card_products'] = 'Імпорт товарів';
-$_['heading_card_clear'] = 'Очистити дані парсингу для імпорту';
+$_['heading_card_feed'] = '<b>Крок 1:</b> Парсинг фіда із Prom';
+$_['heading_card_images'] = '<b>Крок 2:</b> Завантаження зображень';
+$_['heading_card_products'] = '<b>Крок 3:</b> Імпорт товарів';
+$_['heading_card_clear'] = '<b>Крок 4:</b> Очистити дані парсингу для імпорту';
 
 // Text
 $_['text_parse_success_summary'] = '<b>Парсинг фіда завершено!</b> <br>Категорій: %d, товарів: %d, виробників: %d, зображень: %d, атрибутів: %d.';
@@ -32,13 +32,13 @@ $_['js_img_message_total'] = 'Оброблено';
 $_['js_img_message_downloaded'] = 'завантажено';
 $_['js_img_message_skipped'] = 'пропущено';
 $_['js_img_message_failed'] = 'помилок';
-$_['js_img_spinner'] = 'Завантаження';
+$_['js_img_spinner'] = 'Завантаження...';
 $_['js_img_error_console'] = 'Помилка при завантаженні';
 $_['js_img_error_message'] = 'Сталася помилка при завантаженні зображень.';
 $_['js_loading_btn'] = 'Завантаження...';
 
 // Buttons
-$_['button_import_feed'] = 'Парсинг фіда';
+$_['button_import_feed'] = 'Запустити парсинг фіда';
 $_['button_import_images'] = 'Завантажити зображення';
 $_['button_import_products'] = 'Імпортувати товари';
 $_['button_import_clear'] = 'Очистити дані парсингу';

@@ -36,8 +36,8 @@
             <div class="card-header"><i class="fa-solid fa-images"></i> {{ heading_card_images }}</div>
             <div class="card-body">
                 <div class="alert alert-warning" id="alert-import-images" style="display: none;">
-                    <h5 class="alert-heading" id="heading-import-images"></h5>
-                    <hr>
+                    <b id="heading-import-images"></b>
+                    <br>
                     <p class="mb-0" id="status-import-images"></p>
                 </div>
                 <button class="btn btn-primary{% if parse_stats is empty %} disabled{% endif %}" id="button-images">{{ button_import_images }}</button>
@@ -49,7 +49,7 @@
             <div class="card-body">
                 {% if import_summary %}
                     <div class="alert alert-success">
-                        <h5 class="alert-heading">{{ text_import_heading }}</h5>
+                        <b>{{ text_import_heading }}</b>
                         <hr>
                         {% if import_summary['categories'] %}
                             <p class="mb-0">{{ import_summary['categories'] }}</p>
