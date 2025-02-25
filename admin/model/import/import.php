@@ -21,154 +21,164 @@ class Import extends \Opencart\System\Engine\Model {
         $attribute_count = 0;
         $manufacturer_count = 0;
 
-        $xml_content = @file_get_contents($feed_url);
+        try {
+            $xml_content = @file_get_contents($feed_url);
 
-        if (!$xml_content) {
-            $result['error'] = $language->get('error_feed_unavailable');
-            return $result;
-        }
-
-        $xml = simplexml_load_string($xml_content);
-        if (!$xml) {
-            $result['error'] = $language->get('error_invalid_xml');
-            return $result;
-        }
-
-        if (isset($xml->shop->categories->category)) {
-            foreach ($xml->shop->categories->category as $category) {
-                $external_id = (string)$category['id'];
-                $parent_id   = (string)$category['parentId'];
-                $name        = trim((string)$category);
-
-                $this->db->query("INSERT INTO `" . DB_PREFIX . "import_category` SET
-                    `external_id` = '" . $this->db->escape($external_id) . "',
-                    `parent_external_id` = '" . $this->db->escape($parent_id) . "',
-                    `name` = '" . $this->db->escape($name) . "',
-                    `date_added` = NOW(),
-                    `date_modified` = NOW()
-                ");
-
-                if ($this->db->countAffected() > 0) {
-                    $category_count++;
-                }
+            if ($xml_content === false) {
+                $error_info = error_get_last();
+                $this->log->write("file_get_contents error: " . ($error_info['message'] ?? 'unknown'));
+                $result['error'] = $language->get('error_feed_unavailable');
+                return $result;
             }
-        }
 
-        if (isset($xml->shop->offers->offer)) {
-            $manufacturers = [];
+            $xml = simplexml_load_string($xml_content);
+            if (!$xml) {
+                $this->log->write("XML parse error for feed: {$feed_url}");
+                $result['error'] = $language->get('error_invalid_xml');
+                return $result;
+            }
 
-            foreach ($xml->shop->offers->offer as $offer) {
-                $external_id   = (string)$offer['id'];
-                $available     = (string)$offer['available'];
-                $name          = (string)$offer->name;
-                $description   = (string)$offer->description;
-                $price         = (float)$offer->price;
-                $quantity      = (int)($offer->quantity_in_stock ?? 0);
-                $keywords      = (string)$offer->keywords;
-                $vendor        = (string)$offer->vendor;
-                $sku           = (string)$offer->vendorCode;
-                $url           = (string)$offer->url;
+            if (isset($xml->shop->categories->category)) {
+                foreach ($xml->shop->categories->category as $category) {
+                    $external_id = (string)$category['id'];
+                    $parent_id   = (string)$category['parentId'];
+                    $name        = trim((string)$category);
 
-                $category_external_id = null;
-                if (isset($offer->categoryId)) {
-                    $category_external_id = (string)$offer->categoryId[0];
-                }
-
-                $status = ($available === 'true') ? 1 : 0;
-
-                if ($vendor) {
-                    $vendors_key = mb_strtolower($vendor);
-                    $manufacturers[$vendors_key] = $vendor;
-                }
-
-                $this->db->query("INSERT INTO `" . DB_PREFIX . "import_product` SET
-                    `external_id` = '" . $this->db->escape($external_id) . "',
-                    `manufacturer` = '" . $this->db->escape($vendor) . "',
-                    `name` = '" . $this->db->escape($name) . "',
-                    `description` = '" . $this->db->escape($description) . "',
-                    `price` = '" . (float)$price . "',
-                    `quantity` = '" . (int)$quantity . "',
-                    `keywords` = '" . $this->db->escape($keywords) . "',
-                    `category_external_id` = '" . $this->db->escape($category_external_id) . "',
-                    `status` = '" . (int)$status . "',
-                    `sku` = '" . $this->db->escape($sku) . "',
-                    `seo_url` = '" . $this->db->escape($url) . "',
-                    `date_added` = NOW(),
-                    `date_modified` = NOW()
-                ");
-
-                if ($this->db->countAffected() > 0) {
-                    $product_count++;
-                }
-
-                if (isset($offer->picture)) {
-                    $is_first_image = true;
-
-                    foreach ($offer->picture as $picture) {
-                        $picture_url = (string)$picture;
-
-                        $this->db->query("INSERT INTO `" . DB_PREFIX . "import_image` SET
-                            `product_external_id` = '" . $this->db->escape($external_id) . "',
-                            `image_url` = '" . $this->db->escape($picture_url) . "',
-                            `main_image` = '" . ($is_first_image ? 1 : 0) . "'
-                        ");
-
-                        if ($this->db->countAffected() > 0) {
-                            $image_count++;
-                        }
-
-                        $is_first_image = false;
-                    }
-                }
-
-                if (isset($offer->param)) {
-                    foreach ($offer->param as $param) {
-                        $param_name  = (string)$param['name'];
-                        $param_value = (string)$param;
-
-                        $this->db->query("INSERT INTO `" . DB_PREFIX . "import_attribute` SET
-                        `product_external_id` = '" . $this->db->escape($external_id) . "',
-                        `attribute_name` = '" . $this->db->escape($param_name) . "',
-                        `attribute_value` = '" . $this->db->escape($param_value) . "'
+                    $this->db->query("INSERT INTO `" . DB_PREFIX . "import_category` SET
+                        `external_id` = '" . $this->db->escape($external_id) . "',
+                        `parent_external_id` = '" . $this->db->escape($parent_id) . "',
+                        `name` = '" . $this->db->escape($name) . "',
+                        `date_added` = NOW(),
+                        `date_modified` = NOW()
                     ");
 
-                        if ($this->db->countAffected() > 0) {
-                            $attribute_count++;
-                        }
+                    if ($this->db->countAffected() > 0) {
+                        $category_count++;
                     }
                 }
             }
 
-            foreach ($manufacturers as $key => $vendor_name) {
-                $this->db->query("INSERT IGNORE INTO `" . DB_PREFIX . "import_manufacturer` SET
-                    `name` = '" . $this->db->escape($vendor_name) . "'
-                ");
+            if (isset($xml->shop->offers->offer)) {
+                $manufacturers = [];
 
-                if ($this->db->countAffected() > 0) {
-                    $manufacturer_count++;
+                foreach ($xml->shop->offers->offer as $offer) {
+                    $external_id   = (string)$offer['id'];
+                    $available     = (string)$offer['available'];
+                    $name          = (string)$offer->name;
+                    $description   = (string)$offer->description;
+                    $price         = (float)$offer->price;
+                    $quantity      = (int)($offer->quantity_in_stock ?? 0);
+                    $keywords      = (string)$offer->keywords;
+                    $vendor        = (string)$offer->vendor;
+                    $sku           = (string)$offer->vendorCode;
+                    $url           = (string)$offer->url;
+
+                    $category_external_id = null;
+                    if (isset($offer->categoryId)) {
+                        $category_external_id = (string)$offer->categoryId[0];
+                    }
+
+                    $status = ($available === 'true') ? 1 : 0;
+
+                    if ($vendor) {
+                        $vendors_key = mb_strtolower($vendor);
+                        $manufacturers[$vendors_key] = $vendor;
+                    }
+
+                    $this->db->query("INSERT INTO `" . DB_PREFIX . "import_product` SET
+                        `external_id` = '" . $this->db->escape($external_id) . "',
+                        `manufacturer` = '" . $this->db->escape($vendor) . "',
+                        `name` = '" . $this->db->escape($name) . "',
+                        `description` = '" . $this->db->escape($description) . "',
+                        `price` = '" . (float)$price . "',
+                        `quantity` = '" . (int)$quantity . "',
+                        `keywords` = '" . $this->db->escape($keywords) . "',
+                        `category_external_id` = '" . $this->db->escape($category_external_id) . "',
+                        `status` = '" . (int)$status . "',
+                        `sku` = '" . $this->db->escape($sku) . "',
+                        `seo_url` = '" . $this->db->escape($url) . "',
+                        `date_added` = NOW(),
+                        `date_modified` = NOW()
+                    ");
+
+                    if ($this->db->countAffected() > 0) {
+                        $product_count++;
+                    }
+
+                    if (isset($offer->picture)) {
+                        $is_first_image = true;
+
+                        foreach ($offer->picture as $picture) {
+                            $picture_url = (string)$picture;
+
+                            $this->db->query("INSERT INTO `" . DB_PREFIX . "import_image` SET
+                                `product_external_id` = '" . $this->db->escape($external_id) . "',
+                                `image_url` = '" . $this->db->escape($picture_url) . "',
+                                `main_image` = '" . ($is_first_image ? 1 : 0) . "'
+                            ");
+
+                            if ($this->db->countAffected() > 0) {
+                                $image_count++;
+                            }
+
+                            $is_first_image = false;
+                        }
+                    }
+
+                    if (isset($offer->param)) {
+                        foreach ($offer->param as $param) {
+                            $param_name  = (string)$param['name'];
+                            $param_value = (string)$param;
+
+                            $this->db->query("INSERT INTO `" . DB_PREFIX . "import_attribute` SET
+                            `product_external_id` = '" . $this->db->escape($external_id) . "',
+                            `attribute_name` = '" . $this->db->escape($param_name) . "',
+                            `attribute_value` = '" . $this->db->escape($param_value) . "'
+                        ");
+
+                            if ($this->db->countAffected() > 0) {
+                                $attribute_count++;
+                            }
+                        }
+                    }
+                }
+
+                foreach ($manufacturers as $key => $vendor_name) {
+                    $this->db->query("INSERT IGNORE INTO `" . DB_PREFIX . "import_manufacturer` SET
+                        `name` = '" . $this->db->escape($vendor_name) . "'
+                    ");
+
+                    if ($this->db->countAffected() > 0) {
+                        $manufacturer_count++;
+                    }
                 }
             }
+
+            $result['success_parse_feed'] = sprintf(
+                $language->get('text_parse_success_summary'),
+                $category_count,
+                $product_count,
+                $manufacturer_count,
+                $image_count,
+                $attribute_count
+            );
+
+            $parse_stats = [
+                'date'          => date('Y-m-d H:i:s'),
+                'categories'    => $category_count,
+                'products'      => $product_count,
+                'manufacturers' => $manufacturer_count,
+                'images'        => $image_count,
+                'attributes'    => $attribute_count
+            ];
+
+            $this->saveParseStats($parse_stats);
+
+            $this->log->write("parseAndStore completed successfully");
+        } catch (\Exception $e) {
+            $this->log->write("parseAndStore exception: " . $e->getMessage());
+            $result['error'] = $language->get('error_during_parsing') . ' ' . $e->getMessage();
         }
-
-        $result['success_parse_feed'] = sprintf(
-            $language->get('text_parse_success_summary'),
-            $category_count,
-            $product_count,
-            $manufacturer_count,
-            $image_count,
-            $attribute_count
-        );
-
-        $parse_stats = [
-            'date'          => date('Y-m-d H:i:s'),
-            'categories'    => $category_count,
-            'products'      => $product_count,
-            'manufacturers' => $manufacturer_count,
-            'images'        => $image_count,
-            'attributes'    => $attribute_count
-        ];
-
-        $this->saveParseStats($parse_stats);
 
         return $result;
     }

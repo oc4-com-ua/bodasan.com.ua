@@ -36,10 +36,12 @@ class Import extends \Opencart\System\Engine\Controller {
         $data['action_clear_parse'] = $this->url->link('import/import.clearImportData', 'user_token=' . $this->session->data['user_token']);
 
         $data['success_parse_feed'] = !empty($this->session->data['success_parse_feed']) ? $this->session->data['success_parse_feed'] : '';
+        $data['error_parse_feed'] = !empty($this->session->data['error_parse_feed']) ? $this->session->data['error_parse_feed'] : '';
         $data['import_summary'] = !empty($this->session->data['import_summary']) ? $this->session->data['import_summary'] : '';
         $data['success_clear_parse'] = !empty($this->session->data['success_clear_parse']) ? $this->session->data['success_clear_parse'] : '';
 
         unset($this->session->data['success_parse_feed']);
+        unset($this->session->data['error_parse_feed']);
         unset($this->session->data['import_summary']);
         unset($this->session->data['success_clear_parse']);
 
@@ -53,7 +55,7 @@ class Import extends \Opencart\System\Engine\Controller {
         $result = $this->model_import_import->parseAndStore(FEED_PROM_URL, $this->language);
 
         if (!empty($result['error'])) {
-            $this->session->data['error_warning'] = $result['error'];
+            $this->session->data['error_parse_feed'] = $result['error'];
         } else {
             $this->session->data['success_parse_feed'] = $result['success_parse_feed'];
         }

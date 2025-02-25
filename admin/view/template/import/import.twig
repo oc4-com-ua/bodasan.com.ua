@@ -14,6 +14,11 @@
         <div class="card mb-4">
             <div class="card-header"><i class="fa-solid fa-file-import"></i> {{ heading_card_feed }}</div>
             <div class="card-body">
+                {% if error_parse_feed %}
+                    <div class="alert alert-danger">
+                        <p class="mb-0">{{ error_parse_feed }}</p>
+                    </div>
+                {% endif %}
                 {% if success_parse_feed %}
                     <div class="alert alert-success">
                         <p class="mb-0">{{ success_parse_feed }}</p>
