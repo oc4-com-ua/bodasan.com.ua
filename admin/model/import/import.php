@@ -9,12 +9,6 @@ class Import extends \Opencart\System\Engine\Model {
     public function parseAndStore(string $feed_url, $language): array {
         $result = [];
 
-        $this->db->query("TRUNCATE `" . DB_PREFIX . "import_category`");
-        $this->db->query("TRUNCATE `" . DB_PREFIX . "import_manufacturer`");
-        $this->db->query("TRUNCATE `" . DB_PREFIX . "import_product`");
-        $this->db->query("TRUNCATE `" . DB_PREFIX . "import_image`");
-        $this->db->query("TRUNCATE `" . DB_PREFIX . "import_attribute`");
-
         $category_count = 0;
         $product_count = 0;
         $image_count = 0;
@@ -37,6 +31,12 @@ class Import extends \Opencart\System\Engine\Model {
                 $result['error'] = $language->get('error_invalid_xml');
                 return $result;
             }
+
+            $this->db->query("TRUNCATE `" . DB_PREFIX . "import_category`");
+            $this->db->query("TRUNCATE `" . DB_PREFIX . "import_manufacturer`");
+            $this->db->query("TRUNCATE `" . DB_PREFIX . "import_product`");
+            $this->db->query("TRUNCATE `" . DB_PREFIX . "import_image`");
+            $this->db->query("TRUNCATE `" . DB_PREFIX . "import_attribute`");
 
             if (isset($xml->shop->categories->category)) {
                 foreach ($xml->shop->categories->category as $category) {
