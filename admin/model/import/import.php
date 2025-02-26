@@ -275,13 +275,13 @@ class Import extends \Opencart\System\Engine\Model {
             return $stats;
         }
 
-        $topLevelCategories = array_filter($import_rows, function($row) {
+        $top_level_categories = array_filter($import_rows, function($row) {
             return empty($row['parent_external_id']);
         });
 
-        $stats['total'] = count($topLevelCategories);
+        $stats['total'] = count($top_level_categories);
 
-        foreach ($topLevelCategories as $cat) {
+        foreach ($top_level_categories as $cat) {
             $res = $this->saveCategory($cat);
 
             if ($res === 'new') {
@@ -296,28 +296,17 @@ class Import extends \Opencart\System\Engine\Model {
 
     private function saveCategory(array $cat_data): string {
         $external_id = $cat_data['external_id'];
-        $parent_ext_id = $cat_data['parent_external_id'];
         $name = $cat_data['name'];
 
-        $status = 1;
-        $sort_order = 0;
-
-        $parent_id = 0;
-        if ($parent_ext_id !== '0') {
-            $qparent = $this->db->query("SELECT category_id FROM `" . DB_PREFIX . "category` WHERE `external_id` = '" . $this->db->escape($parent_ext_id) . "'");
-            if ($qparent->num_rows) {
-                $parent_id = (int)$qparent->row['category_id'];
-            }
-        }
-
         $q = $this->db->query("SELECT category_id FROM `" . DB_PREFIX . "category` WHERE `external_id` = '" . $this->db->escape($external_id) . "'");
+
         if ($q->num_rows) {
             $category_id = (int)$q->row['category_id'];
 
             $this->db->query("UPDATE `" . DB_PREFIX . "category` SET
-                `parent_id` = '" . (int)$parent_id . "',
-                `sort_order` = '" . (int)$sort_order . "',
-                `status` = '" . (int)$status . "',
+                `parent_id` = '0',
+                `sort_order` = '0',
+                `status` = '1',
                 `date_modified` = NOW()
                 WHERE `category_id` = '" . (int)$category_id . "'");
 
@@ -331,19 +320,17 @@ class Import extends \Opencart\System\Engine\Model {
                 AND `language_id` = 2
             ");
 
-            $this->updateCategoryPath($category_id, $parent_id);
+            $this->updateCategoryPath($category_id);
 
-            $this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url`
-                          WHERE `key` = 'path' AND `value` LIKE '" . (int)$category_id . "%'");
-            $this->addSeoUrlCategory($category_id, $parent_id, $name, $external_id);
+            $this->updateSeoUrlCategory($category_id, $external_id, $name);
 
             return 'updated';
         } else {
             $this->db->query("INSERT INTO `" . DB_PREFIX . "category` SET
                 `external_id` = '" . $this->db->escape($external_id) . "',
-                `parent_id` = '" . (int)$parent_id . "',
-                `sort_order` = '" . (int)$sort_order . "',
-                `status` = '" . (int)$status . "',
+                `parent_id` = '0',
+                `sort_order` = '0',
+                `status` = '1',
                 `date_added` = NOW(),
                 `date_modified` = NOW()
             ");
@@ -365,62 +352,45 @@ class Import extends \Opencart\System\Engine\Model {
                 `store_id` = '0'
             ");
 
-            $this->updateCategoryPath($category_id, $parent_id);
+            $this->updateCategoryPath($category_id);
 
-            $this->addSeoUrlCategory($category_id, $parent_id, $name, $external_id);
+            $this->addSeoUrlCategory($category_id, $external_id, $name);
 
             return 'new';
         }
     }
 
-    private function updateCategoryPath(int $category_id, int $parent_id): void {
+    private function updateCategoryPath(int $category_id): void {
         $this->db->query("DELETE FROM `" . DB_PREFIX . "category_path` WHERE `category_id` = '" . (int)$category_id . "'");
-
-        $level = 0;
-
-        if ($parent_id > 0) {
-            $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "category_path`
-                               WHERE `category_id` = '" . (int)$parent_id . "'
-                               ORDER BY `level` ASC");
-            foreach ($q->rows as $row) {
-                $this->db->query("INSERT INTO `" . DB_PREFIX . "category_path` SET
-                    `category_id` = '" . (int)$category_id . "',
-                    `path_id` = '" . (int)$row['path_id'] . "',
-                    `level` = '" . (int)$level . "'
-                ");
-                $level++;
-            }
-        }
 
         $this->db->query("INSERT INTO `" . DB_PREFIX . "category_path` SET
             `category_id` = '" . (int)$category_id . "',
             `path_id` = '" . (int)$category_id . "',
-            `level` = '" . (int)$level . "'
+            `level` = '0'
         ");
     }
 
-    private function updateSeoUrlCategory(int $category_id, int $parent_id, string $name, string $external_id): void {
-        $this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url`
-                      WHERE `key` = 'path' AND `value` LIKE '" . (int)$category_id . "%'");
+    private function updateSeoUrlCategory(int $category_id, string $external_id, string $name): void {
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE `key` = 'path' AND `value` LIKE '" . (int)$category_id . "%'");
 
-        $this->addSeoUrlCategory($category_id, $parent_id, $name, $external_id);
+        $this->addSeoUrlCategory($category_id, $external_id, $name);
     }
 
-    private function addSeoUrlCategory(int $category_id, int $parent_id, string $name, string $external_id): void {
-        $value = $this->buildSeoValue($this->db, $parent_id, $category_id);
+    private function addSeoUrlCategory(int $category_id, string $external_id, string $name): void {
+        $keyword = $external_id . '-' . $this->transliterate($name);
 
-        $keyword = $this->buildSeoKeyword($this->db, $parent_id, $external_id, $name);
-
-        $q = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seo_url` WHERE `keyword` = '" . $this->db->escape($keyword) . "' AND `store_id` = 0");
+        $q = $this->db->query("SELECT seo_url_id FROM `" . DB_PREFIX . "seo_url`
+                               WHERE `keyword` = '" . $this->db->escape($keyword) . "'
+                               AND `store_id` = 0");
         if ($q->num_rows) {
-             throw new \Exception('SEO URL "' . $keyword . '" зайнятий.');
+            $keyword .= '-2';
         }
 
         $this->db->query("INSERT INTO `" . DB_PREFIX . "seo_url` SET
             `store_id` = 0,
             `language_id` = 2,
             `key` = 'path',
-            `value` = '" . $this->db->escape($value) . "',
+            `value` = '" . (int)$category_id . "',
             `keyword` = '" . $this->db->escape($keyword) . "'
         ");
     }
@@ -440,80 +410,6 @@ class Import extends \Opencart\System\Engine\Model {
 
             $ext_id = $parent;
         }
-    }
-
-    private function sortCategoriesByLevel(array $categories): array {
-        $levels = [];
-
-        function determineLevel($category_id, $categories, &$levels) {
-            if (isset($levels[$category_id])) {
-                return $levels[$category_id];
-            }
-
-            foreach ($categories as $category) {
-                if ($category['external_id'] == $category_id) {
-                    if ($category['parent_external_id'] == 0) {
-                        $levels[$category_id] = 1;
-                    } else {
-                        $levels[$category_id] = determineLevel($category['parent_external_id'], $categories, $levels) + 1;
-                    }
-                    return $levels[$category_id];
-                }
-            }
-
-            return 1;
-        }
-
-        foreach ($categories as $category) {
-            $levels[$category['external_id']] = determineLevel($category['external_id'], $categories, $levels);
-        }
-
-        foreach ($categories as &$category) {
-            $category['level'] = $levels[$category['external_id']];
-        }
-        unset($category);
-
-        usort($categories, function ($a, $b) {
-            return $a['level'] <=> $b['level'];
-        });
-
-        return $categories;
-    }
-
-    private function buildSeoValue($db, $parent_id, $category_id) {
-        $path = [$category_id];
-
-        while ($parent_id > 0) {
-            $query = $db->query("SELECT `parent_id` FROM `" . DB_PREFIX . "category` WHERE `category_id` = '" . (int)$parent_id . "'");
-            if ($query->num_rows) {
-                $path[] = $parent_id;
-                $parent_id = $query->row['parent_id'];
-            } else {
-                break;
-            }
-        }
-
-        return implode('_', array_reverse($path));
-    }
-
-    private function buildSeoKeyword($db, $parent_id, $external_id, $name) {
-        $path = [$external_id . '-' . $this->transliterate($name)];
-
-        while ($parent_id > 0) {
-            $query = $db->query("SELECT `parent_id`, `external_id`, `name` FROM `" . DB_PREFIX . "category` c 
-                             LEFT JOIN `" . DB_PREFIX . "category_description` cd ON (c.`category_id` = cd.`category_id` AND cd.`language_id` = 2)
-                             WHERE c.`category_id` = '" . (int)$parent_id . "'");
-            if ($query->num_rows) {
-                $parent_external_id = $query->row['external_id'];
-                $parent_name = $query->row['name'];
-                $path[] = $parent_external_id . '-' . $this->transliterate($parent_name);
-                $parent_id = $query->row['parent_id'];
-            } else {
-                break;
-            }
-        }
-
-        return implode('/', array_reverse($path));
     }
 
     private function transliterate($string) {
