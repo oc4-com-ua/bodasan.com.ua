@@ -12,6 +12,7 @@ class Import extends \Opencart\System\Engine\Model {
         $category_count = 0;
         $product_count = 0;
         $image_count = 0;
+        $video_count = 0;
         $attribute_count = 0;
         $manufacturer_count = 0;
 
@@ -36,6 +37,7 @@ class Import extends \Opencart\System\Engine\Model {
             $this->db->query("TRUNCATE `" . DB_PREFIX . "import_manufacturer`");
             $this->db->query("TRUNCATE `" . DB_PREFIX . "import_product`");
             $this->db->query("TRUNCATE `" . DB_PREFIX . "import_image`");
+            $this->db->query("TRUNCATE `" . DB_PREFIX . "import_video`");
             $this->db->query("TRUNCATE `" . DB_PREFIX . "import_attribute`");
 
             if (isset($xml->shop->categories->category)) {
@@ -85,6 +87,8 @@ class Import extends \Opencart\System\Engine\Model {
                         $manufacturers[$vendors_key] = $vendor;
                     }
 
+                    $videos = $this->extractIframesAndClean($description);
+
                     $this->db->query("INSERT INTO `" . DB_PREFIX . "import_product` SET
                         `external_id` = '" . $this->db->escape($external_id) . "',
                         `manufacturer` = '" . $this->db->escape($vendor) . "',
@@ -125,6 +129,19 @@ class Import extends \Opencart\System\Engine\Model {
                         }
                     }
 
+                    if ($videos) {
+                        foreach ($videos as $video) {
+                            $this->db->query("INSERT INTO `" . DB_PREFIX . "import_video` SET
+                                `product_external_id` = '" . $this->db->escape($external_id) . "',
+                                `video` = '" . $this->db->escape($video) . "'
+                            ");
+
+                            if ($this->db->countAffected() > 0) {
+                                $video_count++;
+                            }
+                        }
+                    }
+
                     if (isset($offer->param)) {
                         foreach ($offer->param as $param) {
                             $param_name  = (string)$param['name'];
@@ -160,6 +177,7 @@ class Import extends \Opencart\System\Engine\Model {
                 $product_count,
                 $manufacturer_count,
                 $image_count,
+                $video_count,
                 $attribute_count
             );
 
@@ -169,6 +187,7 @@ class Import extends \Opencart\System\Engine\Model {
                 'products'      => $product_count,
                 'manufacturers' => $manufacturer_count,
                 'images'        => $image_count,
+                'videos'        => $video_count,
                 'attributes'    => $attribute_count
             ];
 
@@ -208,6 +227,24 @@ class Import extends \Opencart\System\Engine\Model {
         }
 
         return [];
+    }
+
+    private function extractIframesAndClean(&$html) {
+        $videos = [];
+
+        $iframe_pattern = '#<iframe.*?</iframe>#is';
+        preg_match_all($iframe_pattern, $html, $matches);
+
+        if (!empty($matches[0])) {
+            $videos = $matches[0];
+        }
+
+        $html = preg_replace($iframe_pattern, '', $html);
+        $html = preg_replace('#<p>(\s|&nbsp;)*</p>#i', '', $html);
+        $html = preg_replace('#<(\w+)>(\s|&nbsp;)*</\1>#i', '', $html);
+        $html = trim($html);
+
+        return $videos;
     }
 
     public function downloadImagesChunk(int $offset, int $limit): array {
@@ -667,6 +704,8 @@ class Import extends \Opencart\System\Engine\Model {
 
             $this->updateProductImages($product_id, $external_id);
 
+            $this->updateProductVideos($product_id, $external_id);
+
             $this->updateProductAttributes($product_id, $external_id);
 
             return 'updated';
@@ -720,6 +759,8 @@ class Import extends \Opencart\System\Engine\Model {
             ");
 
             $this->updateProductImages($product_id, $external_id);
+
+            $this->updateProductVideos($product_id, $external_id);
 
             $this->updateProductAttributes($product_id, $external_id);
 
@@ -788,6 +829,29 @@ class Import extends \Opencart\System\Engine\Model {
 
                 $sort_order++;
             }
+        }
+    }
+
+    private function updateProductVideos(int $product_id, string $external_id): void {
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "product_video`
+                      WHERE `product_id` = '" . (int)$product_id . "'");
+
+        $q = $this->db->query("SELECT `video` FROM `" . DB_PREFIX . "import_video`
+                           WHERE `product_external_id` = '" . $this->db->escape($external_id) . "'");
+
+        if ($q->num_rows === 0) {
+            return;
+        }
+
+        $sort_order = 1;
+        foreach ($q->rows as $row) {
+            $this->db->query("INSERT INTO `" . DB_PREFIX . "product_video` SET
+                `product_id` = '" . (int)$product_id . "',
+                `video` = '" . $this->db->escape($row['video']) . "',
+                `sort_order` = '" . (int)$sort_order . "'
+            ");
+
+            $sort_order++;
         }
     }
 

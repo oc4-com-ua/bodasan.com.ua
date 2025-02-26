@@ -7,12 +7,13 @@ $_['heading_card_products'] = '<b>Крок 3:</b> Імпорт товарів';
 $_['heading_card_clear'] = '<b>Крок 4:</b> Очистити дані парсингу для імпорту';
 
 // Text
-$_['text_parse_success_summary'] = '<b>Парсинг фіда завершено!</b> <br>Категорій: %d, товарів: %d, виробників: %d, зображень: %d, атрибутів: %d.';
+$_['text_parse_success_summary'] = '<b>Парсинг фіда завершено!</b> <br>Категорій: %d, товарів: %d, виробників: %d, зображень: %d, відео: %d, атрибутів: %d.';
 $_['text_parse_stats_heading'] = 'Останній парсинг';
 $_['text_parse_stats_categories'] = 'Категорій';
 $_['text_parse_stats_products'] = 'товарів';
 $_['text_parse_stats_manufacturers'] = 'виробників';
 $_['text_parse_stats_images'] = 'зображень';
+$_['text_parse_stats_videos'] = 'відео';
 $_['text_parse_stats_attributes'] = 'атрибутів';
 $_['text_clear_success'] = 'Тимчасові дані парсингу успішно очищені!';
 $_['text_clear_confirm'] = 'Ви впевнені, що хочете очистити всі дані парсингу?';
