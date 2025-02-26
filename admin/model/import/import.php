@@ -275,20 +275,13 @@ class Import extends \Opencart\System\Engine\Model {
             return $stats;
         }
 
-        $categories_for_sort = [];
-        foreach ($import_rows as $row) {
-            $categories_for_sort[] = [
-                'external_id'        => $row['external_id'],
-                'parent_external_id' => $row['parent_external_id'],
-                'name'               => $row['name']
-            ];
-        }
+        $topLevelCategories = array_filter($import_rows, function($row) {
+            return empty($row['parent_external_id']);
+        });
 
-        $sortedCategories = $this->sortCategoriesByLevel($categories_for_sort);
+        $stats['total'] = count($topLevelCategories);
 
-        $stats['total'] = count($sortedCategories);
-
-        foreach ($sortedCategories as $cat) {
+        foreach ($topLevelCategories as $cat) {
             $res = $this->saveCategory($cat);
 
             if ($res === 'new') {
@@ -430,6 +423,23 @@ class Import extends \Opencart\System\Engine\Model {
             `value` = '" . $this->db->escape($value) . "',
             `keyword` = '" . $this->db->escape($keyword) . "'
         ");
+    }
+
+    private function getTopLevelExternalId(string $ext_id): string {
+        while (true) {
+            $q = $this->db->query("SELECT parent_external_id FROM `" . DB_PREFIX . "import_category` WHERE external_id = '" . $this->db->escape($ext_id) . "'");
+
+            if (!$q->num_rows) {
+                return $ext_id;
+            }
+
+            $parent = $q->row['parent_external_id'];
+            if (empty($parent)) {
+                return $ext_id;
+            }
+
+            $ext_id = $parent;
+        }
     }
 
     private function sortCategoriesByLevel(array $categories): array {
@@ -712,7 +722,8 @@ class Import extends \Opencart\System\Engine\Model {
         $keywords     = $p['keywords'];
         $seo_url      = $p['seo_url'];
         $manufacturer = $p['manufacturer'];
-        $category_ext = $p['category_external_id'];
+//        $category_ext = $p['category_external_id'];
+        $category_ext = $this->getTopLevelExternalId($p['category_external_id']);
 
         $q = $this->db->query("SELECT product_id FROM `" . DB_PREFIX . "product`
                            WHERE `model` = '" . $this->db->escape($external_id) . "'");
