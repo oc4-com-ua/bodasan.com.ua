@@ -632,6 +632,8 @@ class Import extends \Opencart\System\Engine\Model {
                 `quantity`  = '" . (int)$quantity . "',
                 `price`     = '" . (float)$price . "',
                 `status`    = '" . (int)$status . "',
+                `tax_class_id` = 0,
+                `date_available` = '" . date('Y-m-d', strtotime('-1 day')) . "',
                 `date_modified` = NOW()
                 WHERE `product_id` = '" . (int)$product_id . "'
             ");
@@ -678,6 +680,8 @@ class Import extends \Opencart\System\Engine\Model {
                 `stock_status_id` = 5,
                 `variant` = '',
                 `override` = '',
+                `tax_class_id` = 0,
+                `date_available` = '" . date('Y-m-d', strtotime('-1 day')) . "',
                 `date_added`    = NOW(),
                 `date_modified` = NOW()
             ");
