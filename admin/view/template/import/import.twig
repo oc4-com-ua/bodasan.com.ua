@@ -1,0 +1,174 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>{{ heading_title }}</h1>
+            <ol class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card mb-4">
+            <div class="card-header"><i class="fa-solid fa-file-import"></i> {{ heading_card_feed }}</div>
+            <div class="card-body">
+                {% if error_parse_feed %}
+                    <div class="alert alert-danger">
+                        <p class="mb-0">{{ error_parse_feed }}</p>
+                    </div>
+                {% endif %}
+                {% if success_parse_feed %}
+                    <div class="alert alert-success">
+                        <p class="mb-0">{{ success_parse_feed }}</p>
+                    </div>
+                {% elseif parse_stats.date %}
+                    <div class="alert alert-light">
+                    <b>{{ text_parse_stats_heading }}:</b> {{ parse_stats.date }}<br/>
+                    {{ text_parse_stats_categories }}: {{ parse_stats.categories }},
+                    {{ text_parse_stats_products }}: {{ parse_stats.products }},
+                    {{ text_parse_stats_manufacturers }}: {{ parse_stats.manufacturers }},
+                    {{ text_parse_stats_images }}: {{ parse_stats.images }},
+                    {{ text_parse_stats_attributes }}: {{ parse_stats.attributes }}.
+                    </div>
+                {% endif %}
+                <a href="{{ action_parse_feed }}" class="btn btn-info js-loading-btn">{{ button_import_feed }}</a>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header"><i class="fa-solid fa-images"></i> {{ heading_card_images }}</div>
+            <div class="card-body">
+                <div class="alert alert-warning" id="alert-import-images" style="display: none;">
+                    <b id="heading-import-images"></b>
+                    <br>
+                    <p class="mb-0" id="status-import-images"></p>
+                </div>
+                <button class="btn btn-primary{% if parse_stats is empty %} disabled{% endif %}" id="button-images">{{ button_import_images }}</button>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header"><i class="fa-solid fa-tag"></i> {{ heading_card_products }}</div>
+            <div class="card-body">
+                {% if import_summary %}
+                    <div class="alert alert-success">
+                        <b>{{ text_import_heading }}</b>
+                        <hr>
+                        {% if import_summary['categories'] %}
+                            <p class="mb-0">{{ import_summary['categories'] }}</p>
+                        {% endif %}
+                        {% if import_summary['manufacturers'] %}
+                            <p class="mb-0">{{ import_summary['manufacturers'] }}</p>
+                        {% endif %}
+                        {% if import_summary['attributes'] %}
+                            <p class="mb-0">{{ import_summary['attributes'] }}</p>
+                        {% endif %}
+                        {% if import_summary['products'] %}
+                            <p class="mb-0">{{ import_summary['products'] }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <a href="{{ action_import }}" class="btn btn-success js-loading-btn{% if parse_stats is empty %} disabled{% endif %}">{{ button_import_products }}</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><i class="fa-solid fa-trash"></i> {{ heading_card_clear }}</div>
+            <div class="card-body">
+                {% if success_clear_parse %}
+                    <div class="alert alert-success">
+                        {{ success_clear_parse }}
+                    </div>
+                {% endif %}
+                <a href="{{ action_clear_parse }}" onclick="return confirm('{{ text_clear_confirm }}')" class="btn btn-danger{% if parse_stats is empty %} disabled{% endif %}">{{ button_import_clear }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function downloadImagesAll() {
+        let offset = 0;
+        const limit = 100;
+        let totalProcessed = 0;
+        let totalDownloaded = 0;
+        let totalSkipped = 0;
+        let totalFailed = 0;
+        let isRunning = false;
+
+        const alertBox = document.getElementById('alert-import-images');
+        const heading = document.getElementById('heading-import-images');
+        const statusText = document.getElementById('status-import-images');
+        const button = document.getElementById('button-images');
+
+        if (isRunning) return;
+        isRunning = true;
+
+        const originalButtonText = button.innerHTML;
+
+        function updateUI(status, message = '') {
+            alertBox.style.display = 'block';
+            alertBox.classList.remove('alert-success', 'alert-warning', 'alert-danger');
+            alertBox.classList.add(status === 'success' ? 'alert-success' : status === 'error' ? 'alert-danger' : 'alert-warning');
+            heading.innerHTML = status === 'success' ? '{{ js_img_heading_success }}' : status === 'error' ? '{{ js_img_heading_error }}' : '{{ js_img_heading_process }}';
+            statusText.innerHTML = message ||
+                `{{ js_img_message_total }}: ${totalProcessed}, {{ js_img_message_downloaded }}: ${totalDownloaded}, {{ js_img_message_skipped }}: ${totalSkipped}, {{ js_img_message_failed }}: ${totalFailed}`;
+        }
+
+        function toggleButton(loading) {
+            button.disabled = loading;
+            button.innerHTML = loading ? '<span class="spinner-border spinner-border-sm"></span> {{ js_img_spinner }}' : originalButtonText;
+        }
+
+        toggleButton(true);
+        updateUI('warning', '{{ js_img_message_start }}');
+
+        async function processChunk() {
+            try {
+                const response = await fetch(`{{ fetch_url_img|replace({'&amp;': '&'}) }}&offset=${offset}&limit=${limit}`);
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+                const json = await response.json();
+
+                totalProcessed += json.processed || 0;
+                totalDownloaded += json.downloaded || 0;
+                totalSkipped += json.skipped || 0;
+                totalFailed += json.failed || 0;
+
+                updateUI(json.finished ? 'success' : 'warning');
+
+                if (!json.finished) {
+                    offset += limit;
+                    setTimeout(processChunk, 500);
+                } else {
+                    isRunning = false;
+                    toggleButton(false);
+                }
+            } catch (error) {
+                console.error('{{ js_img_error_console }}:', error);
+                updateUI('error', '{{ js_img_error_message }}');
+                isRunning = false;
+                toggleButton(false);
+            }
+        }
+
+        processChunk();
+    }
+
+    document.getElementById('button-images').addEventListener('click', function(e) {
+        e.preventDefault();
+        downloadImagesAll();
+    });
+
+    document.querySelectorAll(".js-loading-btn").forEach(button => {
+        button.addEventListener("click", function (e) {
+            this.classList.add("disabled");
+            this.innerHTML = '<span class="spinner-border spinner-border-sm"></span> {{ js_loading_btn }}';
+        });
+    });
+
+</script>
+
+{{ footer }}

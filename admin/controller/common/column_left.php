@@ -803,7 +803,15 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 				];
 			}
 
-			// Stats
+            $data['menus'][] = array(
+                'id'       => 'menu-import',
+                'icon'     => 'fas fa-file-import',
+                'name'     => $this->language->get('text_import'),
+                'href'     => $this->url->link('import/import', 'user_token=' . $this->session->data['user_token']),
+                'children' => []
+            );
+
+            // Stats
 			if ($this->user->hasPermission('access', 'report/statistics')) {
 				$this->load->model('sale/order');
 
