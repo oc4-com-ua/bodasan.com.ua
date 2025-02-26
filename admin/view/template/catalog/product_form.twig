@@ -30,6 +30,7 @@
             <li class="nav-item"><a href="#tab-subscription" data-bs-toggle="tab" class="nav-link">{{ tab_subscription }}</a></li>
             <li class="nav-item"><a href="#tab-discount" data-bs-toggle="tab" class="nav-link">{{ tab_discount }}</a></li>
             <li class="nav-item"><a href="#tab-image" data-bs-toggle="tab" class="nav-link">{{ tab_image }}</a></li>
+            <li class="nav-item"><a href="#tab-video" data-bs-toggle="tab" class="nav-link">{{ tab_video }}</a></li>
             <li class="nav-item"><a href="#tab-reward" data-bs-toggle="tab" class="nav-link">{{ tab_reward }}</a></li>
             <li class="nav-item"><a href="#tab-seo" data-bs-toggle="tab" class="nav-link">{{ tab_seo }}</a></li>
             <li class="nav-item"><a href="#tab-design" data-bs-toggle="tab" class="nav-link">{{ tab_design }}</a></li>
@@ -1243,6 +1244,47 @@
               </fieldset>
             </div>
 
+            <div id="tab-video" class="tab-pane">
+              <fieldset>
+                <legend>{{ text_video }}</legend>
+                <div class="table-responsive">
+                  <table id="product-video" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>{{ entry_video }}</th>
+                        <th>{{ entry_sort_order }}</th>
+                        <th class="text-end">
+                          {% if master_id %}
+                            <div class="form-check form-switch">
+                              <input type="checkbox" name="override[product_video]" value="1" id="input-variant-product-video" data-oc-toggle="switch" data-oc-target="#product-video" class="form-check-input"{% if override.product_video %} checked{% endif %}/> <label for="input-variant-product-video" class="form-check-label"></label>
+                            </div>
+                          {% endif %}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% set video_row = 0 %}
+                      {% for product_video in product_videos %}
+                        <tr id="product-video-row-{{ video_row }}">
+                          <td>
+                            <textarea name="product_video[{{ video_row }}][video]" id="input-product-video-{{ video_row }}" rows="5" class="form-control" placeholder="{{ entry_video_placeholder }}">{{ product_video.video }}</textarea>
+                          </td>
+                          <td><input type="text" name="product_video[{{ video_row }}][sort_order]" value="{{ product_video.sort_order }}" placeholder="{{ entry_sort_order }}" class="form-control"/></td>
+                          <td class="text-end"><button type="button" onclick="$('#product-video-row-{{ video_row }}').remove();" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>
+                        </tr>
+                        {% set video_row = video_row + 1 %}
+                      {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="2"></td>
+                        <td class="text-end"><button type="button" id="button-video" data-bs-toggle="tooltip" title="{{ button_video_add }}" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i></button></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </fieldset>
+            </div>
+
             <div id="tab-reward" class="tab-pane">
               <fieldset>
                 <legend>{{ text_reward }}</legend>
@@ -1920,6 +1962,22 @@ $('#button-image').on('click', function() {
     $('#product-image tbody').append(html);
 
     image_row++;
+});
+
+var video_row = {{ video_row }};
+
+$('#button-video').on('click', function() {
+  html = '<tr id="product-video-row-' + video_row + '">';
+  html += '  <td>';
+  html += '    <textarea name="product_video[' + video_row + '][video]" id="input-product-video-' + video_row + '" rows="5" class="form-control" placeholder="{{ entry_video_placeholder|escape('js') }}"></textarea>';
+  html += '  </td>';
+  html += '  <td><input type="text" name="product_video[' + video_row + '][sort_order]" value="0" placeholder="{{ entry_sort_order|escape('js') }}" class="form-control"/></td>';
+  html += '  <td class="text-end"><button type="button" onclick="$(\'#product-video-row-' + video_row + '\').remove();" data-bs-toggle="tooltip" title="{{ button_remove|escape('js') }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>';
+  html += '</tr>';
+
+  $('#product-video tbody').append(html);
+
+  video_row++;
 });
 
 var subscription_row = {{ subscription_row }};

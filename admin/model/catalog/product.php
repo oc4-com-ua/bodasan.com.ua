@@ -146,6 +146,14 @@ class Product extends \Opencart\System\Engine\Model {
 			}
 		}
 
+        // Videos
+		if (isset($data['product_video'])) {
+			foreach ($data['product_video'] as $product_video) {
+				$this->model_catalog_product->addVideo($product_id, $product_video);
+
+			}
+		}
+
 		// Reward
 		if (isset($data['product_reward'])) {
 			foreach ($data['product_reward'] as $customer_group_id => $product_reward) {
@@ -333,6 +341,15 @@ class Product extends \Opencart\System\Engine\Model {
 			}
 		}
 
+        // Videos
+		$this->model_catalog_product->deleteVideos($product_id);
+
+		if (isset($data['product_video'])) {
+			foreach ($data['product_video'] as $product_video) {
+				$this->model_catalog_product->addVideo($product_id, $product_video);
+			}
+		}
+
 		// Rewards
 		$this->model_catalog_product->deleteRewards($product_id);
 
@@ -402,6 +419,7 @@ class Product extends \Opencart\System\Engine\Model {
 			$product_data['product_download'] = $this->model_catalog_product->getDownloads($product_id);
 			$product_data['product_filter'] = $this->model_catalog_product->getFilters($product_id);
 			$product_data['product_image'] = $this->model_catalog_product->getImages($product_id);
+			$product_data['product_video'] = $this->model_catalog_product->getVideos($product_id);
 			$product_data['product_layout'] = $this->model_catalog_product->getLayouts($product_id);
 			$product_data['product_option'] = $this->model_catalog_product->getOptions($product_id);
 			$product_data['product_subscription'] = $this->model_catalog_product->getSubscriptions($product_id);
@@ -438,6 +456,7 @@ class Product extends \Opencart\System\Engine\Model {
 		$this->model_catalog_product->deleteDownloads($product_id);
 		$this->model_catalog_product->deleteFilters($product_id);
 		$this->model_catalog_product->deleteImages($product_id);
+		$this->model_catalog_product->deleteVideos($product_id);
 		$this->model_catalog_product->deleteLayouts($product_id);
 		$this->model_catalog_product->deleteOptions($product_id);
 		$this->model_catalog_product->deleteRelated($product_id);
@@ -549,6 +568,11 @@ class Product extends \Opencart\System\Engine\Model {
 			// Images
 			if (!isset($override['product_image'])) {
 				$product_data['product_image'] = $this->model_catalog_product->getImages($master_id);
+			}
+
+            // Videos
+			if (!isset($override['product_video'])) {
+				$product_data['product_video'] = $this->model_catalog_product->getVideos($master_id);
 			}
 
 			// Layouts
@@ -688,6 +712,11 @@ class Product extends \Opencart\System\Engine\Model {
 			// Images
 			if (!isset($override['product_image'])) {
 				$product_data['product_image'] = $this->model_catalog_product->getImages($master_id);
+			}
+
+            // Videos
+			if (!isset($override['product_video'])) {
+				$product_data['product_video'] = $this->model_catalog_product->getVideos($master_id);
 			}
 
 			// Layouts
@@ -835,6 +864,11 @@ class Product extends \Opencart\System\Engine\Model {
 			// Images
 			if (isset($override['product_image'])) {
 				$product_data['product_image'] = $this->model_catalog_product->getImages($product['product_id']);
+			}
+
+            // Videos
+			if (isset($override['product_video'])) {
+				$product_data['product_video'] = $this->model_catalog_product->getVideos($product['product_id']);
 			}
 
 			// Layouts
@@ -1965,6 +1999,65 @@ class Product extends \Opencart\System\Engine\Model {
 	 */
 	public function getImages(int $product_id): array {
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_image` WHERE `product_id` = '" . (int)$product_id . "' ORDER BY `sort_order` ASC");
+
+		return $query->rows;
+	}
+
+    /**
+	 * Add Video
+	 *
+	 * @param int                  $product_id primary key of the product record
+	 * @param array<string, mixed> $data       array of data
+	 *
+	 * @return void
+	 *
+	 * @example
+	 *
+	 * $product_data['product_video'] = [
+	 *     'video'      => 'product_video',
+	 *     'sort_order' => 0
+	 * ];
+	 *
+	 * $this->load->model('catalog/product');
+	 *
+	 * $this->model_catalog_product->addVideo($product_id, $product_data);
+	 */
+	public function addVideo(int $product_id, array $data): void {
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "product_video` SET `product_id` = '" . (int)$product_id . "', `video` = '" . $this->db->escape($data['video']) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
+	}
+
+	/**
+	 * Delete Videos
+	 *
+	 * @param int $product_id primary key of the product record
+	 *
+	 * @return void
+	 *
+	 * @example
+	 *
+	 * $this->load->model('catalog/product');
+	 *
+	 * $this->model_catalog_product->deleteVideos($product_id);
+	 */
+	public function deleteVideos(int $product_id): void {
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_video` WHERE `product_id` = '" . (int)$product_id . "'");
+	}
+
+	/**
+	 * Get Videos
+	 *
+	 * @param int $product_id primary key of the product record
+	 *
+	 * @return array<int, array<string, mixed>> video records that have product ID
+	 *
+	 * @example
+	 *
+	 * $this->load->model('catalog/product');
+	 *
+	 * $product_videos = $this->model_catalog_product->getVideos($product_id);
+	 */
+	public function getVideos(int $product_id): array {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_video` WHERE `product_id` = '" . (int)$product_id . "' ORDER BY `sort_order` ASC");
 
 		return $query->rows;
 	}

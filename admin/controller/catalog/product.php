@@ -1134,6 +1134,15 @@ class Product extends \Opencart\System\Engine\Controller {
 			] + $product_image;
 		}
 
+        // Videos
+		if ($product_id) {
+			$product_videos = $this->model_catalog_product->getVideos($product_id);
+		} else {
+			$product_videos = [];
+		}
+
+		$data['product_videos'] = $product_videos;
+
 		// Points
 		if (!empty($product_info)) {
 			$data['points'] = $product_info['points'];
