@@ -80,7 +80,7 @@ class Import extends \Opencart\System\Engine\Model {
                         $category_external_id = (string)$offer->categoryId[0];
                     }
 
-                    $status = ($available === 'true') ? 1 : 0;
+                    $status = 1;
 
                     if ($vendor) {
                         $vendors_key = mb_strtolower($vendor);
