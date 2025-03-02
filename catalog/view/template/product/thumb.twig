@@ -4,6 +4,7 @@
     <div class="description">
       <h4><a href="{{ href }}">{{ name }}</a></h4>
       <p>{{ description }}</p>
+      <div class="{% if quantity > 0 %}text-success{% else %}text-danger{% endif %}">{{ stock }}</div>
       {% if price %}
         <div class="price">
           {% if not special %}
