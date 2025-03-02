@@ -196,6 +196,8 @@ class Product extends \Opencart\System\Engine\Model {
 
 		$sql .= " GROUP BY `p`.`product_id`";
 
+        $sql .= " ORDER BY (CASE WHEN p.quantity > 0 THEN 0 ELSE 1 END) ASC, ";
+
 		$sort_data = [
 			'pd.name',
 			'p.model',
@@ -208,14 +210,14 @@ class Product extends \Opencart\System\Engine\Model {
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
-				$sql .= " ORDER BY LCASE(" . $data['sort'] . ")";
+				$sql .= "LCASE(" . $data['sort'] . ")";
 			} elseif ($data['sort'] == 'p.price') {
-				$sql .= " ORDER BY (CASE WHEN `special` IS NOT NULL THEN `special` WHEN `discount` IS NOT NULL THEN `discount` ELSE `p`.`price` END)";
+                $sql .= "(CASE WHEN `special` IS NOT NULL THEN `special` WHEN `discount` IS NOT NULL THEN `discount` ELSE `p`.`price` END)";
 			} else {
-				$sql .= " ORDER BY " . $data['sort'];
+				$sql .= $data['sort'];
 			}
 		} else {
-			$sql .= " ORDER BY `p`.`sort_order`";
+			$sql .= "`p`.`sort_order`";
 		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
