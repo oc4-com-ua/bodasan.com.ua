@@ -35,7 +35,7 @@
             {% if reward %}
               <li>{{ text_reward }} {{ reward }}</li>
             {% endif %}
-            <li>{{ text_stock }} {{ stock }}</li>
+            <li>{{ text_stock }} <span class="{% if quantity > 0 %}text-success{% else %}text-danger{% endif %}">{{ stock }}</span></li>
           </ul>
           {% if review_status %}
             <div class="rating">
