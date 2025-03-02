@@ -12,7 +12,7 @@ $_['text_store']                 = 'Магазин';
 $_['text_date_added']            = 'Дата додавання';
 $_['text_customer']              = 'Клієнт';
 $_['text_product_add']           = 'Додати товар';
-$_['text_model'] 			     = 'Модель';
+$_['text_model'] 			     = 'Зовнішній ID';
 $_['text_reward']                = 'Бонусні бали';
 $_['text_points']                = 'Бали';
 $_['text_reward_add']            = 'Успіх: Бонусні бали додано!';
@@ -62,12 +62,12 @@ $_['text_default']               = 'За замовчуванням';
 $_['text_picklist']              = 'Лист відвантаження';
 
 // Стовпці
-$_['column_order_id']            = 'ID замовлення';
+$_['column_order_id']            = 'ID';
 $_['column_customer']            = 'Клієнт';
 $_['column_store']               = 'Магазин';
 $_['column_status']              = 'Статус';
-$_['column_date_added']          = 'Дата додавання';
-$_['column_date_modified']       = 'Дата зміни';
+$_['column_date_added']          = 'Додано';
+$_['column_date_modified']       = 'Змінено';
 $_['column_total']               = 'Загалом';
 $_['column_product']             = 'Товар';
 $_['column_model']               = 'Модель';
