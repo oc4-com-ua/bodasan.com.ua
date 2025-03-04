@@ -42,6 +42,18 @@
               <div id="error-text" class="invalid-feedback"></div>
             </div>
           </div>
+          <div class="row mb-3">
+            <label for="input-advantages" class="col-sm-2 col-form-label">{{ entry_advantages }}</label>
+            <div class="col-sm-10">
+              <textarea name="advantages" rows="3" placeholder="{{ entry_advantages }}" id="input-advantages" class="form-control">{{ advantages }}</textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-disadvantages" class="col-sm-2 col-form-label">{{ entry_disadvantages }}</label>
+            <div class="col-sm-10">
+              <textarea name="disadvantages" rows="3" placeholder="{{ entry_disadvantages }}" id="input-disadvantages" class="form-control">{{ disadvantages }}</textarea>
+            </div>
+          </div>
           <div class="row mb-3 required">
             <label for="input-rating" class="col-sm-2 col-form-label">{{ entry_rating }}</label>
             <div class="col-sm-10">
@@ -63,6 +75,12 @@
                 </div>
               </div>
               <div id="error-rating" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-store-answer" class="col-sm-2 col-form-label">{{ entry_store_answer }}</label>
+            <div class="col-sm-10">
+              <textarea name="store_answer" rows="8" placeholder="{{ entry_store_answer }}" id="input-store-answer" class="form-control">{{ store_answer }}</textarea>
             </div>
           </div>
           <div class="row mb-3">

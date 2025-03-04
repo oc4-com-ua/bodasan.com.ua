@@ -21,6 +21,9 @@ class Review extends \Opencart\System\Engine\Model {
 	 *     'author'     => 'Author Name',
 	 *     'product_id' => 1,
 	 *     'text'       => 'Review Text',
+     *     'advantages'   => 'Good quality, fast delivery',
+     *     'disadvantages'=> 'High price',
+     *     'store_answer' => 'Thank you for your feedback!'
 	 *     'rating'     => 4,
 	 *     'status'     => 0,
 	 *     'date_added' => '2021-01-01'
@@ -31,7 +34,7 @@ class Review extends \Opencart\System\Engine\Model {
 	 * $review_id = $this->model_catalog_review->addReview($review_data);
 	 */
 	public function addReview(array $data): int {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "review` SET `author` = '" . $this->db->escape((string)$data['author']) . "', `product_id` = '" . (int)$data['product_id'] . "', `text` = '" . $this->db->escape(strip_tags((string)$data['text'])) . "', `rating` = '" . (int)$data['rating'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_added` = '" . $this->db->escape((string)$data['date_added']) . "'");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "review` SET `author` = '" . $this->db->escape((string)$data['author']) . "', `product_id` = '" . (int)$data['product_id'] . "', `text` = '" . $this->db->escape(strip_tags((string)$data['text'])) . "', `advantages` = '" . (isset($data['advantages']) ? $this->db->escape(strip_tags((string)$data['advantages'])) : '') . "', `disadvantages` = '" . (isset($data['disadvantages']) ? $this->db->escape(strip_tags((string)$data['disadvantages'])) : '') . "', `store_answer` = '" . (isset($data['store_answer']) ? $this->db->escape(strip_tags((string)$data['store_answer'])) : '') . "', `rating` = '" . (int)$data['rating'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_added` = '" . $this->db->escape((string)$data['date_added']) . "'");
 
 		$review_id = $this->db->getLastId();
 
@@ -59,6 +62,9 @@ class Review extends \Opencart\System\Engine\Model {
 	 *     'author'     => 'Author Name',
 	 *     'product_id' => 1,
 	 *     'text'       => 'Review Text',
+     *     'advantages'   => 'Good quality, fast delivery',
+     *     'disadvantages'=> 'High price',
+     *     'store_answer' => 'Thank you for your feedback!'
 	 *     'rating'     => 4,
 	 *     'status'     => 1,
 	 *     'date_added' => '2021-01-01'
@@ -69,7 +75,7 @@ class Review extends \Opencart\System\Engine\Model {
 	 * $this->model_catalog_review->editReview($review_id, $review_data);
 	 */
 	public function editReview(int $review_id, array $data): void {
-		$this->db->query("UPDATE `" . DB_PREFIX . "review` SET `author` = '" . $this->db->escape((string)$data['author']) . "', `product_id` = '" . (int)$data['product_id'] . "', `text` = '" . $this->db->escape(strip_tags((string)$data['text'])) . "', `rating` = '" . (int)$data['rating'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_added` = '" . $this->db->escape((string)$data['date_added']) . "', `date_modified` = NOW() WHERE `review_id` = '" . (int)$review_id . "'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "review` SET `author` = '" . $this->db->escape((string)$data['author']) . "', `product_id` = '" . (int)$data['product_id'] . "', `text` = '" . $this->db->escape(strip_tags((string)$data['text'])) . "', `advantages` = '" . (isset($data['advantages']) ? $this->db->escape(strip_tags((string)$data['advantages'])) : '') . "', `disadvantages` = '" . (isset($data['disadvantages']) ? $this->db->escape(strip_tags((string)$data['disadvantages'])) : '') . "', `store_answer` = '" . (isset($data['store_answer']) ? $this->db->escape(strip_tags((string)$data['store_answer'])) : '') . "', `rating` = '" . (int)$data['rating'] . "', `status` = '" . (bool)($data['status'] ?? 0) . "', `date_added` = '" . $this->db->escape((string)$data['date_added']) . "', `date_modified` = NOW() WHERE `review_id` = '" . (int)$review_id . "'");
 
 		// Update product rating
 		$this->load->model('catalog/product');

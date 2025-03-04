@@ -421,6 +421,24 @@ class Review extends \Opencart\System\Engine\Controller {
 			$data['text'] = '';
 		}
 
+        if (!empty($review_info)) {
+			$data['advantages'] = $review_info['advantages'];
+		} else {
+			$data['advantages'] = '';
+		}
+
+        if (!empty($review_info)) {
+			$data['disadvantages'] = $review_info['disadvantages'];
+		} else {
+			$data['disadvantages'] = '';
+		}
+
+        if (!empty($review_info)) {
+			$data['store_answer'] = $review_info['store_answer'];
+		} else {
+			$data['store_answer'] = '';
+		}
+
 		if (!empty($review_info)) {
 			$data['rating'] = $review_info['rating'];
 		} else {
