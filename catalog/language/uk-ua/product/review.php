@@ -6,10 +6,15 @@ $_['text_login']      = 'Будь ласка, <a href="%s">увійдіть</a> 
 $_['text_no_results'] = 'Будьте першими, хто напише відгук про цей продукт.';
 $_['text_note']       = '<span class="text-danger">Примітка:</span> HTML не перекладається!';
 $_['text_success']    = 'Дякуємо за ваш відгук. Він був надісланий адміністратору для перевірки.';
+$_['text_advantages'] = 'Переваги:';
+$_['text_disadvantages'] = 'Недоліки:';
+$_['text_store_answer'] = 'Відповідь магазину';
 
 // Entry
 $_['entry_author']     = 'Ваше ім\'я';
 $_['entry_review']     = 'Ваш відгук';
+$_['entry_advantages'] = 'Переваги';
+$_['entry_disadvantages'] = 'Недоліки';
 $_['entry_rating']     = 'Оцінка';
 $_['entry_good']       = 'Добре';
 $_['entry_bad']        = 'Погано';

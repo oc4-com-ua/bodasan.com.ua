@@ -135,6 +135,8 @@ class Review extends \Opencart\System\Engine\Controller {
 		$keys = [
 			'author',
 			'text',
+			'advantages',
+			'disadvantages',
 			'rating'
 		];
 

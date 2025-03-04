@@ -6,7 +6,14 @@
         <td class="text-end">{{ review.date_added }}</td>
       </tr>
       <tr>
-        <td colspan="2"><p>{{ review.text }}</p>
+        <td colspan="2">
+          <p>{{ review.text }}</p>
+          {% if review.advantages %}
+            <p><b>{{ text_advantages }}</b> {{ review.advantages }}</p>
+          {% endif %}
+          {% if review.disadvantages %}
+            <p><b>{{ text_disadvantages }}</b> {{ review.disadvantages }}</p>
+          {% endif %}
           <div class="rating">
             {% for i in 1..5 %}
               {% if review.rating < i %}
@@ -18,6 +25,18 @@
           </div></td>
       </tr>
     </table>
+    {% if review.store_answer %}
+      <div class="ps-5">
+        <table class="table table-striped table-bordered">
+          <tr>
+            <td><strong>{{ text_store_answer }}</strong></td>
+          </tr>
+          <tr>
+            <td>{{ review.store_answer }}</td>
+          </tr>
+        </table>
+      </div>
+    {% endif %}
   {% endfor %}
   <div class="text-end">{{ pagination }}</div>
 {% else %}
