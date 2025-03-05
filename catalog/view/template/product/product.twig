@@ -11,7 +11,7 @@
       <div class="row mb-3">
         {% if thumb or images %}
           <div class="col-sm">
-            <div class="image magnific-popup">
+            <div class="image">
               {% if thumb %}
                 <a href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail mb-3"/></a>
               {% endif %}
@@ -332,14 +332,5 @@ $('#form-product').on('submit', function(e) {
     });
 });
 
-$(document).ready(function() {
-    $('.magnific-popup').magnificPopup({
-        type: 'image',
-        delegate: 'a',
-        gallery: {
-            enabled: true
-        }
-    });
-});
 //--></script>
 {{ footer }}
