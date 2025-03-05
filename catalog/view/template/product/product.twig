@@ -13,12 +13,12 @@
           <div class="col-sm">
             <div class="image">
               {% if thumb %}
-                <a href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail mb-3"/></a>
+                <a href="{{ popup }}" class="glightbox" data-gallery="product-gallery"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail mb-3"/></a>
               {% endif %}
               {% if images %}
                 <div>
                   {% for image in images %}
-                    <a href="{{ image.popup }}" title="{{ heading_title }}"><img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail"/></a>&nbsp;
+                    <a href="{{ image.popup }}" class="glightbox" data-gallery="product-gallery"><img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail"/></a>&nbsp;
                   {% endfor %}
                 </div>
               {% endif %}
@@ -282,6 +282,14 @@
   </div>
 </div>
 <script type="text/javascript"><!--
+    document.addEventListener("DOMContentLoaded", function() {
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true
+        });
+    });
+
 $('#input-subscription').on('change', function(e) {
     var element = this;
 

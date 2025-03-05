@@ -233,6 +233,9 @@ class Product extends \Opencart\System\Engine\Controller {
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product_id), 'canonical');
 
+			$this->document->addScript('catalog/view/javascript/glightbox/js/glightbox.min.js');
+			$this->document->addStyle('catalog/view/javascript/glightbox/css/glightbox.min.css');
+
 			$data['heading_title'] = $product_info['name'];
 
 			$data['text_minimum'] = sprintf($this->language->get('text_minimum'), $product_info['minimum']);
