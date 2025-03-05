@@ -232,14 +232,25 @@ class Import extends \Opencart\System\Engine\Model {
     private function extractIframesAndClean(&$html) {
         $videos = [];
 
-        $iframe_pattern = '#<iframe.*?</iframe>#is';
+        $iframe_pattern = '#<iframe.*?src\s*=\s*[\'"](.*?)[\'"].*?</iframe>#is';
+
         preg_match_all($iframe_pattern, $html, $matches);
 
-        if (!empty($matches[0])) {
-            $videos = $matches[0];
+        if (!empty($matches[1])) {
+            foreach ($matches[1] as $src) {
+                $src = preg_replace('#\?.*$#', '', $src);
+
+                if (preg_match('#^//#', $src)) {
+                    $src = 'https:' . $src;
+                } elseif (!preg_match('#^https?://#i', $src)) {
+                    $src = 'https://' . ltrim($src, '/');
+                }
+                $videos[] = $src;
+            }
         }
 
-        $html = preg_replace($iframe_pattern, '', $html);
+        $html = preg_replace('#<iframe.*?</iframe>#is', '', $html);
+
         $html = preg_replace('#<p>(\s|&nbsp;)*</p>#i', '', $html);
         $html = preg_replace('#<(\w+)>(\s|&nbsp;)*</\1>#i', '', $html);
         $html = trim($html);
