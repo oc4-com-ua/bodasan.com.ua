@@ -318,6 +318,14 @@ class Product extends \Opencart\System\Engine\Controller {
 				}
 			}
 
+            if ($product_id) {
+                $product_videos = $this->model_catalog_product->getVideos($product_id);
+            } else {
+                $product_videos = [];
+            }
+
+            $data['videos'] = $product_videos;
+
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 				$data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 			} else {

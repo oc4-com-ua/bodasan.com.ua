@@ -603,6 +603,25 @@ class Product extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
+    /**
+	 * Get Videos
+	 *
+	 * @param int $product_id primary key of the product record
+	 *
+	 * @return array<int, array<string, mixed>> video records that have product ID
+	 *
+	 * @example
+	 *
+	 * $this->load->model('catalog/product');
+	 *
+	 * $results = $this->model_catalog_product->getVideos($product_id);
+	 */
+	public function getVideos(int $product_id): array {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_video` WHERE `product_id` = '" . (int)$product_id . "' ORDER BY `sort_order` ASC");
+
+		return $query->rows;
+	}
+
 	/**
 	 * Get Subscription
 	 *
