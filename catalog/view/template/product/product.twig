@@ -15,11 +15,18 @@
               {% if thumb %}
                 <a href="{{ popup }}" class="glightbox" data-gallery="product-gallery"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail mb-3"/></a>
               {% endif %}
-              {% if images %}
+              {% if images or videos %}
                 <div>
-                  {% for image in images %}
-                    <a href="{{ image.popup }}" class="glightbox" data-gallery="product-gallery"><img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail"/></a>&nbsp;
-                  {% endfor %}
+                    {% if images %}
+                        {% for image in images %}
+                            <a href="{{ image.popup }}" class="glightbox" data-gallery="product-gallery"><img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail"/></a>&nbsp;
+                        {% endfor %}
+                    {% endif %}
+                    {% if videos %}
+                        {% for video in videos %}
+                            <a href="{{ video.video }}" style="font-size: 44px; vertical-align: middle;" class="glightbox" data-gallery="product-gallery"><i class="fa-solid fa-circle-play"></i></a>
+                        {% endfor %}
+                    {% endif %}
                 </div>
               {% endif %}
             </div>
