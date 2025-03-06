@@ -49,13 +49,7 @@
       <h2>{{ text_search }}</h2>
       {% if products %}
         <div id="display-control" class="row">
-          <div class="col-md-1 d-none d-md-block">
-            <div class="btn-group">
-              <button type="button" id="button-list" class="btn btn-light" data-bs-toggle="tooltip" title="{{ button_list }}"><i class="fa-solid fa-table-list"></i></button>
-              <button type="button" id="button-grid" class="btn btn-light" data-bs-toggle="tooltip" title="{{ button_grid }}"><i class="fa-solid fa-table-cells"></i></button>
-            </div>
-          </div>
-          <div class="col-md-4 offset-md-1 col-6">
+          <div class="col-md-4 col-6">
             <div class="input-group mb-3">
               <label for="input-sort" class="input-group-text">{{ text_sort }}</label>
               <select id="input-sort" class="form-select" onchange="location = this.value;">
