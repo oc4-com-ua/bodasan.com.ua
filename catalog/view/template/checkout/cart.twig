@@ -15,7 +15,7 @@
     {{ column_right }}
   </div>
 </div>
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $('#shopping-cart').on('submit', '#cart form', function(e) {
     e.preventDefault();
 
@@ -109,5 +109,5 @@ $('#cart').on('submit', 'form', function(e) {
         $('#shopping-cart').load('index.php?route=checkout/cart.list&language={{ language }}');
     }, 3000);
 });
-//--></script>
+</script>
 {{ footer }}
