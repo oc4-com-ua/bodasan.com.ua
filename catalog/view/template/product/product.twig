@@ -35,9 +35,6 @@
         <div class="col-sm">
           <h1>{{ heading_title }}</h1>
           <ul class="list-unstyled">
-            {% if manufacturer %}
-              <li>{{ text_manufacturer }} <a href="{{ manufacturers }}">{{ manufacturer }}</a></li>
-            {% endif %}
             <li>{{ text_model }} {{ model }}</li>
             {% if reward %}
               <li>{{ text_reward }} {{ reward }}</li>
@@ -269,6 +266,12 @@
                     </tr>
                   </thead>
                   <tbody>
+                      {% if manufacturer %}
+                          <tr>
+                              <td>{{ text_manufacturer }}</td>
+                              <td>{{ manufacturer }}</td>
+                          </tr>
+                      {% endif %}
                     {% for attribute in attribute_group.attribute %}
                       <tr>
                         <td>{{ attribute.name }}</td>
