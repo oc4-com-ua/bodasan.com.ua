@@ -27,6 +27,7 @@ $_['text_year']                  = 'рік';
 // Вхід
 $_['entry_qty']                  = 'Кількість';
 $_['entry_rating']               = 'Рейтинг';
+$_['entry_expected']             = 'Очікується';
 
 // Вкладки
 $_['tab_description']            = 'Опис';
