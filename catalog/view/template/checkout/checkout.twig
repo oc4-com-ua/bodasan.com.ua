@@ -8,28 +8,63 @@
   <div class="row">{{ column_left }}
     <div id="content" class="col">{{ content_top }}
       <h1>{{ heading_title }}</h1>
-      <div class="row">
-        {% if register or payment_address or shipping_address %}
-          <div class="col-md-7 mb-3">
-            {% if register %}
-              <div id="checkout-register">{{ register }}</div>
-            {% endif %}
-            {% if payment_address %}
-              <div id="checkout-payment-address">{{ payment_address }}</div>
-            {% endif %}
-            {% if shipping_address %}
-              <div id="checkout-shipping-address">{{ shipping_address }}</div>
-            {% endif %}
-          </div>
-        {% endif %}
-        <div class="col">
-          {% if shipping_method %}
-            <div id="checkout-shipping-method" class="mb-3">{{ shipping_method }}</div>
-          {% endif %}
-          <div id="checkout-payment-method" class="mb-4">{{ payment_method }}</div>
-          <div id="checkout-confirm">{{ confirm }}</div>
+      <form id="checkout-form">
+        <div class="mb-3">
+          <label for="input-firstname" class="form-label">{{ label_firstname }}</label>
+          <input type="text" id="input-firstname" name="firstname" class="form-control" required>
         </div>
-      </div>
+        <div class="mb-3">
+          <label for="input-lastname" class="form-label">{{ label_lastname }}</label>
+          <input type="text" id="input-lastname" name="lastname" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="input-telephone" class="form-label">{{ label_telephone }}</label>
+          <input type="text" id="input-telephone" name="telephone" class="form-control" required>
+        </div>
+        <button type="button" id="button-confirm" class="btn btn-primary">{{ button_confirm }}</button>
+      </form>
+
+      <div id="order-message"></div>
+
+      <script>
+        document.getElementById('button-confirm').addEventListener('click', async function() {
+          let button = this;
+          let buttonText = button.innerHTML;
+          let buttonWidth = button.offsetWidth;
+
+          button.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-light"></i>';
+          button.style.width = buttonWidth + 'px';
+          button.disabled = true;
+
+          let formData = new FormData(document.getElementById('checkout-form'));
+
+          try {
+            let response = await fetch('index.php?route=checkout/confirm.simpleCheckout&language={{ language }}', {
+              method: 'POST',
+              body: formData
+            });
+
+            let json = await response.json();
+            console.log(json);
+
+            if (json.success) {
+              window.location.href = 'index.php?route=checkout/success&language={{ language }}';
+            } else {
+              document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">' + json.error + '</div>';
+            }
+          } catch (error) {
+            console.error('Помилка:', error);
+            document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">{{ error_server }}</div>';
+          }
+
+          button.innerHTML = buttonText;
+          button.style.width = '';
+          button.disabled = false;
+        });
+      </script>
+
+      {#<div id="checkout-confirm">{{ confirm }}</div>#}
+
     </div>
     {{ content_bottom }}
   </div>

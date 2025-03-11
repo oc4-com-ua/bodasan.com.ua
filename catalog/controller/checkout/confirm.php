@@ -38,24 +38,24 @@ class Confirm extends \Opencart\System\Engine\Controller {
 		// Shipping
 		if ($this->cart->hasShipping()) {
 			// Validate shipping address
-			if (!isset($this->session->data['shipping_address']['address_id'])) {
+			/*if (!isset($this->session->data['shipping_address']['address_id'])) {
 				$status = false;
-			}
+			}*/
 
 			// Validate shipping method
 			if (!isset($this->session->data['shipping_method'])) {
 				$status = false;
 			}
 		} else {
-			unset($this->session->data['shipping_address']);
+//			unset($this->session->data['shipping_address']);
 			unset($this->session->data['shipping_method']);
 			unset($this->session->data['shipping_methods']);
 		}
 
 		// Validate has payment address if required
-		if ($this->config->get('config_checkout_payment_address') && !isset($this->session->data['payment_address'])) {
+		/*if ($this->config->get('config_checkout_payment_address') && !isset($this->session->data['payment_address'])) {
 			$status = false;
-		}
+		}*/
 
 		// Validate payment methods
 		if (!isset($this->session->data['payment_method'])) {
@@ -103,7 +103,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
 			$order_data['custom_field'] = $this->session->data['customer']['custom_field'];
 
 			// Payment Details
-			if ($this->config->get('config_checkout_payment_address')) {
+			/*if ($this->config->get('config_checkout_payment_address')) {
 				$order_data['payment_address_id'] = $this->session->data['payment_address']['address_id'];
 				$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
 				$order_data['payment_lastname'] = $this->session->data['payment_address']['lastname'];
@@ -133,13 +133,13 @@ class Confirm extends \Opencart\System\Engine\Controller {
 				$order_data['payment_country_id'] = 0;
 				$order_data['payment_address_format'] = '';
 				$order_data['payment_custom_field'] = [];
-			}
+			}*/
 
 			$order_data['payment_method'] = $this->session->data['payment_method'];
 
 			// Shipping Details
 			if ($this->cart->hasShipping()) {
-				$order_data['shipping_address_id'] = $this->session->data['shipping_address']['address_id'];
+				/*$order_data['shipping_address_id'] = $this->session->data['shipping_address']['address_id'];
 				$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
 				$order_data['shipping_lastname'] = $this->session->data['shipping_address']['lastname'];
 				$order_data['shipping_company'] = $this->session->data['shipping_address']['company'];
@@ -152,11 +152,11 @@ class Confirm extends \Opencart\System\Engine\Controller {
 				$order_data['shipping_country'] = $this->session->data['shipping_address']['country'];
 				$order_data['shipping_country_id'] = $this->session->data['shipping_address']['country_id'];
 				$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
-				$order_data['shipping_custom_field'] = $this->session->data['shipping_address']['custom_field'] ?? [];
+				$order_data['shipping_custom_field'] = $this->session->data['shipping_address']['custom_field'] ?? [];*/
 
 				$order_data['shipping_method'] = $this->session->data['shipping_method'];
 			} else {
-				$order_data['shipping_address_id'] = 0;
+				/*$order_data['shipping_address_id'] = 0;
 				$order_data['shipping_firstname'] = '';
 				$order_data['shipping_lastname'] = '';
 				$order_data['shipping_company'] = '';
@@ -169,7 +169,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
 				$order_data['shipping_country'] = '';
 				$order_data['shipping_country_id'] = 0;
 				$order_data['shipping_address_format'] = '';
-				$order_data['shipping_custom_field'] = [];
+				$order_data['shipping_custom_field'] = [];*/
 
 				$order_data['shipping_method'] = [];
 			}
@@ -351,4 +351,122 @@ class Confirm extends \Opencart\System\Engine\Controller {
 	public function confirm(): void {
 		$this->response->setOutput($this->index());
 	}
+
+
+
+
+    public function simpleCheckout(): void {
+        $json = [];
+
+        $this->load->language('checkout/simple_checkout');
+
+        if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+            $firstname = $this->request->post['firstname'] ?? '';
+            $lastname = $this->request->post['lastname'] ?? '';
+            $telephone = $this->request->post['telephone'] ?? '';
+
+            if (empty($firstname) || empty($lastname) || empty($telephone)) {
+                $json['error'] = $this->language->get('error_required_fields');
+            } else {
+                $totals = [];
+                $taxes = $this->cart->getTaxes();
+                $total = 0;
+
+                $this->load->model('checkout/cart');
+                ($this->model_checkout_cart->getTotals)($totals, $taxes, $total);
+
+                $order_data = [
+                    'invoice_prefix'      => $this->config->get('config_invoice_prefix'),
+                    'store_id'            => $this->config->get('config_store_id'),
+                    'store_name'          => $this->config->get('config_name'),
+                    'store_url'           => $this->config->get('config_url'),
+                    'subscription_id'     => 0,
+                    'customer_id'         => 0,
+                    'customer_group_id'   => $this->config->get('config_customer_group_id'),
+                    'firstname'           => $firstname,
+                    'lastname'            => $lastname,
+                    'email'               => 'no-email@example.com', // OpenCart вимагає email, тому ставимо заглушку
+                    'telephone'           => $telephone,
+                    'custom_field'        => [],
+                    'payment_address_id'  => 0,
+                    'payment_firstname'   => $firstname,
+                    'payment_lastname'    => $lastname,
+                    'payment_company'     => '',
+                    'payment_address_1'   => '',
+                    'payment_address_2'   => '',
+                    'payment_city'        => '',
+                    'payment_postcode'    => '',
+                    'payment_country'     => '',
+                    'payment_country_id'  => 0,
+                    'payment_zone'        => '',
+                    'payment_zone_id'     => 0,
+                    'payment_address_format' => '',
+                    'payment_custom_field'   => [],
+                    'payment_method'      => '', // В майбутньому додати вибір методу оплати
+                    'shipping_address_id'  => 0,
+                    'shipping_firstname'   => '',
+                    'shipping_lastname'    => '',
+                    'shipping_company'     => '',
+                    'shipping_address_1'   => '',
+                    'shipping_address_2'   => '',
+                    'shipping_city'        => '',
+                    'shipping_postcode'    => '',
+                    'shipping_country'     => '',
+                    'shipping_country_id'  => 0,
+                    'shipping_zone'        => '',
+                    'shipping_zone_id'     => 0,
+                    'shipping_address_format' => '',
+                    'shipping_custom_field'   => [],
+                    'shipping_method'      => '', // В майбутньому додати вибір методу доставки
+                    'affiliate_id'         => 0,
+                    'commission'           => 0,
+                    'marketing_id'         => 0,
+                    'tracking'             => '',
+                    'currency_id'         => $this->currency->getId($this->session->data['currency']),
+                    'currency_code'       => $this->session->data['currency'],
+                    'currency_value'      => $this->currency->getValue($this->session->data['currency']),
+                    'language_id'         => $this->config->get('config_language_id'),
+                    'language_code'       => $this->config->get('config_language'),
+                    'ip'                  => $this->request->server['REMOTE_ADDR'] ?? '',
+                    'forwarded_ip'        => $this->request->server['HTTP_X_FORWARDED_FOR'] ?? $this->request->server['HTTP_CLIENT_IP'] ?? '',
+                    'user_agent'          => $this->request->server['HTTP_USER_AGENT'] ?? '',
+                    'accept_language'     => $this->request->server['HTTP_ACCEPT_LANGUAGE'] ?? '',
+                    'comment'             => '', // В майбутньому додати коментар користувача
+                    'total'               => $total,
+                    'products'            => [],
+                    'totals'              => $totals
+                ];
+
+                foreach ($this->cart->getProducts() as $product) {
+                    $order_data['products'][] = [
+                        'product_id' => $product['product_id'],
+                        'name'       => $product['name'],
+                        'quantity'   => $product['quantity'],
+                        'price'      => $product['price'],
+                        'total'      => $product['total'],
+                        'master_id'      => $product['master_id'],
+                        'model'      => $product['model'],
+                        'tax'      => 0,
+                        'reward'      => $product['reward'],
+                    ];
+                }
+
+                $this->load->model('checkout/order');
+                $order_id = $this->model_checkout_order->addOrder($order_data);
+
+                if ($order_id) {
+                    $json['success'] = true;
+                    $json['order_id'] = $order_id;
+                    $this->session->data['order_id'] = $order_id;
+
+                    $this->model_checkout_order->addHistory($order_id, $this->config->get('config_order_status_id'));
+                } else {
+                    $json['error'] = $this->language->get('error_order_creation');
+                }
+            }
+        }
+
+        $this->response->setOutput(json_encode($json));
+    }
+
 }

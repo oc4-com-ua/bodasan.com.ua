@@ -38,32 +38,19 @@ class Checkout extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'))
 		];
 
-		if (!$this->customer->isLogged()) {
-			$data['register'] = $this->load->controller('checkout/register');
-		} else {
-			$data['register'] = '';
-		}
+        $data['register'] = '';
 
-		if ($this->customer->isLogged() && $this->config->get('config_checkout_payment_address')) {
-			$data['payment_address'] = $this->load->controller('checkout/payment_address');
-		} else {
-			$data['payment_address'] = '';
-		}
-
-		if ($this->customer->isLogged() && $this->cart->hasShipping()) {
-			$data['shipping_address'] = $this->load->controller('checkout/shipping_address');
-		} else {
-			$data['shipping_address'] = '';
-		}
-
-		if ($this->cart->hasShipping()) {
+		/*if ($this->cart->hasShipping()) {
 			$data['shipping_method'] = $this->load->controller('checkout/shipping_method');
 		} else {
 			$data['shipping_method'] = '';
-		}
+		}*/
+        $data['shipping_method'] = '';
 
-		$data['payment_method'] = $this->load->controller('checkout/payment_method');
+		/*$data['payment_method'] = $this->load->controller('checkout/payment_method');*/
+		$data['payment_method'] = '';
 		$data['confirm'] = $this->load->controller('checkout/confirm');
+//		$data['confirm'] = '';
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -71,6 +58,8 @@ class Checkout extends \Opencart\System\Engine\Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+
+        $data['language'] = $this->config->get('config_language');
 
 		$this->response->setOutput($this->load->view('checkout/checkout', $data));
 	}
