@@ -40,12 +40,11 @@ class Checkout extends \Opencart\System\Engine\Controller {
 
         $data['register'] = '';
 
-		/*if ($this->cart->hasShipping()) {
-			$data['shipping_method'] = $this->load->controller('checkout/shipping_method');
+		if ($this->cart->hasShipping()) {
+			$data['shipping_methods'] = $this->load->controller('checkout/shipping_method.getShippingMethods');
 		} else {
-			$data['shipping_method'] = '';
-		}*/
-        $data['shipping_method'] = '';
+			$data['shipping_methods'] = '';
+		}
 
 		/*$data['payment_method'] = $this->load->controller('checkout/payment_method');*/
 		$data['payment_method'] = '';

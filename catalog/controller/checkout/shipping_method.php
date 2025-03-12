@@ -131,4 +131,25 @@ class ShippingMethod extends \Opencart\System\Engine\Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+    /**
+     * Get Shipping Methods
+     *
+     * @return array
+     */
+    public function getShippingMethods(): array {
+        $this->load->language('checkout/shipping_method');
+
+        $shipping_methods = [];
+
+        if ($this->cart->hasProducts() && ($this->cart->hasStock() || $this->config->get('config_stock_checkout')) && $this->cart->hasMinimum()) {
+            $this->load->model('checkout/shipping_method');
+
+            $shipping_methods = $this->model_checkout_shipping_method->getMethods([]);
+        }
+
+        return $shipping_methods;
+    }
+
+
 }

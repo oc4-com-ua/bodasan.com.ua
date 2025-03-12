@@ -21,6 +21,26 @@
           <label for="input-telephone" class="form-label">{{ label_telephone }}</label>
           <input type="text" id="input-telephone" name="telephone" class="form-control" required>
         </div>
+        {% if shipping_methods %}
+          <h3>Оберіть службу доставки</h3>
+          <div id="shipping-method">
+            {% for shipping in shipping_methods %}
+              <h4>{{ shipping.name }}</h4>
+              <ul class="list-unstyled">
+                {% for quote in shipping.quote %}
+                  <li>
+                    <label>
+                      <input type="radio" name="shipping_method" value="{{ quote|json_encode|escape }}">
+                      {{ quote.name }} - {{ quote.text }}
+                    </label>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>Доставка недоступна.</p>
+        {% endif %}
         <button type="button" id="button-confirm" class="btn btn-primary">{{ button_confirm }}</button>
       </form>
 

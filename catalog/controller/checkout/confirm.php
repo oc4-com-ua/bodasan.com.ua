@@ -364,6 +364,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
             $firstname = $this->request->post['firstname'] ?? '';
             $lastname = $this->request->post['lastname'] ?? '';
             $telephone = $this->request->post['telephone'] ?? '';
+            $shipping_method = json_decode(htmlspecialchars_decode($this->request->post['shipping_method']), true);
 
             if (empty($firstname) || empty($lastname) || empty($telephone)) {
                 $json['error'] = $this->language->get('error_required_fields');
@@ -417,7 +418,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     'shipping_zone_id'     => 0,
                     'shipping_address_format' => '',
                     'shipping_custom_field'   => [],
-                    'shipping_method'      => '', // В майбутньому додати вибір методу доставки
+                    'shipping_method'      => $shipping_method,
                     'affiliate_id'         => 0,
                     'commission'           => 0,
                     'marketing_id'         => 0,
