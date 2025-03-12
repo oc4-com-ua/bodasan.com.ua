@@ -365,6 +365,34 @@ class Confirm extends \Opencart\System\Engine\Controller {
             $lastname = $this->request->post['lastname'] ?? '';
             $telephone = $this->request->post['telephone'] ?? '';
             $shipping_method = json_decode(htmlspecialchars_decode($this->request->post['shipping_method']), true);
+            $shipping_custom_field = '';
+
+            if ($shipping_method['code'] === 'nova_poshta.nova_poshta') {
+                $deliveryType = $this->request->post['np_delivery_type'] ?? '';
+
+                $np_data = [
+                    'delivery_type' => $deliveryType,
+                    'city'          => $this->request->post['np_city'] ?? '',
+                ];
+
+                switch ($deliveryType) {
+                    case 'branch':
+                        $np_data['branch'] = $this->request->post['np_branch'] ?? null;
+                        break;
+
+                    case 'postamat':
+                        $np_data['postamat'] = $this->request->post['np_postamat'] ?? null;
+                        break;
+
+                    case 'courier':
+                        $np_data['street'] = $this->request->post['np_courier_street'] ?? null;
+                        $np_data['house'] = $this->request->post['np_courier_house'] ?? null;
+                        $np_data['flat'] = $this->request->post['np_courier_flat'] ?? null;
+                        break;
+                }
+
+                $shipping_custom_field = $np_data;
+            }
 
             if (empty($firstname) || empty($lastname) || empty($telephone)) {
                 $json['error'] = $this->language->get('error_required_fields');
@@ -417,7 +445,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     'shipping_zone'        => '',
                     'shipping_zone_id'     => 0,
                     'shipping_address_format' => '',
-                    'shipping_custom_field'   => [],
+                    'shipping_custom_field'   => $shipping_custom_field,
                     'shipping_method'      => $shipping_method,
                     'affiliate_id'         => 0,
                     'commission'           => 0,

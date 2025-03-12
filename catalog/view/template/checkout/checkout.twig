@@ -30,9 +30,12 @@
                 {% for quote in shipping.quote %}
                   <li>
                     <label>
-                      <input type="radio" name="shipping_method" value="{{ quote|json_encode|escape }}">
-                      {{ quote.name }} - {{ quote.text }}
+                      <input type="radio" name="shipping_method" value="{{ quote|json_encode|escape }}" data-code="{{ quote.code }}">
+                      {{ quote.name }}
                     </label>
+                    {% if quote.code == 'nova_poshta.nova_poshta' %}
+                      {% include 'extension/opencart/catalog/view/template/shipping/nova_poshta_fields.twig' %}
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ul>

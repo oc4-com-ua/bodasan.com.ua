@@ -18,6 +18,7 @@ class Checkout extends \Opencart\System\Engine\Controller {
 		}
 
 		$this->load->language('checkout/checkout');
+		$this->load->language('extension/opencart/shipping/nova_poshta_fields');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 

@@ -1,0 +1,75 @@
+<div id="nova-poshta-fields" style="display: none; margin-top: 1rem;">
+    <div class="mb-3">
+        <label><input type="radio" name="np_delivery_type" value="branch" checked> {{ np_delivery_type_branch }}</label>
+        <label><input type="radio" name="np_delivery_type" value="postamat"> {{ np_delivery_type_postamat }}</label>
+        <label><input type="radio" name="np_delivery_type" value="courier"> {{ np_delivery_type_courier }}</label>
+    </div>
+
+    <div class="mb-3">
+        <label for="np-city" class="form-label">{{ np_city_label }}</label>
+        <input type="text" name="np_city" id="np-city" class="form-control" placeholder="{{ np_city_placeholder }}" />
+    </div>
+
+    <div class="mb-3" id="np-branch-wrap">
+        <label for="np-branch" class="form-label">{{ np_branch_label }}</label>
+        <input type="text" name="np_branch" id="np-branch" class="form-control" placeholder="{{ np_branch_placeholder }}" />
+    </div>
+
+    <div class="mb-3" id="np-postamat-wrap" style="display: none;">
+        <label for="np-postamat" class="form-label">{{ np_postamat_label }}</label>
+        <input type="text" name="np_postamat" id="np-postamat" class="form-control" placeholder="{{ np_postamat_placeholder }}" />
+    </div>
+
+    <div class="mb-3" id="np-courier-wrap" style="display: none;">
+        <div class="mb-3">
+            <label for="np-courier-street" class="form-label">{{ np_courier_street_label }}</label>
+            <input type="text" name="np_courier_street" id="np-courier-street" class="form-control" placeholder="{{ np_courier_street_placeholder }}" />
+        </div>
+        <div class="mb-3">
+            <label for="np-courier-house" class="form-label">{{ np_courier_house_label }}</label>
+            <input type="text" name="np_courier_house" id="np-courier-house" class="form-control" placeholder="{{ np_courier_house_placeholder }}" />
+        </div>
+        <div class="mb-3">
+            <label for="np-courier-flat" class="form-label">{{ np_courier_flat_label }}</label>
+            <input type="text" name="np_courier_flat" id="np-courier-flat" class="form-control" placeholder="{{ np_courier_flat_placeholder }}" />
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const shippingRadios = document.querySelectorAll('input[name="shipping_method"]');
+        const npFields = document.getElementById('nova-poshta-fields');
+
+        if (shippingRadios && npFields) {
+            shippingRadios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    if (this.dataset.code === 'nova_poshta.nova_poshta') {
+                        npFields.style.display = 'block';
+                    } else {
+                        npFields.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        const deliveryType = document.querySelectorAll('input[name="np_delivery_type"]');
+        const wrapBranch   = document.getElementById('np-branch-wrap');
+        const wrapPostamat = document.getElementById('np-postamat-wrap');
+        const wrapCourier  = document.getElementById('np-courier-wrap');
+
+        function refreshNpTypeFields(value) {
+            wrapBranch.style.display   = (value === 'branch')   ? 'block' : 'none';
+            wrapPostamat.style.display = (value === 'postamat') ? 'block' : 'none';
+            wrapCourier.style.display  = (value === 'courier')  ? 'block' : 'none';
+        }
+
+        if (deliveryType.length) {
+            deliveryType.forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    refreshNpTypeFields(this.value);
+                });
+            });
+        }
+    });
+</script>
