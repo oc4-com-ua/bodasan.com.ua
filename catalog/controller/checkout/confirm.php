@@ -372,20 +372,24 @@ class Confirm extends \Opencart\System\Engine\Controller {
 
                 $np_data = [
                     'delivery_type' => $deliveryType,
-                    'city'          => $this->request->post['np_city'] ?? '',
+                    'city' => $this->request->post['np_city'] ?? '',
+                    'city_ref' => $this->request->post['np_city_ref'] ?? '',
                 ];
 
                 switch ($deliveryType) {
                     case 'branch':
                         $np_data['branch'] = $this->request->post['np_branch'] ?? null;
+                        $np_data['branch_ref'] = $this->request->post['np_branch_ref'] ?? null;
                         break;
 
                     case 'postamat':
                         $np_data['postamat'] = $this->request->post['np_postamat'] ?? null;
+                        $np_data['postamat_ref'] = $this->request->post['np_postamat_ref'] ?? null;
                         break;
 
                     case 'courier':
                         $np_data['street'] = $this->request->post['np_courier_street'] ?? null;
+                        $np_data['street_ref'] = $this->request->post['np_street_ref'] ?? null;
                         $np_data['house'] = $this->request->post['np_courier_house'] ?? null;
                         $np_data['flat'] = $this->request->post['np_courier_flat'] ?? null;
                         break;
