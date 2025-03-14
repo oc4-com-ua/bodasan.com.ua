@@ -50,6 +50,74 @@
       <div id="order-message"></div>
 
       <script>
+        function highlightTerm(fullString, term) {
+          let safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          let regex = new RegExp(safeTerm, 'gi');
+          return fullString.replace(regex, (match) => `<strong>${match}</strong>`);
+        }
+
+        function setupAutocomplete(inputEl, suggestionsEl, options) {
+          // options.fetchUrl = (term) => 'url';
+          // options.minLength = 3;
+          // options.onSelect = (item) => {}
+
+          let timeout = null;
+
+          inputEl.addEventListener('input', function() {
+            const term = this.value.trim();
+
+            if (term.length < (options.minLength || 1)) {
+              suggestionsEl.style.display = 'none';
+              suggestionsEl.innerHTML = '';
+              return;
+            }
+
+            clearTimeout(timeout);
+
+            timeout = setTimeout(() => {
+              const url = options.fetchUrl(term);
+              fetch(url)
+                      .then(r => r.json())
+                      .then(data => {
+                        suggestionsEl.innerHTML = '';
+                        if (data.length) {
+                          suggestionsEl.style.display = 'block';
+
+                          data.forEach(item => {
+                            const div = document.createElement('div');
+                            div.innerHTML = highlightTerm(item.value, term);
+
+                            div.addEventListener('click', function() {
+                              inputEl.value = item.value;
+                              if (options.onSelect) {
+                                options.onSelect(item);
+                              }
+                              suggestionsEl.style.display = 'none';
+                              suggestionsEl.innerHTML = '';
+                            });
+
+                            suggestionsEl.appendChild(div);
+                          });
+                        } else {
+                          suggestionsEl.style.display = 'none';
+                        }
+                      })
+                      .catch(err => {
+                        console.error('Autocomplete fetch error:', err);
+                        suggestionsEl.style.display = 'none';
+                        suggestionsEl.innerHTML = '';
+                      });
+            }, 300);
+          });
+
+          document.addEventListener('click', function(e) {
+            if (!suggestionsEl.contains(e.target) && e.target !== inputEl) {
+              suggestionsEl.style.display = 'none';
+              suggestionsEl.innerHTML = '';
+            }
+          });
+        }
+        
         document.getElementById('button-confirm').addEventListener('click', async function() {
           let button = this;
           let buttonText = button.innerHTML;
