@@ -1,3 +1,23 @@
+<style>
+    .autocomplete-suggestions {
+        display: none;
+        position: absolute;
+        background: #fff;
+        border: 1px solid #ccc;
+        z-index: 9999;
+        max-height: 200px;
+        overflow-y: auto;
+        width: 100%;
+    }
+    .autocomplete-suggestions div {
+        padding: 4px 8px;
+        cursor: pointer;
+    }
+    .autocomplete-suggestions div:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+
 <div id="nova-poshta-fields" style="display: none; margin-top: 1rem;">
     <div class="mb-3">
         <label><input type="radio" name="np_delivery_type" value="branch" checked> {{ np_delivery_type_branch }}</label>
@@ -7,31 +27,39 @@
 
     <div class="mb-3">
         <label for="np-city" class="form-label">{{ np_city_label }}</label>
-        <input type="text" name="np_city" id="np-city" class="form-control" placeholder="{{ np_city_placeholder }}" />
+        <input type="text" name="np_city" id="np-city" class="form-control" placeholder="{{ np_city_placeholder }}" autocomplete="off">
+        <div id="np-city-suggestions" class="autocomplete-suggestions"></div>
+        <input type="hidden" id="np-city-ref" name="np_city_ref" value="">
     </div>
 
     <div class="mb-3" id="np-branch-wrap">
         <label for="np-branch" class="form-label">{{ np_branch_label }}</label>
-        <input type="text" name="np_branch" id="np-branch" class="form-control" placeholder="{{ np_branch_placeholder }}" />
+        <input type="text" name="np_branch" id="np-branch" class="form-control" placeholder="{{ np_branch_placeholder }}" autocomplete="off">
+        <div id="np-branch-suggestions" class="autocomplete-suggestions"></div>
+        <input type="hidden" id="np-branch-ref" name="np_branch_ref" value="">
     </div>
 
     <div class="mb-3" id="np-postamat-wrap" style="display: none;">
         <label for="np-postamat" class="form-label">{{ np_postamat_label }}</label>
-        <input type="text" name="np_postamat" id="np-postamat" class="form-control" placeholder="{{ np_postamat_placeholder }}" />
+        <input type="text" name="np_postamat" id="np-postamat" class="form-control" placeholder="{{ np_postamat_placeholder }}" autocomplete="off">
+        <div id="np-postamat-suggestions" class="autocomplete-suggestions"></div>
+        <input type="hidden" id="np-postamat-ref" name="np_postamat_ref" value="">
     </div>
 
     <div class="mb-3" id="np-courier-wrap" style="display: none;">
         <div class="mb-3">
             <label for="np-courier-street" class="form-label">{{ np_courier_street_label }}</label>
-            <input type="text" name="np_courier_street" id="np-courier-street" class="form-control" placeholder="{{ np_courier_street_placeholder }}" />
+            <input type="text" name="np_courier_street" id="np-courier-street" class="form-control" placeholder="{{ np_courier_street_placeholder }}" autocomplete="off">
+            <div id="np-courier-street-suggestions" class="autocomplete-suggestions"></div>
+            <input type="hidden" id="np-street-ref" name="np_street_ref" value="">
         </div>
         <div class="mb-3">
             <label for="np-courier-house" class="form-label">{{ np_courier_house_label }}</label>
-            <input type="text" name="np_courier_house" id="np-courier-house" class="form-control" placeholder="{{ np_courier_house_placeholder }}" />
+            <input type="text" name="np_courier_house" id="np-courier-house" class="form-control" placeholder="{{ np_courier_house_placeholder }}">
         </div>
         <div class="mb-3">
             <label for="np-courier-flat" class="form-label">{{ np_courier_flat_label }}</label>
-            <input type="text" name="np_courier_flat" id="np-courier-flat" class="form-control" placeholder="{{ np_courier_flat_placeholder }}" />
+            <input type="text" name="np_courier_flat" id="np-courier-flat" class="form-control" placeholder="{{ np_courier_flat_placeholder }}">
         </div>
     </div>
 </div>
@@ -71,5 +99,158 @@
                 });
             });
         }
+
+        function highlightTerm(fullString, term) {
+            let safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            let regex = new RegExp(safeTerm, 'gi');
+            return fullString.replace(regex, (match) => `<strong>${match}</strong>`);
+        }
+
+        function setupAutocomplete(inputEl, suggestionsEl, options) {
+            // options.fetchUrl = (term) => 'url';
+            // options.minLength = 3;
+            // options.onSelect = (item) => {}
+
+            let timeout = null;
+
+            inputEl.addEventListener('input', function() {
+                const term = this.value.trim();
+
+                if (term.length < (options.minLength || 1)) {
+                    suggestionsEl.style.display = 'none';
+                    suggestionsEl.innerHTML = '';
+                    return;
+                }
+
+                clearTimeout(timeout);
+
+                timeout = setTimeout(() => {
+                    const url = options.fetchUrl(term);
+                    fetch(url)
+                        .then(r => r.json())
+                        .then(data => {
+                            suggestionsEl.innerHTML = '';
+                            if (data.length) {
+                                suggestionsEl.style.display = 'block';
+
+                                data.forEach(item => {
+                                    const div = document.createElement('div');
+                                    div.innerHTML = highlightTerm(item.value, term);
+
+                                    div.addEventListener('click', function() {
+                                        inputEl.value = item.value;
+                                        if (options.onSelect) {
+                                            options.onSelect(item);
+                                        }
+                                        suggestionsEl.style.display = 'none';
+                                        suggestionsEl.innerHTML = '';
+                                    });
+
+                                    suggestionsEl.appendChild(div);
+                                });
+                            } else {
+                                suggestionsEl.style.display = 'none';
+                            }
+                        })
+                        .catch(err => {
+                            console.error('Autocomplete fetch error:', err);
+                            suggestionsEl.style.display = 'none';
+                            suggestionsEl.innerHTML = '';
+                        });
+                }, 300);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!suggestionsEl.contains(e.target) && e.target !== inputEl) {
+                    suggestionsEl.style.display = 'none';
+                    suggestionsEl.innerHTML = '';
+                }
+            });
+        }
+
+        const cityInput = document.getElementById('np-city');
+        const citySuggestions = document.getElementById('np-city-suggestions');
+        const cityRefEl = document.getElementById('np-city-ref');
+
+        if (cityInput && citySuggestions && cityRefEl) {
+            setupAutocomplete(cityInput, citySuggestions, {
+                minLength: 3,
+                fetchUrl: (term) => {
+                    return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=city&term=${encodeURIComponent(term)}`;
+                },
+                onSelect: (item) => {
+                    cityRefEl.value = item.ref;
+
+                    const branchEl = document.getElementById('np-branch');
+                    if (branchEl) branchEl.value = '';
+
+                    const postamatEl = document.getElementById('np-postamat');
+                    if (postamatEl) postamatEl.value = '';
+
+                    const streetEl = document.getElementById('np-courier-street');
+                    if (streetEl) streetEl.value = '';
+
+                    const houseEl = document.getElementById('np-courier-house');
+                    if (houseEl) houseEl.value = '';
+
+                    const flatEl = document.getElementById('np-courier-flat');
+                    if (flatEl) flatEl.value = '';
+                }
+            });
+        }
+
+        const branchInput = document.getElementById('np-branch');
+        const branchSuggestions = document.getElementById('np-branch-suggestions');
+        const branchRefEl = document.getElementById('np-branch-ref');
+
+        if (branchInput && branchSuggestions && cityRefEl && branchRefEl) {
+            setupAutocomplete(branchInput, branchSuggestions, {
+                minLength: 1,
+                fetchUrl: (term) => {
+                    const cityRef = cityRefEl.value || '';
+                    return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=warehouse&term=${encodeURIComponent(term)}&city_ref=${encodeURIComponent(cityRef)}`;
+                },
+                onSelect: (item) => {
+                    branchRefEl.value = item.ref;
+                }
+            });
+        }
+
+        const postamatInput = document.getElementById('np-postamat');
+        const postamatSuggestions = document.getElementById('np-postamat-suggestions');
+        const postamatRefEl = document.getElementById('np-postamat-ref');
+
+        if (postamatInput && postamatSuggestions && cityRefEl && postamatRefEl) {
+            setupAutocomplete(postamatInput, postamatSuggestions, {
+                minLength: 1,
+                fetchUrl: (term) => {
+                    const cityRef = cityRefEl.value || '';
+                    return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=postamat&term=${encodeURIComponent(term)}&city_ref=${encodeURIComponent(cityRef)}`;
+                },
+                onSelect: (item) => {
+                    postamatRefEl.value = item.ref;
+                }
+            });
+        }
+
+        const streetInput = document.getElementById('np-courier-street');
+        const streetSuggestions = document.getElementById('np-courier-street-suggestions');
+        const streetRefEl = document.getElementById('np-street-ref');
+
+        if (streetInput && streetSuggestions && cityRefEl && streetRefEl) {
+            setupAutocomplete(streetInput, streetSuggestions, {
+                minLength: 3,
+                fetchUrl: (term) => {
+                    const cityRef = cityRefEl.value || '';
+                    return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=street&term=${encodeURIComponent(term)}&city_ref=${encodeURIComponent(cityRef)}`;
+                },
+                onSelect: (item) => {
+                    streetRefEl.value = item.ref;
+                }
+            });
+        }
+
     });
 </script>
+
+

@@ -36,6 +36,7 @@ class NovaPoshta extends \Opencart\System\Engine\Controller {
         $data['save'] = $this->url->link('extension/opencart/shipping/nova_poshta.save', 'user_token=' . $this->session->data['user_token']);
         $data['back'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=shipping');
 
+        $data['shipping_nova_poshta_api_key'] = $this->config->get('shipping_nova_poshta_api_key');
         $data['shipping_nova_poshta_status'] = $this->config->get('shipping_nova_poshta_status');
         $data['shipping_nova_poshta_sort_order'] = $this->config->get('shipping_nova_poshta_sort_order');
 
