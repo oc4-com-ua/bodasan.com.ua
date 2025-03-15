@@ -421,6 +421,8 @@ class Confirm extends \Opencart\System\Engine\Controller {
                 $shipping_custom_field = $ukr_data;
             }
 
+            $payment_method = json_decode(htmlspecialchars_decode($this->request->post['payment_method']), true);
+
             if (empty($firstname) || empty($lastname) || empty($telephone)) {
                 $json['error'] = $this->language->get('error_required_fields');
             } else {
@@ -458,7 +460,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     'payment_zone_id'     => 0,
                     'payment_address_format' => '',
                     'payment_custom_field'   => [],
-                    'payment_method'      => '', // В майбутньому додати вибір методу оплати
+                    'payment_method'      => $payment_method,
                     'shipping_address_id'  => 0,
                     'shipping_firstname'   => '',
                     'shipping_lastname'    => '',

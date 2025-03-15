@@ -46,6 +46,21 @@
         {% else %}
           <p>Доставка недоступна.</p>
         {% endif %}
+        <h3>Оберіть спосіб оплати</h3>
+        <ul class="list-unstyled">
+          <li>
+            <label>
+              <input type="radio" name="payment_method" value='{{ {"code":"cod.cod", "name":"Післяплата"}|json_encode() }}'>
+              Післяплата
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="radio" name="payment_method" value='{{ {"code":"bank_card.bank_card", "name":"Оплата карткою"}|json_encode() }}'>
+              Оплата карткою
+            </label>
+          </li>
+        </ul>
         <button type="button" id="button-confirm" class="btn btn-primary">{{ button_confirm }}</button>
       </form>
 
