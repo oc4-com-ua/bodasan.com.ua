@@ -422,6 +422,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
             }
 
             $payment_method = json_decode(htmlspecialchars_decode($this->request->post['payment_method']), true);
+            $comment = $this->request->post['comment'] ?? '';
 
             if (empty($firstname) || empty($lastname) || empty($telephone)) {
                 $json['error'] = $this->language->get('error_required_fields');
@@ -489,7 +490,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     'forwarded_ip'        => $this->request->server['HTTP_X_FORWARDED_FOR'] ?? $this->request->server['HTTP_CLIENT_IP'] ?? '',
                     'user_agent'          => $this->request->server['HTTP_USER_AGENT'] ?? '',
                     'accept_language'     => $this->request->server['HTTP_ACCEPT_LANGUAGE'] ?? '',
-                    'comment'             => '', // В майбутньому додати коментар користувача
+                    'comment'             => $comment,
                     'total'               => $total,
                     'products'            => [],
                     'totals'              => $totals

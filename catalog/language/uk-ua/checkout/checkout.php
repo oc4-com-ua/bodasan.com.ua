@@ -9,6 +9,7 @@ $_['text_cart']     = 'Кошик для покупок';
 $_['label_firstname'] = "Ім'я";
 $_['label_lastname'] = 'Прізвище';
 $_['label_telephone'] = 'Телефон';
+$_['label_comment'] = "Коментар до замовлення <small>(не обов'язково)</small>";
 
 // Buttons
 $_['button_confirm'] = 'Оформити замовлення';
