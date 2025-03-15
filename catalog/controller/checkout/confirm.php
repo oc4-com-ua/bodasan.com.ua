@@ -398,6 +398,29 @@ class Confirm extends \Opencart\System\Engine\Controller {
                 $shipping_custom_field = $np_data;
             }
 
+            if ($shipping_method['code'] === 'ukr_poshta.ukr_poshta') {
+                $deliveryType = $this->request->post['ukr_delivery_type'] ?? '';
+
+                $ukr_data = [
+                    'delivery_type' => $deliveryType,
+                    'city' => $this->request->post['ukr_city'] ?? '',
+                ];
+
+                switch ($deliveryType) {
+                    case 'branch':
+                        $ukr_data['branch'] = $this->request->post['ukr_branch'] ?? null;
+                        break;
+
+                    case 'courier':
+                        $ukr_data['street'] = $this->request->post['ukr_courier_street'] ?? null;
+                        $ukr_data['house'] = $this->request->post['ukr_courier_house'] ?? null;
+                        $ukr_data['flat'] = $this->request->post['ukr_courier_flat'] ?? null;
+                        break;
+                }
+
+                $shipping_custom_field = $ukr_data;
+            }
+
             if (empty($firstname) || empty($lastname) || empty($telephone)) {
                 $json['error'] = $this->language->get('error_required_fields');
             } else {

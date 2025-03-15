@@ -1,0 +1,73 @@
+<div id="ukr-poshta-fields" style="display: none; margin-top: 1rem;">
+    <div class="mb-3">
+        <label><input type="radio" name="ukr_delivery_type" value="branch" checked> {{ ukr_delivery_type_branch }}</label>
+        <label><input type="radio" name="ukr_delivery_type" value="courier"> {{ ukr_delivery_type_courier }}</label>
+    </div>
+
+    <div class="mb-3">
+        <label for="ukr-city" class="form-label">{{ ukr_city_label }}</label>
+        <input type="text" name="ukr_city" id="ukr-city" class="form-control" placeholder="{{ ukr_city_placeholder }}" autocomplete="off">
+        <div id="ukr-city-suggestions" class="autocomplete-suggestions"></div>
+    </div>
+
+    <div class="mb-3" id="ukr-branch-wrap">
+        <label for="ukr-branch" class="form-label">{{ ukr_branch_label }}</label>
+        <input type="text" name="ukr_branch" id="ukr-branch" class="form-control" placeholder="{{ ukr_branch_placeholder }}" autocomplete="off">
+        <div id="ukr-branch-suggestions" class="autocomplete-suggestions"></div>
+    </div>
+
+    <div class="mb-3" id="ukr-courier-wrap" style="display: none;">
+        <div class="mb-3">
+            <label for="ukr-courier-street" class="form-label">{{ ukr_courier_street_label }}</label>
+            <input type="text" name="ukr_courier_street" id="ukr-courier-street" class="form-control" placeholder="{{ ukr_courier_street_placeholder }}" autocomplete="off">
+            <div id="ukr-courier-street-suggestions" class="autocomplete-suggestions"></div>
+        </div>
+        <div class="mb-3">
+            <label for="ukr-courier-house" class="form-label">{{ ukr_courier_house_label }}</label>
+            <input type="text" name="ukr_courier_house" id="ukr-courier-house" class="form-control" placeholder="{{ ukr_courier_house_placeholder }}">
+        </div>
+        <div class="mb-3">
+            <label for="ukr-courier-flat" class="form-label">{{ ukr_courier_flat_label }}</label>
+            <input type="text" name="ukr_courier_flat" id="ukr-courier-flat" class="form-control" placeholder="{{ ukr_courier_flat_placeholder }}">
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const shippingRadios = document.querySelectorAll('input[name="shipping_method"]');
+        const ukrFields = document.getElementById('ukr-poshta-fields');
+
+        if (shippingRadios && ukrFields) {
+            shippingRadios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    if (this.dataset.code === 'ukr_poshta.ukr_poshta') {
+                        ukrFields.style.display = 'block';
+                    } else {
+                        ukrFields.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        const deliveryType = document.querySelectorAll('input[name="ukr_delivery_type"]');
+        const wrapBranch   = document.getElementById('ukr-branch-wrap');
+        const wrapCourier  = document.getElementById('ukr-courier-wrap');
+
+        function refreshUkrTypeFields(value) {
+            wrapBranch.style.display   = (value === 'branch')   ? 'block' : 'none';
+            wrapCourier.style.display  = (value === 'courier')  ? 'block' : 'none';
+        }
+
+        if (deliveryType.length) {
+            deliveryType.forEach((radio) => {
+                radio.addEventListener('change', function() {
+                    refreshUkrTypeFields(this.value);
+                });
+            });
+        }
+
+    });
+</script>
+
+

@@ -35,6 +35,8 @@
                     </label>
                     {% if quote.code == 'nova_poshta.nova_poshta' %}
                       {% include 'extension/opencart/catalog/view/template/shipping/nova_poshta_fields.twig' %}
+                    {% elseif quote.code == 'ukr_poshta.ukr_poshta' %}
+                      {% include 'extension/opencart/catalog/view/template/shipping/ukr_poshta_fields.twig' %}
                     {% endif %}
                   </li>
                 {% endfor %}
