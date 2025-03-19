@@ -8,12 +8,23 @@
         <label for="ukr-city" class="form-label">{{ ukr_city_label }}</label>
         <input type="text" name="ukr_city" id="ukr-city" class="form-control" placeholder="{{ ukr_city_placeholder }}" autocomplete="off">
         <div id="ukr-city-suggestions" class="autocomplete-suggestions"></div>
+        <input type="hidden" id="ukr-region-id" name="ukr_region_id" value=""/>
+        <input type="hidden" id="ukr-district-id" name="ukr_district_id" value=""/>
+        <input type="hidden" id="ukr-city-id" name="ukr_city_id" value=""/>
+        <input type="hidden" id="ukr-region-ua" name="ukr_region_ua" value=""/>
+        <input type="hidden" id="ukr-district-ua" name="ukr_district_ua" value=""/>
+        <input type="hidden" id="ukr-city-ua" name="ukr_city_ua" value=""/>
     </div>
 
     <div class="mb-3" id="ukr-branch-wrap">
         <label for="ukr-branch" class="form-label">{{ ukr_branch_label }}</label>
         <input type="text" name="ukr_branch" id="ukr-branch" class="form-control" placeholder="{{ ukr_branch_placeholder }}" autocomplete="off">
         <div id="ukr-branch-suggestions" class="autocomplete-suggestions"></div>
+        <input type="hidden" id="ukr-branch-id" name="ukr_branch_id" value=""/>
+        <input type="hidden" id="ukr-branch-index" name="ukr_branch_index" value=""/>
+        <input type="hidden" id="ukr-branch-street" name="ukr_branch_street" value=""/>
+        <input type="hidden" id="ukr-branch-building-no" name="ukr_branch_building_no" value=""/>
+        <input type="hidden" id="ukr-branch-name-ua" name="ukr_branch_name_ua" value=""/>
     </div>
 
     <div class="mb-3" id="ukr-courier-wrap" style="display: none;">
@@ -21,6 +32,8 @@
             <label for="ukr-courier-street" class="form-label">{{ ukr_courier_street_label }}</label>
             <input type="text" name="ukr_courier_street" id="ukr-courier-street" class="form-control" placeholder="{{ ukr_courier_street_placeholder }}" autocomplete="off">
             <div id="ukr-courier-street-suggestions" class="autocomplete-suggestions"></div>
+            <input type="hidden" id="ukr-courier-street-id" name="ukr_courier_street_id" value=""/>
+            <input type="hidden" id="ukr-courier-street-ua" name="ukr_courier_street_ua" value=""/>
         </div>
         <div class="mb-3">
             <label for="ukr-courier-house" class="form-label">{{ ukr_courier_house_label }}</label>
@@ -51,8 +64,8 @@
         }
 
         const deliveryType = document.querySelectorAll('input[name="ukr_delivery_type"]');
-        const wrapBranch   = document.getElementById('ukr-branch-wrap');
-        const wrapCourier  = document.getElementById('ukr-courier-wrap');
+        const wrapBranch = document.getElementById('ukr-branch-wrap');
+        const wrapCourier = document.getElementById('ukr-courier-wrap');
 
         function refreshUkrTypeFields(value) {
             wrapBranch.style.display   = (value === 'branch')   ? 'block' : 'none';
@@ -66,6 +79,96 @@
                 });
             });
         }
+
+        // Поле "Населений пункт"
+        const cityInput = document.getElementById('ukr-city');
+        const citySuggestions = document.getElementById('ukr-city-suggestions');
+        const regionIdEl = document.getElementById('ukr-region-id');
+        const districtIdEl = document.getElementById('ukr-district-id');
+        const cityIdEl = document.getElementById('ukr-city-id');
+        const regionUaEl = document.getElementById('ukr-region-ua');
+        const districtUaEl = document.getElementById('ukr-district-ua');
+        const cityUaEl = document.getElementById('ukr-city-ua');
+
+        setupAutocomplete(cityInput, citySuggestions, {
+            minLength: 2,
+            fetchUrl: (term) => {
+                return `index.php?route=extension/opencart/shipping/ukr_poshta.autocomplete&type=city&term=${encodeURIComponent(term)}`;
+            },
+            onSelect: (item) => {
+                regionIdEl.value = item.region_id || '';
+                regionUaEl.value = item.region_ua || '';
+                districtIdEl.value = item.district_id || '';
+                districtUaEl.value = item.district_ua || '';
+                cityIdEl.value = item.city_id;
+                cityUaEl.value = item.city_ua || '';
+
+                // Очистити
+                let id_fields = [
+                    'ukr-branch',
+                    'ukr-branch-id',
+                    'ukr-branch-index',
+                    'ukr-branch-street',
+                    'ukr-branch-building-no',
+                    'ukr-branch-name-ua',
+                    'ukr-street',
+                    'ukr-street-id',
+                    'ukr-street-ua',
+                    'ukr-house',
+                    'ukr-apartment'
+                ];
+
+                id_fields.forEach(function(id) {
+                    let element = document.getElementById(id);
+                    if (element) {
+                        element.value = '';
+                    }
+                });
+            }
+        });
+
+        // Поле "Відділення"
+        const branchInput       = document.getElementById('ukr-branch');
+        const branchSuggestions = document.getElementById('ukr-branch-suggestions');
+        setupAutocomplete(branchInput, branchSuggestions, {
+            minLength: 1,
+            fetchUrl: (term) => {
+                const rId = regionIdEl.value;
+                const dId = districtIdEl.value;
+                const cId = cityIdEl.value;
+                let url = `index.php?route=extension/opencart/shipping/ukr_poshta.autocomplete&type=branch&term=${encodeURIComponent(term)}&city_id=${encodeURIComponent(cId)}`;
+                if (rId) { url += `&region_id=${encodeURIComponent(rId)}`; }
+                if (dId) { url += `&district_id=${encodeURIComponent(dId)}`; }
+                return url;
+            },
+            onSelect: (item) => {
+                document.getElementById('ukr-branch-id').value = item.ref;
+                document.getElementById('ukr-branch-index').value = item.postoffice_index || '';
+                document.getElementById('ukr-branch-street').value = item.postoffice_street_ua || '';
+                document.getElementById('ukr-branch-building-no').value = item.postoffice_building_no || '';
+                document.getElementById('ukr-branch-name-ua').value = item.postoffice_name_ua || '';
+            }
+        });
+
+        // Поле "Вулиця" (для кур'єра)
+        const streetInput       = document.getElementById('ukr-courier-street');
+        const streetSuggestions = document.getElementById('ukr-courier-street-suggestions');
+        setupAutocomplete(streetInput, streetSuggestions, {
+            minLength: 2,
+            fetchUrl: (term) => {
+                const rId = regionIdEl.value;
+                const dId = districtIdEl.value;
+                const cId = cityIdEl.value;
+                let url = `index.php?route=extension/opencart/shipping/ukr_poshta.autocomplete&type=street&term=${encodeURIComponent(term)}&city_id=${encodeURIComponent(cId)}`;
+                if (rId) { url += `&region_id=${encodeURIComponent(rId)}`; }
+                if (dId) { url += `&district_id=${encodeURIComponent(dId)}`; }
+                return url;
+            },
+            onSelect: (item) => {
+                document.getElementById('ukr-courier-street-id').value = item.ref;
+                document.getElementById('ukr-courier-street-ua').value = item.street_ua || '';
+            }
+        });
 
     });
 </script>
