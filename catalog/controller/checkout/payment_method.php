@@ -223,4 +223,23 @@ class PaymentMethod extends \Opencart\System\Engine\Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+    /**
+     * Get Payment Methods
+     *
+     * @return array
+     */
+    public function getPaymentMethods(): array {
+        $this->load->language('checkout/payment_method');
+
+        $payment_methods = [];
+
+        if ($this->cart->hasProducts() && ($this->cart->hasStock() || $this->config->get('config_stock_checkout')) && $this->cart->hasMinimum()) {
+            $this->load->model('checkout/payment_method');
+            $payment_methods = $this->model_checkout_payment_method->getMethods([]);
+        }
+
+        return $payment_methods;
+    }
+
 }

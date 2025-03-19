@@ -47,20 +47,20 @@
           <p>Доставка недоступна.</p>
         {% endif %}
         <h3>Оберіть спосіб оплати</h3>
-        <ul class="list-unstyled">
-          <li>
-            <label>
-              <input type="radio" name="payment_method" value='{{ {"code":"cod.cod", "name":"Післяплата"}|json_encode() }}'>
-              Післяплата
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="radio" name="payment_method" value='{{ {"code":"bank_card.bank_card", "name":"Оплата карткою"}|json_encode() }}'>
-              Оплата карткою
-            </label>
-          </li>
-        </ul>
+        {% if payment_methods %}
+          <ul class="list-unstyled">
+            {% for payment in payment_methods %}
+              {% for option in payment.option %}
+                <li>
+                  <label>
+                    <input type="radio" name="payment_method" value='{{ option|json_encode|escape }}'>
+                    {{ option.name }}
+                  </label>
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
         <div class="mb-3">
           <label for="input-comment" class="form-label">{{ label_comment }}</label>
           <textarea name="comment" rows="4" id="input-comment" class="form-control"></textarea>

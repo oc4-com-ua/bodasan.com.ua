@@ -48,8 +48,8 @@ class Checkout extends \Opencart\System\Engine\Controller {
 			$data['shipping_methods'] = '';
 		}
 
-		/*$data['payment_method'] = $this->load->controller('checkout/payment_method');*/
-		$data['payment_method'] = '';
+		$data['payment_methods'] = $this->load->controller('checkout/payment_method.getPaymentMethods');
+//		$data['payment_method'] = '';
 		$data['confirm'] = $this->load->controller('checkout/confirm');
 //		$data['confirm'] = '';
 
