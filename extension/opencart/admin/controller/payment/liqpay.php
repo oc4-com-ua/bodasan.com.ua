@@ -36,6 +36,10 @@ class LiqPay extends \Opencart\System\Engine\Controller {
         $data['save'] = $this->url->link('extension/opencart/payment/liqpay.save', 'user_token=' . $this->session->data['user_token']);
         $data['back'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment');
 
+        $data['payment_liqpay_public_key'] = $this->config->get('payment_liqpay_public_key');
+        $data['payment_liqpay_private_key'] = $this->config->get('payment_liqpay_private_key');
+        $data['payment_liqpay_test'] = $this->config->get('payment_liqpay_test');
+
         $data['payment_liqpay_order_status_id'] = $this->config->get('payment_liqpay_order_status_id');
 
         $this->load->model('localisation/order_status');
