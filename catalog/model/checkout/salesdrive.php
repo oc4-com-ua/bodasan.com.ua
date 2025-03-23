@@ -136,7 +136,13 @@ class Salesdrive extends \Opencart\System\Engine\Model {
              $request_data['ukrposhta'] = $ukr_data;
          }*/
 
-        $request_data['payment_method'] = $order_data['payment_method']['code'] === 'cod.cod' ? 'id_12' : ''; // id_12 - в CRM для Післяплати
+        $request_data['payment_method'] = '';
+
+        if ($order_data['payment_method']['code'] === 'cod.cod') {
+            $request_data['payment_method'] = 'id_12'; // id_12 - в CRM для Післяплати
+        } else if ($order_data['payment_method']['code'] === 'liqpay.liqpay') {
+            $request_data['payment_method'] = 'LiqPay';
+        }
 
         $json_data = json_encode($request_data, JSON_UNESCAPED_UNICODE);
 
@@ -152,6 +158,53 @@ class Salesdrive extends \Opencart\System\Engine\Model {
 
         if ($error) {
             $this->log->write('SalesDrive API error: ' . $error);
+            return false;
+        }
+
+        $response_data = json_decode($response, true);
+
+        if (isset($response_data['success']) && $response_data['success'] === true) {
+            if (isset($response_data['data']['orderId'])) {
+                return $response_data['data']['orderId'];
+            } else {
+                $this->log->write('SalesDrive API response missing orderId.');
+                return false;
+            }
+        } else {
+            $this->log->write('SalesDrive API responded with error: ' . $response);
+            return false;
+        }
+    }
+
+    public function updateOrderPaymentStatus($order_id, $salesdrive_status) {
+        $apiKey = SALES_DRIVE_API_KEY;
+
+        $request_data = [
+            'form'       => $apiKey,
+            'externalId' => $order_id,
+            'getResultData' => '1',
+            'data' => [
+                'statusOplati' => $salesdrive_status
+            ]
+        ];
+
+        $json_data = json_encode($request_data, JSON_UNESCAPED_UNICODE);
+
+        $ch = curl_init('https://4-sport.salesdrive.me/api/order/update/');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+
+        $response = curl_exec($ch);
+        $error    = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($error) {
+            $this->log->write('SalesDrive UPDATE payment status error: ' . $error . '; httpCode: ' . $httpCode);
+        } else {
+            $this->log->write('SalesDrive response (payment status updated): ' . $response . '; httpCode: ' . $httpCode);
         }
     }
 }

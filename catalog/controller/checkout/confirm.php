@@ -535,8 +535,8 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     }
                     $this->session->data['order_id'] = $order_id;
 
-                    /*$this->load->model('checkout/salesdrive');
-                    $this->model_checkout_salesdrive->sendOrderToSalesDrive($order_id, $order_data);*/
+                    $this->load->model('checkout/salesdrive');
+                    $this->model_checkout_salesdrive->sendOrderToSalesDrive($order_id, $order_data);
 
                     $this->model_checkout_order->addHistory($order_id, $this->config->get('config_order_status_id'));
                 } else {

@@ -103,6 +103,8 @@ class LiqPay extends \Opencart\System\Engine\Controller {
             $this->model_checkout_order->addHistory($order_id, $order_status_id, 'LiqPay payment status: ' . $status, true);
 
             // Після цього можна робити додаткові дії, наприклад, інтеграцію з CRM
+            $this->load->model('checkout/salesdrive');
+            $this->model_checkout_salesdrive->updateOrderPaymentStatus($order_id, 'paid');
         } else {
             $this->model_checkout_order->addHistory($order_id, $order_info['order_status_id'], 'LiqPay payment failed or not completed. Status: ' . $status, true);
         }
