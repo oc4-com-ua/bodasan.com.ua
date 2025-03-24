@@ -439,7 +439,8 @@ class Import extends \Opencart\System\Engine\Model {
             `language_id` = 2,
             `key` = 'path',
             `value` = '" . (int)$category_id . "',
-            `keyword` = '" . $this->db->escape($keyword) . "'
+            `keyword` = '" . $this->db->escape($keyword) . "',
+            `sort_order` = 1
         ");
     }
 
@@ -557,7 +558,8 @@ class Import extends \Opencart\System\Engine\Model {
             `language_id` = 2,
             `key` = 'manufacturer_id',
             `value` = '" . (int)$manufacturer_id . "',
-            `keyword` = '" . $this->db->escape($keyword) . "'
+            `keyword` = '" . $this->db->escape($keyword) . "',
+            `sort_order` = 1
         ");
     }
 
@@ -962,7 +964,8 @@ class Import extends \Opencart\System\Engine\Model {
             `language_id` = '2',
             `key` = 'product_id',
             `value` = '" . (int)$product_id . "',
-            `keyword` = '" . $this->db->escape($clean_url) . "'
+            `keyword` = '" . $this->db->escape($clean_url) . "',
+            `sort_order` = 2
         ");
     }
 
