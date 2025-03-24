@@ -20,7 +20,7 @@ class NotFound extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('common/home')
 		];
 
 		if (isset($this->request->get['route'])) {
@@ -42,7 +42,7 @@ class NotFound extends \Opencart\System\Engine\Controller {
 			];
 		}
 
-		$data['continue'] = $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
+		$data['continue'] = $this->url->link('common/home');
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');

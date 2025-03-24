@@ -1,141 +1,122 @@
 <?php
 namespace Opencart\Catalog\Controller\Startup;
-/**
- * Class SeoUrl
- *
- * @package Opencart\Catalog\Controller\Startup
- */
+
 class SeoUrl extends \Opencart\System\Engine\Controller {
-	/**
-	 * @var array<string, string>
-	 */
-	private array $data = [];
+    private array $data = [];
 
-	/**
-	 * Index
-	 *
-	 * @return null
-	 */
-	public function index() {
-		// Add rewrite to URL class
-		if ($this->config->get('config_seo_url')) {
-			$this->url->addRewrite($this);
+    public function index() {
+        if ($this->config->get('config_seo_url')) {
+            $this->url->addRewrite($this);
 
-			$this->load->model('design/seo_url');
+            $this->load->model('design/seo_url');
 
-			// Decode URL
-			if (isset($this->request->get['_route_'])) {
-				$parts = explode('/', $this->request->get['_route_']);
+            if (isset($this->request->get['_route_'])) {
+                $parts = explode('/', $this->request->get['_route_']);
 
-				// remove any empty arrays from trailing
-				if (oc_strlen(end($parts)) == 0) {
-					array_pop($parts);
-				}
+                if (oc_strlen(end($parts)) == 0) {
+                    array_pop($parts);
+                }
 
-				foreach ($parts as $key => $value) {
-					$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($value);
+                foreach ($parts as $key => $value) {
+                    $seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($value);
 
-					if ($seo_url_info) {
-						$this->request->get[$seo_url_info['key']] = html_entity_decode($seo_url_info['value'], ENT_QUOTES, 'UTF-8');
+                    if ($seo_url_info) {
+                        // Skip known route aliases like 'product', 'information', 'catalog', etc.
+                        if ($seo_url_info['key'] === 'route' && in_array($seo_url_info['value'], [
+                                'product/product',
+                                'product/category',
+                                'information/information',
+                                'common/home'
+                            ])) {
+                            // Do not set this as route. We'll deduce route by other keys like product_id, path, etc.
+                            unset($parts[$key]);
+                            continue;
+                        }
 
-						unset($parts[$key]);
-					}
-				}
+                        $this->request->get[$seo_url_info['key']] = html_entity_decode($seo_url_info['value'], ENT_QUOTES, 'UTF-8');
+                        unset($parts[$key]);
+                    }
+                }
 
-				if (!isset($this->request->get['route'])) {
-					$this->request->get['route'] = $this->config->get('action_default');
-				}
+                // Deduce route manually if not set
+                if (!isset($this->request->get['route'])) {
+                    if (isset($this->request->get['product_id'])) {
+                        $this->request->get['route'] = 'product/product';
+                    } elseif (isset($this->request->get['path'])) {
+                        $this->request->get['route'] = 'product/category';
+                    } elseif (isset($this->request->get['information_id'])) {
+                        $this->request->get['route'] = 'information/information';
+                    } else {
+                        $this->request->get['route'] = $this->config->get('action_default');
+                    }
+                }
 
-				if ($parts) {
-					$this->request->get['route'] = $this->config->get('action_error');
-				}
-			}
-		}
+                if ($parts) {
+                    $this->request->get['route'] = $this->config->get('action_error');
+                }
+            }
+        }
+        return null;
+    }
 
-		return null;
-	}
+    public function rewrite(string $link): string {
+        $url_info = parse_url(str_replace('&amp;', '&', $link));
+        $url = '';
 
-	/**
-	 * Rewrite
-	 *
-	 * @param string $link
-	 *
-	 * @return string
-	 */
-	public function rewrite(string $link): string {
-		$url_info = parse_url(str_replace('&amp;', '&', $link));
+        if ($url_info['scheme']) {
+            $url .= $url_info['scheme'];
+        }
+        $url .= '://';
 
-		// Build the url
-		$url = '';
+        if ($url_info['host']) {
+            $url .= $url_info['host'];
+        }
 
-		if ($url_info['scheme']) {
-			$url .= $url_info['scheme'];
-		}
+        if (isset($url_info['port'])) {
+            $url .= ':' . $url_info['port'];
+        }
 
-		$url .= '://';
+        parse_str($url_info['query'], $query);
+        $paths = [];
+        $parts = explode('&', $url_info['query']);
 
-		if ($url_info['host']) {
-			$url .= $url_info['host'];
-		}
+        foreach ($parts as $part) {
+            $pair = explode('=', $part);
+            $key = $pair[0] ?? '';
+            $value = $pair[1] ?? '';
+            $index = $key . '=' . $value;
 
-		if (isset($url_info['port'])) {
-			$url .= ':' . $url_info['port'];
-		}
+            if (!isset($this->data[$index])) {
+                $this->data[$index] = $this->model_design_seo_url->getSeoUrlByKeyValue($key, $value);
+            }
 
-		parse_str($url_info['query'], $query);
+            if ($this->data[$index]) {
+                if ($key === 'route' && in_array($value, [
+                        'product/product',
+                        'product/category',
+                        'information/information',
+                        'common/home'
+                    ])) {
+                    unset($query[$key]); // Do not include route keywords in URL
+                    continue;
+                }
 
-		// Start changing the URL query into a path
-		$paths = [];
+                $paths[] = $this->data[$index];
+                unset($query[$key]);
+            }
+        }
 
-		// Parse the query into its separate parts
-		$parts = explode('&', $url_info['query']);
+        array_multisort(array_column($paths, 'sort_order'), SORT_ASC, $paths);
+        $url .= str_replace('/index.php', '', $url_info['path']);
 
-		foreach ($parts as $part) {
-			$pair = explode('=', $part);
+        foreach ($paths as $result) {
+            $url .= '/' . $result['keyword'];
+        }
 
-			if (isset($pair[0])) {
-				$key = (string)$pair[0];
-			}
+        if ($query) {
+            $url .= '?' . str_replace(['%2F'], ['/'], http_build_query($query));
+        }
 
-			if (isset($pair[1])) {
-				$value = (string)$pair[1];
-			} else {
-				$value = '';
-			}
-
-			$index = $key . '=' . $value;
-
-			if (!isset($this->data[$index])) {
-				$this->data[$index] = $this->model_design_seo_url->getSeoUrlByKeyValue((string)$key, (string)$value);
-			}
-
-			if ($this->data[$index]) {
-				$paths[] = $this->data[$index];
-
-				unset($query[$key]);
-			}
-		}
-
-		$sort_order = [];
-
-		foreach ($paths as $key => $value) {
-			$sort_order[$key] = $value['sort_order'];
-		}
-
-		array_multisort($sort_order, SORT_ASC, $paths);
-
-		// Build the path
-		$url .= str_replace('/index.php', '', $url_info['path']);
-
-		foreach ($paths as $result) {
-			$url .= '/' . $result['keyword'];
-		}
-
-		// Rebuild the URL query
-		if ($query) {
-			$url .= '?' . str_replace(['%2F'], ['/'], http_build_query($query));
-		}
-
-		return $url;
-	}
+        return $url;
+    }
 }

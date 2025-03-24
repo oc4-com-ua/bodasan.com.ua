@@ -39,7 +39,7 @@ class ShippingMethod extends \Opencart\System\Engine\Controller {
 
 		// Validate cart has products and has stock.
 		if (!$this->cart->hasProducts() || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout')) || !$this->cart->hasMinimum()) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		if (!$json) {
@@ -68,7 +68,7 @@ class ShippingMethod extends \Opencart\System\Engine\Controller {
 			if ($shipping_methods) {
 				$json['shipping_methods'] = $this->session->data['shipping_methods'] = $shipping_methods;
 			} else {
-				$json['error'] = sprintf($this->language->get('error_no_shipping'), $this->url->link('information/contact', 'language=' . $this->config->get('config_language')));
+				$json['error'] = sprintf($this->language->get('error_no_shipping'), $this->url->link('information/contact'));
 			}
 		}
 
@@ -88,7 +88,7 @@ class ShippingMethod extends \Opencart\System\Engine\Controller {
 
 		// Validate cart has products and has stock.
 		if (!$this->cart->hasProducts() || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout')) || !$this->cart->hasMinimum()) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		if (!$json) {

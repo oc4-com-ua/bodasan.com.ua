@@ -314,7 +314,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
 				'subscription' => $subscription,
 				'price'        => $price_status ? $product['price_text'] : '',
 				'total'        => $price_status ? $product['total_text'] : '',
-				'href'         => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product['product_id'])
+				'href'         => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 			] + $product;
 		}
 
@@ -531,7 +531,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     $json['order_id'] = $order_id;
                     $json['payment_method'] = $payment_method['code'];
                     if ($payment_method['code'] === 'liqpay.liqpay') {
-                        $json['redirect'] = $this->url->link('extension/opencart/payment/liqpay.confirm', 'order_id=' . $order_id . '&language=' . $this->config->get('config_language'));
+                        $json['redirect'] = $this->url->link('extension/opencart/payment/liqpay.confirm', 'order_id=' . $order_id);
                     }
                     $this->session->data['order_id'] = $order_id;
 

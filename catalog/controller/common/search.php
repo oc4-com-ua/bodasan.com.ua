@@ -18,7 +18,7 @@ class Search extends \Opencart\System\Engine\Controller {
 
 		$data['text_search'] = $this->language->get('text_search');
 
-		$data['action'] = $this->url->link('common/search.redirect', 'language=' . $this->config->get('config_language'));
+		$data['action'] = $this->url->link('common/search.redirect');
 
 		if (isset($this->request->get['search'])) {
 			$data['search'] = $this->request->get['search'];

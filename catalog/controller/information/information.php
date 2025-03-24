@@ -33,19 +33,19 @@ class Information extends \Opencart\System\Engine\Controller {
 
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('text_home'),
-				'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+				'href' => $this->url->link('common/home')
 			];
 
 			$data['breadcrumbs'][] = [
 				'text' => $information_info['title'],
-				'href' => $this->url->link('information/information', 'language=' . $this->config->get('config_language') . '&information_id=' . $information_id)
+				'href' => $this->url->link('information/information', 'information_id=' . $information_id)
 			];
 
 			$data['heading_title'] = $information_info['title'];
 
 			$data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
 
-			$data['continue'] = $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
+			$data['continue'] = $this->url->link('common/home');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

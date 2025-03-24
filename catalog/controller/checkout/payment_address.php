@@ -19,7 +19,7 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 
 		$this->session->data['upload_token'] = oc_token(32);
 
-		$data['upload'] = $this->url->link('tool/upload', 'language=' . $this->config->get('config_language') . '&upload_token=' . $this->session->data['upload_token']);
+		$data['upload'] = $this->url->link('tool/upload', 'upload_token=' . $this->session->data['upload_token']);
 
 		$this->load->model('account/address');
 
@@ -71,17 +71,17 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 
 		// Validate cart has products and has stock.
 		if (!$this->cart->hasProducts() || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout')) || !$this->cart->hasMinimum()) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		// Validate if customer is logged in or customer session data is not set
 		if (!$this->customer->isLogged() || !isset($this->session->data['customer'])) {
-			$json['redirect'] = $this->url->link('account/login', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('account/login', '', true);
 		}
 
 		// Validate if payment address is set if required in settings
 		if (!$this->config->get('config_checkout_payment_address')) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		if (!$json) {
@@ -198,22 +198,22 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!isset($this->session->data['customer'])) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		// Validate cart has products and has stock.
 		if (!$this->cart->hasProducts() || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout')) || !$this->cart->hasMinimum()) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		// Validate if customer is logged in or customer session data is not set
 		if (!$this->customer->isLogged() || !isset($this->session->data['customer'])) {
-			$json['redirect'] = $this->url->link('account/login', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('account/login', '', true);
 		}
 
 		// Validate if payment address is set if required in settings
 		if (!$this->config->get('config_checkout_payment_address')) {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		if (!$json) {

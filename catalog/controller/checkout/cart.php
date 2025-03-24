@@ -20,12 +20,12 @@ class Cart extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('common/home')
 		];
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('checkout/cart')
 		];
 
 		$data['list'] = $this->load->controller('checkout/cart.getList');
@@ -82,7 +82,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 		}
 
 		if ($this->config->get('config_customer_price') && !$this->customer->isLogged()) {
-			$data['attention'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', 'language=' . $this->config->get('config_language')), $this->url->link('account/register', 'language=' . $this->config->get('config_language')));
+			$data['attention'] = sprintf($this->language->get('text_login'), $this->url->link('account/login'), $this->url->link('account/register'));
 		} else {
 			$data['attention'] = '';
 		}
@@ -93,7 +93,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 			$data['weight'] = '';
 		}
 
-		$data['edit'] = $this->url->link('checkout/cart.edit', 'language=' . $this->config->get('config_language'));
+		$data['edit'] = $this->url->link('checkout/cart.edit');
 
 		// Display prices
 		if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -154,8 +154,8 @@ class Cart extends \Opencart\System\Engine\Controller {
 				'minimum'      => !$product['minimum_status'] ? sprintf($this->language->get('error_minimum'), $product['minimum']) : 0,
 				'price'        => $price_status ? $product['price_text'] : '',
 				'total'        => $price_status ? $product['total_text'] : '',
-				'href'         => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product['product_id']),
-				'remove'       => $this->url->link('checkout/cart.remove', 'language=' . $this->config->get('config_language') . '&key=' . $product['cart_id'])
+				'href'         => $this->url->link('product/product', 'product_id=' . $product['product_id']),
+				'remove'       => $this->url->link('checkout/cart.remove', 'key=' . $product['cart_id'])
 			] + $product;
 		}
 
@@ -189,10 +189,10 @@ class Cart extends \Opencart\System\Engine\Controller {
 		}
 
 		if ($products) {
-			$data['continue'] = $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
-			$data['checkout'] = $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'));
+			$data['continue'] = $this->url->link('common/home');
+			$data['checkout'] = $this->url->link('checkout/checkout');
 		} else {
-			$data['continue'] = $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
+			$data['continue'] = $this->url->link('common/home');
 		}
 
 		return $this->load->view('checkout/cart_list', $data);
@@ -278,7 +278,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 		if (!$json) {
 			$this->cart->add($product_id, $quantity, $option, $subscription_plan_id);
 
-			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product_id), $product_info['name'], $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language')));
+			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $product_id), $product_info['name'], $this->url->link('checkout/cart'));
 
 			// Unset all shipping and payment methods
 			unset($this->session->data['shipping_method']);
@@ -286,7 +286,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 			unset($this->session->data['payment_method']);
 			unset($this->session->data['payment_methods']);
 		} else {
-			$json['redirect'] = $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product_id, true);
+			$json['redirect'] = $this->url->link('product/product', 'product_id=' . $product_id, true);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
@@ -321,7 +321,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 		if ($this->cart->hasProducts()) {
 			$json['success'] = $this->language->get('text_edit');
 		} else {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		unset($this->session->data['shipping_method']);
@@ -356,7 +356,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 		if ($this->cart->hasProducts()) {
 			$json['success'] = $this->language->get('text_remove');
 		} else {
-			$json['redirect'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true);
+			$json['redirect'] = $this->url->link('checkout/cart', '', true);
 		}
 
 		unset($this->session->data['shipping_method']);

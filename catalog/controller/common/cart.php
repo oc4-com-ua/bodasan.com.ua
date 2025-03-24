@@ -76,7 +76,7 @@ class Cart extends \Opencart\System\Engine\Controller {
 				'subscription' => $subscription,
 				'price'        => $price_status ? $product['price_text'] : '',
 				'total'        => $price_status ? $product['total_text'] : '',
-				'href'         => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product['product_id'])
+				'href'         => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 			] + $product;
 		}
 
@@ -87,11 +87,11 @@ class Cart extends \Opencart\System\Engine\Controller {
 			$data['totals'][] = ['text' => $this->currency->format($total['value'], $this->session->data['currency'])] + $total;
 		}
 
-		$data['list'] = $this->url->link('common/cart.info', 'language=' . $this->config->get('config_language'));
-		$data['remove'] = $this->url->link('common/cart.remove', 'language=' . $this->config->get('config_language'));
+		$data['list'] = $this->url->link('common/cart.info');
+		$data['remove'] = $this->url->link('common/cart.remove');
 
-		$data['cart'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'));
-		$data['checkout'] = $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'));
+		$data['cart'] = $this->url->link('checkout/cart');
+		$data['checkout'] = $this->url->link('checkout/checkout');
 
 		return $this->load->view('common/cart', $data);
 	}

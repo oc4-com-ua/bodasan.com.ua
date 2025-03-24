@@ -25,25 +25,25 @@ class Gdpr extends \Opencart\System\Engine\Controller {
 
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('text_home'),
-				'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+				'href' => $this->url->link('common/home')
 			];
 
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('information/gdpr', 'language=' . $this->config->get('config_language'))
+				'href' => $this->url->link('information/gdpr')
 			];
 
-			$data['action'] = $this->url->link('information/gdpr.action', 'language=' . $this->config->get('config_language'));
+			$data['action'] = $this->url->link('information/gdpr.action');
 
 			$data['title'] = $information_info['title'];
 
-			$data['gdpr'] = $this->url->link('information/information', 'language=' . $this->config->get('config_language') . '&information_id=' . $information_info['information_id']);
+			$data['gdpr'] = $this->url->link('information/information', 'information_id=' . $information_info['information_id']);
 
 			$data['email'] = $this->customer->getEmail();
 			$data['store'] = $this->config->get('config_name');
 			$data['limit'] = $this->config->get('config_gdpr_limit');
 
-			$data['cancel'] = $this->url->link('account/account', 'language=' . $this->config->get('config_language'));
+			$data['cancel'] = $this->url->link('account/account');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
@@ -172,17 +172,17 @@ class Gdpr extends \Opencart\System\Engine\Controller {
 
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('text_home'),
-				'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+				'href' => $this->url->link('common/home')
 			];
 
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('text_account'),
-				'href' => $this->url->link('information/gdpr', 'language=' . $this->config->get('config_language'))
+				'href' => $this->url->link('information/gdpr')
 			];
 
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('information/gdpr.success', 'language=' . $this->config->get('config_language'))
+				'href' => $this->url->link('information/gdpr.success')
 			];
 
 			if ($gdpr_info['status'] == 0) {

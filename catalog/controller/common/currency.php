@@ -16,7 +16,7 @@ class Currency extends \Opencart\System\Engine\Controller {
 	public function index(): string {
 		$this->load->language('common/currency');
 
-		$data['action'] = $this->url->link('common/currency.save', 'language=' . $this->config->get('config_language'));
+		$data['action'] = $this->url->link('common/currency.save');
 
 		$data['code'] = $this->session->data['currency'];
 
@@ -88,7 +88,7 @@ class Currency extends \Opencart\System\Engine\Controller {
 		if ($redirect && str_starts_with($redirect, $this->config->get('config_url'))) {
 			$this->response->redirect($redirect);
 		} else {
-			$this->response->redirect($this->url->link($this->config->get('action_default'), 'language=' . $this->config->get('config_language')));
+			$this->response->redirect($this->url->link($this->config->get('action_default')));
 		}
 	}
 }

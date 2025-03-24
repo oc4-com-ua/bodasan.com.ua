@@ -14,7 +14,7 @@ class Checkout extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		// Validate cart to see if it has products and has stock.
 		if (!$this->cart->hasProducts() || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout')) || !$this->cart->hasMinimum()) {
-			$this->response->redirect($this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'), true));
+			$this->response->redirect($this->url->link('checkout/cart', '', true));
 		}
 
 		$this->load->language('checkout/checkout');
@@ -27,17 +27,17 @@ class Checkout extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('common/home')
 		];
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_cart'),
-			'href' => $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('checkout/cart')
 		];
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('checkout/checkout')
 		];
 
         $data['register'] = '';

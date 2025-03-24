@@ -20,12 +20,12 @@ class Sitemap extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('common/home')
 		];
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/sitemap', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('information/sitemap')
 		];
 
 		$this->load->model('catalog/category');
@@ -45,39 +45,39 @@ class Sitemap extends \Opencart\System\Engine\Controller {
 				$categories_3 = $this->model_catalog_category->getCategories($category_2['category_id']);
 
 				foreach ($categories_3 as $category_3) {
-					$level_3_data[] = ['href' => $this->url->link('product/category', 'language=' . $this->config->get('config_language') . '&path=' . $category_1['category_id'] . '_' . $category_2['category_id'] . '_' . $category_3['category_id'])] + $category_3;
+					$level_3_data[] = ['href' => $this->url->link('product/category', 'path=' . $category_1['category_id'] . '_' . $category_2['category_id'] . '_' . $category_3['category_id'])] + $category_3;
 				}
 
 				$level_2_data[] = [
 					'children' => $level_3_data,
-					'href'     => $this->url->link('product/category', 'language=' . $this->config->get('config_language') . '&path=' . $category_1['category_id'] . '_' . $category_2['category_id'])
+					'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'] . '_' . $category_2['category_id'])
 				] + $category_2;
 			}
 
 			$data['categories'][] = [
 				'children' => $level_2_data,
-				'href'     => $this->url->link('product/category', 'language=' . $this->config->get('config_language') . '&path=' . $category_1['category_id'])
+				'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'])
 			] + $category_1;
 		}
 
-		$data['special'] = $this->url->link('product/special', 'language=' . $this->config->get('config_language'));
-		$data['account'] = $this->url->link('account/account', 'language=' . $this->config->get('config_language') . (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['edit'] = $this->url->link('account/edit', 'language=' . $this->config->get('config_language') . (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['password'] = $this->url->link('account/password', 'language=' . $this->config->get('config_language') . (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['address'] = $this->url->link('account/address', 'language=' . $this->config->get('config_language') . (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['history'] = $this->url->link('account/order', 'language=' . $this->config->get('config_language') . (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['download'] = $this->url->link('account/download', 'language=' . $this->config->get('config_language') . (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['cart'] = $this->url->link('checkout/cart', 'language=' . $this->config->get('config_language'));
-		$data['checkout'] = $this->url->link('checkout/checkout', 'language=' . $this->config->get('config_language'));
-		$data['search'] = $this->url->link('product/search', 'language=' . $this->config->get('config_language'));
-		$data['contact'] = $this->url->link('information/contact', 'language=' . $this->config->get('config_language'));
+		$data['special'] = $this->url->link('product/special');
+		$data['account'] = $this->url->link('account/account', (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
+		$data['edit'] = $this->url->link('account/edit', (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
+		$data['password'] = $this->url->link('account/password', (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
+		$data['address'] = $this->url->link('account/address', (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
+		$data['history'] = $this->url->link('account/order', (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
+		$data['download'] = $this->url->link('account/download', (isset($this->session->data['customer_token']) ? '&customer_token=' . $this->session->data['customer_token'] : ''));
+		$data['cart'] = $this->url->link('checkout/cart');
+		$data['checkout'] = $this->url->link('checkout/checkout');
+		$data['search'] = $this->url->link('product/search');
+		$data['contact'] = $this->url->link('information/contact');
 
 		$this->load->model('catalog/information');
 
 		$data['informations'] = [];
 
 		foreach ($this->model_catalog_information->getInformations() as $result) {
-			$data['informations'][] = ['href' => $this->url->link('information/information', 'language=' . $this->config->get('config_language') . '&information_id=' . $result['information_id'])] + $result;
+			$data['informations'][] = ['href' => $this->url->link('information/information', 'information_id=' . $result['information_id'])] + $result;
 		}
 
 		$data['column_left'] = $this->load->controller('common/column_left');

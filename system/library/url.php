@@ -73,6 +73,15 @@ class Url {
 			$url = $rewrite->rewrite($url);
 		}
 
+        if (preg_match('#[?&]route=common/home([&]?$)#', $url)) {
+            $url = $this->url;
+        }
+
+        if (str_starts_with($url, $this->url) && strpos($url, '/index.php?') === false) {
+            $url = preg_replace('#[&?]route=[^&]*#', '', $url);
+            $url = rtrim($url, '&?');
+        }
+
 		// See https://stackoverflow.com/questions/78729429/403-forbidden-when-url-contains-get-with-encoded-question-mark-unsafeallow3f
 		// https://github.com/opencart/opencart/issues/14202
 		$url = str_replace('%3F', '?', $url);

@@ -30,7 +30,7 @@ class Maintenance extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_maintenance'),
-			'href' => $this->url->link('common/maintenance', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('common/maintenance')
 		];
 
 		$data['message'] = $this->language->get('text_message');

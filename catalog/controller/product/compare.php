@@ -27,7 +27,7 @@ class Compare extends \Opencart\System\Engine\Controller {
 				$this->session->data['success'] = $this->language->get('text_remove');
 			}
 
-			$this->response->redirect($this->url->link('product/compare', 'language=' . $this->config->get('config_language'), true));
+			$this->response->redirect($this->url->link('product/compare', '', true));
 		}
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -36,16 +36,16 @@ class Compare extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('common/home')
 		];
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('product/compare', 'language=' . $this->config->get('config_language'))
+			'href' => $this->url->link('product/compare')
 		];
 
-		$data['cart_add'] = $this->url->link('checkout/cart.add', 'language=' . $this->config->get('config_language'));
-		$data['cart'] = $this->url->link('common/cart.info', 'language=' . $this->config->get('config_language'));
+		$data['cart_add'] = $this->url->link('checkout/cart.add');
+		$data['cart'] = $this->url->link('common/cart.info');
 
 		if (isset($this->session->data['success'])) {
 			$data['success'] = $this->session->data['success'];
@@ -148,8 +148,8 @@ class Compare extends \Opencart\System\Engine\Controller {
 					'width'        => $this->length->format($product_info['width'], $product_info['length_class_id'], $this->language->get('decimal_point'), $this->language->get('thousand_point')),
 					'height'       => $this->length->format($product_info['height'], $product_info['length_class_id'], $this->language->get('decimal_point'), $this->language->get('thousand_point')),
 					'attribute'    => $attribute_data,
-					'href'         => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product_id),
-					'remove'       => $this->url->link('product/compare', 'language=' . $this->config->get('config_language') . '&remove=' . $product_id)
+					'href'         => $this->url->link('product/product', 'product_id=' . $product_id),
+					'remove'       => $this->url->link('product/compare', 'remove=' . $product_id)
 				] + $product_info;
 
 				foreach ($attribute_groups as $attribute_group) {
@@ -166,7 +166,7 @@ class Compare extends \Opencart\System\Engine\Controller {
 
 		$data['review_status'] = $this->config->get('config_review_status');
 
-		$data['continue'] = $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
+		$data['continue'] = $this->url->link('common/home');
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -221,7 +221,7 @@ class Compare extends \Opencart\System\Engine\Controller {
 
 			$this->session->data['compare'][] = $this->request->post['product_id'];
 
-			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('product/compare', 'language=' . $this->config->get('config_language')));
+			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('product/compare'));
 
 			$json['total'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 		}
