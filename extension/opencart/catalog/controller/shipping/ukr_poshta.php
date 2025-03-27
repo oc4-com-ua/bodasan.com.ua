@@ -20,23 +20,22 @@ class UkrPoshta extends \Opencart\System\Engine\Controller {
         $district_id = $this->request->get['district_id'] ?? '';
         $city_id = $this->request->get['city_id'] ?? '';
 
-        if (!$type || !$term) {
+        if (!$type) {
             $this->response->setOutput(json_encode([]));
             return;
         }
 
-        $api_key = $this->config->get('shipping_ukrposhta_api_key') ?? '';
+        $api_key = $this->config->get('shipping_ukr_poshta_api_key') ?? '';
 
         $results = [];
         switch ($type) {
             case 'city':
+                if (!$term) break;
                 $results = $this->searchCities($api_key, $term);
                 break;
 
             case 'branch':
-                if ($city_id) {
-                    $results = $this->searchBranches($api_key, $region_id, $district_id, $city_id, $term);
-                }
+                $results = $this->searchBranches($api_key, $region_id, $district_id, $city_id);
                 break;
 
             case 'street':
@@ -51,9 +50,6 @@ class UkrPoshta extends \Opencart\System\Engine\Controller {
 
     /**
      * Пошук населених пунктів
-     * Ендпоінт: get_city_by_region_id_and_district_id_and_city_ua
-     * Якщо не знаємо регіон/район, не передаємо їх, бо 0 => порожній результат
-     * Тому просто city_ua=<term>.
      */
     private function searchCities(string $api_key, string $city_ua): array {
         $base_url = 'https://www.ukrposhta.ua/address-classifier-ws/get_city_by_region_id_and_district_id_and_city_ua';
@@ -107,66 +103,43 @@ class UkrPoshta extends \Opencart\System\Engine\Controller {
 
     /**
      * Пошук відділень
-     * /get_postoffice_by_region_id_and_district_id_and_city_id_and_postoffice_name_ua
      */
-    private function searchBranches(string $api_key, string $region_id, string $district_id, string $city_id, string $term): array {
-        $base_url = 'https://www.ukrposhta.ua/address-classifier-ws/get_postoffice_by_region_id_and_district_id_and_city_id_and_postoffice_name_ua';
+    private function searchBranches(string $api_key, string $region_id, string $district_id, string $city_id): array {
+        $base_url = 'https://www.ukrposhta.ua/address-classifier-ws/get_postoffices_by_city_id';
 
         $params = [
             'city_id' => $city_id,
-            'postoffice_name_ua' => $term
+            'region_id' => $region_id,
+            'district_id' => $district_id,
         ];
-        if ($region_id !== '' && $region_id !== '0') {
-            $params['region_id'] = $region_id;
-        }
-        if ($district_id !== '' && $district_id !== '0') {
-            $params['district_id'] = $district_id;
-        }
 
-        $query = http_build_query(array_combine(
-            array_map('urlencode', array_keys($params)),
-            array_values($params)
-        ), '', '&', PHP_QUERY_RFC3986);
+        $query = http_build_query($params, '', '&amp;', PHP_QUERY_RFC3986);
 
         $final_url = $base_url . '?' . $query;
 
         $data = $this->doGetRequest($final_url, $api_key);
 
         $results = [];
-        $entries = $this->extractEntries($data, 'POSTOFFICE_ID');
-        foreach ($entries as $e) {
-            $po_id      = (string)($e['POSTOFFICE_ID']         ?? '');
-            $po_name    = $e['POSTOFFICE_NAME_UA']             ?? '';
-            $po_index   = $e['POSTOFFICE_INDEX']               ?? '';
-            $po_street  = $e['POSTOFFICE_STREET_UA']           ?? '';
-            $po_buildno = $e['POSTOFFICE_BUILDING_NO']         ?? '';
-
-            if ($po_id) {
-                $parts = [];
-                if ($po_index)   $parts[] = $po_index;
-                if ($po_street)  $parts[] = $po_street;
-                if ($po_buildno) $parts[] = 'б. ' . $po_buildno;
-                $display = implode(', ', $parts);
-                if (!$display) {
-                    $display = $po_name;
+        $entries = $this->extractEntries($data, 'ID');
+        $allowedBranchTypes = ['МВ', 'СВ'];
+        foreach ($entries as $item) {
+            if (isset($item['LOCK_UA'], $item['ISVPZ'], $item['IS_NOLETTERS'], $item['TYPE_ACRONYM'])) {
+                if ($item['LOCK_UA'] === 'Активний запис' && $item['ISVPZ'] === '1' && $item['IS_NOLETTERS'] !== '1' && in_array($item['TYPE_ACRONYM'], $allowedBranchTypes)) {
+                    $results[] = [
+                        'value' => $item['POSTINDEX'] . ', ' . $item['ADDRESS'],
+                        'city_id' => $item['CITY_ID'],
+                        'city_type' => $item['SHORTCITYTYPE_UA'],
+                        'city_name' => $item['CITY_UA'],
+                    ];
                 }
-
-                $results[] = [
-                    'value' => $display,
-                    'ref'   => $po_id,
-                    'postoffice_name_ua' => $po_name,
-                    'postoffice_index'   => $po_index,
-                    'postoffice_street_ua' => $po_street,
-                    'postoffice_building_no' => $po_buildno
-                ];
             }
         }
+
         return $results;
     }
 
     /**
      * Пошук вулиць
-     * /get_street_by_region_id_and_district_id_and_city_id_and_street_ua
      */
     private function searchStreets(string $api_key, string $region_id, string $district_id, string $city_id, string $term): array {
         $base_url = 'https://www.ukrposhta.ua/address-classifier-ws/get_street_by_region_id_and_district_id_and_city_id_and_street_ua';
@@ -219,11 +192,14 @@ class UkrPoshta extends \Opencart\System\Engine\Controller {
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $response = curl_exec($ch);
-        $error    = curl_error($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         curl_close($ch);
 
-        if ($error) {
-            return [];
+        if ($http_code !== 200) {
+            $error = ['error' => 'Запит не успішний', 'http_code' => $http_code, 'response' => $response];
+            $this->log->write($error);
+            return $error;
         }
 
         // Спробувати як JSON
