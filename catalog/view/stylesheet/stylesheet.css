@@ -299,3 +299,36 @@ template {
     padding-right: 10px;
   }
 }
+.bar {
+  background-color: #ededed;
+  padding: 12px 0;
+}
+.bar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bar__nav {
+  display: flex;
+  gap: 32px;
+}
+.bar__nav-link {
+  display: block;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7f7f7f;
+}
+.bar__nav-link:hover {
+  text-decoration: underline;
+  color: #000;
+}
+.bar__working-hours {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #151515;
+  padding-left: 24px;
+  background: url(../images/working-hours.svg) 0 center / 16px 16px no-repeat;
+}

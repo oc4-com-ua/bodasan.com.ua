@@ -66,6 +66,15 @@ class Header extends \Opencart\System\Engine\Controller {
 
 		$this->load->language('common/header');
 
+        $data['header_menu'] = [
+            ['name' => 'Доставка', 'href' => $this->url->link('information/information', 'information_id=4')],
+            ['name' => 'Оплата', 'href' => $this->url->link('information/information', 'information_id=6')],
+            ['name' => 'Повернення', 'href' => $this->url->link('information/information', 'information_id=5')],
+            ['name' => 'Про нас', 'href' => $this->url->link('information/information', 'information_id=1')],
+            ['name' => 'Контакти', 'href' => $this->url->link('information/contact')],
+//            ['name' => 'Відгуки', 'href' => $this->url->link('information/information', 'information_id=6')],
+        ];
+
 		// Wishlist
 		if ($this->customer->isLogged()) {
 			$this->load->model('account/wishlist');
@@ -94,6 +103,7 @@ class Header extends \Opencart\System\Engine\Controller {
 		$data['checkout'] = $this->url->link('checkout/checkout');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
+		$data['working_hours'] = $this->config->get('config_open');
 
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');

@@ -34,6 +34,22 @@
   {% endfor %}
 </head>
 <body>
+
+<div class="bar">
+  <div class="bar__container container">
+    {% if header_menu %}
+      <nav class="bar__nav">
+        {% for item in header_menu %}
+          <a href="{{ item.href }}" class="bar__nav-link">{{ item.name }}</a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+    {% if working_hours %}
+      <div class="bar__working-hours">{{ working_hours }}</div>
+    {% endif %}
+  </div>
+</div>
+
 <div id="container">
   <div id="alert"></div>
   <nav id="top">
