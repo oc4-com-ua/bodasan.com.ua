@@ -116,6 +116,8 @@ class Twig {
 				$twig->addExtension(new \Twig\Extension\DebugExtension());
 			}
 
+            $data['is_mobile'] = is_mobile();
+
 			return $twig->render($file, $data);
 		} catch (\Twig\Error\SyntaxError $e) {
 			throw new \Exception('Error: Could not load template ' . $filename . '!');
