@@ -35,6 +35,8 @@
 </head>
 <body>
 
+<div id="alert"></div>
+
 <div class="bar">
   <div class="bar__container container">
     {% if header_menu %}
@@ -50,9 +52,59 @@
   </div>
 </div>
 
+<header class="header">
+  <div class="header__container container">
+    <a href="{{ home }}" class="header__logo">
+      <img src="catalog/view/images/logo.svg" width="147" height="32" alt="">
+    </a>
+    <div class="header__group">
+      {% if catalog_menu %}
+        <div class="header__catalog">
+          <button class="header__catalog-toggle">Каталог товарів</button>
+          <nav class="header__catalog-nav">
+            {% for category in catalog_menu %}
+              <a href="{{ category.href }}" class="header__catalog-link">
+                <img src="image/{{ category.image }}" width="16" height="16" class="header__catalog-icon" alt="">
+                {{ category.name }}
+              </a>
+            {% endfor %}
+          </nav>
+        </div>
+      {% endif %}
+      <div class="header__search">{{ search }}</div>
+    </div>
+    <div class="header__contact">
+      <div class="header__contact-messengers">
+        {% if viber %}
+          <a href="{{ viber }}" class="header__contact-messenger header__contact-messenger_viber"></a>
+        {% endif %}
+        {% if telegram %}
+          <a href="{{ telegram }}" class="header__contact-messenger header__contact-messenger_telegram"></a>
+        {% endif %}
+      </div>
+      <div class="header__contact-phones">
+        {% if telephone %}
+          <a href="tel:{{ telephone_clear }}" class="header__contact-phone">{{ telephone }}</a>
+        {% endif %}
+        {% if telephone2 %}
+          <a href="tel:{{ telephone2_clear }}" class="header__contact-phone">{{ telephone2 }}</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="header__user">
+      {# TODO: зробити "обране" для неавторизованих користувачів та додати оновлення лічильника #}
+      <a href="{{ wishlist }}" class="header__favorite">
+        <span class="header__favorite-count">0</span>
+      </a>
+      <div id="cart" class="header__cart">
+        {{ cart }}
+      </div>
+    </div>
+  </div>
+</header>
+
 <div id="container">
-  <div id="alert"></div>
-  <nav id="top">
+  {#<nav id="top">
     <div class="container">
       <div class="row">
         <div class="col-3">
@@ -106,6 +158,6 @@
         <div id="cart" class="col-md-4 col-lg-3 mb-2">{{ cart }}</div>
       </div>
     </div>
-  </header>
+  </header>#}
   <main>
-    {{ menu }}
+    {#{{ menu }}#}

@@ -73,6 +73,9 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_geocode'] = $this->config->get('config_geocode');
 		$data['config_email'] = $this->config->get('config_email');
 		$data['config_telephone'] = $this->config->get('config_telephone');
+		$data['config_telephone2'] = $this->config->get('config_telephone2');
+		$data['config_viber'] = $this->config->get('config_viber');
+		$data['config_telegram'] = $this->config->get('config_telegram');
 		$data['config_image'] = $this->config->get('config_image');
 
 		$this->load->model('tool/image');

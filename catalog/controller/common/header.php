@@ -76,6 +76,27 @@ class Header extends \Opencart\System\Engine\Controller {
 //            ['name' => 'Відгуки', 'href' => $this->url->link('information/information', 'information_id=6')],
         ];
 
+        $this->load->model('catalog/category');
+        $categories = $this->model_catalog_category->getCategories(0);
+
+        $data['catalog_menu'] = [];
+
+        if ($categories) {
+            foreach ($categories as $category) {
+                if (!$category['status']) {
+                    continue;
+                }
+
+                $category_image = $category['image'] ? $category['image'] : 'catalog/category/no-image.svg';
+
+                $data['catalog_menu'][] = [
+                    'name'  => $category['name'],
+                    'href'  => $this->url->link('product/category', 'path=' . $category['category_id']),
+                    'image' => $category_image
+                ];
+            }
+        }
+
 		// Wishlist
 		if ($this->customer->isLogged()) {
 			$this->load->model('account/wishlist');
@@ -104,7 +125,12 @@ class Header extends \Opencart\System\Engine\Controller {
 		$data['checkout'] = $this->url->link('checkout/checkout');
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
+		$data['telephone_clear'] = preg_replace('/(?!^\+)[^0-9]/', '', $data['telephone']);
+		$data['telephone2'] = $this->config->get('config_telephone2');
+		$data['telephone2_clear'] = preg_replace('/(?!^\+)[^0-9]/', '', $data['telephone2']);
 		$data['working_hours'] = $this->config->get('config_open');
+		$data['viber'] = $this->config->get('config_viber');
+		$data['telegram'] = $this->config->get('config_telegram');
 
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
