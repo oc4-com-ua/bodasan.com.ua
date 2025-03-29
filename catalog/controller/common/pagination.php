@@ -38,7 +38,7 @@ class Pagination extends \Opencart\System\Engine\Controller {
 			$url = '';
 		}
 
-		$num_links = 8;
+		$num_links = is_mobile() ? 4 : 8;
 		$num_pages = ceil($total / $limit);
 
 		if ($url && $page > 1 && $num_pages < $page) {

@@ -938,3 +938,73 @@ template {
 .text h6 {
   font-size: 12px;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 32px 0;
+}
+.pagination__link {
+  display: block;
+  border: 1px solid #151515;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 30px;
+  color: #151515;
+  text-align: center;
+  text-decoration: none;
+}
+.pagination__link:hover {
+  color: #fff;
+  background-color: #151515;
+  text-decoration: none;
+}
+.pagination__current {
+  display: block;
+  border: 1px solid #151515;
+  background-color: #151515;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+}
+.pagination__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 10px;
+  width: 32px;
+  height: 32px;
+  background: #ededed;
+}
+.pagination__nav svg {
+  display: block;
+  width: 8px;
+  height: 8px;
+  fill: #151515;
+}
+.pagination__nav_prev {
+  margin-right: 8px;
+}
+.pagination__nav_prev svg {
+  transform: rotate(180deg);
+}
+.pagination__nav_next {
+  margin-left: 8px;
+}
+.pagination__nav:hover {
+  background: #151515;
+}
+.pagination__nav:hover svg {
+  fill: #fff;
+}
