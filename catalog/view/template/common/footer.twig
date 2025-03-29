@@ -1,58 +1,71 @@
-<footer>
-  <div class="container">
-    <div class="row">
-      {% if informations or blog %}
-        <div class="col-sm-3">
-          <h5>{{ text_information }}</h5>
-          <ul class="list-unstyled">
-            {% if blog %}
-              <li><a href="{{ blog }}">{{ text_blog }}</a></li>
-            {% endif %}
-            {% for information in informations %}
-              <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+<footer class="footer">
+  <div class="footer__container container">
+    <div class="footer__main">
+      {% if footer_menu %}
+        <div class="footer__widget footer__widget_nav">
+          <div class="footer__title">{{ text_title_nav }}</div>
+          <nav class="footer__nav">
+            {% for item in footer_menu %}
+              <a href="{{ item.href }}" class="footer__nav-link">{{ item.name }}</a>
             {% endfor %}
-          </ul>
+          </nav>
         </div>
       {% endif %}
-      <div class="col-sm-3">
-        <h5>{{ text_service }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
-          <li><a href="{{ return }}">{{ text_return }}</a></li>
-          {% if gdpr %}
-            <li><a href="{{ gdpr }}">{{ text_gdpr }}</a></li>
+      <div class="footer__widget footer__widget_contact">
+        <div class="footer__title">{{ text_title_contact }}</div>
+        <div class="footer__contact">
+          {% if telephone or telephone2 %}
+            <div class="footer__phones">
+              {% if telephone %}
+                <a href="tel:{{ telephone_clear }}" class="footer__phone">{{ telephone }}</a>
+              {% endif %}
+              {% if telephone2 %}
+                <a href="tel:{{ telephone2_clear }}" class="footer__phone">{{ telephone2 }}</a>
+              {% endif %}
+            </div>
           {% endif %}
-          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-3">
-        <h5>{{ text_extra }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
-          {% if affiliate %}
-            <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+          {% if email_public %}
+            <div class="footer__email">
+              <a href="mailto:{{ email_public }}" class="footer__email-link">{{ email_public }}</a>
+            </div>
           {% endif %}
-          <li><a href="{{ special }}">{{ text_special }}</a></li>
-        </ul>
+          {% if address %}
+            <div class="footer__address">{{ address }}</div>
+          {% endif %}
+          {% if telegram %}
+            <a href="{{ telegram }}" target="_blank" class="footer__telegram">{{ text_telegram }}</a>
+          {% endif %}
+          {% if viber %}
+            <a href="{{ viber }}" target="_blank" class="footer__viber">{{ text_viber }}</a>
+          {% endif %}
+          {% if youtube %}
+            <a href="{{ youtube }}" target="_blank" class="footer__youtube">{{ text_youtube }}</a>
+          {% endif %}
+        </div>
       </div>
-      <div class="col-sm-3">
-        <h5>{{ text_account }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ account }}">{{ text_account }}</a></li>
-          <li><a href="{{ order }}">{{ text_order }}</a></li>
-          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
-          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
-        </ul>
+      <div class="footer__widget footer__widget_legal">
+        {% if footer_menu %}
+          <nav class="footer__nav footer__nav_legal">
+            {% for item in legal_menu %}
+              <a href="{{ item.href }}" class="footer__nav-link">{{ item.name }}</a>
+            {% endfor %}
+          </nav>
+        {% endif %}
+        <div class="footer__pay">
+          <img src="catalog/view/images/footer-pay-mastercard.svg" width="46" height="32" alt="">
+          <img src="catalog/view/images/footer-pay-visa.svg" width="46" height="32" alt="">
+          <img src="catalog/view/images/footer-pay-apple-pay.svg" width="46" height="32" alt="">
+          <img src="catalog/view/images/footer-pay-google-pay.svg" width="46" height="32" alt="">
+        </div>
+        {% if owner %}
+          <div class="footer__owner">{{ owner }}</div>
+        {% endif %}
       </div>
     </div>
-    <hr>
-    <p>{{ powered }}</p>
-    <!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
-//-->
+    <div class="footer__copyright">{{ copyright }}</div>
   </div>
 </footer>
+
 {{ cookie }}
 <script src="{{ bootstrap }}" type="text/javascript"></script>
 {% for script in scripts %}

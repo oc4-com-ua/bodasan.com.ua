@@ -133,6 +133,13 @@
                 </div>
               </div>
               <div class="row mb-3">
+                <label for="input-email-public" class="col-sm-2 col-form-label">{{ entry_email_public }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_email_public" value="{{ config_email_public }}" placeholder="{{ entry_email_public }}" id="input-email-public" class="form-control"/>
+                  <div id="error-email-public" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3">
                 <label for="input-telephone" class="col-sm-2 col-form-label">{{ entry_telephone }}</label>
                 <div class="col-sm-10">
                   <input type="text" name="config_telephone" value="{{ config_telephone }}" placeholder="{{ entry_telephone }}" id="input-telephone" class="form-control"/>
@@ -158,6 +165,13 @@
                 <div class="col-sm-10">
                   <input type="text" name="config_telegram" value="{{ config_telegram }}" placeholder="{{ entry_telegram }}" id="input-telegram" class="form-control"/>
                   <div id="error-telegram" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input-youtube" class="col-sm-2 col-form-label">{{ entry_youtube }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_youtube" value="{{ config_youtube }}" placeholder="{{ entry_youtube }}" id="input-youtube" class="form-control"/>
+                  <div id="error-youtube" class="invalid-feedback"></div>
                 </div>
               </div>
               <div class="row mb-3">

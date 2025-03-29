@@ -72,10 +72,12 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_address'] = $this->config->get('config_address');
 		$data['config_geocode'] = $this->config->get('config_geocode');
 		$data['config_email'] = $this->config->get('config_email');
+		$data['config_email_public'] = $this->config->get('config_email_public');
 		$data['config_telephone'] = $this->config->get('config_telephone');
 		$data['config_telephone2'] = $this->config->get('config_telephone2');
 		$data['config_viber'] = $this->config->get('config_viber');
 		$data['config_telegram'] = $this->config->get('config_telegram');
+		$data['config_youtube'] = $this->config->get('config_youtube');
 		$data['config_image'] = $this->config->get('config_image');
 
 		$this->load->model('tool/image');
@@ -502,7 +504,11 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['email'] = $this->language->get('error_email');
 		}
 
-		if (!$this->request->post['config_product_description_length']) {
+        if ((oc_strlen($this->request->post['config_email_public']) > 96) || ($this->request->post['config_email_public'] && !filter_var($this->request->post['config_email_public'], FILTER_VALIDATE_EMAIL))) {
+            $json['error']['email_public'] = $this->language->get('error_email');
+        }
+
+        if (!$this->request->post['config_product_description_length']) {
 			$json['error']['product_description_length'] = $this->language->get('error_product_description_length');
 		}
 

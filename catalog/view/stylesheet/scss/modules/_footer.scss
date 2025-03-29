@@ -1,0 +1,275 @@
+.footer {
+    background: #151515;
+
+    &__main {
+        display: flex;
+        gap: 16px;
+        padding: 32px 0;
+
+        @media (max-width: 767px) {
+            display: block;
+        }
+    }
+
+    &__widget {
+        flex: 1;
+
+        &_legal {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        @media (max-width: 767px) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 32px;
+            margin-bottom: 32px;
+
+            &_legal {
+                align-items: center;
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+        margin-bottom: 32px;
+
+        @media (max-width: 767px) {
+            margin-bottom: 20px;
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        @media (max-width: 767px) {
+            gap: 12px;
+
+            &_legal {
+                align-items: center;
+                margin-bottom: 16px;
+            }
+        }
+
+        &-link {
+            display: block;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: #fff;
+            text-decoration: none;
+
+            @media (max-width: 767px) {
+                font-size: 12px;
+                line-height: 16px;
+            }
+
+            &:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+            .footer__nav_legal & {
+                color: #646464;
+
+                &:hover {
+                    color: #646464;
+                }
+            }
+        }
+    }
+
+    &__contact {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        @media (max-width: 767px) {
+            gap: 12px;
+        }
+    }
+
+    &__phones {
+        padding-left: 28px;
+        background: url(../images/phone-white.svg) 0 center / 20px 20px no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    &__phone {
+        display: block;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__email {
+        padding-left: 28px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background: url(../images/email-white.svg) 0 center / 20px 20px no-repeat;
+        display: flex;
+
+        &-link {
+            display: block;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: #fff;
+            text-decoration: none;
+
+            &:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+            @media (max-width: 767px) {
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+    }
+
+    &__address {
+        padding-left: 28px;
+        background: url(../images/address-white.svg) 0 center / 20px 20px no-repeat;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+
+        b {
+            font-weight: 600;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__telegram {
+        display: block;
+        padding: 1px 0 1px 28px;
+        background: url(../images/telegram-blue.svg) 0 center / 20px 20px no-repeat;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #609cf5;
+        text-decoration: none;
+
+        &:hover {
+            color: #609cf5;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__viber {
+        display: block;
+        padding: 1px 0 1px 28px;
+        background: url(../images/viber-purple.svg) 0 center / 20px 20px no-repeat;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #9138d7;
+        text-decoration: none;
+
+        &:hover {
+            color: #9138d7;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__youtube {
+        display: block;
+        padding: 1px 0 1px 28px;
+        background: url(../images/youtube-red.svg) 0 center / 20px 20px no-repeat;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #f00;
+        text-decoration: none;
+
+        &:hover {
+            color: #f00;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__pay {
+        display: flex;
+        gap: 4px;
+        margin-top: auto;
+    }
+
+    &__owner {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: #646464;
+        padding: 1px 0;
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        color: #fff;
+        padding: 24px 0;
+
+        @media (max-width: 767px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+}

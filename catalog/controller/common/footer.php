@@ -16,70 +16,32 @@ class Footer extends \Opencart\System\Engine\Controller {
 	public function index(): string {
 		$this->load->language('common/footer');
 
-		$this->load->model('cms/article');
+        $data['footer_menu'] = [
+            ['name' => 'Доставка', 'href' => $this->url->link('information/information', 'information_id=4')],
+            ['name' => 'Оплата', 'href' => $this->url->link('information/information', 'information_id=6')],
+            ['name' => 'Повернення', 'href' => $this->url->link('information/information', 'information_id=5')],
+            ['name' => 'Про нас', 'href' => $this->url->link('information/information', 'information_id=1')],
+            ['name' => 'Контакти', 'href' => $this->url->link('information/contact')],
+//            ['name' => 'Відгуки', 'href' => $this->url->link('information/information', 'information_id=6')],
+            ['name' => 'Карта сайту', 'href' => $this->url->link('information/sitemap')],
+        ];
 
-		$article_total = $this->model_cms_article->getTotalArticles();
+        $data['legal_menu'] = [
+            ['name' => 'Договір оферти', 'href' => $this->url->link('information/information', 'information_id=2')],
+            ['name' => 'Політика конфіденційності', 'href' => $this->url->link('information/information', 'information_id=3')],
+        ];
 
-		if ($article_total) {
-			$data['blog'] = $this->url->link('cms/blog');
-		} else {
-			$data['blog'] = '';
-		}
-
-		$data['informations'] = [];
-
-		$this->load->model('catalog/information');
-
-		$results = $this->model_catalog_information->getInformations();
-
-		foreach ($results as $result) {
-			$data['informations'][] = ['href' => $this->url->link('information/information', 'information_id=' . $result['information_id'], false, true)] + $result;
-		}
-
-		$data['contact'] = $this->url->link('information/contact');
-		$data['return'] = $this->url->link('account/returns.add');
-
-		if ($this->config->get('config_gdpr_id')) {
-			$data['gdpr'] = $this->url->link('information/gdpr');
-		} else {
-			$data['gdpr'] = '';
-		}
-
-		$data['sitemap'] = $this->url->link('information/sitemap');
-		$data['manufacturer'] = $this->url->link('product/manufacturer');
-
-		if ($this->config->get('config_affiliate_status')) {
-			$data['affiliate'] = $this->url->link('account/affiliate', (isset($this->session->data['customer_token']) ? 'customer_token=' . $this->session->data['customer_token'] : ''));
-		} else {
-			$data['affiliate'] = '';
-		}
-
-		$data['special'] = $this->url->link('product/special', (isset($this->session->data['customer_token']) ? 'customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['account'] = $this->url->link('account/account', (isset($this->session->data['customer_token']) ? 'customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['order'] = $this->url->link('account/order', (isset($this->session->data['customer_token']) ? 'customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['wishlist'] = $this->url->link('account/wishlist', (isset($this->session->data['customer_token']) ? 'customer_token=' . $this->session->data['customer_token'] : ''));
-		$data['newsletter'] = $this->url->link('account/newsletter', (isset($this->session->data['customer_token']) ? 'customer_token=' . $this->session->data['customer_token'] : ''));
-
-		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
-
-		// Who's Online
-		if ($this->config->get('config_customer_online')) {
-			$this->load->model('tool/online');
-
-			if (isset($this->request->server['HTTP_HOST']) && isset($this->request->server['REQUEST_URI'])) {
-				$url = ($this->request->server['HTTPS'] ? 'https://' : 'http://') . $this->request->server['HTTP_HOST'] . $this->request->server['REQUEST_URI'];
-			} else {
-				$url = '';
-			}
-
-			if (isset($this->request->server['HTTP_REFERER'])) {
-				$referer = $this->request->server['HTTP_REFERER'];
-			} else {
-				$referer = '';
-			}
-
-			$this->model_tool_online->addOnline(oc_get_ip(), $this->customer->getId(), $url, $referer);
-		}
+        $data['telephone'] = $this->config->get('config_telephone');
+        $data['telephone_clear'] = preg_replace('/(?!^\+)[^0-9]/', '', $data['telephone']);
+        $data['telephone2'] = $this->config->get('config_telephone2');
+        $data['telephone2_clear'] = preg_replace('/(?!^\+)[^0-9]/', '', $data['telephone2']);
+        $data['email_public'] = $this->config->get('config_email_public');
+        $data['address'] = html_entity_decode($this->config->get('config_address'));
+        $data['viber'] = $this->config->get('config_viber');
+        $data['telegram'] = $this->config->get('config_telegram');
+        $data['youtube'] = $this->config->get('config_youtube');
+        $data['owner'] = $this->config->get('config_owner');
+		$data['copyright'] = sprintf($this->language->get('text_copyright'), date('Y', time()), $this->config->get('config_name'));
 
 		$data['bootstrap'] = 'catalog/view/javascript/bootstrap/js/bootstrap.bundle.min.js';
 		$data['scripts'] = $this->document->getScripts('footer');
