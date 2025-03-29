@@ -10,3 +10,5 @@ $_['text_transaction']   = 'Транзакції';
 $_['text_download']      = 'Завантаження';
 $_['text_logout']        = 'Вихід';
 $_['text_checkout']      = 'Оформлення замовлення';
+$_['text_catalog']       = 'Каталог товарів';
+$_['text_back_menu']     = '← Назад в меню';

@@ -64,8 +64,8 @@
     <button class="mobile-panel__close" id="menu-close"></button>
     {% if catalog_menu %}
         <div class="mobile-panel__catalog">
-            <button class="mobile-panel__catalog-open" id="catalog-open">Каталог товарів</button>
-            <button class="mobile-panel__catalog-close" id="catalog-close">← Назад в меню</button>
+            <button class="mobile-panel__catalog-open" id="catalog-open">{{ text_catalog }}</button>
+            <button class="mobile-panel__catalog-close" id="catalog-close">{{ text_back_menu }}</button>
             <nav class="mobile-panel__catalog-nav">
                 {% for category in catalog_menu %}
                     <a href="{{ category.href }}" class="mobile-panel__catalog-link">
@@ -131,7 +131,7 @@
     <div class="header__group">
       {% if catalog_menu %}
         <div class="header__catalog">
-          <button class="header__catalog-toggle">Каталог товарів</button>
+          <button class="header__catalog-toggle">{{ text_catalog }}</button>
           <nav class="header__catalog-nav">
             {% for category in catalog_menu %}
               <a href="{{ category.href }}" class="header__catalog-link">
