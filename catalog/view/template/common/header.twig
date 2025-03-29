@@ -37,6 +37,77 @@
 
 <div id="alert"></div>
 
+{% if is_mobile %}
+
+<header class="header">
+    <div class="header__container container">
+        <a href="{{ home }}" class="header__logo">
+            <svg width="147" height="32" viewBox="0 0 147 32" fill="#151515" xmlns="http://www.w3.org/2000/svg"><path d="M13.845 15.541c.993.29 1.868.886 2.5 1.705.623.836.943 1.859.907 2.9 0 1.632-.639 2.891-1.916 3.779-1.278.887-3.123 1.319-5.537 1.294H.166V6.6h9.102c2.27 0 4.009.435 5.215 1.306a4.12 4.12 0 0 1 1.837 3.538 4.532 4.532 0 0 1-2.475 4.1v-.002ZM4.447 9.847v4.391h4.286c1.064 0 1.873-.186 2.42-.559a1.866 1.866 0 0 0 .827-1.65 1.798 1.798 0 0 0-.826-1.623c-.548-.374-1.357-.56-2.421-.56H4.447Zm5.03 12.136c1.138 0 1.99-.187 2.555-.56.566-.372.858-.947.878-1.726 0-1.542-1.144-2.314-3.433-2.315h-5.03v4.605l5.03-.004Zm20.058 3.567a10.955 10.955 0 0 1-5.242-1.252 9.424 9.424 0 0 1-3.647-3.433 9.547 9.547 0 0 1-1.31-4.95A9.266 9.266 0 0 1 24.3 7.53 10.956 10.956 0 0 1 29.54 6.28 10.813 10.813 0 0 1 34.76 7.53a9.37 9.37 0 0 1 3.645 3.453 9.256 9.256 0 0 1 1.327 4.93 9.28 9.28 0 0 1-4.976 8.384 10.814 10.814 0 0 1-5.218 1.252h-.002Zm0-3.669a5.982 5.982 0 0 0 2.982-.747 5.435 5.435 0 0 0 2.076-2.127 6.576 6.576 0 0 0 0-6.176 5.26 5.26 0 0 0-2.076-2.102 6.14 6.14 0 0 0-5.962 0 5.437 5.437 0 0 0-2.102 2.102 6.759 6.759 0 0 0 0 6.176 5.62 5.62 0 0 0 2.102 2.127c.912.504 1.94.76 2.982.743l-.002.004ZM84.289 21.238h-8.647l-1.65 3.992h-4.418L77.878 6.6h4.253l8.332 18.63H85.93l-1.642-3.992Zm-1.358-3.273-2.958-7.134-2.948 7.134h5.906Zm15.6 7.585a15.69 15.69 0 0 1-4.284-.587 10.204 10.204 0 0 1-3.301-1.57l1.465-3.236a9.969 9.969 0 0 0 2.846 1.411c1.066.349 2.18.528 3.302.531 1.223 0 2.128-.177 2.714-.53.587-.355.88-.843.879-1.466a1.337 1.337 0 0 0-.533-1.09 3.634 3.634 0 0 0-1.332-.718c-.53-.18-1.26-.373-2.181-.587a30.45 30.45 0 0 1-3.487-1.01 5.77 5.77 0 0 1-2.346-1.636c-.639-.745-.958-1.738-.958-2.98a5.13 5.13 0 0 1 .878-2.928 5.865 5.865 0 0 1 2.635-2.102c1.19-.513 2.635-.77 4.337-.772 1.176 0 2.347.144 3.487.431 1.05.247 2.053.659 2.974 1.22l-1.329 3.273c-1.727-.975-3.448-1.463-5.164-1.463-1.206 0-2.102.195-2.689.585a1.792 1.792 0 0 0-.85 1.543c0 .638.328 1.117.984 1.437.989.398 2.013.701 3.06.906a30.35 30.35 0 0 1 3.487 1.01c.893.33 1.689.88 2.315 1.597.656.728.984 1.712.984 2.954a5.096 5.096 0 0 1-.904 2.928c-.585.863-1.472 1.555-2.661 2.076-1.188.52-2.631.778-4.328.773Zm23.119-4.316h-8.661l-1.651 3.992h-4.415l8.303-18.631h4.258l8.329 18.63h-4.531l-1.632-3.991Zm-1.368-3.27-2.954-7.133-2.954 7.134h5.908ZM146.824 6.6V25.23h-3.539l-9.279-11.311V25.23h-4.259V6.6h3.567l9.261 11.31V6.6h4.249ZM55.178-.054a10.66 10.66 0 0 0-10.647 10.645v10.647a10.647 10.647 0 0 0 21.292 0V10.591A10.658 10.658 0 0 0 55.178-.054Zm7.318 21.292a7.32 7.32 0 0 1-14.637 0V10.591a7.337 7.337 0 0 1 5.722-7.138v6.806a1.664 1.664 0 1 0 3.326 0V3.487a7.337 7.337 0 0 1 5.589 7.104v10.647Z"/></svg>
+        </a>
+        <div class="header__search">
+            <button class="header__search-toggle" id="search-open"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.532 20.47-4.694-4.694a8.26 8.26 0 1 0-1.06 1.06l4.693 4.695a.75.75 0 1 0 1.06-1.062ZM3.752 10.5a6.75 6.75 0 1 1 6.75 6.75 6.758 6.758 0 0 1-6.75-6.75Z" fill="#151515"/></svg></button>
+            <div class="header__search-form" id="search-form">{{ search }}</div>
+        </div>
+        {# TODO: зробити "обране" для неавторизованих користувачів та додати оновлення лічильника #}
+        <a href="{{ wishlist }}" class="header__favorite">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m12 6.01-.553.529a.768.768 0 0 0 .853.172.768.768 0 0 0 .253-.172L12 6.01ZM9.366 19.029c-1.551-1.214-3.247-2.398-4.592-3.9-1.318-1.475-2.24-3.194-2.24-5.425H1c0 2.707 1.136 4.771 2.627 6.435 1.463 1.635 3.33 2.944 4.789 4.085l.95-1.195ZM2.535 9.703c0-2.183 1.243-4.014 2.94-4.784 1.65-.749 3.867-.55 5.972 1.62l1.106-1.055c-2.497-2.576-5.4-3-7.716-1.95C2.572 4.562 1 6.95 1 9.704h1.535Zm5.88 10.52c.525.41 1.088.847 1.658 1.178.57.331 1.221.599 1.927.599v-1.523c-.317 0-.69-.122-1.152-.39-.464-.269-.944-.638-1.482-1.06l-.95 1.196Zm7.17 0c1.459-1.142 3.325-2.45 4.788-4.085C21.864 14.473 23 12.41 23 9.703h-1.535c0 2.231-.92 3.95-2.239 5.424-1.345 1.503-3.04 2.687-4.592 3.9l.95 1.196ZM23 9.703c0-2.753-1.57-5.14-3.837-6.17-2.317-1.05-5.217-.625-7.716 1.95l1.106 1.056c2.105-2.17 4.322-2.369 5.971-1.62 1.698.77 2.941 2.6 2.941 4.784H23Zm-8.366 9.325c-.538.42-1.018.79-1.482 1.058-.463.268-.835.391-1.152.391V22c.706 0 1.357-.269 1.927-.599.57-.33 1.133-.767 1.658-1.178l-.951-1.195Z" fill="#151515"/></svg>
+            <span class="header__favorite-count">0</span>
+        </a>
+        <div id="cart" class="header__cart">
+            {{ cart }}
+        </div>
+        <button class="header__menu" id="menu-open"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h12M4 12h16M4 19h8" stroke="#151515" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+</header>
+
+<div class="mobile-panel" id="menu-panel">
+    <button class="mobile-panel__close" id="menu-close"></button>
+    {% if catalog_menu %}
+        <div class="mobile-panel__catalog">
+            <button class="mobile-panel__catalog-open" id="catalog-open">Каталог товарів</button>
+            <button class="mobile-panel__catalog-close" id="catalog-close">← Назад в меню</button>
+            <nav class="mobile-panel__catalog-nav">
+                {% for category in catalog_menu %}
+                    <a href="{{ category.href }}" class="mobile-panel__catalog-link">
+                        <img src="image/{{ category.image }}" width="16" height="16" class="mobile-panel__catalog-icon" alt="">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </nav>
+        </div>
+    {% endif %}
+    <div class="mobile-panel__main">
+        {% if header_menu %}
+            <nav class="mobile-panel__nav">
+                {% for item in header_menu %}
+                    <a href="{{ item.href }}" class="mobile-panel__nav-link">{{ item.name }}</a>
+                {% endfor %}
+            </nav>
+        {% endif %}
+        <div class="mobile-panel__phones">
+            {% if telephone %}
+                <a href="tel:{{ telephone_clear }}" class="mobile-panel__phone">{{ telephone }}</a>
+            {% endif %}
+            {% if telephone2 %}
+                <a href="tel:{{ telephone2_clear }}" class="mobile-panel__phone">{{ telephone2 }}</a>
+            {% endif %}
+        </div>
+        {% if working_hours %}
+            <div class="mobile-panel__working-hours">{{ working_hours }}</div>
+        {% endif %}
+        <div class="mobile-panel__messengers">
+            {% if viber %}
+                <a href="{{ viber }}" class="mobile-panel__messenger mobile-panel__messenger_viber"></a>
+            {% endif %}
+            {% if telegram %}
+                <a href="{{ telegram }}" class="mobile-panel__messenger mobile-panel__messenger_telegram"></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% else %}
+
 <div class="bar">
   <div class="bar__container container">
     {% if header_menu %}
@@ -102,6 +173,8 @@
     </div>
   </div>
 </header>
+
+{% endif %}
 
 <div id="container">
   {#<nav id="top">
