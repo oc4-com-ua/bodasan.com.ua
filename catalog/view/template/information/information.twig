@@ -10,10 +10,9 @@
             {% endif %}
         {% endfor %}
     </div>
-  <div class="row">{{ column_left }}
-    <div id="content" class="col">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
-      {{ description }}{{ content_bottom }}</div>
-    {{ column_right }}</div>
+    <article class="text">
+        <h1 class="heading text__heading">{{ heading_title }}</h1>
+        {{ description }}
+    </article>
 </div>
 {{ footer }}
