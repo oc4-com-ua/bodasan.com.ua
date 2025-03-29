@@ -1,10 +1,15 @@
 {{ header }}
 <div id="product-info" class="container">
-  <ul class="breadcrumb">
+  <div class="breadcrumbs">
     {% for breadcrumb in breadcrumbs %}
-      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% if not loop.last %}
+            <a href="{{ breadcrumb.href }}" class="breadcrumbs__link">{{ breadcrumb.text }}</a>
+            <svg class="breadcrumbs__separator"><use xlink:href="#icon-angle-right"></use></svg>
+        {% else %}
+            <span class="breadcrumbs__current">{{ breadcrumb.text }}</span>
+        {% endif %}
     {% endfor %}
-  </ul>
+  </div>
   <div class="row">{{ column_left }}
     <div id="content" class="col">
       {{ content_top }}

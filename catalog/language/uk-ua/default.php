@@ -10,7 +10,7 @@ $_['decimal_point']         = '.';
 $_['thousand_point']        = ',';
 
 // Text
-$_['text_home']             = 'Головна';
+$_['text_home']             = '<svg><use xlink:href="#icon-home"></use></svg>';
 $_['text_yes']              = 'Так';
 $_['text_no']               = 'Ні';
 $_['text_none']             = ' — Немає — ';
