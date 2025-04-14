@@ -1,44 +1,38 @@
 <div class="product-thumb">
-  <div class="image"><a href="{{ href }}"><img src="{{ thumb }}" alt="{{ name }}" title="{{ name }}" class="img-fluid"/></a></div>
-  <div class="content">
-    <div class="description">
-      <h4><a href="{{ href }}">{{ name }}</a></h4>
-      <p>{{ description }}</p>
-      <div class="{% if quantity > 0 %}text-success{% else %}text-danger{% endif %}">{{ stock }}</div>
-      {% if price %}
-        <div class="price">
-          {% if not special %}
-            <span class="price-new">{{ price }}</span>
-          {% else %}
-            <span class="price-new">{{ special }}</span> <span class="price-old">{{ price }}</span>
-          {% endif %}
-          {% if tax %}
-            <span class="price-tax">{{ text_tax }} {{ tax }}</span>
-          {% endif %}
-        </div>
+  <div class="product-thumb__img">
+      <a href="{{ href }}" class="product-thumb__img-link{% if videos %} product-thumb__img-link_video{% endif %}">
+          <img src="{{ thumb }}" alt="{{ name }}" title="{{ name }}">
+      </a>
+      {% if plates %}
+          <div class="product-thumb__plates">
+              {% for plate in plates %}
+                  <div class="product-thumb__plate">{{ plate.name }}</div>
+              {% endfor %}
+          </div>
       {% endif %}
-      {% if review_status and rating %}
-        <div class="rating">
-          {% for i in 1..5 %}
-            {% if rating < i %}
-              <span class="fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
-            {% else %}
-              <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endif %}
+  </div>
+  <div class="product-thumb__inner">
+    <div class="product-thumb__title">
+        <a href="{{ href }}" class="product-thumb__title-link">{{ name }}</a>
     </div>
+    <div class="product-thumb__stock product-thumb__stock_{% if quantity > 0 %}yes{% else %}no{% endif %}">{{ stock }}</div>
+      {% if price %}
+          <div class="product-thumb__price">
+            {% if old_price %}
+                <div class="product-thumb__price-old">{{ old_price }}</div>
+            {% endif %}
+            <div class="product-thumb__price-current">{{ price }}</div>
+          </div>
+      {% endif %}
     <form method="post" data-oc-toggle="ajax" data-oc-load="{{ cart }}" data-oc-target="#cart">
-      <div class="button">
-          {% if quantity > 0 %}
-            <button type="submit" formaction="{{ cart_add }}" data-bs-toggle="tooltip" title="{{ button_cart }}"><i class="fa-solid fa-shopping-cart"></i></button>
-          {% else %}
-            <button data-bs-toggle="tooltip" title="{{ text_expected }}" disabled><i class="fa-solid fa-cancel"></i></button>
-          {% endif %}
-        <button type="submit" formaction="{{ wishlist_add }}" data-bs-toggle="tooltip" title="{{ button_wishlist }}" ><i class="fa-solid fa-heart"></i></button>
-      </div>
-      <input type="hidden" name="product_id" value="{{ product_id }}"/> <input type="hidden" name="quantity" value="{{ minimum }}"/>
+      {% if quantity > 0 %}
+        <button type="submit" formaction="{{ cart_add }}" title="{{ button_cart }}" class="product-thumb__add">{{ button_cart }}</button>
+      {% else %}
+        <button title="{{ text_expected }}" class="product-thumb__expected" disabled>{{ text_expected }}</i></button>
+      {% endif %}
+      <button type="submit" formaction="{{ wishlist_add }}" title="{{ button_wishlist }}" class="product-thumb__favorite"></button>
+      <input type="hidden" name="product_id" value="{{ product_id }}"/>
+      <input type="hidden" name="quantity" value="{{ minimum }}"/>
     </form>
   </div>
 </div>

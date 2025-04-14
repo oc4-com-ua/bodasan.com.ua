@@ -823,4 +823,61 @@ class Product extends \Opencart\System\Engine\Model {
 	public function addReport(int $product_id, string $ip, string $country = ''): void {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "product_report` SET `product_id` = '" . (int)$product_id . "', `store_id` = '" . (int)$this->config->get('config_store_id') . "', `ip` = '" . $this->db->escape($ip) . "', `country` = '" . $this->db->escape($country) . "', `date_added` = NOW()");
 	}
+
+    /**
+     * Get Filter IDs assigned to a product
+     *
+     * @param int $product_id ID of the product
+     *
+     * @return array<int> array of filter IDs assigned to the product
+     *
+     * @example
+     *
+     * $this->load->model('catalog/product');
+     *
+     * $filter_ids = $this->model_catalog_product->getProductFilters(123);
+     */
+    public function getProductFilters($product_id): array {
+        $filter_data = array();
+
+        $query = $this->db->query("SELECT filter_id FROM " . DB_PREFIX . "product_filter WHERE product_id = '" . (int)$product_id . "'");
+
+        foreach ($query->rows as $result) {
+            $filter_data[] = $result['filter_id'];
+        }
+
+        return $filter_data;
+    }
+
+    /**
+     * Get Filter info (ID and name) by array of filter IDs
+     *
+     * @param array<int> $filter_ids array of filter IDs
+     *
+     * @return array<int, array{filter_id: int, name: string}> array of filter info (filter_id and name)
+     *
+     * @example
+     *
+     * $this->load->model('catalog/product');
+     *
+     * $filters = $this->model_catalog_product->getFiltersByIds([1, 2, 3]);
+     */
+    public function getFiltersByIds($filter_ids = []): array {
+        $filter_data = [];
+
+        if (!empty($filter_ids)) {
+            $query = $this->db->query("SELECT f.filter_id, fd.name FROM " . DB_PREFIX . "filter f LEFT JOIN " . DB_PREFIX . "filter_description fd ON (f.filter_id = fd.filter_id) WHERE f.filter_id IN (" . implode(',', array_map('intval', $filter_ids)) . ") AND fd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+            foreach ($query->rows as $row) {
+                $filter_data[] = [
+                    'filter_id' => $row['filter_id'],
+                    'name'      => $row['name']
+                ];
+            }
+        }
+
+        return $filter_data;
+    }
+
+
 }

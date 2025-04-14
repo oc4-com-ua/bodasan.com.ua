@@ -245,6 +245,12 @@ class Category extends \Opencart\System\Engine\Controller {
 					$price = false;
 				}
 
+                if ($result['old_price']) {
+					$old_price = $this->currency->format($result['old_price'], $this->session->data['currency']);
+				} else {
+                    $old_price = false;
+				}
+
 				if ((float)$result['special']) {
 					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
@@ -257,14 +263,20 @@ class Category extends \Opencart\System\Engine\Controller {
 					$tax = false;
 				}
 
+                $filter_ids = $this->model_catalog_product->getProductFilters($result['product_id']);
+                $product_filters = $this->model_catalog_product->getFiltersByIds($filter_ids);
+
 				$product_data = [
 					'description' => $description,
 					'thumb'       => $this->model_tool_image->resize($image, $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height')),
 					'price'       => $price,
+					'old_price'   => $old_price,
 					'special'     => $special,
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
-					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
+					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+					'videos'      => (bool)$this->model_catalog_product->getVideos($result['product_id']),
+					'plates'      => $product_filters,
 				] + $result;
 
 				$data['products'][] = $this->load->controller('product/thumb', $product_data);

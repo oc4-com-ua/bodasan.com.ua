@@ -4,6 +4,10 @@
     line-height: 1.41666667;
     color: #151515;
     margin: 0;
+
+    @media (max-width: 991px) {
+        font-size: 20px;
+    }
 }
 
 .text {
