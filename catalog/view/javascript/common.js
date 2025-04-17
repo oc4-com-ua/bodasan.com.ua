@@ -463,3 +463,36 @@ $(document).ready(function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const quantityWrappers = document.querySelectorAll('.quantity');
+
+    quantityWrappers.forEach(wrapper => {
+        const input = wrapper.querySelector('.quantity__input');
+        const btnMinus = wrapper.querySelector('.quantity__btn_minus');
+        const btnPlus = wrapper.querySelector('.quantity__btn_plus');
+
+        btnMinus.addEventListener('click', function () {
+            let value = parseInt(input.value, 10) || 1;
+            value = Math.max(1, value - 1);
+            input.value = value;
+            input.dispatchEvent(new Event('change'));
+        });
+
+        btnPlus.addEventListener('click', function () {
+            let value = parseInt(input.value, 10) || 1;
+            input.value = value + 1;
+            input.dispatchEvent(new Event('change'));
+        });
+
+        input.addEventListener('input', function () {
+            input.value = input.value.replace(/\D/g, '');
+        });
+
+        input.addEventListener('blur', function () {
+            if (input.value === '' || parseInt(input.value, 10) < 1) {
+                input.value = '1';
+            }
+        });
+    });
+});

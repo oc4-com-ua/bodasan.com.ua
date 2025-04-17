@@ -22,3 +22,82 @@
         padding-right: 10px;
     }
 }
+
+.quantity {
+    position: relative;
+
+    &__input {
+        display: block;
+        background: #ededed;
+        border: none;
+        border-radius: 12px;
+        padding: 16px;
+        width: 128px;
+        height: 56px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+        color: #151515;
+
+        .mobile-device & {
+            width: 112px;
+            height: 48px;
+        }
+    }
+
+    &__btn {
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -12px;
+        padding: 0;
+        border: none;
+        border-radius: 100px;
+        width: 24px;
+        height: 24px;
+        background-color: #d3d3d3;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 12px 12px;
+
+        &_minus {
+            background-image: url(../images/quantity-minus.svg);
+            left: 16px;
+        }
+
+        &_plus {
+            background-image: url(../images/quantity-plus.svg);
+            right: 16px;
+        }
+    }
+}
+
+.invalid-feedback {
+    display: none;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    color: #ea4335;
+    margin-top: 4px;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.no-results {
+    border-radius: 12px;
+    padding: 24px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #151515;
+    background: #ededed;
+
+    @media (max-width: 575px) {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 16px;
+    }
+}

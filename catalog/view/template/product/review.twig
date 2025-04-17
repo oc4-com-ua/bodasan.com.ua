@@ -1,42 +1,48 @@
-<form id="form-review">
-  <div id="review">{{ list }}</div>
-  <h2>{{ text_write }}</h2>
+{{ list }}
+<form id="form-review" class="form-review">
+  <div class="form-review__heading">{{ text_write }}</div>
   {% if review_guest %}
-    <div class="mb-3 required">
-      <label for="input-author" class="form-label">{{ entry_author }}</label> <input type="text" name="author" value="{{ customer }}" id="input-author" class="form-control"/>
+    <div class="form-review__group required">
+      <label for="input-author" class="form-review__label">{{ entry_author }}</label>
+      <input type="text" name="author" value="{{ customer }}" id="input-author" class="form-review__control" placeholder="{{ entry_author }}">
       <div id="error-author" class="invalid-feedback"></div>
     </div>
-    <div class="mb-3 required">
-      <label for="input-text" class="form-label">{{ entry_review }}</label> <textarea name="text" rows="5" id="input-text" class="form-control"></textarea>
+    <div class="form-review__group required">
+      <label for="input-text" class="form-review__label">{{ entry_review }}</label>
+      <textarea name="text" rows="7" id="input-text" class="form-review__control" placeholder="{{ entry_review }}"></textarea>
       <div id="error-text" class="invalid-feedback"></div>
-      <div class="invalid-feedback">{{ text_note }}</div>
     </div>
-    <div class="mb-3">
-      <label for="input-advantages" class="form-label">{{ entry_advantages }}</label> <input type="text" name="advantages" value="" id="input-advantages" class="form-control"/>
+    <div class="form-review__row">
+      <div class="form-review__group">
+        <label for="input-advantages" class="form-review__label">{{ entry_advantages }}</label>
+        <input type="text" name="advantages" value="" id="input-advantages" class="form-review__control" placeholder="{{ entry_advantages }}">
+      </div>
+      <div class="form-review__group">
+        <label for="input-disadvantages" class="form-review__label">{{ entry_disadvantages }}</label>
+        <input type="text" name="disadvantages" value="" id="input-disadvantages" class="form-review__control" placeholder="{{ entry_disadvantages }}">
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="input-disadvantages" class="form-label">{{ entry_disadvantages }}</label> <input type="text" name="disadvantages" value="" id="input-disadvantages" class="form-control"/>
-    </div>
-    <div class="row mb-3 required">
-      <label class="form-label">{{ entry_rating }}</label>
-      <div id="input-rating">
-        {{ entry_bad }}&nbsp;
-        <input type="radio" name="rating" value="1" class="form-check-input"/>
-        &nbsp;
-        <input type="radio" name="rating" value="2" class="form-check-input"/>
-        &nbsp;
-        <input type="radio" name="rating" value="3" class="form-check-input"/>
-        &nbsp;
-        <input type="radio" name="rating" value="4" class="form-check-input"/>
-        &nbsp;
-        <input type="radio" name="rating" value="5" class="form-check-input"/>
-        &nbsp;{{ entry_good }}
+    <div class="form-review__rating required">
+      <div class="form-review__rating-main" id="input-rating">
+        <div class="form-review__rating-label">{{ entry_rating }}</div>
+        <div class="form-review__rating-vote">
+          <input type="radio" name="rating" value="5" class="form-review__rating-control" id="rating-vote-5">
+          <label for="rating-vote-5" class="form-review__rating-star" title="5"></label>
+          <input type="radio" name="rating" value="4" class="form-review__rating-control" id="rating-vote-4">
+          <label for="rating-vote-4" class="form-review__rating-star" title="4"></label>
+          <input type="radio" name="rating" value="3" class="form-review__rating-control" id="rating-vote-3">
+          <label for="rating-vote-3" class="form-review__rating-star" title="3"></label>
+          <input type="radio" name="rating" value="2" class="form-review__rating-control" id="rating-vote-2">
+          <label for="rating-vote-2" class="form-review__rating-star" title="2"></label>
+          <input type="radio" name="rating" value="1" class="form-review__rating-control" id="rating-vote-1">
+          <label for="rating-vote-1" class="form-review__rating-star" title="1"></label>
+        </div>
       </div>
       <div id="error-rating" class="invalid-feedback"></div>
     </div>
     {{ captcha }}
-    <div class="text-end">
-      <button type="submit" id="button-review" class="btn btn-primary">{{ button_continue }}</button>
+    <div class="form-review__submit">
+      <button type="submit" id="button-review" class="form-review__btn">{{ button_review }}</button>
     </div>
   {% else %}
     {{ text_login }}

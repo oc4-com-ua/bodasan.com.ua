@@ -33,7 +33,7 @@
     {{ analytic }}
   {% endfor %}
 </head>
-<body>
+<body class="{% if is_mobile %}mobile-device{% else %}desktop-device{% endif %}">
 
 <div id="alert"></div>
 

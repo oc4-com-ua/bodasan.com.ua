@@ -16,8 +16,17 @@
     line-height: 18px;
     color: #646464;
 
+    @media (max-width: 575px) {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
     &__heading {
         margin-bottom: 24px;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
     }
 
     h1,
@@ -53,5 +62,10 @@
 
     h6 {
         font-size: 12px;
+    }
+
+    b,
+    strong {
+        font-weight: 600;
     }
 }

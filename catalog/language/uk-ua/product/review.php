@@ -1,7 +1,7 @@
 <?php
 // Text
 $_['text_reviews']    = '%s відгуків';
-$_['text_write']      = 'Напишіть відгук';
+$_['text_write']      = 'Поділіться з нами враженнями про цей товар';
 $_['text_login']      = 'Будь ласка, <a href="%s">увійдіть</a> або <a href="%s">зареєструйтесь</a>, щоб написати відгук';
 $_['text_no_results'] = 'Будьте першими, хто напише відгук про цей продукт.';
 $_['text_note']       = '<span class="text-danger">Примітка:</span> HTML не перекладається!';
@@ -15,9 +15,11 @@ $_['entry_author']     = 'Ваше ім\'я';
 $_['entry_review']     = 'Ваш відгук';
 $_['entry_advantages'] = 'Переваги';
 $_['entry_disadvantages'] = 'Недоліки';
-$_['entry_rating']     = 'Оцінка';
+$_['entry_rating']     = 'Ваша оцінка';
 $_['entry_good']       = 'Добре';
 $_['entry_bad']        = 'Погано';
+
+$_['button_review'] = 'Надіслати відгук';
 
 // Tabs
 $_['tab_review']       = 'Відгуки (%s)';
