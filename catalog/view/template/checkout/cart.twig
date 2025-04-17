@@ -10,18 +10,52 @@
             {% endif %}
         {% endfor %}
     </div>
-  <div class="row">
-    {{ column_left }}
-    <div id="content" class="col">
-      {{ content_top }}
-      <div id="shopping-cart">{{ list }}</div>
-      {{ content_bottom }}
-    </div>
-    {{ column_right }}
-  </div>
+  <div id="shopping-cart" class="shopping-cart">{{ list }}</div>
 </div>
 <script type="text/javascript">
-$('#shopping-cart').on('submit', '#cart form', function(e) {
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.querySelector('#shopping-cart');
+
+        if (!container) return;
+
+        container.addEventListener('input', function (e) {
+            const input = e.target.closest('input[name="quantity"]');
+            if (!input) return;
+
+            const form = input.closest('.shopping-cart__quantity');
+            if (!form) return;
+
+            const url = form.dataset.url;
+            const key = form.dataset.key;
+            const quantity = parseInt(input.value, 10) || 1;
+
+            const formData = new URLSearchParams();
+            formData.append('key', key);
+            formData.append('quantity', quantity);
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData.toString()
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        fetch('index.php?route=checkout/cart.list')
+                            .then(res => res.text())
+                            .then(html => {
+                                document.querySelector('#shopping-cart').innerHTML = html;
+                            });
+                    } else if (data.redirect) {
+                        location.href = data.redirect;
+                    }
+                });
+        });
+    });
+
+{#$('#shopping-cart').on('submit', '#cart form', function(e) {
     e.preventDefault();
 
     var element = this;
@@ -57,8 +91,8 @@ $('#shopping-cart').on('submit', '#cart form', function(e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#shopping-cart').load('index.php?route=checkout/cart.list&language={{ language }}', {}, function() {
-                    $('#cart').load('index.php?route=common/cart.info&language={{ language }}');
+                $('#shopping-cart').load('index.php?route=checkout/cart.list', {}, function() {
+                    $('#cart').load('index.php?route=common/cart.info');
                 });
             }
         },
@@ -66,9 +100,9 @@ $('#shopping-cart').on('submit', '#cart form', function(e) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
-});
+}); #}
 
-$('#shopping-cart').on('click', '.btn-danger', function(e) {
+$('#shopping-cart').on('click', '.shopping-cart__remove', function(e) {
     e.preventDefault();
 
     var element = this;
@@ -96,7 +130,7 @@ $('#shopping-cart').on('click', '.btn-danger', function(e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#shopping-cart').load('index.php?route=checkout/cart.list&language={{ language }}');
+                $('#shopping-cart').load('index.php?route=checkout/cart.list');
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -105,14 +139,16 @@ $('#shopping-cart').on('click', '.btn-danger', function(e) {
     });
 });
 
+{#
 $('#shopping-cart').observe(function(e) {
-    $('#cart').load('index.php?route=common/cart.info&language={{ language }}');
+    $('#cart').load('index.php?route=common/cart.info');
 });
 
 $('#cart').on('submit', 'form', function(e) {
     window.setTimeout(function() {
-        $('#shopping-cart').load('index.php?route=checkout/cart.list&language={{ language }}');
+        $('#shopping-cart').load('index.php?route=checkout/cart.list');
     }, 3000);
 });
+#}
 </script>
 {{ footer }}

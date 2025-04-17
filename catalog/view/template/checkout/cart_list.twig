@@ -11,74 +11,52 @@
   {% if attention %}
     <div class="alert alert-info"><i class="fa-solid fa-circle-info"></i> {{ attention }} <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
   {% endif %}
-  <h1>{{ heading_title }}{% if weight %} ({{ weight }}){% endif %}</h1>
-  <div id="output-cart" class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th class="text-center">{{ column_image }}</th>
-          <th>{{ column_name }}</th>
-          <th>{{ column_quantity }}</th>
-          <th class="text-end">{{ column_price }}</th>
-          <th class="text-end">{{ column_total }}</th>
-        </tr>
-      </thead>
-      <tbody>
+  <h1 class="shopping-cart__heading heading">{{ heading_title }}{% if weight %} ({{ weight }}){% endif %}</h1>
+  <div id="output-cart" class="shopping-cart__row">
+    <div class="shopping-cart__main">
+      <div class="shopping-cart__message">{{ text_total_products }}</div>
+      <div class="shopping-cart__list" id="cart-list">
         {% for product in products %}
-          <tr>
-            <td class="text-center">{% if product.thumb %}<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-thumbnail"/></a>{% endif %}</td>
-            <td class="text-start text-wrap"><a href="{{ product.href }}">{{ product.name }}</a>{% if not product.stock %} <span class="text-danger">***</span>{% endif %}
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <small> - {{ text_model }}: {{ product.model }}</small>
-                </li>
-                {% for option in product.option %}
-                  <li>
-                    <small> - {{ option.name }}: {{ option.value }}</small>
-                  </li>
-                {% endfor %}
-                {% if product.subscription %}
-                  <li>
-                    <small> - {{ text_subscription }}: {{ product.subscription }}</small>
-                  </li>
-                {% endif %}
-              </ul>
-            </td>
-            <td>
-              <form method="post" data-oc-target="#shopping-cart">
-                <div class="input-group">
-                  <input type="text" name="quantity" value="{{ product.quantity }}" size="1" class="form-control{% if product.minimum %} is-invalid{% endif %}"/>
-                  <input type="hidden" name="key" value="{{ product.cart_id }}"/>
-                  <button type="submit" formaction="{{ edit }}" data-bs-toggle="tooltip" title="{{ button_update }}" class="btn btn-primary"><i class="fa-solid fa-rotate"></i></button>
-                  <a href="{{ product.remove }}" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i></a>
-                </div>
-              </form>
-              {% if product.minimum %}
-                <small class="invalid-feedback d-block">{{ product.minimum }}</small>
+          <div class="shopping-cart__item">
+            <div class="shopping-cart__img">
+              {% if product.thumb %}
+                <a href="{{ product.href }}" class="shopping-cart__img-link">
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}">
+                </a>
               {% endif %}
-            </td>
-            <td class="text-end">{{ product.price }}</td>
-            <td class="text-end">{{ product.total }}</td>
-          </tr>
+            </div>
+            <div class="shopping-cart__inner">
+              <div class="shopping-cart__title">
+                <a href="{{ product.href }}" class="shopping-cart__title-link">{{ product.name }}</a>{% if not product.stock %} <span class="text-danger">***</span>{% endif %}
+              </div>
+              <div class="shopping-cart__group">
+                <div class="shopping-cart__price">
+                  <div class="shopping-cart__price-current">{{ product.total }}</div>
+                  {% if product.old_price_total %}
+                    <div class="shopping-cart__price-old">{{ product.old_price_total }}</div>
+                  {% endif %}
+                </div>
+                <form class="shopping-cart__quantity quantity" data-key="{{ product.cart_id }}" data-url="{{ edit }}">
+                  <button type="button" class="quantity__btn quantity__btn_minus"></button>
+                  <input type="text" name="quantity" value="{{ product.quantity }}" inputmode="numeric" size="2" class="quantity__input{% if product.minimum %} is-invalid{% endif %}">
+                  <button type="button" class="quantity__btn quantity__btn_plus"></button>
+                </form>
+              </div>
+            </div>
+            <a href="{{ product.remove }}" title="{{ button_remove }}" class="shopping-cart__remove"></a>
+          </div>
         {% endfor %}
-      </tbody>
-      <tfoot id="checkout-total">
-        {% for total in totals %}
-          <tr>
-            <td colspan="4" class="text-end"><strong>{{ total.title }}</strong></td>
-            <td class="text-end">{{ total.text }}</td>
-          </tr>
-        {% endfor %}
-      </tfoot>
-    </table>
-  </div>
-
-  <div class="row">
-    <div class="col"><a href="{{ continue }}" class="btn btn-light">{{ button_shopping }}</a></div>
-    <div class="col text-end"><a href="{{ checkout }}" class="btn btn-primary">{{ button_checkout }}</a></div>
+      </div>
+    </div>
+    <div class="shopping-cart__aside">
+      <div class="shopping-cart__aside-total">
+        <div class="shopping-cart__aside-label">Загальна вартість:</div>
+        <div class="shopping-cart__aside-value">{{ total_products_price }}</div>
+      </div>
+      <a href="{{ checkout }}" class="shopping-cart__aside-checkout">{{ button_checkout }}</a>
+    </div>
   </div>
 {% else %}
-  <h1>{{ heading_title }}</h1>
-  <p>{{ text_no_results }}</p>
-  <div class="text-end"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+  <h1 class="shopping-cart__heading heading">{{ heading_title }}</h1>
+  <div class="no-results">{{ text_no_results }}</div>
 {% endif %}

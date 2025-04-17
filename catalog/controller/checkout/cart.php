@@ -147,6 +147,12 @@ class Cart extends \Opencart\System\Engine\Controller {
 				}
 			}
 
+            $old_price_total = 0;
+
+            if (isset($product['old_price'])) {
+                $old_price_total = $product['old_price'] * $product['quantity'];
+            }
+
 			$data['products'][] = [
 				'thumb'        => $this->model_tool_image->resize($product['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')),
 				'subscription' => $subscription,
@@ -154,7 +160,8 @@ class Cart extends \Opencart\System\Engine\Controller {
 				'minimum'      => !$product['minimum_status'] ? sprintf($this->language->get('error_minimum'), $product['minimum']) : 0,
 				'price'        => $price_status ? $product['price_text'] : '',
 				'total'        => $price_status ? $product['total_text'] : '',
-				'href'         => $this->url->link('product/product', 'product_id=' . $product['product_id']),
+                'old_price_total' => $price_status && $old_price_total ? $this->currency->format($old_price_total, $this->session->data['currency']) : '',
+                    'href'         => $this->url->link('product/product', 'product_id=' . $product['product_id']),
 				'remove'       => $this->url->link('checkout/cart.remove', 'key=' . $product['cart_id'])
 			] + $product;
 		}
@@ -195,7 +202,24 @@ class Cart extends \Opencart\System\Engine\Controller {
 			$data['continue'] = $this->url->link('common/home');
 		}
 
-		return $this->load->view('checkout/cart_list', $data);
+        $total_quantity = 0;
+
+        foreach ($products as $product) {
+            $total_quantity += $product['quantity'];
+        }
+
+        $data['total_quantity'] = $total_quantity;
+        $data['text_total_products'] = sprintf($this->language->get('text_total_products'), $total_quantity, $this->getProductWord($total_quantity));
+
+        $total_products_price = 0;
+
+        foreach ($products as $product) {
+            $total_products_price += $product['total'];
+        }
+
+        $data['total_products_price'] = $this->currency->format($total_products_price, $this->session->data['currency']);
+
+        return $this->load->view('checkout/cart_list', $data);
 	}
 
 	/**
@@ -368,4 +392,18 @@ class Cart extends \Opencart\System\Engine\Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+    protected function getProductWord(int $count): string {
+        $mod10 = $count % 10;
+        $mod100 = $count % 100;
+
+        if ($mod10 == 1 && $mod100 != 11) {
+            return 'товар';
+        } elseif ($mod10 >= 2 && $mod10 <= 4 && ($mod100 < 10 || $mod100 >= 20)) {
+            return 'товари';
+        } else {
+            return 'товарів';
+        }
+    }
+
 }

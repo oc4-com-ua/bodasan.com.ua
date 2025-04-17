@@ -465,34 +465,41 @@ $(document).ready(function() {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const quantityWrappers = document.querySelectorAll('.quantity');
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('.quantity__btn_plus, .quantity__btn_minus');
 
-    quantityWrappers.forEach(wrapper => {
-        const input = wrapper.querySelector('.quantity__input');
-        const btnMinus = wrapper.querySelector('.quantity__btn_minus');
-        const btnPlus = wrapper.querySelector('.quantity__btn_plus');
+        if (!btn) return;
 
-        btnMinus.addEventListener('click', function () {
-            let value = parseInt(input.value, 10) || 1;
+        const wrapper = btn.closest('.quantity');
+        const input = wrapper?.querySelector('.quantity__input');
+
+        if (!input) return;
+
+        let value = parseInt(input.value, 10) || 1;
+
+        if (btn.classList.contains('quantity__btn_plus')) {
+            value += 1;
+        } else if (btn.classList.contains('quantity__btn_minus')) {
             value = Math.max(1, value - 1);
-            input.value = value;
-            input.dispatchEvent(new Event('change'));
-        });
+        }
 
-        btnPlus.addEventListener('click', function () {
-            let value = parseInt(input.value, 10) || 1;
-            input.value = value + 1;
-            input.dispatchEvent(new Event('change'));
-        });
-
-        input.addEventListener('input', function () {
-            input.value = input.value.replace(/\D/g, '');
-        });
-
-        input.addEventListener('blur', function () {
-            if (input.value === '' || parseInt(input.value, 10) < 1) {
-                input.value = '1';
-            }
-        });
+        input.value = value;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
     });
+
+    document.addEventListener('input', function (e) {
+        const input = e.target.closest('.quantity__input');
+        if (!input) return;
+
+        input.value = input.value.replace(/\D/g, '');
+    });
+
+    document.addEventListener('blur', function (e) {
+        const input = e.target.closest('.quantity__input');
+        if (!input) return;
+
+        if (input.value === '' || parseInt(input.value, 10) < 1) {
+            input.value = '1';
+        }
+    }, true);
 });
