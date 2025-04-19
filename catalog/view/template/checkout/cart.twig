@@ -128,8 +128,6 @@ $('#shopping-cart').on('click', '.shopping-cart__remove', function(e) {
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-
                 $('#shopping-cart').load('index.php?route=checkout/cart.list');
             }
         },

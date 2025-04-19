@@ -300,9 +300,39 @@ class Cart extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!$json) {
+            $this->load->model('tool/image');
+
 			$this->cart->add($product_id, $quantity, $option, $subscription_plan_id);
 
-			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $product_id), $product_info['name'], $this->url->link('checkout/cart'));
+            $product_cart = [
+                'name' => $product_info['name'],
+                'link' => $this->url->link('product/product', 'product_id=' . $product_id),
+                'thumb'=> $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')),
+                'quantity' => $quantity,
+                'old_price' => $product_info['old_price'] ? $this->currency->format($quantity * (int)$product_info['old_price'], $this->session->data['currency']) : false,
+                'price' => $this->currency->format($quantity * (int)$product_info['price'], $this->session->data['currency']),
+            ];
+
+            $template = "<div class='modal-cart__product'>";
+                $template .= "<a href='{$product_cart['link']}' class='modal-cart__img'><img src='{$product_cart['thumb']}'></a>";
+                $template .= "<div class='modal-cart__inner'>";
+                    $template .= "<div class='modal-cart__title'><a href='{$product_cart['link']}' class='modal-cart__title-link'>{$product_cart['name']}</a></div>";
+                    $template .= "<div class='modal-cart__price'>";
+                        $template .= "<div class='modal-cart__price-main'>";
+                            $template .= "<div class='modal-cart__price-current'>{$product_cart['price']}</div>";
+                            if ($product_cart['old_price']) {
+                                $template .= "<div class='modal-cart__price-old'>{$product_cart['old_price']}</div>";
+                            }
+                        $template .= "</div>";
+                        $template .= "<div class='modal-cart__price-count'>x{$product_cart['quantity']}</div>";
+                    $template .= "</div>";
+                $template .= "</div>";
+            $template .= "</div>";
+
+            $json['success'] = [
+                'type' => 'add_cart',
+                'template' => $template,
+            ];
 
 			// Unset all shipping and payment methods
 			unset($this->session->data['shipping_method']);
