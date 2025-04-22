@@ -1,86 +1,92 @@
-<style>
-    .autocomplete-suggestions {
-        display: none;
-        position: absolute;
-        background: #fff;
-        border: 1px solid #ccc;
-        z-index: 9999;
-        max-height: 200px;
-        overflow-y: auto;
-        width: 100%;
-    }
-    .autocomplete-suggestions div {
-        padding: 4px 8px;
-        cursor: pointer;
-    }
-    .autocomplete-suggestions div:hover {
-        background-color: #f0f0f0;
-    }
-</style>
-
-<div id="nova-poshta-fields" style="display: none; margin-top: 1rem;">
-    <div class="mb-3">
-        <label><input type="radio" name="np_delivery_type" value="branch" checked> {{ np_delivery_type_branch }}</label>
-        <label><input type="radio" name="np_delivery_type" value="postamat"> {{ np_delivery_type_postamat }}</label>
-        <label><input type="radio" name="np_delivery_type" value="courier"> {{ np_delivery_type_courier }}</label>
+<div class="checkout__delivery-desc">{{ np_delivery_desc }}</div>
+<div class="checkout__delivery-sub" id="np-delivery">
+    <div class="checkout__delivery-types">
+        <label class="checkout__delivery-type">
+            <input type="radio" name="np_delivery_type" value="branch" class="checkout__delivery-type-control js-checkout-validate" checked>
+            <span class="checkout__delivery-type-label">{{ np_delivery_type_branch }}</span>
+        </label>
+        <label class="checkout__delivery-type">
+            <input type="radio" name="np_delivery_type" value="postamat" class="checkout__delivery-type-control js-checkout-validate">
+            <span class="checkout__delivery-type-label">{{ np_delivery_type_postamat }}</span>
+        </label>
+        <label class="checkout__delivery-type">
+            <input type="radio" name="np_delivery_type" value="courier" class="checkout__delivery-type-control js-checkout-validate">
+            <span class="checkout__delivery-type-label">{{ np_delivery_type_courier }}</span>
+        </label>
     </div>
 
-    <div class="mb-3">
-        <label for="np-city" class="form-label">{{ np_city_label }}</label>
-        <input type="text" name="np_city" id="np-city" class="form-control" placeholder="{{ np_city_placeholder }}" autocomplete="off">
-        <div id="np-city-suggestions" class="autocomplete-suggestions"></div>
-        <input type="hidden" id="np-city-ref" name="np_city_ref" value="">
-    </div>
-
-    <div class="mb-3" id="np-branch-wrap">
-        <label for="np-branch" class="form-label">{{ np_branch_label }}</label>
-        <input type="text" name="np_branch" id="np-branch" class="form-control" placeholder="{{ np_branch_placeholder }}" autocomplete="off">
-        <div id="np-branch-suggestions" class="autocomplete-suggestions"></div>
-        <input type="hidden" id="np-branch-ref" name="np_branch_ref" value="">
-    </div>
-
-    <div class="mb-3" id="np-postamat-wrap" style="display: none;">
-        <label for="np-postamat" class="form-label">{{ np_postamat_label }}</label>
-        <input type="text" name="np_postamat" id="np-postamat" class="form-control" placeholder="{{ np_postamat_placeholder }}" autocomplete="off">
-        <div id="np-postamat-suggestions" class="autocomplete-suggestions"></div>
-        <input type="hidden" id="np-postamat-ref" name="np_postamat_ref" value="">
-    </div>
-
-    <div class="mb-3" id="np-courier-wrap" style="display: none;">
-        <div class="mb-3">
-            <label for="np-courier-street" class="form-label">{{ np_courier_street_label }}</label>
-            <input type="text" name="np_courier_street" id="np-courier-street" class="form-control" placeholder="{{ np_courier_street_placeholder }}" autocomplete="off">
-            <div id="np-courier-street-suggestions" class="autocomplete-suggestions"></div>
-            <input type="hidden" id="np-street-ref" name="np_street_ref" value="">
+    <div class="checkout__delivery-group" id="np-city-wrap">
+        <label class="checkout__delivery-label">{{ np_city_label }}</label>
+        <div class="checkout__delivery-toggle checkout__delivery-toggle_empty" data-placeholder="{{ np_city_placeholder }}">{{ np_city_placeholder }}</div>
+        <div class="checkout__delivery-suggestions">
+            <div class="checkout__suggestions">
+                <input type="text" class="checkout__suggestions-control" placeholder="{{ np_city_search_placeholder }}" autocomplete="off">
+                <div class="checkout__suggestions-note">{{ np_city_search_note }}</div>
+                <div class="checkout__suggestions-list"></div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="np-courier-house" class="form-label">{{ np_courier_house_label }}</label>
-            <input type="text" name="np_courier_house" id="np-courier-house" class="form-control" placeholder="{{ np_courier_house_placeholder }}">
+        <input type="hidden" name="np_city" class="checkout__delivery-result js-checkout-validate" value="">
+        <input type="hidden" name="np_city_ref" id="np-city-ref" class="checkout__delivery-ref js-checkout-validate" value="">
+    </div>
+
+    <div class="checkout__delivery-group checkout__delivery-group_dependent checkout__delivery-group_disabled" id="np-branch-wrap">
+        <label class="checkout__delivery-label">{{ np_branch_label }}</label>
+        <div class="checkout__delivery-toggle checkout__delivery-toggle_empty" data-placeholder="{{ np_branch_placeholder }}">{{ np_branch_placeholder }}</div>
+        <div class="checkout__delivery-suggestions">
+            <div class="checkout__suggestions">
+                <input type="text" class="checkout__suggestions-control" placeholder="{{ np_branch_search_placeholder }}" autocomplete="off">
+                <div class="checkout__suggestions-list" style="display: block;">
+                    <div class="checkout__suggestions-loading">{{ np_loading }}</div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="np-courier-flat" class="form-label">{{ np_courier_flat_label }}</label>
-            <input type="text" name="np_courier_flat" id="np-courier-flat" class="form-control" placeholder="{{ np_courier_flat_placeholder }}">
+        <input type="hidden" name="np_branch" class="checkout__delivery-result js-checkout-validate" value="">
+        <input type="hidden" name="np_branch_ref" id="np-branch-ref" class="checkout__delivery-ref js-checkout-validate" value="">
+    </div>
+
+    <div class="checkout__delivery-group checkout__delivery-group_dependent checkout__delivery-group_disabled" id="np-postamat-wrap" style="display: none;">
+        <label class="checkout__delivery-label">{{ np_postamat_label }}</label>
+        <div class="checkout__delivery-toggle checkout__delivery-toggle_empty" data-placeholder="{{ np_postamat_placeholder }}">{{ np_postamat_placeholder }}</div>
+        <div class="checkout__delivery-suggestions">
+            <div class="checkout__suggestions">
+                <input type="text" class="checkout__suggestions-control" placeholder="{{ np_postamat_search_placeholder }}" autocomplete="off">
+                <div class="checkout__suggestions-list" style="display: block;">
+                    <div class="checkout__suggestions-loading">{{ np_loading }}</div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="np_postamat" class="checkout__delivery-result js-checkout-validate" value="">
+        <input type="hidden" name="np_postamat_ref" id="np-postamat-ref" class="checkout__delivery-ref js-checkout-validate" value="">
+    </div>
+
+    <div id="np-courier-wrap" style="display: none;">
+        <div class="checkout__delivery-group checkout__delivery-group_dependent checkout__delivery-group_disabled" id="np-courier-street-wrap">
+            <label class="checkout__delivery-label">{{ np_courier_street_label }}</label>
+            <div class="checkout__delivery-toggle checkout__delivery-toggle_empty" data-placeholder="{{ np_courier_street_placeholder }}">{{ np_courier_street_placeholder }}</div>
+            <div class="checkout__delivery-suggestions">
+                <div class="checkout__suggestions">
+                    <input type="text" class="checkout__suggestions-control" placeholder="{{ np_courier_street_search_placeholder }}" autocomplete="off">
+                    <div class="checkout__suggestions-list" style="display: block;">
+                        <div class="checkout__suggestions-loading">{{ np_loading }}</div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="np_courier_street" class="checkout__delivery-result js-checkout-validate" value="">
+            <input type="hidden" name="np_courier_street_ref" id="np-courier-street-ref" class="checkout__delivery-ref js-checkout-validate" value="">
+        </div>
+        <div class="checkout__delivery-group checkout__delivery-group_disabled" id="np-courier-house-wrap">
+            <label for="np-courier-house" class="checkout__delivery-label">{{ np_courier_house_label }}</label>
+            <input type="text" name="np_courier_house" id="np-courier-house" class="checkout__delivery-control js-checkout-validate" placeholder="{{ np_courier_house_placeholder }}">
+        </div>
+        <div class="checkout__delivery-group checkout__delivery-group_disabled" id="np-courier-flat-wrap">
+            <label for="np-courier-flat" class="checkout__delivery-label">{{ np_courier_flat_label }}</label>
+            <input type="text" name="np_courier_flat" id="np-courier-flat" class="checkout__delivery-control" placeholder="{{ np_courier_flat_placeholder }}">
         </div>
     </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const shippingRadios = document.querySelectorAll('input[name="shipping_method"]');
-        const npFields = document.getElementById('nova-poshta-fields');
-
-        if (shippingRadios && npFields) {
-            shippingRadios.forEach(function(radio) {
-                radio.addEventListener('change', function() {
-                    if (this.dataset.code === 'nova_poshta.nova_poshta') {
-                        npFields.style.display = 'block';
-                    } else {
-                        npFields.style.display = 'none';
-                    }
-                });
-            });
-        }
-
         const deliveryType = document.querySelectorAll('input[name="np_delivery_type"]');
         const wrapBranch   = document.getElementById('np-branch-wrap');
         const wrapPostamat = document.getElementById('np-postamat-wrap');
@@ -100,84 +106,95 @@
             });
         }
 
-        const cityInput = document.getElementById('np-city');
-        const citySuggestions = document.getElementById('np-city-suggestions');
+        const cityGroup = document.getElementById('np-city-wrap');
         const cityRefEl = document.getElementById('np-city-ref');
 
-        if (cityInput && citySuggestions && cityRefEl) {
-            setupAutocomplete(cityInput, citySuggestions, {
-                minLength: 3,
-                fetchUrl: (term) => {
-                    return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=city&term=${encodeURIComponent(term)}`;
-                },
-                onSelect: (item) => {
-                    cityRefEl.value = item.ref;
+        setupAutocomplete(cityGroup, {
+            minLength: 3,
+            fetchUrl: (term) => {
+                return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=city&term=${encodeURIComponent(term)}`;
+            },
+            onSelect: (item) => {
+                cityRefEl.value = item.ref;
+                cityRefEl.dispatchEvent(new Event('change', { bubbles: true }));
 
-                    const branchEl = document.getElementById('np-branch');
-                    if (branchEl) branchEl.value = '';
-
-                    const postamatEl = document.getElementById('np-postamat');
-                    if (postamatEl) postamatEl.value = '';
-
-                    const streetEl = document.getElementById('np-courier-street');
-                    if (streetEl) streetEl.value = '';
-
-                    const houseEl = document.getElementById('np-courier-house');
-                    if (houseEl) houseEl.value = '';
-
-                    const flatEl = document.getElementById('np-courier-flat');
-                    if (flatEl) flatEl.value = '';
+                const dependentGroups = document.querySelectorAll('#np-delivery .checkout__delivery-group_dependent');
+                if (dependentGroups.length) {
+                    dependentGroups.forEach((dependentGroup) => {
+                        dependentGroup.classList.remove('checkout__delivery-group_disabled');
+                        const groupToggle = dependentGroup.querySelector('.checkout__delivery-toggle');
+                        groupToggle.innerHTML = groupToggle.dataset.placeholder;
+                        groupToggle.classList.add('checkout__delivery-toggle_empty');
+                        if (dependentGroup.classList.contains('checkout__delivery-group_open')) {
+                            dependentGroup.classList.remove('checkout__delivery-group_open');
+                            dependentGroup.querySelector('.checkout__delivery-suggestions').style.display = 'none';
+                        }
+                        dependentGroup.querySelector('.checkout__delivery-result').value = '';
+                        dependentGroup.querySelector('.checkout__delivery-ref').value = '';
+                        const groupSuggestions = dependentGroup.querySelector('.checkout__suggestions-list');
+                        groupSuggestions.innerHTML = '<div class="checkout__suggestions-loading">{{ np_loading }}</div>';
+                        groupSuggestions.style.display = 'block';
+                    });
                 }
-            });
-        }
 
-        const branchInput = document.getElementById('np-branch');
-        const branchSuggestions = document.getElementById('np-branch-suggestions');
+                document.getElementById('np-courier-house-wrap').classList.remove('checkout__delivery-group_disabled');
+                document.getElementById('np-courier-house').value = '';
+                document.getElementById('np-courier-house').dispatchEvent(new Event('change', { bubbles: true }));
+                document.getElementById('np-courier-flat-wrap').classList.remove('checkout__delivery-group_disabled');
+                document.getElementById('np-courier-flat').value = '';
+            }
+        });
+
+        const branchGroup = document.getElementById('np-branch-wrap');
         const branchRefEl = document.getElementById('np-branch-ref');
 
-        if (branchInput && branchSuggestions && cityRefEl && branchRefEl) {
-            setupAutocomplete(branchInput, branchSuggestions, {
+        if (branchGroup && cityRefEl && branchRefEl) {
+            setupAutocomplete(branchGroup, {
                 minLength: 1,
+                autoFetchOnFocus: true,
                 fetchUrl: (term) => {
                     const cityRef = cityRefEl.value || '';
                     return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=warehouse&term=${encodeURIComponent(term)}&city_ref=${encodeURIComponent(cityRef)}`;
                 },
                 onSelect: (item) => {
                     branchRefEl.value = item.ref;
+                    branchRefEl.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
         }
 
-        const postamatInput = document.getElementById('np-postamat');
-        const postamatSuggestions = document.getElementById('np-postamat-suggestions');
+        const postamatGroup = document.getElementById('np-postamat-wrap');
         const postamatRefEl = document.getElementById('np-postamat-ref');
 
-        if (postamatInput && postamatSuggestions && cityRefEl && postamatRefEl) {
-            setupAutocomplete(postamatInput, postamatSuggestions, {
+        if (postamatGroup && cityRefEl && postamatRefEl) {
+            setupAutocomplete(postamatGroup, {
                 minLength: 1,
+                autoFetchOnFocus: true,
                 fetchUrl: (term) => {
                     const cityRef = cityRefEl.value || '';
                     return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=postamat&term=${encodeURIComponent(term)}&city_ref=${encodeURIComponent(cityRef)}`;
                 },
                 onSelect: (item) => {
                     postamatRefEl.value = item.ref;
+                    postamatRefEl.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
         }
 
-        const streetInput = document.getElementById('np-courier-street');
-        const streetSuggestions = document.getElementById('np-courier-street-suggestions');
-        const streetRefEl = document.getElementById('np-street-ref');
+        const streetGroup = document.getElementById('np-courier-street-wrap');
+        const streetRefEl = document.getElementById('np-courier-street-ref');
 
-        if (streetInput && streetSuggestions && cityRefEl && streetRefEl) {
-            setupAutocomplete(streetInput, streetSuggestions, {
-                minLength: 3,
+        if (streetGroup && cityRefEl && streetRefEl) {
+            setupAutocomplete(streetGroup, {
+                minLength: 1,
+                autoFetchOnFocus: true,
                 fetchUrl: (term) => {
                     const cityRef = cityRefEl.value || '';
                     return `index.php?route=extension/opencart/shipping/nova_poshta.autocomplete&type=street&term=${encodeURIComponent(term)}&city_ref=${encodeURIComponent(cityRef)}`;
                 },
                 onSelect: (item) => {
                     streetRefEl.value = item.ref;
+                    streetRefEl.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
         }

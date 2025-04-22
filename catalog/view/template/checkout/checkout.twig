@@ -10,185 +10,449 @@
             {% endif %}
         {% endfor %}
     </div>
-  <div class="row">{{ column_left }}
-    <div id="content" class="col">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
-      <form id="checkout-form">
-        <div class="mb-3">
-          <label for="input-firstname" class="form-label">{{ label_firstname }}</label>
-          <input type="text" id="input-firstname" name="firstname" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="input-lastname" class="form-label">{{ label_lastname }}</label>
-          <input type="text" id="input-lastname" name="lastname" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="input-telephone" class="form-label">{{ label_telephone }}</label>
-          <input type="text" id="input-telephone" name="telephone" class="form-control" required>
-        </div>
-        {% if shipping_methods %}
-          <h3>Оберіть службу доставки</h3>
-          <div id="shipping-method">
-            {% for shipping in shipping_methods %}
-              <h4>{{ shipping.name }}</h4>
-              <ul class="list-unstyled">
-                {% for quote in shipping.quote %}
-                  <li>
-                    <label>
-                      <input type="radio" name="shipping_method" value="{{ quote|json_encode|escape }}" data-code="{{ quote.code }}">
-                      {{ quote.name }}
-                    </label>
-                    {% if quote.code == 'nova_poshta.nova_poshta' %}
-                      {% include 'extension/opencart/catalog/view/template/shipping/nova_poshta_fields.twig' %}
-                    {% elseif quote.code == 'ukr_poshta.ukr_poshta' %}
-                      {% include 'extension/opencart/catalog/view/template/shipping/ukr_poshta_fields.twig' %}
+  <div class="checkout">
+    <h1 class="checkout__heading heading">{{ heading_title_checkout }}</h1>
+    <div class="checkout__row">
+      <div class="checkout__aside">
+        <div class="checkout__aside-list checkout__products">
+          {% for product in products %}
+            <div class="checkout__product">
+              {% if product.thumb %}
+                <a href="{{ product.href }}" class="checkout__product-img">
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}">
+                </a>
+              {% endif %}
+              <div class="checkout__product-inner">
+                <div class="checkout__product-title">
+                  <a href="{{ product.href }}" class="checkout__product-title-link">{{ product.name }}</a>{% if not product.stock %} <span class="text-danger">***</span>{% endif %}
+                </div>
+                <div class="checkout__product-group">
+                  <div class="checkout__product-price">
+                    <div class="checkout__product-price-current">{{ product.total }}</div>
+                    {% if product.old_price_total %}
+                      <div class="checkout__product-price-old">{{ product.old_price_total }}</div>
                     {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endfor %}
-          </div>
-        {% else %}
-          <p>Доставка недоступна.</p>
-        {% endif %}
-        <h3>Оберіть спосіб оплати</h3>
-        {% if payment_methods %}
-          <ul class="list-unstyled">
-            {% for payment in payment_methods %}
-              {% for option in payment.option %}
-                <li>
-                  <label>
-                    <input type="radio" name="payment_method" value='{{ option|json_encode|escape }}'>
-                    {{ option.name }}
-                  </label>
-                </li>
-              {% endfor %}
-            {% endfor %}
-          </ul>
-        {% endif %}
-        <div class="mb-3">
-          <label for="input-comment" class="form-label">{{ label_comment }}</label>
-          <textarea name="comment" rows="4" id="input-comment" class="form-control"></textarea>
+                  </div>
+                  <div class="checkout__product-quantity">x{{ product.quantity }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
         </div>
-        <button type="button" id="button-confirm" class="btn btn-primary">{{ button_confirm }}</button>
-      </form>
+        <div class="checkout__aside-foot">
+          <div class="checkout__aside-total">
+            <div class="checkout__aside-total-label">{{ text_aside_total_label }}</div>
+            <div class="checkout__aside-total-value">{{ total_products_price }}</div>
+          </div>
+          <div class="checkout__aside-note">{{ text_aside_note }}</div>
+        </div>
+      </div>
+      <div class="checkout__main">
+        <form id="checkout-form">
+          <div class="checkout__section">
+            <div class="checkout__section-head">
+              <div class="checkout__section-num">1</div>
+              <div class="checkout__section-title">{{ text_section_title_contact }}</div>
+            </div>
+            <div class="checkout__section-body">
+              <div class="checkout__desc">{{ text_section_desc_contact }}</div>
+              <div class="checkout__group">
+                <label for="input-telephone" class="checkout__label">{{ label_telephone }}</label>
+                <input type="text" id="input-telephone" name="telephone" class="checkout__control js-checkout-validate" placeholder="{{ placeholder_telephone }}" required inputmode="numeric">
+              </div>
+              <div class="checkout__group">
+                <label for="input-lastname" class="checkout__label">{{ label_lastname }}</label>
+                <input type="text" id="input-lastname" name="lastname" class="checkout__control js-checkout-validate" placeholder="{{ placeholder_lastname }}" required>
+              </div>
+              <div class="checkout__group">
+                <label for="input-firstname" class="checkout__label">{{ label_firstname }}</label>
+                <input type="text" id="input-firstname" name="firstname" class="checkout__control js-checkout-validate" placeholder="{{ placeholder_firstname }}" required>
+              </div>
+              <div class="checkout__note">{{ text_section_note }}</div>
+            </div>
+          </div>
+          {% if shipping_methods %}
+            <div class="checkout__section">
+              <div class="checkout__section-head">
+                <div class="checkout__section-num">2</div>
+                <div class="checkout__section-title">{{ text_section_title_delivery }}</div>
+              </div>
+              <div class="checkout__section-body checkout__delivery" id="shipping-method">
+                {% for shipping in shipping_methods %}
+                    {% for quote in shipping.quote %}
+                      <div class="checkout__delivery-item">
+                        <label class="checkout__delivery-radio">
+                          <input type="radio" name="shipping_method" value="{{ quote|json_encode|escape }}" data-code="{{ quote.code }}" class="checkout__delivery-radio-control js-checkout-validate">
+                          <span class="checkout__delivery-radio-label">
+                            <img src="catalog/view/images/logo-{{ quote.code|split('.')|first|replace({'_': ''}) }}.svg" width="24" height="24" alt="">
+                            {{ quote.name }}
+                          </span>
+                        </label>
+                        {% if quote.code == 'nova_poshta.nova_poshta' %}
+                          {% include 'extension/opencart/catalog/view/template/shipping/nova_poshta_fields.twig' %}
+                        {% elseif quote.code == 'ukr_poshta.ukr_poshta' %}
+                          {% include 'extension/opencart/catalog/view/template/shipping/ukr_poshta_fields.twig' %}
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          {% if payment_methods %}
+          <div class="checkout__section">
+            <div class="checkout__section-head">
+              <div class="checkout__section-num">3</div>
+              <div class="checkout__section-title">{{ text_section_title_payment }}</div>
+            </div>
+            <div class="checkout__section-body checkout__payment">
+              {% for payment in payment_methods %}
+                {% for option in payment.option %}
+                  <div class="checkout__payment-item">
+                    <label class="checkout__payment-radio">
+                      <input type="radio" name="payment_method" value='{{ option|json_encode|escape }}' data-code="{{ option.code }}" class="checkout__payment-radio-control js-checkout-validate">
+                      <span class="checkout__payment-radio-label">
+                        <img src="catalog/view/images/logo-{{ option.code|split('.')|first|replace({'_': ''}) }}.svg" width="24" height="24" alt="">
+                        {{ option.name }}
+                      </span>
+                    </label>
+                    {% if option.code == 'liqpay.liqpay' %}
+                      <div class="checkout__payment-desc">
+                        <span class="checkout__payment-desc-label">{{ text_section_payment_desc_liqpay }}</span>
+                        <img src="catalog/view/images/logo-pay-applepay.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-googlepay.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-privat24.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-visa.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-mastercard.svg" width="48" height="33" alt="">
+                      </div>
+                    {% elseif option.code == 'cod.cod' %}
+                      <div class="checkout__payment-desc">{{ text_section_payment_desc_cod }}</div>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          <div class="checkout__comment">
+            <div class="checkout__comment-head">{{ label_comment }}</div>
+            <div class="checkout__comment-body">
+              <div class="checkout__comment-control">
+                <textarea name="comment" rows="6" class="checkout__control" placeholder="{{ placeholder_comment }}"></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="button-confirm" class="checkout__btn" data-text-pay="{{ button_confirm_pay }}" data-text-default="{{ button_confirm }}" disabled>{{ button_confirm }}</button>
+          <div class="checkout__footnote">{{ text_section_footnote }}</div>
+        </form>
+        <div id="order-message"></div>
+      </div>
+    </div>
 
-      <div id="order-message"></div>
+    <script>
+      document.querySelector('.checkout__comment-head').addEventListener('click', function () {
+        const commentParent = this.closest('.checkout__comment');
+        const commentBody = commentParent.querySelector('.checkout__comment-body');
 
-      <script>
-        function highlightTerm(fullString, term) {
-          let safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-          let regex = new RegExp(safeTerm, 'gi');
-          return fullString.replace(regex, (match) => `<strong>${match}</strong>`);
-        }
+        collapseToggle(commentBody, 200, () => {
+          commentParent.classList.toggle('checkout__comment_open');
+        });
+      });
 
-        function setupAutocomplete(inputEl, suggestionsEl, options) {
-          // options.fetchUrl = (term) => 'url';
-          // options.minLength = 3;
-          // options.onSelect = (item) => {}
+      function setupDeliverySelection() {
+        const radioButtons = document.querySelectorAll('input[name="shipping_method"]');
 
-          let timeout = null;
-
-          inputEl.addEventListener('input', function() {
-            const term = this.value.trim();
-
-            if (term.length < (options.minLength || 1)) {
-              suggestionsEl.style.display = 'none';
-              suggestionsEl.innerHTML = '';
-              return;
-            }
-
-            clearTimeout(timeout);
-
-            timeout = setTimeout(() => {
-              const url = options.fetchUrl(term);
-              fetch(url)
-                      .then(r => r.json())
-                      .then(data => {
-                        suggestionsEl.innerHTML = '';
-                        if (data.length) {
-                          suggestionsEl.style.display = 'block';
-
-                          data.forEach(item => {
-                            const div = document.createElement('div');
-                            div.innerHTML = highlightTerm(item.value, term);
-
-                            div.addEventListener('click', function() {
-                              inputEl.value = item.value;
-                              if (options.onSelect) {
-                                options.onSelect(item);
-                              }
-                              suggestionsEl.style.display = 'none';
-                              suggestionsEl.innerHTML = '';
-                            });
-
-                            suggestionsEl.appendChild(div);
-                          });
-                        } else {
-                          suggestionsEl.style.display = 'none';
-                        }
-                      })
-                      .catch(err => {
-                        console.error('Autocomplete fetch error:', err);
-                        suggestionsEl.style.display = 'none';
-                        suggestionsEl.innerHTML = '';
-                      });
-            }, 300);
-          });
-
-          document.addEventListener('click', function(e) {
-            if (!suggestionsEl.contains(e.target) && e.target !== inputEl) {
-              suggestionsEl.style.display = 'none';
-              suggestionsEl.innerHTML = '';
-            }
-          });
-        }
-        
-        document.getElementById('button-confirm').addEventListener('click', async function() {
-          let button = this;
-          let buttonText = button.innerHTML;
-          let buttonWidth = button.offsetWidth;
-
-          button.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-light"></i>';
-          button.style.width = buttonWidth + 'px';
-          button.disabled = true;
-
-          let formData = new FormData(document.getElementById('checkout-form'));
-
-          try {
-            let response = await fetch('index.php?route=checkout/confirm.simpleCheckout&language={{ language }}', {
-              method: 'POST',
-              body: formData
+        radioButtons.forEach((radio) => {
+          radio.addEventListener('change', () => {
+            document.querySelectorAll('.checkout__delivery-item').forEach((item) => {
+              item.classList.remove('checkout__delivery-item_active');
             });
 
-            let json = await response.json();
-            console.log(json);
-
-            if (json.success) {
-              if (json.redirect) {
-                window.location.href = json.redirect;
-              } else {
-                window.location.href = 'index.php?route=checkout/success&language={{ language }}';
-              }
-            } else {
-              document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">' + json.error + '</div>';
+            const deliveryItem = radio.closest('.checkout__delivery-item');
+            if (deliveryItem) {
+              deliveryItem.classList.add('checkout__delivery-item_active');
             }
-          } catch (error) {
-            console.error('Помилка:', error);
-            document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">{{ error_server }}</div>';
+          });
+        });
+      }
+
+      setupDeliverySelection();
+
+      function setupPaymentSelection() {
+        const radioButtons = document.querySelectorAll('input[name="payment_method"]');
+
+        radioButtons.forEach((radio) => {
+          radio.addEventListener('change', () => {
+            document.querySelectorAll('.checkout__payment-item').forEach((item) => {
+              item.classList.remove('checkout__payment-item_active');
+            });
+
+            const deliveryItem = radio.closest('.checkout__payment-item');
+            if (deliveryItem) {
+              deliveryItem.classList.add('checkout__payment-item_active');
+            }
+
+            const buttonConfirm = document.getElementById('button-confirm');
+            const code = radio.dataset.code;
+            if (code === 'liqpay.liqpay') {
+              buttonConfirm.innerText = buttonConfirm.dataset.textPay;
+            } else {
+              buttonConfirm.innerText = buttonConfirm.dataset.textDefault;
+            }
+          });
+        });
+      }
+
+      setupPaymentSelection();
+
+      function highlightTerm(fullString, term) {
+        let safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        let regex = new RegExp(safeTerm, 'gi');
+        return fullString.replace(regex, (match) => `<strong>${match}</strong>`);
+      }
+
+      function setupAutocomplete(groupEl, options) {
+        // options.fetchUrl = (term) => 'url';
+        // options.minLength = 3;
+        // options.onSelect = (item) => {}
+        // options.autoFetchOnFocus = true;
+
+        const suggestionsEl = groupEl.querySelector('.checkout__suggestions-list');
+        const inputEl = groupEl.querySelector('.checkout__suggestions-control');
+        const targetEl = groupEl.querySelector('.checkout__delivery-result');
+        const toggleEl = groupEl.querySelector('.checkout__delivery-toggle');
+
+        let timeout = null;
+
+        function fetchAndRender(term) {
+          const url = options.fetchUrl(term);
+          fetch(url)
+                  .then(r => r.json())
+                  .then(data => {
+                    suggestionsEl.innerHTML = '';
+                    suggestionsEl.style.display = 'block';
+
+                    if (data.length) {
+                      data.forEach(item => {
+                        const div = document.createElement('div');
+                        div.classList.add('checkout__suggestions-item');
+                        div.innerHTML = highlightTerm(item.value, term);
+
+                        div.addEventListener('click', function () {
+                          targetEl.value = item.value;
+                          targetEl.dispatchEvent(new Event('change', { bubbles: true }));
+                          toggleEl.innerHTML = item.value;
+                          toggleEl.classList.remove('checkout__delivery-toggle_empty');
+                          groupEl.classList.remove('checkout__delivery-group_open');
+
+                          if (options.onSelect) {
+                            options.onSelect(item);
+                          }
+
+                          collapseUp(groupEl.querySelector('.checkout__delivery-suggestions'), 200, () => {
+                            inputEl.value = '';
+                            suggestionsEl.style.display = 'none';
+                            suggestionsEl.innerHTML = '';
+                          });
+                        });
+
+                        suggestionsEl.appendChild(div);
+                      });
+                    } else {
+                      suggestionsEl.innerHTML = '<div class="checkout__suggestions-empty">На жаль, нічого не знайдено</div>';
+                    }
+                  })
+                  .catch(err => {
+                    console.error('Autocomplete fetch error:', err);
+                    suggestionsEl.style.display = 'none';
+                    suggestionsEl.innerHTML = '';
+                  });
+        }
+
+        function trigger(term) {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => {
+            fetchAndRender(term);
+          }, 300);
+        }
+
+        inputEl.addEventListener('input', function () {
+          const term = this.value.trim();
+
+          if (term.length < (options.minLength || 1)) {
+            suggestionsEl.style.display = 'none';
+            suggestionsEl.innerHTML = '';
+            return;
           }
 
-          button.innerHTML = buttonText;
-          button.style.width = '';
-          button.disabled = false;
+          trigger(term);
         });
-      </script>
 
-      {#<div id="checkout-confirm">{{ confirm }}</div>#}
+        if (options.autoFetchOnFocus) {
+          inputEl.addEventListener('focus', function () {
+            const term = this.value.trim();
+            const minLength = options.minLength || 1;
+            const effectiveTerm = term.length >= minLength ? term : '*';
+            trigger(effectiveTerm);
+          });
+        }
+      }
 
-    </div>
-    {{ content_bottom }}
+      document.querySelectorAll('.checkout__delivery-toggle').forEach((toggle) => {
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const parent = this.closest('.checkout__delivery-group');
+          const suggestions = parent.querySelector('.checkout__delivery-suggestions');
+
+          collapseToggle(suggestions, 200, () => {
+            parent.classList.toggle('checkout__delivery-group_open');
+
+            const input = suggestions.querySelector('.checkout__suggestions-control');
+            if (input) {
+              input.focus();
+            }
+          });
+        });
+      });
+
+
+      document.getElementById('button-confirm').addEventListener('click', async function() {
+        let button = this;
+        let buttonText = button.innerHTML;
+        let buttonWidth = button.offsetWidth;
+
+        button.innerHTML = 'Завантаження...';
+        button.style.width = buttonWidth + 'px';
+        button.disabled = true;
+
+        let formData = new FormData(document.getElementById('checkout-form'));
+
+        try {
+          let response = await fetch('index.php?route=checkout/confirm.simpleCheckout&language={{ language }}', {
+            method: 'POST',
+            body: formData
+          });
+
+          let json = await response.json();
+          console.log(json);
+
+          if (json.success) {
+            if (json.redirect) {
+              window.location.href = json.redirect;
+            } else {
+              window.location.href = 'index.php?route=checkout/success&language={{ language }}';
+            }
+          } else {
+            document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">' + json.error + '</div>';
+          }
+        } catch (error) {
+          console.error('Помилка:', error);
+          document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">{{ error_server }}</div>';
+        }
+
+        button.innerHTML = buttonText;
+        button.style.width = '';
+        button.disabled = false;
+      });
+
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const submitButton = document.querySelector('#button-confirm');
+
+        const requiredFields = {
+          textInputs: ['telephone', 'lastname', 'firstname'],
+          radios: ['shipping_method', 'payment_method'],
+        };
+
+        function checkField(name) {
+          const el = document.querySelector(`[name="${name}"]`);
+          return el && el.value.trim() !== '';
+        }
+
+        function checkRadioGroup(name) {
+          return document.querySelectorAll(`[name="${name}"]:checked`).length > 0;
+        }
+
+        function checkShipping() {
+          const method = document.querySelector('[name="shipping_method"]:checked');
+          if (!method) return false;
+
+          const code = method.dataset.code;
+          if (code === 'nova_poshta.nova_poshta') {
+            if (!checkField('np_city') || !checkField('np_city_ref')) return false;
+
+            const delivery = document.querySelector('[name="np_delivery_type"]:checked');
+            if (!delivery) return false;
+
+            switch (delivery.value) {
+              case 'branch':
+                return checkField('np_branch') && checkField('np_branch_ref');
+              case 'postamat':
+                return checkField('np_postamat') && checkField('np_postamat_ref');
+              case 'courier':
+                return checkField('np_courier_street') && checkField('np_courier_street_ref') && checkField('np_courier_house');
+              default:
+                return false;
+            }
+
+          } else if (code === 'ukr_poshta.ukr_poshta') {
+            if (!checkField('ukr_city') || !checkField('ukr_region_id') || !checkField('ukr_district_id') || !checkField('ukr_city_id')) {
+              return false;
+            }
+
+            const delivery = document.querySelector('[name="ukr_delivery_type"]:checked');
+            if (!delivery) return false;
+
+            switch (delivery.value) {
+              case 'branch':
+                return checkField('ukr_branch') && checkField('ukr_branch_index');
+              case 'courier':
+                return (checkField('ukr_courier_street') && checkField('ukr_courier_street_id') && checkField('ukr_courier_house') && checkField('ukr_courier_house_index'));
+              default:
+                return false;
+            }
+
+          } else {
+            return false;
+          }
+        }
+
+        function checkFormValidity() {
+          let valid = true;
+
+          for (const name of requiredFields.textInputs) {
+            if (!checkField(name)) {
+              valid = false;
+              break;
+            }
+          }
+
+          for (const name of requiredFields.radios) {
+            if (!checkRadioGroup(name)) {
+              valid = false;
+              break;
+            }
+          }
+
+          if (valid && !checkShipping()) {
+            valid = false;
+          }
+
+          submitButton.disabled = !valid;
+        }
+
+        document.querySelectorAll('.js-checkout-validate').forEach(input => {
+          input.addEventListener('input', checkFormValidity);
+          input.addEventListener('change', checkFormValidity);
+        });
+
+        checkFormValidity();
+      });
+    </script>
+
   </div>
-  {{ column_right }}
 </div>
 {{ footer }}

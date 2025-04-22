@@ -101,3 +101,29 @@
         padding: 16px;
     }
 }
+
+.text-danger {
+    color: #ea4335;
+}
+
+.alert {
+    border-radius: 12px;
+    padding: 24px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #151515;
+    background: #ededed;
+    margin-bottom: 24px;
+
+    @media (max-width: 575px) {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 16px;
+    }
+}
+
+.alert-danger {
+    color: #ea4335;
+    background-color: #fbeceb;
+}

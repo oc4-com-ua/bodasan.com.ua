@@ -25,15 +25,17 @@ class NovaPoshta extends \Opencart\System\Engine\Controller {
 
             case 'warehouse':
             case 'postamat':
-                if ($city_ref && mb_strlen($term) >= 1) {
+                if ($city_ref && (mb_strlen($term) >= 1 || $term === '*')) {
                     $type_of_warehouse = ($type === 'postamat') ? 'Postomat' : '';
-                    $result = $this->searchWarehouses($city_ref, $term, $type_of_warehouse);
+                    $search = ($term === '*') ? '' : $term;
+                    $result = $this->searchWarehouses($city_ref, $search, $type_of_warehouse);
                 }
                 break;
 
             case 'street':
-                if ($city_ref && mb_strlen($term) >= 3) {
-                    $result = $this->searchStreets($city_ref, $term);
+                if ($city_ref && mb_strlen($term) >= 1 || $term === '*') {
+                    $search = ($term === '*') ? '' : $term;
+                    $result = $this->searchStreets($city_ref, $search);
                 }
                 break;
         }

@@ -80,61 +80,54 @@ class Salesdrive extends \Opencart\System\Engine\Model {
             $request_data['novaposhta'] = $np_data;
         }
 
-         /*if ($order_data['shipping_method']['code'] === 'ukr_poshta.ukr_poshta') {
-             $request_data['shipping_method'] = 'id_16'; // id_9 в CRM для Укрпошти
+         if ($order_data['shipping_method']['code'] === 'ukr_poshta.ukr_poshta') {
+             $request_data['shipping_method'] = 'id_16'; // id_16 в CRM для Укрпошти
 
              $shipping_address = '';
-             $service_type = '';
-             $warehouse_number = '';
              $city = $order_data['shipping_custom_field']['city'] ?? '';
-             $region_id = $order_data['shipping_custom_field']['region_id'] ?? '';
-             $region_ua = $order_data['shipping_custom_field']['region_ua'] ?? '';
-             $district_id = $order_data['shipping_custom_field']['district_id'] ?? '';
-             $district_ua = $order_data['shipping_custom_field']['district_ua'] ?? '';
              $city_id = $order_data['shipping_custom_field']['city_id'] ?? '';
-             $city_ua = $order_data['shipping_custom_field']['city_ua'] ?? '';
              $branch = $order_data['shipping_custom_field']['branch'] ?? '';
-             $branch_id = $order_data['shipping_custom_field']['branch_id'] ?? '';
              $branch_index = $order_data['shipping_custom_field']['branch_index'] ?? '';
-             $branch_street = $order_data['shipping_custom_field']['branch_street'] ?? '';
-             $branch_building_no = $order_data['shipping_custom_field']['branch_building_no'] ?? '';
-             $branch_name_ua = $order_data['shipping_custom_field']['branch_name_ua'] ?? '';
              $courier_street = $order_data['shipping_custom_field']['courier_street'] ?? '';
              $courier_street_id = $order_data['shipping_custom_field']['courier_street_id'] ?? '';
-             $courier_street_ua = $order_data['shipping_custom_field']['courier_street_ua'] ?? '';
              $courier_house = $order_data['shipping_custom_field']['courier_house'] ?? '';
+             $courier_house_index = $order_data['shipping_custom_field']['courier_house_index'] ?? '';
              $courier_flat = $order_data['shipping_custom_field']['courier_flat'] ?? '';
 
+             $ukr_data = [
+                 'payer' => 'recipient',
+                 'type' => 'standard',
+                 'city' => $city_id,
+             ];
+
              if ($order_data['shipping_custom_field']['delivery_type'] === 'branch') {
-                 $service_type = 'Warehouse';
-                 $warehouse_number = $branch_ref;
+                 $ukr_data['ServiceType'] = 'Warehouse';
+                 $ukr_data['WarehouseNumber'] = $branch_index;
                  $shipping_address = "{$city}, {$branch}";
              }
 
              if ($order_data['shipping_custom_field']['delivery_type'] === 'courier') {
-                 $service_type = 'Doors';
-                 $shipping_address = "{$city}, {$street}";
-                 if ($building_number) {
-                     $shipping_address .= ", буд.{$building_number}";
+                 $ukr_data['ServiceType'] = 'Doors';
+                 $ukr_data['Street'] = $courier_street_id;
+                 $ukr_data['BuildingNumber'] = $courier_house;
+                 $ukr_data['Flat'] = $courier_flat;
+
+                 $shipping_address = "";
+                 if ($courier_house_index) {
+                     $shipping_address .= "{$courier_house_index}, ";
                  }
-                 if ($flat) {
-                     $shipping_address .= ", кв.{$flat}";
+                 $shipping_address .= "{$city}, {$courier_street}";
+                 if ($courier_house) {
+                     $shipping_address .= ", буд. {$courier_house}";
+                 }
+                 if ($courier_flat) {
+                     $shipping_address .= ", кв. {$courier_flat}";
                  }
              }
 
-             $ukr_data = [
-                 'ServiceType' => $service_type,
-                 'payer' => 'recipient',
-                 'city' => $city_ref,
-                 'WarehouseNumber' => $warehouse_number,
-                 "Street" => $street_ref,
-                 "BuildingNumber" => $building_number,
-                 "Flat" => $flat,
-             ];
-
              $request_data['shipping_address'] = $shipping_address;
              $request_data['ukrposhta'] = $ukr_data;
-         }*/
+         }
 
         $request_data['payment_method'] = '';
 

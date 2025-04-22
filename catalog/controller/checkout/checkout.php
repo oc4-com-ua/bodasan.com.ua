@@ -21,7 +21,7 @@ class Checkout extends \Opencart\System\Engine\Controller {
 		$this->load->language('extension/opencart/shipping/nova_poshta_fields');
 		$this->load->language('extension/opencart/shipping/ukr_poshta_fields');
 
-		$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title_checkout'));
 
 		$data['breadcrumbs'] = [];
 
@@ -36,9 +36,40 @@ class Checkout extends \Opencart\System\Engine\Controller {
 		];
 
 		$data['breadcrumbs'][] = [
-			'text' => $this->language->get('heading_title'),
+			'text' => $this->language->get('heading_title_checkout'),
 			'href' => $this->url->link('checkout/checkout')
 		];
+
+        $this->load->model('tool/image');
+        $this->load->model('checkout/cart');
+
+        $products = $this->model_checkout_cart->getProducts();
+        $data['products'] = [];
+
+        foreach ($products as $product) {
+            $old_price_total = 0;
+
+            if (isset($product['old_price'])) {
+                $old_price_total = $product['old_price'] * $product['quantity'];
+            }
+
+            $data['products'][] = [
+                    'thumb' => $this->model_tool_image->resize($product['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')),
+                    'stock' => $product['stock_status'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
+                    'price' => $product['price_text'],
+                    'total' => $product['total_text'],
+                    'old_price_total' => $old_price_total ? $this->currency->format($old_price_total, $this->session->data['currency']) : '',
+                    'href' => $this->url->link('product/product', 'product_id=' . $product['product_id']),
+                ] + $product;
+        }
+
+        $total_products_price = 0;
+
+        foreach ($products as $product) {
+            $total_products_price += $product['total'];
+        }
+
+        $data['total_products_price'] = $this->currency->format($total_products_price, $this->session->data['currency']);
 
         $data['register'] = '';
 
@@ -49,9 +80,7 @@ class Checkout extends \Opencart\System\Engine\Controller {
 		}
 
 		$data['payment_methods'] = $this->load->controller('checkout/payment_method.getPaymentMethods');
-//		$data['payment_method'] = '';
 		$data['confirm'] = $this->load->controller('checkout/confirm');
-//		$data['confirm'] = '';
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -62,6 +91,6 @@ class Checkout extends \Opencart\System\Engine\Controller {
 
         $data['language'] = $this->config->get('config_language');
 
-		$this->response->setOutput($this->load->view('checkout/checkout', $data));
+        $this->response->setOutput($this->load->view('checkout/checkout', $data));
 	}
 }

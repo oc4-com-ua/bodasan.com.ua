@@ -389,7 +389,7 @@ class Confirm extends \Opencart\System\Engine\Controller {
 
                     case 'courier':
                         $np_data['street'] = $this->request->post['np_courier_street'] ?? null;
-                        $np_data['street_ref'] = $this->request->post['np_street_ref'] ?? null;
+                        $np_data['street_ref'] = $this->request->post['np_courier_street_ref'] ?? null;
                         $np_data['house'] = $this->request->post['np_courier_house'] ?? null;
                         $np_data['flat'] = $this->request->post['np_courier_flat'] ?? null;
                         break;
@@ -404,29 +404,22 @@ class Confirm extends \Opencart\System\Engine\Controller {
                 $ukr_data = [
                     'delivery_type' => $deliveryType,
                     'city' => $this->request->post['ukr_city'] ?? '',
-                    'region_id' => $this->request->post['ukr_region_id'] ?? '',
-                    'region_ua' => $this->request->post['ukr_region_ua'] ?? '',
-                    'district_id' => $this->request->post['ukr_district_id'] ?? '',
-                    'district_ua' => $this->request->post['ukr_district_ua'] ?? '',
                     'city_id' => $this->request->post['ukr_city_id'] ?? '',
-                    'city_ua' => $this->request->post['ukr_city_ua'] ?? '',
+                    'region_id' => $this->request->post['ukr_region_id'] ?? '',
+                    'district_id' => $this->request->post['ukr_district_id'] ?? '',
                 ];
 
                 switch ($deliveryType) {
                     case 'branch':
                         $ukr_data['branch'] = $this->request->post['ukr_branch'] ?? null;
-                        $ukr_data['branch_id'] = $this->request->post['ukr_branch_id'] ?? null;
                         $ukr_data['branch_index'] = $this->request->post['ukr_branch_index'] ?? null;
-                        $ukr_data['branch_street'] = $this->request->post['ukr_branch_street'] ?? null;
-                        $ukr_data['branch_building_no'] = $this->request->post['ukr_branch_building_no'] ?? null;
-                        $ukr_data['branch_name_ua'] = $this->request->post['ukr_branch_name_ua'] ?? null;
                         break;
 
                     case 'courier':
                         $ukr_data['courier_street'] = $this->request->post['ukr_courier_street'] ?? null;
                         $ukr_data['courier_street_id'] = $this->request->post['ukr_courier_street_id'] ?? null;
-                        $ukr_data['courier_street_ua'] = $this->request->post['ukr_courier_street_ua'] ?? null;
                         $ukr_data['courier_house'] = $this->request->post['ukr_courier_house'] ?? null;
+                        $ukr_data['courier_house_index'] = $this->request->post['ukr_courier_house_index'] ?? null;
                         $ukr_data['courier_flat'] = $this->request->post['ukr_courier_flat'] ?? null;
                         break;
                 }

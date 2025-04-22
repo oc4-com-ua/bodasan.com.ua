@@ -470,6 +470,90 @@ $(document).ready(function() {
     });
 });
 
+let isAnimating = false;
+
+let setDefaultDisplayForElement = (target) => {
+    if (target.style.display === 'none' || window.getComputedStyle(target).display === 'none') {
+        const nodeName = target.nodeName.toLowerCase();
+        target.style.display = nodeName === 'div' ? 'block' : 'inline-block';
+    }
+};
+
+let collapseUp = (target, duration = 500, callback = null) => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    target.style.transitionProperty = 'height, margin, padding';
+    target.style.transitionDuration = `${duration}ms`;
+    target.style.boxSizing = 'border-box';
+    target.style.height = `${target.offsetHeight}px`;
+    target.offsetHeight;
+    target.style.overflow = 'hidden';
+    target.style.height = 0;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+
+    requestAnimationFrame(() => {
+        window.setTimeout(() => {
+            target.style.display = 'none';
+            target.style.removeProperty('height');
+            target.style.removeProperty('padding-top');
+            target.style.removeProperty('padding-bottom');
+            target.style.removeProperty('margin-top');
+            target.style.removeProperty('margin-bottom');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            isAnimating = false;
+            if (typeof callback === 'function') callback(); // Виконати callback після завершення
+        }, duration);
+    });
+};
+
+let collapseDown = (target, duration = 500, callback = null) => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    setDefaultDisplayForElement(target);
+    let height = target.offsetHeight;
+    target.style.height = 0;
+    target.style.overflow = 'hidden';
+    target.style.transitionProperty = 'height, margin, padding';
+    target.style.transitionDuration = `${duration}ms`;
+    target.style.boxSizing = 'border-box';
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    target.offsetHeight;
+    target.style.height = `${height}px`;
+
+    requestAnimationFrame(() => {
+        window.setTimeout(() => {
+            target.style.removeProperty('height');
+            target.style.removeProperty('padding-top');
+            target.style.removeProperty('padding-bottom');
+            target.style.removeProperty('margin-top');
+            target.style.removeProperty('margin-bottom');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            isAnimating = false;
+            if (typeof callback === 'function') callback(); // Виконати callback після завершення
+        }, duration);
+    });
+};
+
+let collapseToggle = (target, duration = 500, callback = null) => {
+    if (window.getComputedStyle(target).display === 'none') {
+        return collapseDown(target, duration, callback);
+    } else {
+        return collapseUp(target, duration, callback);
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (e) {
         const btn = e.target.closest('.quantity__btn_plus, .quantity__btn_minus');
