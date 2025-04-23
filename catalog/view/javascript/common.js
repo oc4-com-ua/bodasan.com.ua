@@ -153,10 +153,32 @@ $(document).on('submit', 'form', function (e) {
                 }
 
                 if (json['success']) {
-                    if (json['success']['type'] = 'add_cart') {
+                    if (json['success']['type'] === 'add_cart') {
                         const modalCartBody = document.getElementById('modal-cart-body');
                         modalCartBody.innerHTML = json['success']['template'];
                         modalShow('#modal-add-cart');
+                    } else if (json['type'] === 'add_wishlist') {
+                        document.querySelectorAll('.favorite-btn[data-product-id="'+json['product_id']+'"]').forEach((el) => {
+                            if (el.classList.contains('favorite-btn_add')) {
+                                el.classList.add('favorite-btn_hidden');
+                            } else if (el.classList.contains('favorite-btn_remove')) {
+                                el.classList.remove('favorite-btn_hidden');
+                            }
+                        });
+                        document.getElementById('favorite-count').innerText = json['total'];
+                    } else if (json['type'] === 'remove_wishlist') {
+                        if (json['wishlist_page']) {
+                            $('#wishlist').load('index.php?route=account/wishlist.list');
+                        } else {
+                            document.querySelectorAll('.favorite-btn[data-product-id="'+json['product_id']+'"]').forEach((el) => {
+                                if (el.classList.contains('favorite-btn_add')) {
+                                    el.classList.remove('favorite-btn_hidden');
+                                } else if (el.classList.contains('favorite-btn_remove')) {
+                                    el.classList.add('favorite-btn_hidden');
+                                }
+                            });
+                        }
+                        document.getElementById('favorite-count').innerText = json['total'];
                     } else {
                         $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                     }

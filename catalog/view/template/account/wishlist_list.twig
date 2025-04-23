@@ -1,51 +1,42 @@
 {% if products %}
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th class="text-center">{{ column_image }}</th>
-          <th>{{ column_name }}</th>
-          <th>{{ column_model }}</th>
-          <th class="text-end">{{ column_stock }}</th>
-          <th class="text-end">{{ column_price }}</th>
-          <th class="text-end">{{ column_action }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% set product_row = 0 %}
-        {% for product in products %}
-          <tr>
-            <td class="text-center">{% if product.thumb %}<a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"/></a>{% endif %}</td>
-            <td><a href="{{ product.href }}">{{ product.name }}</a>
-              <form id="form-product-{{ product_row }}" action="{{ cart_add }}" method="post" data-oc-toggle="ajax" data-oc-load="{{ cart }}" data-oc-target="#cart">
-                <input type="hidden" name="product_id" value="{{ product.product_id }}"/>
-                <input type="hidden" name="quantity" value="{{ product.minimum }}"/>
-              </form>
-            </td>
-            <td>{{ product.model }}</td>
-            <td class="text-end">{{ product.stock }}</td>
-            <td class="text-end text-nowrap">
-              {% if product.price %}
-                <div class="price">
-                  {% if not product.special %}
-                    {{ product.price }}
-                  {% else %}
-                    <b>{{ product.special }}</b> <s>{{ product.price }}</s>
-                  {% endif %}
-                </div>
-              {% endif %}</td>
-            <td class="text-end text-nowrap" style="width: 1px;">
-              <div class="d-grid">
-                <button type="submit" form="form-product-{{ product_row }}" class="btn btn-primary mb-1">{{ button_cart }}</button>
-                <a href="{{ product.remove }}" class="btn btn-danger">{{ button_remove }}</a>
+  <div class="wishlist__products">
+    {% for product in products %}
+      <div class="wishlist__product">
+        <div class="wishlist__product-group">
+          {% if product.thumb %}
+            <a href="{{ product.href }}" class="wishlist__product-img">
+              <img src="{{ product.thumb }}" alt="{{ product.name }}">
+            </a>
+          {% endif %}
+          <div class="wishlist__product-inner">
+            <div class="wishlist__product-title">
+              <a href="{{ product.href }}" class="wishlist__product-title-link">{{ product.name }}</a>
+            </div>
+            <div class="wishlist__product-stock wishlist__product-stock_{% if product.quantity > 0 %}yes{% else %}no{% endif %}">{{ product.stock }}</div>
+            {% if product.price %}
+              <div class="wishlist__product-price">
+                {% if product.old_price %}
+                  <div class="wishlist__product-price-old">{{ product.old_price }}</div>
+                {% endif %}
+                <div class="wishlist__product-price-current">{{ product.price }}</div>
               </div>
-            </td>
-          </tr>
-          {% set product_row = product_row + 1 %}
-        {% endfor %}
-      </tbody>
-    </table>
+            {% endif %}
+          </div>
+        </div>
+        <form method="post" data-oc-toggle="ajax" data-oc-load="{{ cart }}" data-oc-target="#cart" class="wishlist__product-action">
+          {% if product.quantity > 0 %}
+            <button type="submit" formaction="{{ cart_add }}" title="{{ button_cart }}" class="wishlist__product-add">{{ button_cart }}</button>
+          {% else %}
+            <button title="{{ text_expected }}" class="wishlist__product-expected" disabled>{{ text_expected }}</i></button>
+          {% endif %}
+          <button type="submit" formaction="{{ product.remove }}" title="{{ button_wishlist_remove }}" class="wishlist__product-remove"></button>
+          <input type="hidden" name="product_id" value="{{ product.product_id }}">
+          <input type="hidden" name="quantity" value="{{ product.minimum }}">
+          <input type="hidden" name="wishlist_page" value="true">
+        </form>
+      </div>
+    {% endfor %}
   </div>
 {% else %}
-  <p>{{ text_no_results }}</p>
+  <div class="no-results">{{ text_no_results }}</div>
 {% endif %}

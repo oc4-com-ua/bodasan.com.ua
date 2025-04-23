@@ -30,7 +30,8 @@
       {% else %}
         <button title="{{ text_expected }}" class="product-thumb__expected" disabled>{{ text_expected }}</i></button>
       {% endif %}
-      <button type="submit" formaction="{{ wishlist_add }}" title="{{ button_wishlist }}" class="product-thumb__favorite"></button>
+      <button type="submit" formaction="{{ wishlist_add }}" title="{{ button_wishlist }}" class="product-thumb__favorite favorite-btn favorite-btn_add{% if is_in_wishlist %} favorite-btn_hidden{% endif %}" data-product-id="{{ product_id }}"></button>
+      <button type="submit" formaction="{{ wishlist_remove }}" title="{{ button_wishlist_remove }}" class="product-thumb__favorite favorite-btn favorite-btn_remove{% if not is_in_wishlist %} favorite-btn_hidden{% endif %}" data-product-id="{{ product_id }}"></button>
       <input type="hidden" name="product_id" value="{{ product_id }}"/>
       <input type="hidden" name="quantity" value="{{ minimum }}"/>
     </form>

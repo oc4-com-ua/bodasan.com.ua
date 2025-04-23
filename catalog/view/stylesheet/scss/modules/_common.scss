@@ -127,3 +127,24 @@
     color: #ea4335;
     background-color: #fbeceb;
 }
+
+.favorite-btn {
+    transition: transform .2s;
+
+    &_add {
+        background-image: url(../images/heart-black.svg);
+    }
+
+    &_remove {
+        background-image: url(../images/heart-fill-black.svg);
+    }
+
+    &_hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &:active {
+        transform: scale(.5);
+    }
+}

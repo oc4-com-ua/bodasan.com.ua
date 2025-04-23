@@ -29,7 +29,8 @@
                             </div>
                         {% endif %}
                         <form method="post" data-oc-toggle="ajax">
-                            <button type="submit" formaction="{{ wishlist_add }}" class="product__favorite" title="{{ button_wishlist }}"></button>
+                            <button type="submit" formaction="{{ wishlist_add }}" class="product__favorite favorite-btn favorite-btn_add{% if is_in_wishlist %} favorite-btn_hidden{% endif %}" title="{{ button_wishlist }}" data-product-id="{{ product_id }}"></button>
+                            <button type="submit" formaction="{{ wishlist_remove }}" class="product__favorite favorite-btn favorite-btn_remove{% if not is_in_wishlist %} favorite-btn_hidden{% endif %}" title="{{ button_wishlist_remove }}" data-product-id="{{ product_id }}"></button>
                             <input type="hidden" name="product_id" value="{{ product_id }}">
                         </form>
                     </div>
@@ -212,7 +213,8 @@
                             </div>
                         {% endif %}
                         <form method="post" data-oc-toggle="ajax">
-                            <button type="submit" formaction="{{ wishlist_add }}" class="product-about__favorite" title="{{ button_wishlist }}"></button>
+                            <button type="submit" formaction="{{ wishlist_add }}" class="product-about__favorite favorite-btn favorite-btn_add{% if is_in_wishlist %} favorite-btn_hidden{% endif %}" title="{{ button_wishlist }}" data-product-id="{{ product_id }}"></button>
+                            <button type="submit" formaction="{{ wishlist_remove }}" class="product-about__favorite favorite-btn favorite-btn_remove{% if not is_in_wishlist %} favorite-btn_hidden{% endif %}" title="{{ button_wishlist_remove }}" data-product-id="{{ product_id }}"></button>
                             <input type="hidden" name="product_id" value="{{ product_id }}">
                         </form>
                     </div>
@@ -366,7 +368,8 @@
                                 </div>
                             {% endif %}
                             <form method="post" data-oc-toggle="ajax">
-                                <button type="submit" formaction="{{ wishlist_add }}" class="product-widget__favorite" title="{{ button_wishlist }}"></button>
+                                <button type="submit" formaction="{{ wishlist_add }}" class="product-widget__favorite favorite-btn favorite-btn_add{% if is_in_wishlist %} favorite-btn_hidden{% endif %}" title="{{ button_wishlist }}" data-product-id="{{ product_id }}"></button>
+                                <button type="submit" formaction="{{ wishlist_remove }}" class="product-widget__favorite favorite-btn favorite-btn_remove{% if not is_in_wishlist %} favorite-btn_hidden{% endif %}" title="{{ button_wishlist_remove }}" data-product-id="{{ product_id }}"></button>
                                 <input type="hidden" name="product_id" value="{{ product_id }}">
                             </form>
                         </div>

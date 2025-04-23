@@ -36,8 +36,11 @@ class Thumb extends \Opencart\System\Engine\Controller {
 
 		$data['cart'] = $this->url->link('common/cart.info');
 
-		$data['cart_add'] = $this->url->link('checkout/cart.add');
+        $data['is_in_wishlist'] = in_array($data['product_id'], $this->session->data['wishlist'] ?? []);
+
+        $data['cart_add'] = $this->url->link('checkout/cart.add');
 		$data['wishlist_add'] = $this->url->link('account/wishlist.add');
+		$data['wishlist_remove'] = $this->url->link('account/wishlist.remove');
 		$data['compare_add'] = $this->url->link('product/compare.add');
 
 		$data['review_status'] = (int)$this->config->get('config_review_status');

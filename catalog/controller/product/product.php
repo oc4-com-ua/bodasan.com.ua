@@ -293,7 +293,10 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['review_status'] = (int)$this->config->get('config_review_status');
 			$data['review'] = $this->load->controller('product/review');
 
+            $data['is_in_wishlist'] = in_array($product_id, $this->session->data['wishlist'] ?? []);
+
 			$data['wishlist_add'] = $this->url->link('account/wishlist.add');
+			$data['wishlist_remove'] = $this->url->link('account/wishlist.remove');
 			$data['compare_add'] = $this->url->link('product/compare.add');
 
 			$this->load->model('tool/image');

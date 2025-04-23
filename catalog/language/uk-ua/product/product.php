@@ -37,3 +37,5 @@ $_['tab_specs'] = 'Характеристики';
 $_['tab_delivery'] = 'Доставка';
 $_['tab_payment'] = 'Оплата';
 $_['tab_review'] = 'Відгуки (%s)';
+
+$_['button_wishlist_remove'] = 'Видалити зі списку бажань';
