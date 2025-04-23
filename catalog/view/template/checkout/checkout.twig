@@ -341,7 +341,7 @@
             if (json.redirect) {
               window.location.href = json.redirect;
             } else {
-              window.location.href = 'index.php?route=checkout/success&language={{ language }}';
+              window.location.href = 'checkout-success';
             }
           } else {
             document.getElementById('order-message').innerHTML = '<div class="alert alert-danger">' + json.error + '</div>';

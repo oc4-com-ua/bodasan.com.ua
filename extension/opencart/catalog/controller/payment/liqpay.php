@@ -36,8 +36,8 @@ class LiqPay extends \Opencart\System\Engine\Controller {
             'description' => 'Оплата замовлення №' . $order_id,
             'order_id'    => $order_id,
             'sandbox'   => $sandbox,
-            'server_url'  => $this->url->link('extension/opencart/payment/liqpay.callback', 'language=' . $this->config->get('config_language')),
-            'result_url'  => $this->url->link('checkout/success', 'language=' . $this->config->get('config_language'))
+            'server_url'  => $this->url->link('extension/opencart/payment/liqpay.callback'),
+            'result_url'  => $this->url->link('checkout/success', '&order_id=' . $order_id)
         ];
 
         $data = base64_encode(json_encode($liqpay_data));
@@ -77,6 +77,8 @@ class LiqPay extends \Opencart\System\Engine\Controller {
         }
 
         $parsed_data = json_decode(base64_decode($data), true);
+
+        $this->log->write($parsed_data);
 
         if (!isset($parsed_data['order_id']) || !isset($parsed_data['status'])) {
             die('Order ID or status not found in response');

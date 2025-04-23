@@ -1,16 +1,20 @@
 {{ header }}
 <div id="common-success" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
-  <div class="row">{{ column_left }}
-    <div id="content" class="col">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
-      {{ text_message }}
-      <div class="text-end"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+  <div class="page-success">
+    <div class="page-success__img">
+      <img src="catalog/view/images/page-success.svg" width="416" height="419" alt="">
+    </div>
+    <div class="page-success__main">
+      <h1 class="page-success__heading">{{ heading_title }}</h1>
+      <div class="page-success__box">
+        <div class="page-success__number">
+          <div class="page-success__number-label">{{ text_number_label }}</div>
+          <div class="page-success__number-value">№{{ order_id }}</div>
+        </div>
+        <div class="page-success__text">{{ text_message }}</div>
+        <a href="{{ continue }}" class="page-success__btn">{{ btn_return }}</a>
+      </div>
+    </div>
+  </div>
 </div>
 {{ footer }}
