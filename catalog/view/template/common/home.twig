@@ -17,5 +17,52 @@
 
   {{ content_top }}
 
+  {% if latest_reviews %}
+    <div class="home-reviews">
+      <div class="home-reviews__heading heading">Відгуки про товари та магазин</div>
+      <div class="home-reviews__list">
+        {% for review in latest_reviews %}
+          <div class="home-reviews__item">
+            <div class="home-reviews__product">
+              <a href="{{ review.href }}" class="home-reviews__product-img">
+                <img src="{{ review.image }}" alt="{{ review.name }}" width="72" height="72">
+              </a>
+              <div class="home-reviews__product-inner">
+                <div class="home-reviews__product-title">
+                  <a href="{{ review.href }}" class="home-reviews__product-link">{{ review.name }}</a>
+                </div>
+                <div class="home-reviews__product-price">
+                  <div class="home-reviews__product-price-current">{{ review.price }}</div>
+                  {% if review.old_price %}
+                    <div class="home-reviews__product-price-old">{{ review.old_price }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="home-reviews__head">
+              <div class="home-reviews__name">
+                <div class="home-reviews__name-avatar">{{ review.author|slice(0, 1) }}</div>
+                <div class="home-reviews__name-text">{{ review.author }}</div>
+              </div>
+              <div class="home-reviews__group">
+                <div class="home-reviews__rating home-reviews__rating_{{ review.rating }}"></div>
+                <div class="home-reviews__date">{{ review.date_added }}</div>
+              </div>
+            </div>
+            <div class="home-reviews__body">
+              <p>{{ review.text }}</p>
+              {% if review.advantages %}
+                <p><b>Переваги</b> {{ review.advantages }}</p>
+              {% endif %}
+              {% if review.disadvantages %}
+                <p><b>Недоліки</b> {{ review.disadvantages }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
 </div>
 {{ footer }}

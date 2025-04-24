@@ -39,6 +39,23 @@ class Home extends \Opencart\System\Engine\Controller {
             }
         }
 
+        $this->load->model('tool/image');
+        $this->load->model('catalog/review');
+
+        $limit_reviews = 6;
+        $data['latest_reviews'] = $this->model_catalog_review->getLatestReviews($limit_reviews);
+        foreach ($data['latest_reviews'] as &$review) {
+            $review['date_added'] = date('Y-m-d', strtotime($review['date_added']));
+            $review['price'] = $this->currency->format($review['price'], $this->session->data['currency']);
+            if ($review['old_price']) {
+                $review['old_price'] = $this->currency->format($review['old_price'], $this->session->data['currency']);
+            } else {
+                $review['old_price'] = false;
+            }
+            $review['image'] = $this->model_tool_image->resize($review['image'], '72', '72');
+            $review['href'] = $this->url->link('product/product', 'product_id=' . $review['product_id']);
+        }
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

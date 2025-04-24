@@ -83,4 +83,20 @@ class Review extends \Opencart\System\Engine\Model {
 
 		return (int)$query->row['total'];
 	}
+
+    public function getLatestReviews($limit = 5) {
+        $sql = "SELECT r.review_id, r.author, r.text, r.rating, r.date_added, r.advantages, r.disadvantages,
+                   p.product_id, p.image, pd.name, p.price, p.old_price
+            FROM " . DB_PREFIX . "review r
+            JOIN " . DB_PREFIX . "product p ON r.product_id = p.product_id
+            JOIN " . DB_PREFIX . "product_description pd ON p.product_id = pd.product_id
+            WHERE r.status = 1 AND p.status = 1 AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'
+            ORDER BY r.date_added DESC
+            LIMIT " . (int)$limit;
+
+        $query = $this->db->query($sql);
+
+        return $query->rows;
+    }
+
 }
