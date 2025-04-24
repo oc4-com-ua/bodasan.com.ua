@@ -1,7 +1,21 @@
 {{ header }}
-<div id="common-home" class="container">
-  <div class="row">{{ column_left }}
-    <div id="content" class="col">{{ content_top }}{{ content_bottom }}</div>
-    {{ column_right }}</div>
+<div id="common-home" class="container home-page">
+
+  {% if catalog_menu %}
+  <div class="home-category">
+    <div class="home-category__heading heading">Інтернет-магазин bodasan.com.ua</div>
+    <div class="home-category__list">
+      {% for category in catalog_menu %}
+        <a href="{{ category.href }}" class="home-category__link">
+          <span class="home-category__icon"><img src="image/{{ category.image }}" width="32" height="32" alt=""></span>
+          <span class="home-category__title">{{ category.name }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {{ content_top }}
+
 </div>
 {{ footer }}

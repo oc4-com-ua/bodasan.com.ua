@@ -18,6 +18,27 @@ class Home extends \Opencart\System\Engine\Controller {
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
 
+        $this->load->model('catalog/category');
+        $categories = $this->model_catalog_category->getCategories(0);
+
+        $data['catalog_menu'] = [];
+
+        if ($categories) {
+            foreach ($categories as $category) {
+                if (!$category['status']) {
+                    continue;
+                }
+
+                $category_image = $category['image'] ? $category['image'] : 'catalog/category/no-image.svg';
+
+                $data['catalog_menu'][] = [
+                    'name'  => $category['name'],
+                    'href'  => $this->url->link('product/category', 'path=' . $category['category_id']),
+                    'image' => $category_image
+                ];
+            }
+        }
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
