@@ -35,7 +35,7 @@ class Success extends \Opencart\System\Engine\Controller {
 
 		$data['continue'] = $this->url->link('common/home');
 
-        $data['text_message'] = sprintf($this->language->get('text_message'), $order_id, $this->url->link('information/contact'));
+        $data['text_message'] = sprintf($this->language->get('text_message'), $order_id, $this->url->link('information/information', 'information_id=7'));
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');

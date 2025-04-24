@@ -72,7 +72,7 @@ class Header extends \Opencart\System\Engine\Controller {
             ['name' => 'Оплата', 'href' => $this->url->link('information/information', 'information_id=6')],
             ['name' => 'Повернення', 'href' => $this->url->link('information/information', 'information_id=5')],
             ['name' => 'Про нас', 'href' => $this->url->link('information/information', 'information_id=1')],
-            ['name' => 'Контакти', 'href' => $this->url->link('information/contact')],
+            ['name' => 'Контакти', 'href' => $this->url->link('information/information', 'information_id=7')],
 //            ['name' => 'Відгуки', 'href' => $this->url->link('information/information', 'information_id=6')],
         ];
 
