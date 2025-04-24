@@ -62,18 +62,36 @@ class Featured extends \Opencart\System\Engine\Controller {
 					$tax = false;
 				}
 
+                if ($product['old_price']) {
+                    $old_price = $this->currency->format($product['old_price'], $this->session->data['currency']);
+                } else {
+                    $old_price = false;
+                }
+
+                $filter_ids = $this->model_catalog_product->getProductFilters($product['product_id']);
+                $product_filters = $this->model_catalog_product->getFiltersByIds($filter_ids);
+
 				$product_data = [
 					'product_id'  => $product['product_id'],
 					'thumb'       => $image,
 					'name'        => $product['name'],
+					'quantity'    => (int)$product['quantity'],
+					'stock_status_id' => $product['stock_status_id'],
 					'description' => oc_substr(trim(strip_tags(html_entity_decode($product['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
+                    'old_price'   => $old_price,
 					'special'     => $special,
 					'tax'         => $tax,
 					'minimum'     => $product['minimum'] > 0 ? $product['minimum'] : 1,
 					'rating'      => (int)$product['rating'],
-					'href'        => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product['product_id'])
+					'href'        => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $product['product_id']),
+                    'videos'      => (bool)$this->model_catalog_product->getVideos($product['product_id']),
+                    'plates'      => $product_filters,
 				];
+
+                /*echo '<pre>';
+                var_dump($product);
+                echo '</pre>';*/
 
 				$data['products'][] = $this->load->controller('product/thumb', $product_data);
 			}

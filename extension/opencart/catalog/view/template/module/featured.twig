@@ -1,6 +1,8 @@
-<h3>{{ heading_title }}</h3>
-<div class="row{% if axis == 'horizontal' %} row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4{% endif %}">
-  {% for product in products %}
-    <div class="col mb-3">{{ product }}</div>
-  {% endfor %}
+<div class="featured">
+    <div class="featured__heading heading">{{ heading_title }}</div>
+    <div class="featured__list product-list">
+      {% for product in products %}
+        <div class="featured__item product-list__item">{{ product }}</div>
+      {% endfor %}
+    </div>
 </div>
