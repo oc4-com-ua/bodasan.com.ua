@@ -1,6 +1,8 @@
 {{ header }}
 <div id="common-home" class="container home-page">
 
+  {{ content_top }}
+
   {% if catalog_menu %}
   <div class="home-category">
     <div class="home-category__heading heading">Інтернет-магазин bodasan.com.ua</div>
@@ -15,7 +17,7 @@
   </div>
   {% endif %}
 
-  {{ content_top }}
+  {{ content_bottom }}
 
   {% if latest_reviews %}
     <div class="home-reviews">

@@ -19,6 +19,7 @@ $_['entry_name']       = 'Назва банера';
 $_['entry_title']      = 'Заголовок';
 $_['entry_link']       = 'Посилання';
 $_['entry_image']      = 'Зображення';
+$_['entry_image_mobile'] = 'Зображення (mobile)';
 $_['entry_status']     = 'Статус';
 $_['entry_sort_order'] = 'Порядок сортування';
 

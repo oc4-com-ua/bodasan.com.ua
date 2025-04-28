@@ -250,11 +250,21 @@ class Banner extends \Opencart\System\Engine\Controller {
 					$thumb = 'no_image.png';
 				}
 
+                if ($value['image'] && is_file(DIR_IMAGE . html_entity_decode($value['image_mobile'], ENT_QUOTES, 'UTF-8'))) {
+					$image_mobile = $value['image_mobile'];
+					$thumb_mobile = $value['image_mobile'];
+				} else {
+					$image_mobile = '';
+					$thumb_mobile = 'no_image.png';
+				}
+
 				$data['banner_images'][$language_id][] = [
 					'title'      => $value['title'],
 					'link'       => $value['link'],
 					'image'      => $image,
 					'thumb'      => $this->model_tool_image->resize($thumb, $this->config->get('config_image_default_width'), $this->config->get('config_image_default_height')),
+                    'image_mobile' => $image_mobile,
+					'thumb_mobile' => $this->model_tool_image->resize($thumb_mobile, $this->config->get('config_image_default_width'), $this->config->get('config_image_default_height')),
 					'sort_order' => $value['sort_order']
 				];
 			}

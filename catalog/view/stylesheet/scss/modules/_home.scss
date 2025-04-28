@@ -5,6 +5,10 @@
 .home-category {
     margin-bottom: 64px;
 
+    @media (max-width: 575px) {
+        margin-bottom: 32px;
+    }
+
     &__heading {
         margin-bottom: 24px;
     }
@@ -86,6 +90,10 @@
 
 .featured {
     margin-bottom: 64px;
+
+    @media (max-width: 575px) {
+        margin-bottom: 32px;
+    }
 
     &__heading {
         margin-bottom: 24px;
@@ -322,6 +330,74 @@
 
         b {
             font-weight: 600;
+        }
+    }
+}
+
+.home-slider {
+    margin-bottom: 64px;
+
+    @media (max-width: 575px) {
+        margin-bottom: 32px;
+    }
+
+    &__track {
+        border-radius: 24px;
+    }
+
+    &__slide {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    &__arrow {
+        display: block;
+        border-radius: 8px;
+        border: none;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        background: #ededed url(../images/angle-down.svg) center center / 8px 8px no-repeat;
+
+        &_prev {
+            transform: rotate(90deg);
+        }
+
+        &_next {
+            transform: rotate(-90deg);
+            order: 1;
+        }
+    }
+
+    &__pagination {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 8px;
+
+        &-page {
+            display: block;
+            padding: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: #c5c5c5;
+
+            &.is-active {
+                background: #151515;
+            }
         }
     }
 }

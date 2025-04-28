@@ -15,6 +15,23 @@ class Banner extends \Opencart\System\Engine\Controller {
 	 */
 	public function index(array $setting): string {
 		static $module = 0;
+        static $assets_loaded = false;
+
+        if (!$assets_loaded) {
+            // css – підвантажується у <head>
+            $this->document->addStyle('catalog/view/javascript/splide/css/splide-core.min.css','stylesheet');
+
+            // js – підвантажується у <footer>
+            $this->document->addScript('catalog/view/javascript/splide/js/splide.min.js','footer');
+
+            // щоб не додавати ще раз, якщо банерів декілька
+            $assets_loaded = true;
+
+            // «маячок» для footer'а
+            if (!defined('BANNER_USED')) {
+                define('BANNER_USED', true);
+            }
+        }
 
 		// Banner
 		$this->load->model('design/banner');
@@ -31,7 +48,7 @@ class Banner extends \Opencart\System\Engine\Controller {
 				$data['banners'][] = [
 					'title' => $result['title'],
 					'link'  => $result['link'],
-					'image' => $this->model_tool_image->resize(html_entity_decode($result['image'], ENT_QUOTES, 'UTF-8'), $setting['width'], $setting['height'])
+					'image' => is_mobile() ? 'image/' . $result['image_mobile'] : 'image/' . $result['image'],
 				];
 			}
 		}

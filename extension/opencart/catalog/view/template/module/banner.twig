@@ -1,43 +1,50 @@
-<div id="carousel-banner-{{ module }}" class="carousel slide{% if effect == 'fade' %} carousel-fade{% endif %}" data-bs-ride="carousel">
-  {% if indicators and banners|batch(items)|length > 1 %}
-    <div class="carousel-indicators">
-      {% set banner_row = 0 %}
-      {% for banner in banners|batch(items) %}
-        <button type="button" data-bs-target="#carousel-banner-{{ module }}" data-bs-slide-to="{{ banner_row }}"{% if banner_row == 0 %} class="active"{% endif %}></button>
-        {% set banner_row = banner_row + 1 %}
-      {% endfor %}
-    </div>
-  {% endif %}
-  <div class="carousel-inner">
+<div id="carousel-banner-{{ module }}" class="splide home-slider">
+  <div class="splide__track home-slider__track">
+    <div class="splide__list home-slider__list">
     {% set banner_row = 0 %}
-    {% for carousel in banners|batch(items) %}
-      <div class="carousel-item{% if banner_row == 0 %} active{% endif %}">
-        <div class="row justify-content-center">
-          {% for banner in carousel %}
-            <div class="col-{{ (12 / items)|round }} text-center">
-              {% if banner.link %}
-                <a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-fluid"/></a>
-              {% else %}
-                <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-fluid"/>
-              {% endif %}
-            </div>
-          {% endfor %}
-        </div>
+    {% for banner in banners %}
+      <div class="splide__slide home-slider__slide">
+        {% if banner.link %}
+        <a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}"></a>
+        {% else %}
+        <img src="{{ banner.image }}" alt="{{ banner.title }}">
+        {% endif %}
       </div>
       {% set banner_row = banner_row + 1 %}
     {% endfor %}
+    </div>
   </div>
-  {% if controls and banners|batch(items)|length > 1 %}
-    <button type="button" class="carousel-control-prev" data-bs-target="#carousel-banner-{{ module }}" data-bs-slide="prev"><span class="fa-solid fa-chevron-left"></span></button>
-    <button type="button" class="carousel-control-next" data-bs-target="#carousel-banner-{{ module }}" data-bs-slide="next"><span class="fa-solid fa-chevron-right"></span></button>
-  {% endif %}
+  <div class="home-slider__controls splide__arrows">
+      <button class="splide__arrow splide__arrow--prev home-slider__arrow home-slider__arrow_prev"></button>
+      <button class="splide__arrow splide__arrow--next home-slider__arrow home-slider__arrow_next"></button>
+  </div>
 </div>
-<script type="text/javascript"><!--
-$(document).ready(function() {
-    new bootstrap.Carousel(document.querySelector('#carousel-banner-{{ module }}'), {
-        ride: 'carousel',
-        interval: {{ interval|escape('js') }},
-        wrap: true
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const homeSlider = new Splide('#carousel-banner-{{ module }}', {
+            type : 'loop',
+            autoplay : true,
+            interval : {{ interval }},
+            perPage : {{ items }},
+            classes : {
+                pagination : 'slider__pagination home-slider__pagination',
+                page : 'slider__pagination-page home-slider__pagination-page',
+                // arrows : 'splide__arrows home-slider__arrows',
+                // arrow : 'splide__arrow home-slider__arrow',
+                // prev : 'splide__arrow--prev home-slider__arrow_prev',
+                // next : 'splide__arrow--next home-slider__arrow_next',
+            },
+            // arrowPath : 'M9.99197 2.54929C9.99204 2.87774 10.0568 3.20296 10.1827 3.50636C10.3085 3.80976 10.4929 4.08539 10.7253 4.31749L23.5103 17.1016C23.8973 17.4885 24.2043 17.9478 24.4138 18.4534C24.6233 18.9589 24.7311 19.5008 24.7311 20.048C24.7311 20.5952 24.6233 21.1371 24.4138 21.6427C24.2043 22.1482 23.8973 22.6076 23.5103 22.9945L10.7403 35.7635C10.2849 36.235 10.0329 36.8665 10.0386 37.5219C10.0443 38.1773 10.3072 38.8043 10.7708 39.2678C11.2343 39.7313 11.8613 39.9942 12.5168 39.9999C13.1723 40.0056 13.8038 39.7536 14.2753 39.2983L27.0453 26.5292C28.7623 24.8092 29.7266 22.4782 29.7266 20.048C29.7266 17.6178 28.7623 15.2868 27.0453 13.5668L14.2586 0.781082C13.9089 0.43182 13.4635 0.194055 12.9787 0.0978339C12.4939 0.00161296 11.9914 0.0512562 11.5348 0.240487C11.0782 0.429717 10.6879 0.750045 10.4133 1.16099C10.1387 1.57193 9.99207 2.05505 9.99197 2.54929Z',
+            pagination: true,
+        });
+
+        homeSlider.on('pagination:mounted', data => {
+            console.log(data)
+            const controls = document.querySelector('#carousel-banner-{{ module }} .home-slider__controls');
+            controls.appendChild(data.list);   // data.list → <ul class="splide__pagination">
+        });
+
+        homeSlider.mount();
     });
-});
-//--></script>
+</script>
