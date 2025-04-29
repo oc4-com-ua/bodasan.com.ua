@@ -404,6 +404,11 @@
 
 </div>
 <script type="text/javascript">
+    {% if dataLayer %}
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({{ dataLayer|json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }});
+    {% endif %}
+
     {% if is_mobile %}
 
         document.addEventListener('click', (e) => {
@@ -542,6 +547,23 @@ $('#form-product').on('submit', function(e) {
                     const modalCartBody = document.getElementById('modal-cart-body');
                     modalCartBody.innerHTML = json['success']['template'];
                     modalShow('#modal-add-cart');
+
+                    const productDataLayer = json['success']['data_layer'];
+                    window.dataLayer.push({ ecommerce: null });
+                    window.dataLayer.push({
+                        event: 'add_to_cart',
+                        ecommerce: {
+                            currency: 'UAH',
+                            items: [
+                                {
+                                    item_id: productDataLayer.id.toString(),
+                                    item_name: productDataLayer.name,
+                                    price: productDataLayer.price,
+                                    quantity: productDataLayer.quantity
+                                }
+                            ]
+                        }
+                    });
                 } else {
                     $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }

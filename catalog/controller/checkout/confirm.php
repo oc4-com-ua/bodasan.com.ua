@@ -502,6 +502,8 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     'totals'              => $totals
                 ];
 
+                $data_layer_items = [];
+
                 foreach ($this->cart->getProducts() as $product) {
                     $order_data['products'][] = [
                         'product_id' => $product['product_id'],
@@ -513,6 +515,13 @@ class Confirm extends \Opencart\System\Engine\Controller {
                         'model'      => $product['model'],
                         'tax'      => 0,
                         'reward'      => $product['reward'],
+                    ];
+
+                    $data_layer_items[] = [
+                        'item_id' => $product['model'],
+                        'item_name' => $product['name'],
+                        'price' => $product['price'],
+                        'quantity' => $product['quantity'],
                     ];
                 }
 
@@ -527,6 +536,13 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     if ($payment_method['code'] === 'liqpay.liqpay') {
                         $json['redirect'] = $this->url->link('extension/opencart/payment/liqpay.confirm', 'order_id=' . $order_id);
                     }
+
+                    $json['data_layer'] = [
+                        'phone_number' => $telephone,
+                        'order_id' => $order_id,
+                        'total' => $total,
+                        'items' => $data_layer_items,
+                    ];
 
                     $this->load->model('checkout/salesdrive');
                     $this->model_checkout_salesdrive->sendOrderToSalesDrive($order_id, $order_data);

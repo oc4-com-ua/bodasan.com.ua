@@ -45,6 +45,13 @@ class Checkout extends \Opencart\System\Engine\Controller {
 
         $products = $this->model_checkout_cart->getProducts();
         $data['products'] = [];
+        $data['dataLayer'] = [
+            'event'     => 'begin_checkout',
+            'ecommerce' => [
+                'currency' => 'UAH',
+                'items' => []
+            ]
+        ];
 
         foreach ($products as $product) {
             $old_price_total = 0;
@@ -61,6 +68,13 @@ class Checkout extends \Opencart\System\Engine\Controller {
                     'old_price_total' => $old_price_total ? $this->currency->format($old_price_total, $this->session->data['currency']) : '',
                     'href' => $this->url->link('product/product', 'product_id=' . $product['product_id']),
                 ] + $product;
+
+            $data['dataLayer']['ecommerce']['items'][] = [
+                'item_id'       => (string)$product['model'],
+                'item_name'     => $product['name'],
+                'price'         => $product['price'],
+                'quantity'      => $product['quantity'],
+            ];
         }
 
         $total_products_price = 0;

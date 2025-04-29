@@ -332,6 +332,12 @@ class Cart extends \Opencart\System\Engine\Controller {
             $json['success'] = [
                 'type' => 'add_cart',
                 'template' => $template,
+                'data_layer' => [
+                    'id' => $product_info['model'],
+                    'name' => $product_info['name'],
+                    'price' => $product_info['price'],
+                    'quantity' => $quantity
+                ],
             ];
 
 			// Unset all shipping and payment methods

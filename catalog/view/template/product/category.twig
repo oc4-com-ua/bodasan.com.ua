@@ -33,6 +33,14 @@
         </div>
 
         {{ pagination }}
+
+        {% if dataLayer %}
+            <script>
+                window.dataLayer.push({ ecommerce: null });
+                window.dataLayer.push({{ dataLayer|json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }});
+            </script>
+        {% endif %}
+
     {% else %}
         <p>{{ text_no_results }}</p>
     {% endif %}

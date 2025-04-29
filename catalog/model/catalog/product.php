@@ -393,7 +393,44 @@ class Product extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
-	/**
+    /**
+     * Get Product Category Names
+     *
+     * Returns a list of categories (with ID and name) assigned to a specific product.
+     *
+     * @param int $product_id primary key of the product record
+     *
+     * @return array<int, array{category_id: int, name: string}> category records that contain product ID
+     *
+     * @example
+     *
+     * $this->load->model('catalog/product');
+     *
+     * $categories = $this->model_catalog_product->getProductCategoryNames($product_id);
+     */
+    public function getProductCategoryNames(int $product_id): array {
+        $language_id = (int)$this->config->get('config_language_id');
+
+        $query = $this->db->query("SELECT c.category_id, cd.name 
+        FROM " . DB_PREFIX . "product_to_category pc
+        LEFT JOIN " . DB_PREFIX . "category_description cd ON (pc.category_id = cd.category_id)
+        LEFT JOIN " . DB_PREFIX . "category c ON (c.category_id = pc.category_id)
+        WHERE pc.product_id = '" . (int)$product_id . "' 
+        AND cd.language_id = '" . $language_id . "'");
+
+        $categories = [];
+
+        foreach ($query->rows as $row) {
+            $categories[] = [
+                'category_id' => (int)$row['category_id'],
+                'name'        => $row['name']
+            ];
+        }
+
+        return $categories;
+    }
+
+    /**
 	 * Get Total Categories By Category ID
 	 *
 	 * @param int $product_id  primary key of the product record

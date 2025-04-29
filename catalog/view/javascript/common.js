@@ -157,6 +157,23 @@ $(document).on('submit', 'form', function (e) {
                         const modalCartBody = document.getElementById('modal-cart-body');
                         modalCartBody.innerHTML = json['success']['template'];
                         modalShow('#modal-add-cart');
+
+                        const productDataLayer = json['success']['data_layer'];
+                        window.dataLayer.push({ ecommerce: null });
+                        window.dataLayer.push({
+                            event: 'add_to_cart',
+                            ecommerce: {
+                                currency: 'UAH',
+                                items: [
+                                    {
+                                        item_id: productDataLayer.id.toString(),
+                                        item_name: productDataLayer.name,
+                                        price: productDataLayer.price,
+                                        quantity: productDataLayer.quantity
+                                    }
+                                ]
+                            }
+                        });
                     } else if (json['type'] === 'add_wishlist') {
                         document.querySelectorAll('.favorite-btn[data-product-id="'+json['product_id']+'"]').forEach((el) => {
                             if (el.classList.contains('favorite-btn_add')) {

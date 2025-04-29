@@ -171,6 +171,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			$data['categories'] = [];
 
 			$this->load->model('catalog/product');
+            $this->load->model('catalog/manufacturer');
 
 			$results = $this->model_catalog_category->getCategories($category_id);
 
@@ -223,6 +224,15 @@ class Category extends \Opencart\System\Engine\Controller {
 				'start'               => ($page - 1) * $limit,
 				'limit'               => $limit
 			];
+
+            $data['dataLayer'] = [
+                'event'     => 'view_item_list',
+                'ecommerce' => [
+                    'item_list_id'   => 'category_' . $category_id,
+                    'item_list_name' => $category_info['name'],
+                    'items'          => []
+                ]
+            ];
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
@@ -280,6 +290,17 @@ class Category extends \Opencart\System\Engine\Controller {
 				] + $result;
 
 				$data['products'][] = $this->load->controller('product/thumb', $product_data);
+
+                $manufacturer = $this->model_catalog_manufacturer->getManufacturer((int)$result['manufacturer_id']);
+
+                $data['dataLayer']['ecommerce']['items'][] = [
+                    'item_id'       => (string)$result['model'],
+                    'item_name'     => $result['name'],
+                    'price'         => $result['price'],
+                    'currency'      => 'UAH',
+                    'item_brand'    => $manufacturer['name'],
+                    'item_category' => $category_info['name'],
+                ];
 			}
 
 			$url = '';

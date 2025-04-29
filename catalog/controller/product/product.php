@@ -470,7 +470,25 @@ class Product extends \Opencart\System\Engine\Controller {
 				$this->model_catalog_product->addReport($this->request->get['product_id'], oc_get_ip());
 			}
 
-			$data['language'] = $this->config->get('config_language');
+            $categories = $this->model_catalog_product->getProductCategoryNames($product_id);
+
+            $data['dataLayer'] = [
+                'event'     => 'view_item',
+                'ecommerce' => [
+                    'items' => [
+                        [
+                            'item_id'       => (string)$product_info['model'],
+                            'item_name'     => $product_info['name'],
+                            'price'         => $product_info['price'],
+                            'currency'      => 'UAH',
+                            'item_brand'    => $manufacturer_info['name'],
+                            'item_category' => $categories[0]['name'],
+                        ]
+                    ]
+                ]
+            ];
+
+            $data['language'] = $this->config->get('config_language');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

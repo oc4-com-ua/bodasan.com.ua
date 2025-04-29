@@ -150,6 +150,11 @@
     </div>
 
     <script>
+      {% if dataLayer %}
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({{ dataLayer|json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }});
+      {% endif %}
+
       document.querySelector('.checkout__comment-head').addEventListener('click', function () {
         const commentParent = this.closest('.checkout__comment');
         const commentBody = commentParent.querySelector('.checkout__comment-body');
@@ -338,6 +343,20 @@
           console.log(json);
 
           if (json.success) {
+            window.dataLayer.push({ ecommerce: null });
+            window.dataLayer.push({
+              event: 'purchase',
+              ecommerce: {
+                transaction_id: json.data_layer.order_id,
+                value: json.data_layer.total,
+                currency: 'UAH',
+                items: json.data_layer.items
+              },
+              user_data: {
+                phone_number: json.data_layer.phone_number
+              }
+            });
+
             if (json.redirect) {
               window.location.href = json.redirect;
             } else {
