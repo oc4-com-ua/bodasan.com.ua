@@ -32,6 +32,12 @@
           {% if address %}
             <div class="footer__address">{{ address }}</div>
           {% endif %}
+          {% if working_hours %}
+            <div class="footer__working-hours">
+                <b>Графік роботи:</b><br>
+                {{ working_hours }}
+            </div>
+          {% endif %}
           {% if telegram %}
             <a href="{{ telegram }}" target="_blank" class="footer__telegram">{{ text_telegram }}</a>
           {% endif %}
@@ -96,4 +102,7 @@
 {% if is_mobile %}
   <script src="catalog/view/javascript/common-mobile.js"></script>
 {% endif %}
+
+
+
 </body></html>

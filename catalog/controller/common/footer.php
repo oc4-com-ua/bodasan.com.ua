@@ -37,6 +37,7 @@ class Footer extends \Opencart\System\Engine\Controller {
         $data['telephone2_clear'] = preg_replace('/(?!^\+)[^0-9]/', '', $data['telephone2']);
         $data['email_public'] = $this->config->get('config_email_public');
         $data['address'] = html_entity_decode($this->config->get('config_address'));
+        $data['working_hours'] = nl2br(htmlspecialchars($this->config->get('config_open')));
         $data['viber'] = $this->config->get('config_viber');
         $data['telegram'] = $this->config->get('config_telegram');
         $data['youtube'] = $this->config->get('config_youtube');

@@ -921,6 +921,23 @@ template {
     line-height: 16px;
   }
 }
+.footer__working-hours {
+  padding-left: 28px;
+  background: url(../images/working-hours-white.svg) 0 center / 20px 20px no-repeat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+}
+.footer__working-hours b {
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .footer__working-hours {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
 .footer__telegram {
   display: block;
   padding: 1px 0 1px 28px;
