@@ -23,7 +23,7 @@ class Footer extends \Opencart\System\Engine\Controller {
             ['name' => 'Про нас', 'href' => $this->url->link('information/information', 'information_id=1')],
             ['name' => 'Контакти', 'href' => $this->url->link('information/information', 'information_id=7')],
 //            ['name' => 'Відгуки', 'href' => $this->url->link('information/information', 'information_id=6')],
-            ['name' => 'Карта сайту', 'href' => $this->url->link('information/sitemap')],
+//            ['name' => 'Карта сайту', 'href' => $this->url->link('information/sitemap')],
         ];
 
         $data['legal_menu'] = [
