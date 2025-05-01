@@ -535,6 +535,8 @@ class Confirm extends \Opencart\System\Engine\Controller {
                     $json['payment_method'] = $payment_method['code'];
                     if ($payment_method['code'] === 'liqpay.liqpay') {
                         $json['redirect'] = $this->url->link('extension/opencart/payment/liqpay.confirm', 'order_id=' . $order_id);
+                    } else if ($payment_method['code'] === 'monopay.monopay') {
+                        $json['redirect'] = $this->url->link('extension/opencart/payment/monopay.confirm', 'order_id=' . $order_id);
                     }
 
                     $json['data_layer'] = [

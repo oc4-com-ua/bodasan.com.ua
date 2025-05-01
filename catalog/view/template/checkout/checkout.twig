@@ -112,7 +112,7 @@
                     <label class="checkout__payment-radio">
                       <input type="radio" name="payment_method" value='{{ option|json_encode|escape }}' data-code="{{ option.code }}" class="checkout__payment-radio-control js-checkout-validate">
                       <span class="checkout__payment-radio-label">
-                        <img src="catalog/view/images/logo-{{ option.code|split('.')|first|replace({'_': ''}) }}.svg" width="24" height="24" alt="">
+                        {#<img src="catalog/view/images/logo-{{ option.code|split('.')|first|replace({'_': ''}) }}.svg" width="24" height="24" alt="">#}
                         {{ option.name }}
                       </span>
                     </label>
@@ -122,6 +122,14 @@
                         <img src="catalog/view/images/logo-pay-applepay.svg" width="48" height="33" alt="">
                         <img src="catalog/view/images/logo-pay-googlepay.svg" width="48" height="33" alt="">
                         <img src="catalog/view/images/logo-pay-privat24.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-visa.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-mastercard.svg" width="48" height="33" alt="">
+                      </div>
+                    {% elseif option.code == 'monopay.monopay' %}
+                      <div class="checkout__payment-desc">
+                        <span class="checkout__payment-desc-label">{{ text_section_payment_desc_monopay }}</span>
+                        <img src="catalog/view/images/logo-pay-applepay.svg" width="48" height="33" alt="">
+                        <img src="catalog/view/images/logo-pay-googlepay.svg" width="48" height="33" alt="">
                         <img src="catalog/view/images/logo-pay-visa.svg" width="48" height="33" alt="">
                         <img src="catalog/view/images/logo-pay-mastercard.svg" width="48" height="33" alt="">
                       </div>

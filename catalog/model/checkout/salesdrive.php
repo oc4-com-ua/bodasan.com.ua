@@ -135,6 +135,8 @@ class Salesdrive extends \Opencart\System\Engine\Model {
             $request_data['payment_method'] = 'id_12'; // id_12 - в CRM для Післяплати
         } else if ($order_data['payment_method']['code'] === 'liqpay.liqpay') {
             $request_data['payment_method'] = 'LiqPay';
+        } else if ($order_data['payment_method']['code'] === 'monopay.monopay') {
+            $request_data['payment_method'] = 'plata by mono';
         }
 
         $json_data = json_encode($request_data, JSON_UNESCAPED_UNICODE);
