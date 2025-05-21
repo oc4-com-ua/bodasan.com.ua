@@ -1,8 +1,12 @@
-user-agent: *
-Disallow: /
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /image/
 
-Disallow: /*?page=$
-Disallow: /*&page=$
+User-agent: *
+
+Disallow: /*?page=
+Disallow: /*&page=
 Disallow: /*?sort=
 Disallow: /*&sort=
 Disallow: /*?order=
@@ -17,3 +21,10 @@ Disallow: /*?filter_description=
 Disallow: /*&filter_description=
 Disallow: /*?filter_group=
 Disallow: /*&filter_group=
+
+Disallow: /admin/
+Disallow: /system/
+Disallow: /storage/
+Disallow: /catalog/controller/
+Disallow: /catalog/model/
+Disallow: /catalog/view/
